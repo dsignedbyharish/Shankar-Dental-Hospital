@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=7a9ec922">
+<link rel="stylesheet" href="assets/css/style.css?v=114d2576">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="canonical" href="https://www.shankerdentalcentremadurai.com/">
@@ -46,6 +46,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
 
 <div class="topbar">
   <div class="wrap">
@@ -91,21 +92,33 @@
 <main id="main">
 
   <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-media">
-      <img src="assets/images/Shankar-Hospital.jpg" alt="" aria-hidden="true" width="1600" height="1200" fetchpriority="high">
+    <div class="hero-media parallax" data-depth="0.22">
+      <img src="assets/images/Shankar-Hospital.jpg" alt="" aria-hidden="true" width="335" height="496" fetchpriority="high">
     </div>
     <div class="wrap">
-      <div class="hero-inner">
-        <span class="eyebrow">Madurai, Tamil Nadu</span>
-        <h1 id="hero-heading">Saving faces and changing lives</h1>
-        <p class="lede">
-          A one-of-a-kind, modern purpose-built centre in the heart of Madurai &mdash; bringing together
-          maxillofacial surgery, craniofacial surgery, orthodontics and implantology under one roof,
-          with consultants trained in India, the UK and Ireland.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call for an appointment</a>
-          <a class="btn btn-ghost btn-lg" href="treatments.html">Explore treatments</a>
+      <div class="hero-inner hero-grid">
+        <div>
+          <span class="eyebrow">Madurai, Tamil Nadu</span>
+          <h1 id="hero-heading" class="rise"><span>Saving faces and changing lives</span></h1>
+          <p class="lede">
+            A one-of-a-kind, modern purpose-built centre in the heart of Madurai &mdash; bringing together
+            maxillofacial surgery, craniofacial surgery, orthodontics and implantology under one roof,
+            with consultants trained in India, the UK and Ireland.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call for an appointment</a>
+            <a class="btn btn-ghost btn-lg" href="treatments.html">Explore treatments</a>
+          </div>
+        </div>
+
+        <div class="hero-portrait reveal">
+          <div class="hero-portrait-frame">
+            <img src="assets/images/staffimg1.jpg" alt="Dr Shanker Mohan, Oral and Maxillofacial Surgeon" width="238" height="203" fetchpriority="high">
+          </div>
+          <div class="hero-portrait-card">
+            <span class="name">Dr. Shanker Mohan</span>
+            <span class="qual">MDS, AO/ASIF, FFDRCS, FDSRCS</span>
+          </div>
         </div>
       </div>
     </div>
@@ -124,8 +137,8 @@
     <div class="wrap">
       <div class="split">
         <div class="reveal">
-          <span class="eyebrow">Welcome</span>
-          <h2 id="welcome-heading">Welcome to Shanker Dental and Craniofacial Centre</h2>
+          <p class="section-index"><span>01 &mdash; The centre</span></p>
+          <h2 id="welcome-heading" class="rise"><span>Welcome to Shanker Dental and Craniofacial Centre</span></h2>
           <p>
             Shanker Dental and Craniofacial Centre is a one of a kind, modern purpose-built centre situated in
             the heart of Madurai having a clinically clean but comfortable and relaxing environment with all the
@@ -159,8 +172,8 @@
           <img src="assets/images/operation_theatre.jpg" alt="Modern integrated operating theatre with LED theatre lights and an anaesthesia workstation" loading="lazy" decoding="async" width="800" height="1067">
         </div>
         <div class="reveal">
-          <span class="eyebrow">Standards &amp; training</span>
-          <h2 id="standards-heading">Built to international surgical standards</h2>
+          <p class="section-index"><span>02 &mdash; Standards</span></p>
+          <h2 id="standards-heading" class="rise"><span>Built to international surgical standards</span></h2>
           <p>
             We currently meet and vastly exceed all the standards required by the government of India as per the
             latest Clinical Establishment Act and are NABH ready. We are fully recognised and registered with the
@@ -187,8 +200,8 @@
   <section class="section" aria-labelledby="treat-heading">
     <div class="wrap">
       <div class="center reveal measure-sm">
-        <span class="eyebrow">What we treat</span>
-        <h2 id="treat-heading">A full range of facial surgery and dentistry</h2>
+        <p class="section-index"><span>03 &mdash; What we treat</span></p>
+        <h2 id="treat-heading" class="rise"><span>A full range of facial surgery and dentistry</span></h2>
         <p>
           Maxillofacial surgery and orthodontics concern surgical and non-surgical treatment of the face, head,
           neck and jaws. We do the entire range of maxillofacial procedures at our centre and our results are
@@ -287,8 +300,8 @@
     <div class="wrap">
       <div class="split">
         <div class="reveal">
-          <span class="eyebrow">Our consultants</span>
-          <h2 id="doctors-heading">Trained in India, the UK and Ireland</h2>
+          <p class="section-index"><span>04 &mdash; Our consultants</span></p>
+          <h2 id="doctors-heading" class="rise"><span>Trained in India, the UK and Ireland</span></h2>
           <p>
             Dr Shanker Mohan trained at the Royal London Hospital, UK, and served four years in the National
             Maxillofacial Unit in Dublin, Ireland. He holds fellowships in maxillofacial surgery from the Royal
@@ -319,8 +332,8 @@
   <section class="section" aria-labelledby="cases-heading">
     <div class="wrap">
       <div class="center reveal measure-sm">
-        <span class="eyebrow">Teaching &amp; transparency</span>
-        <h2 id="cases-heading">Interesting Case of the Month</h2>
+        <p class="section-index"><span>05 &mdash; Teaching</span></p>
+        <h2 id="cases-heading" class="rise"><span>Interesting Case of the Month</span></h2>
         <p>
           Every month we document an interesting case from our theatre lists &mdash; published to educate patients
           and colleagues about facial surgery, its complications and its possible solutions.
@@ -421,6 +434,6 @@
   <p class="lb-cap" aria-live="polite"><span class="lb-cap-text"></span><span class="lb-count"></span></p>
 </div>
 
-<script src="assets/js/main.js?v=e8741552"></script>
+<script src="assets/js/main.js?v=b8978f72"></script>
 </body>
 </html>
