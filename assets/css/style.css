@@ -395,7 +395,7 @@ address { font-style: normal; }
   content: ""; position: absolute; inset: 0;
   background: radial-gradient(900px 380px at 88% -25%, rgba(13,110,120,.42), transparent 65%);
 }
-.page-head-inner { position: relative; z-index: var(--z-raised); padding: clamp(var(--sp-14), 7vw, 86px) 0 clamp(var(--sp-12), 6vw, 74px); }
+.page-head-inner { position: relative; z-index: var(--z-raised); padding-block: clamp(var(--sp-14), 7vw, 86px) clamp(var(--sp-12), 6vw, 74px); }
 .page-head h1 { color: #fff; margin-bottom: .3em; max-width: 22ch; }
 .page-head p { color: #b3c8da; max-width: 62ch; margin: 0; font-size: var(--fs-md); }
 
@@ -733,7 +733,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
    Footer
    ========================================================================== */
 .site-footer { background: var(--ink); color: var(--on-deep); font-size: var(--fs-sm); }
-.footer-top { padding: clamp(var(--sp-12), 6vw, 74px) 0 var(--sp-10); display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: var(--sp-10); }
+.footer-top { padding-block: clamp(var(--sp-12), 6vw, 74px) var(--sp-10); display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: var(--sp-10); }
 .footer-col-title {
   color: #fff; font-size: var(--fs-2xs); letter-spacing: .13em; text-transform: uppercase;
   margin-bottom: 1.2em; font-weight: var(--fw-bold);
