@@ -237,9 +237,88 @@
   }
 
   /* ======================================================================
-     Reveal on scroll (+ staggered children)
+     Before / after comparison sliders
+     ----------------------------------------------------------------------
+     The range input is the single source of truth, so dragging, arrow keys
+     and assistive tech all drive the same value.
      ====================================================================== */
-  var reveals = document.querySelectorAll('.reveal, .stagger');
+  document.querySelectorAll('.compare').forEach(function (cmp) {
+    var range = cmp.querySelector('.compare-range');
+    if (!range) return;
+
+    var apply = function () {
+      cmp.style.setProperty('--pos', range.value + '%');
+      range.setAttribute('aria-valuetext', range.value + '% of the after image shown');
+    };
+    range.addEventListener('input', apply);
+    apply();
+
+    /* Dragging anywhere on the frame feels more natural than only on the
+       handle; pointer events cover mouse, pen and touch in one path. */
+    var dragging = false;
+    var setFromX = function (clientX) {
+      var r = cmp.getBoundingClientRect();
+      var pct = ((clientX - r.left) / r.width) * 100;
+      range.value = Math.max(0, Math.min(100, pct));
+      apply();
+    };
+    cmp.addEventListener('pointerdown', function (e) {
+      if (e.target === range) return;         /* let the input handle itself */
+      dragging = true;
+      cmp.setPointerCapture(e.pointerId);
+      setFromX(e.clientX);
+    });
+    cmp.addEventListener('pointermove', function (e) { if (dragging) setFromX(e.clientX); });
+    cmp.addEventListener('pointerup', function () { dragging = false; });
+    cmp.addEventListener('pointercancel', function () { dragging = false; });
+  });
+
+  /* ======================================================================
+     Parallax + scroll progress
+     ----------------------------------------------------------------------
+     One rAF loop drives every effect. Layout is read in a single batch and
+     only transforms are written, so there is no per-scroll reflow.
+     ====================================================================== */
+  var parallaxItems = Array.prototype.slice.call(document.querySelectorAll('.parallax'));
+  var progressBar = document.querySelector('.scroll-progress');
+
+  if ((parallaxItems.length || progressBar) && !reduceMotion.matches) {
+    var pTicking = false;
+
+    var updateScrollFx = function () {
+      var vh = window.innerHeight;
+
+      parallaxItems.forEach(function (el) {
+        var box = el.getBoundingClientRect();
+        if (box.bottom < -200 || box.top > vh + 200) return;
+        var depth = parseFloat(el.getAttribute('data-depth')) || 0.14;
+        /* -1 at the top of the viewport, +1 at the bottom. */
+        var mid = (box.top + box.height / 2 - vh / 2) / (vh / 2);
+        el.style.setProperty('--py', (mid * depth * 100).toFixed(2) + 'px');
+      });
+
+      if (progressBar) {
+        var max = document.documentElement.scrollHeight - vh;
+        progressBar.style.setProperty('--progress', max > 0 ? (window.scrollY / max).toFixed(4) : 0);
+      }
+      pTicking = false;
+    };
+
+    var onScrollFx = function () {
+      if (pTicking) return;
+      pTicking = true;
+      window.requestAnimationFrame(updateScrollFx);
+    };
+
+    window.addEventListener('scroll', onScrollFx, { passive: true });
+    window.addEventListener('resize', onScrollFx, { passive: true });
+    updateScrollFx();
+  }
+
+  /* ======================================================================
+     Reveal on scroll (+ staggered children, + heading wipes)
+     ====================================================================== */
+  var reveals = document.querySelectorAll('.reveal, .stagger, .rise');
 
   if (!reveals.length) {
     /* nothing to do */
@@ -254,13 +333,41 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
     reveals.forEach(function (el) { io.observe(el); });
+
+    /* Anything already on screen at load is revealed on the next frame rather
+       than waiting for a scroll. Without this an above-the-fold heading inside
+       a `.rise` clip stays invisible if the observer never fires — and the
+       hero h1 is the worst possible thing to lose. */
+    window.requestAnimationFrame(function () {
+      reveals.forEach(function (el) {
+        var box = el.getBoundingClientRect();
+        if (box.top < window.innerHeight && box.bottom > 0) {
+          el.classList.add('in');
+          io.unobserve(el);
+        }
+      });
+    });
+
+    /* Last-resort guard: if anything is still hidden after load (observer
+       never fired, layout shifted), show it rather than leave a blank page. */
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        reveals.forEach(function (el) {
+          var box = el.getBoundingClientRect();
+          if (box.top < window.innerHeight && box.bottom > 0) el.classList.add('in');
+        });
+      }, 400);
+    });
   }
 
   /* If the user turns reduced-motion on mid-session, drop the animations. */
   var onMotionChange = function () {
     if (!reduceMotion.matches) return;
-    document.querySelectorAll('.reveal, .stagger').forEach(function (el) {
+    document.querySelectorAll('.reveal, .stagger, .rise').forEach(function (el) {
       el.classList.add('in');
+    });
+    document.querySelectorAll('.parallax').forEach(function (el) {
+      el.style.removeProperty('--py');
     });
   };
   if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', onMotionChange);
