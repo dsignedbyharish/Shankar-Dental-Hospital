@@ -1,0 +1,39 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/staff_details.html", "destination": "/doctors.html", "permanent": true },
+    { "source": "/references.html", "destination": "/doctors.html", "permanent": true },
+    { "source": "/Papers_Published.html", "destination": "/doctors.html", "permanent": true },
+    { "source": "/paper_presented.html", "destination": "/doctors.html", "permanent": true },
+    { "source": "/madurai-dental-centre-facilities.html", "destination": "/facilities.html", "permanent": true },
+    { "source": "/treatment-options.html", "destination": "/treatments.html", "permanent": true },
+    { "source": "/maxillofacial-surgery-madurai.html", "destination": "/maxillofacial-surgery.html", "permanent": true },
+    { "source": "/facial-deformity-correction-surgery.html", "destination": "/orthognathic-surgery.html", "permanent": true },
+    { "source": "/temporomandibular-surgery.html", "destination": "/tmj-surgery.html", "permanent": true },
+    { "source": "/orthodontics-madurai.html", "destination": "/orthodontics.html", "permanent": true },
+    { "source": "/implant-dentist-madurai.html", "destination": "/dental-and-facial-implants.html", "permanent": true },
+    { "source": "/Cleft-lip-and-palate-surgery.html", "destination": "/cleft-lip-and-palate-surgery.html", "permanent": true },
+    { "source": "/dental-centre-contact_details.html", "destination": "/contact.html", "permanent": true },
+    { "source": "/contact_details.html", "destination": "/contact.html", "permanent": true },
+    { "source": "/interesting-case-of-the-month.html", "destination": "/case-of-the-month.html", "permanent": true },
+    { "source": "/interesting-case-of-the-month-year.html", "destination": "/case-of-the-month.html", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}
