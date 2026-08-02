@@ -41,6 +41,38 @@ python3 -m http.server 8787
 
 Then open <http://localhost:8787>.
 
+## Design system
+
+Every value in `assets/css/style.css` comes from a token declared in `:root`. If you need a
+number that isn't there, add it to the scale rather than hard-coding it in a component.
+
+| Scale | Tokens |
+|---|---|
+| Spacing | `--sp-1`…`--sp-16` on a 4pt grid |
+| Type | `--fs-2xs`…`--fs-3xl`, plus `--lh-*` and `--fw-*` |
+| Radius | `--r-xs` … `--r-xl`, `--r-full` |
+| Z-index | `--z-raised` 10 · `--z-sticky` 100 · `--z-drawer` 200 · `--z-modal` 300 · `--z-skip` 400 |
+| Motion | `--dur-press` 80ms · `--dur-fast` 150 · `--dur-base` 220 · `--dur-exit` 140 · `--dur-slow` 320 · `--dur-reveal` 520 |
+| Easing | `--ease-out` (enter) · `--ease-in` (exit) · `--ease-spring` (playful) |
+| Touch | `--tap` 44px |
+
+There are no inline styles in any page — layout tweaks use the utility classes
+(`.measure`, `.mt-*`, `.actions-row`, …) so spacing stays on the scale.
+
+## Accessibility
+
+- Contrast: every foreground/background pair passes WCAG AA (verified in-browser, 0 failures).
+- Touch: all controls reach 44px on coarse pointers and phone-width viewports.
+- Keyboard: focus is trapped in the menu drawer and the image viewer, and returned to
+  whatever opened them; `Esc` closes both; a visible 3px focus ring switches to white on
+  dark surfaces.
+- Structure: one `h1` per page, no skipped heading levels, breadcrumbs marked up as
+  `<nav><ol>`, current page flagged with `aria-current="page"` and shown with an underline
+  rather than colour alone.
+- Motion: `prefers-reduced-motion` disables the scroll reveal, stagger, hover lifts and
+  smooth scrolling. Content is never hidden behind an animation that may not run.
+- Images: every `<img>` declares width/height, so there is no layout shift.
+
 ## Notes
 
 - **Consent gate.** Treatment pages and the case archive show the 18+ clinical-imagery
