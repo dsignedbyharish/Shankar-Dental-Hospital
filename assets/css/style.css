@@ -307,7 +307,11 @@ address { font-style: normal; }
   background: var(--ink); color: var(--on-deep-soft);
   font-size: var(--fs-2xs); letter-spacing: .045em;
 }
-.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); min-height: 38px; flex-wrap: wrap; }
+.topbar .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--sp-3) var(--sp-6); min-height: 46px; flex-wrap: wrap;
+  padding-block: var(--sp-2);
+}
 .topbar-list { display: flex; align-items: center; gap: var(--sp-5); list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
 .topbar-list li { margin: 0; display: flex; align-items: center; gap: var(--sp-2); }
 .topbar a { color: #d9e8d6; font-weight: var(--fw-medium); display: inline-flex; align-items: center; }
@@ -594,11 +598,11 @@ address { font-style: normal; }
   font-size: var(--fs-2xs); font-weight: var(--fw-bold); letter-spacing: .2em; text-transform: uppercase;
   color: var(--brass); margin-bottom: 1.4em;
 }
-.eyebrow::before { content: ""; width: 34px; height: 1px; background: currentColor; border-radius: 0; }
+/* No rule before the eyebrow. A small stroke sitting in front of a
+   letterspaced label is the most over-used mark on the web right now. */
 .hero .eyebrow { color: var(--on-deep-accent); }
 .bg-deep .eyebrow, .page-head .eyebrow { color: var(--on-deep-accent); }
 .bg-deep .section-index { color: var(--on-deep-accent); }
-.bg-deep .section-index::after { background: rgba(255,255,255,.22); }
 .center .eyebrow { justify-content: center; }
 
 /* Stat row — an editorial band on paper, separated by hairlines. The floating
@@ -772,9 +776,9 @@ a.card:hover .card-icon { transform: translateY(-3px); }
 .card-tile:hover .card-media-ico { transform: translateY(-3px) scale(1.05); background: var(--lime); color: var(--on-lime); }
 .card-tile.card-teal:hover .card-media-ico { background: var(--teal); color: #fff; }
 
-.card-tile h3 { padding: var(--sp-6) var(--sp-6) 0; margin-bottom: .5em; }
-.card-tile p  { padding-inline: var(--sp-6); font-size: var(--fs-sm); color: var(--ink-3); }
-.card-tile .card-link { margin: auto var(--sp-6) var(--sp-6); }
+.card-tile h3 { padding: var(--sp-7) var(--sp-7) 0; margin-bottom: .5em; }
+.card-tile p  { padding-inline: var(--sp-7); font-size: var(--fs-sm); color: var(--ink-3); }
+.card-tile .card-link { margin: auto var(--sp-7) var(--sp-7); }
 @media (prefers-reduced-motion: reduce) {
   .card-tile:hover { transform: none; }
   .card-tile:hover .card-media img, .card-tile:hover .card-media-ico { transform: none; }
@@ -814,16 +818,6 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   font-family: var(--font-serif); font-size: var(--fs-lg); font-weight: 600;
   color: var(--brass); letter-spacing: .12em; font-variant-numeric: tabular-nums;
 }
-/* The rule above each note draws across as the row arrives. */
-.js .notes.stagger .note { position: relative; }
-.js .notes.stagger .note::after {
-  content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
-  background: var(--brass-soft); transform: scaleX(0); transform-origin: left;
-  transition: transform 900ms var(--ease-out);
-}
-.js .notes.stagger.in .note::after { transform: scaleX(1); }
-.js .notes.stagger.in .note:nth-child(2)::after { transition-delay: 120ms; }
-.js .notes.stagger.in .note:nth-child(3)::after { transition-delay: 240ms; }
 
 /* Panels — parallel topics that were a single stacked column of h3 + prose.
    Two columns rather than three: these carry a heading and several sentences,
@@ -845,15 +839,6 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   font-family: var(--font-serif); font-size: var(--fs-md); font-weight: 600;
   color: var(--brass); letter-spacing: .12em; font-variant-numeric: tabular-nums;
 }
-.js .panels.stagger .panel::after {
-  content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
-  background: var(--brass-soft); transform: scaleX(0); transform-origin: left;
-  transition: transform 900ms var(--ease-out);
-}
-.js .panels.stagger.in .panel::after { transform: scaleX(1); }
-.js .panels.stagger.in .panel:nth-child(2)::after { transition-delay: 110ms; }
-.js .panels.stagger.in .panel:nth-child(3)::after { transition-delay: 220ms; }
-.js .panels.stagger.in .panel:nth-child(4)::after { transition-delay: 330ms; }
 
 /* ---------- Voices — reference cards ----------
    Raised cards on the sand band, so the quotes read as testimony lifted out
@@ -862,9 +847,49 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   list-style: none; padding: 0; margin: 0;
   display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6);
 }
+
+/* ---------- Reference marquee ----------
+   Runs slowly and continuously, and pauses on hover or keyboard focus — a
+   testimonial you cannot stop to read is decoration, not evidence. The track
+   holds two copies of the list and travels exactly -50%, so the loop is
+   seamless; the second copy is aria-hidden so the same three references are
+   not announced twice. */
+.marquee {
+  position: relative; overflow: hidden;
+  /* escapes the wrap so cards run off both edges rather than stopping short */
+  width: 100vw; margin-left: 50%; transform: translateX(-50%);
+  padding-block: var(--sp-2);
+}
+.marquee-track {
+  display: flex; grid-template-columns: none;
+  width: max-content; gap: var(--sp-6);
+  animation: voices-marquee 80s linear infinite;
+  will-change: transform;
+}
+.marquee-track .voice { width: 420px; flex: none; }
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track { animation-play-state: paused; }
+@keyframes voices-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Fade the edges so cards enter and leave rather than being cut off. */
+.marquee::before, .marquee::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: clamp(40px, 7vw, 120px);
+  z-index: 2; pointer-events: none;
+}
+.marquee::before { left: 0;  background: linear-gradient(to right, var(--bg-alt), transparent); }
+.marquee::after  { right: 0; background: linear-gradient(to left,  var(--bg-alt), transparent); }
+
+@media (max-width: 680px) { .marquee-track .voice { width: 300px; } }
+
+/* Motion that never stops is exactly what this setting exists to switch off.
+   The row becomes an ordinary horizontal scroller instead. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; }
+  .marquee-track { animation: none; }
+}
 .voice {
   margin: 0; background: var(--bg-pure); border-radius: var(--r-lg);
-  padding: clamp(var(--sp-6), 2.4vw, var(--sp-8));
+  padding: clamp(var(--sp-7), 3vw, var(--sp-10));
   display: flex; flex-direction: column; justify-content: space-between;
   box-shadow: 0 1px 2px rgba(18,64,62,.03), 0 20px 40px -32px rgba(18,64,62,.4);
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
@@ -894,6 +919,47 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .media-band-item { margin: 0; overflow: hidden; border-radius: var(--r-md); background: var(--bg-alt); }
 .media-band-item img { width: 100%; aspect-ratio: 3/2; object-fit: cover; transition: transform 900ms var(--ease-out); }
 .media-band-item:hover img { transform: scale(1.03); }
+
+/* ---------- Checklist as cards ----------
+   A modifier, not a replacement: the other six pages keep the plain list,
+   where the items are short and a card each would be noise. */
+.checklist-cards { display: grid; gap: var(--sp-4); }
+.checklist.checklist-cards li {
+  margin: 0; padding: var(--sp-6) var(--sp-7);
+  background: var(--bg-pure); border-radius: var(--r-md);
+  box-shadow: 0 1px 2px rgba(18,64,62,.03), 0 14px 30px -26px rgba(18,64,62,.36);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+.checklist.checklist-cards li:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 4px rgba(18,64,62,.05), 0 22px 42px -24px rgba(18,64,62,.48);
+}
+@supports (corner-shape: squircle) { .checklist.checklist-cards li { corner-shape: squircle; } }
+@media (prefers-reduced-motion: reduce) { .checklist.checklist-cards li:hover { transform: none; } }
+
+/* ---------- Sticky media column ----------
+   The image holds while its column of points scrolls past. `align-items` must
+   be `start` for this — the default `center` on .split gives the media a
+   full-height grid area, so `position: sticky` has nothing to travel inside
+   and silently does nothing. */
+@media (min-width: 1061px) {
+  .split.is-sticky { align-items: start; }
+  /* The grid item stretches to the full row height so the image has somewhere
+     to travel; the image is what sticks. Putting `sticky` on the grid item
+     itself does nothing — its containing block is then exactly its own height,
+     so there is zero scroll distance and it just scrolls away normally. */
+  .split.is-sticky .split-media { align-self: stretch; position: static; }
+  .split.is-sticky .split-media img {
+    position: sticky;
+    top: 104px;                       /* clears the floating header when stuck */
+    /* A fixed height, not max-height. The source is 4:5, so at column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance left to pin through — it held for ~250px then released. Capping
+       it well under the column height is what buys the travel. */
+    height: min(62vh, 560px);
+    object-fit: cover; object-position: center;
+  }
+}
 
 /* ---------- Split / media rows ---------- */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(var(--sp-8), 5vw, var(--sp-16)); align-items: center; }
@@ -1010,13 +1076,6 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   font-size: var(--fs-2xs); font-weight: var(--fw-bold); letter-spacing: .2em; text-transform: uppercase;
   color: var(--brass); background: none; padding: 0; margin-bottom: var(--sp-5);
 }
-.case-tag::after {
-  content: ""; flex: 1; height: 1px; background: var(--line);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 1100ms var(--ease-out) 150ms;
-}
-.case.in .case-tag::after, .reveal.in .case-tag::after { transform: scaleX(1); }
-@media (prefers-reduced-motion: reduce) { .case-tag::after { transform: scaleX(1) !important; } }
 .case h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); margin-bottom: .6em; }
 .case h3 { margin-bottom: .7em; }
 
@@ -1607,15 +1666,6 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   letter-spacing: .22em; text-transform: uppercase;
   margin-bottom: var(--sp-8);
 }
-/* The rule extends to the column edge and draws itself in when the section
-   arrives, so the eye is led across before it drops into the heading. */
-.section-index::after {
-  content: ""; flex: 1; height: 1px; background: var(--line);
-  transform: scaleX(1); transform-origin: left;
-  transition: transform 1200ms var(--ease-out) 120ms;
-}
-.js .reveal .section-index::after { transform: scaleX(0); }
-.js .reveal.in .section-index::after { transform: scaleX(1); }
 
 /* Full-bleed band that escapes the wrap without horizontal scroll */
 .bleed { width: 100vw; margin-left: 50%; transform: translateX(-50%); }
@@ -1673,12 +1723,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .js .hero-portrait .hero-portrait-frame { clip-path: none !important; }
   .js .figure > figcaption { opacity: 1 !important; transform: none !important; }
   .js .reveal .li-ico, .js .stagger .li-ico { opacity: 1 !important; transform: none !important; }
-  .js .notes.stagger .note::after,
-  .js .panels.stagger .panel::after { transform: scaleX(1) !important; }
   /* Rules that draw themselves in are simply present. */
-  .hero::after,
-  .js .hero::after,
-  .js .reveal .section-index::after { transform: scaleX(1) !important; }
   /* The button wipe becomes a plain colour change. */
   .btn::before { transition: none !important; }
   /* Header height must not animate on every scroll tick. */
