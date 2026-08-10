@@ -41,6 +41,22 @@ python3 -m http.server 8787
 
 Then open <http://localhost:8787>.
 
+## Tooling
+
+There is no build step — the HTML is the source. Two scripts keep it honest:
+
+```bash
+python3 tools/check.py         # pre-deploy validation; exits non-zero on any problem
+python3 tools/sync_chrome.py   # push header/nav/footer from index.html to all pages
+```
+
+The shared chrome is duplicated across all 16 pages, so edit it in `index.html`
+and run `sync_chrome.py` rather than hand-editing sixteen files. Run `check.py`
+before every push.
+
+New developers should read **[HANDOFF.md](HANDOFF.md)** — it covers project
+state, the decisions worth not undoing, and the known constraints.
+
 ## Design system
 
 Every value in `assets/css/style.css` comes from a token declared in `:root`. If you need a
