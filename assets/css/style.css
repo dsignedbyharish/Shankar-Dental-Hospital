@@ -292,27 +292,31 @@ address { font-style: normal; }
    over the open menu and, worse, took the taps: every link press closed the
    drawer instead of navigating. Raising the header is what actually lifts
    the drawer, because the drawer can never outrank its own container. */
+/* Floating header card — the header is a rounded panel sitting on the page
+   rather than a full-width band welded to the top. */
 .site-header {
-  position: sticky; top: 0; z-index: var(--z-drawer);
-  background: rgba(252,250,247,.86);
-  backdrop-filter: saturate(180%) blur(16px);
-  -webkit-backdrop-filter: saturate(180%) blur(16px);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--dur-base) var(--ease-out),
-              background var(--dur-base) var(--ease-out),
-              box-shadow var(--dur-base) var(--ease-out);
-}
-.site-header.is-stuck {
-  background: rgba(252,250,247,.94);
-  border-bottom-color: var(--line);
-  box-shadow: 0 1px 24px -14px rgba(16,30,43,.5);
+  position: sticky; top: var(--sp-3); z-index: var(--z-drawer);
+  background: transparent; border-bottom: 0;
+  padding-block: var(--sp-3);
+  transition: padding var(--dur-base) var(--ease-out);
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between; gap: var(--sp-5);
-  min-height: 88px;
-  transition: min-height var(--dur-base) var(--ease-out);
+  min-height: 84px;
+  background: var(--bg-pure);
+  border-radius: var(--r-xl);
+  box-shadow: 0 1px 2px rgba(16,30,43,.04), 0 18px 40px -28px rgba(16,30,43,.42);
+  padding-inline: clamp(var(--sp-5), 2.4vw, var(--sp-8));
+  transition: min-height var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
 }
-.site-header.is-stuck .header-inner { min-height: 68px; }
+.site-header.is-stuck { padding-block: var(--sp-2); }
+.site-header.is-stuck .header-inner {
+  min-height: 66px;
+  box-shadow: 0 2px 4px rgba(16,30,43,.05), 0 22px 48px -26px rgba(16,30,43,.5);
+}
+/* The pill CTA sits at the card's right edge, matching its curve. */
+.header-cta .btn-primary { border-radius: var(--r-full); padding-inline: var(--sp-6); }
 
 /* Logo */
 .logo { display: flex; align-items: center; gap: var(--sp-3); flex: none; }
@@ -458,32 +462,60 @@ address { font-style: normal; }
 /* Split hero: type on paper against a full-height image that bleeds to the
    viewport edge. The copy column keeps the site gutter by reproducing the
    wrap's own centring maths, so the h1 lines up with every heading below it. */
+/* The hero is a single rounded card sitting on the paper, not a full-bleed
+   band — the whole composition lives inside one field. */
+.hero { padding-inline: clamp(var(--sp-4), 2vw, var(--sp-6)); padding-bottom: clamp(var(--sp-6), 2vw, var(--sp-8)); }
+.hero::after { content: none; }
+
 .hero-split {
-  display: grid; grid-template-columns: 1fr 1fr;
-  align-items: stretch; min-height: min(76vh, 720px);
+  position: relative; overflow: hidden;
+  border-radius: clamp(var(--r-lg), 1.6vw, 26px);
+  background: var(--bg-deep);
+  max-width: var(--wrap); margin-inline: auto;
+  display: grid; grid-template-columns: 1.15fr .85fr;
+  align-items: stretch; min-height: min(74vh, 680px);
 }
-.hero-copy { display: flex; align-items: center; }
+/* Depth field behind the composition. */
+.hero-split::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(760px 520px at 76% 14%, rgba(154,123,79,.26), transparent 66%),
+              radial-gradient(600px 420px at 8% 92%, rgba(168,30,45,.20), transparent 70%);
+}
+/* Oversized brand word ghosted into the field behind the headline. */
+.hero-ghost {
+  position: absolute; left: clamp(var(--sp-6), 4vw, 68px); top: clamp(var(--sp-6), 5vw, 60px);
+  z-index: 0; pointer-events: none; user-select: none;
+  font-family: var(--font-serif); font-weight: 700;
+  font-size: clamp(4rem, 11vw, 10rem); line-height: .9;
+  color: #fff; opacity: .05; letter-spacing: -.04em; white-space: nowrap;
+}
+
+.hero-copy { display: flex; align-items: center; position: relative; z-index: 2; }
 .hero-copy-inner {
   width: 100%;
-  padding-block: clamp(var(--sp-14), 7vw, 96px);
-  padding-left: max(var(--sp-6), calc((100vw - var(--wrap)) / 2 + var(--sp-6)));
-  padding-right: clamp(var(--sp-8), 5vw, var(--sp-16));
+  padding: clamp(var(--sp-12), 6vw, 84px) clamp(var(--sp-7), 4vw, var(--sp-12))
+           clamp(var(--sp-12), 6vw, 84px) clamp(var(--sp-7), 4vw, 68px);
 }
+/* Type sits on the dark field now. */
+.hero h1 { color: #fff; }
+.hero .lede { color: var(--on-deep); }
+.hero .eyebrow { color: var(--on-deep-accent); }
+.hero .btn-outline { border-color: rgba(255,255,255,.4); color: #fff; }
+.hero .btn-outline::before { background: rgba(255,255,255,.14); }
+.hero .btn-outline:hover { border-color: #fff; color: #fff; }
+.hero :focus-visible { outline-color: #fff; }
 
 /* Deep ink panel. It gives the right half real weight without a photograph
    large enough to fill it — the only 1600px images in the library are empty
    ward rooms, which read as a government hospital next to copy calling this a
    modern purpose-built centre. */
+/* The card carries the field now, so this column is just the portrait's seat. */
 .hero-figure {
-  position: relative; overflow: hidden;
-  background: var(--bg-deep);
-  display: flex; align-items: center;
-  padding: clamp(var(--sp-10), 5vw, var(--sp-16));
+  position: relative; z-index: 2; overflow: visible; background: none;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(var(--sp-8), 3vw, var(--sp-12)) clamp(var(--sp-7), 3vw, var(--sp-10));
 }
-.hero-figure::before {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(680px 420px at 78% 18%, rgba(154,123,79,.30), transparent 68%);
-}
+.hero-figure::before { content: none; }
 /* Uncovered from the bottom as the page opens. */
 .js .hero-figure { clip-path: inset(0 0 100% 0); transition: clip-path 1300ms var(--ease-out) 120ms; }
 .js .hero-figure.in { clip-path: inset(0 0 0 0); }
@@ -516,10 +548,10 @@ address { font-style: normal; }
   display: block; margin-top: 5px; color: var(--on-deep-soft); font-size: var(--fs-sm);
 }
 
-.hero h1 { color: var(--ink); margin-bottom: .34em; max-width: 15ch; }
+.hero h1 { color: #fff; margin-bottom: .34em; max-width: 15ch; }
 .hero .lede {
   font-size: clamp(var(--fs-lg), 1.5vw, var(--fs-xl));
-  color: var(--ink-2); margin-bottom: 1.7em; max-width: 44ch;
+  color: var(--on-deep); margin-bottom: 1.7em; max-width: 44ch;
   line-height: var(--lh-snug);
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; }
@@ -722,6 +754,40 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .js .panels.stagger.in .panel:nth-child(2)::after { transition-delay: 110ms; }
 .js .panels.stagger.in .panel:nth-child(3)::after { transition-delay: 220ms; }
 .js .panels.stagger.in .panel:nth-child(4)::after { transition-delay: 330ms; }
+
+/* ---------- Voices — reference cards ----------
+   Raised cards on the sand band, so the quotes read as testimony lifted out
+   of the page rather than more running text. */
+.voices {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6);
+}
+.voice {
+  margin: 0; background: var(--bg-pure); border-radius: var(--r-lg);
+  padding: clamp(var(--sp-6), 2.4vw, var(--sp-8));
+  display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 1px 2px rgba(16,30,43,.03), 0 20px 40px -32px rgba(16,30,43,.4);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+.voice:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(16,30,43,.04), 0 30px 56px -30px rgba(16,30,43,.5);
+}
+.voice-text {
+  font-family: var(--font-serif); font-size: var(--fs-lg); line-height: 1.5;
+  color: var(--ink); margin: 0 0 var(--sp-7); max-width: none;
+}
+.voice-by { display: flex; align-items: center; gap: var(--sp-4); }
+.voice-mark {
+  width: 44px; height: 44px; flex: none; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--brand-tint); color: var(--brand);
+  font-size: var(--fs-2xs); font-weight: var(--fw-bold); letter-spacing: .06em;
+}
+.voice-meta { display: flex; flex-direction: column; min-width: 0; }
+.voice-name { font-weight: var(--fw-semi); color: var(--ink); font-size: var(--fs-sm); }
+.voice-role { font-size: var(--fs-2xs); color: var(--ink-3); line-height: var(--lh-snug); margin-top: 2px; }
+@media (prefers-reduced-motion: reduce) { .voice:hover { transform: none; } }
 
 /* Two-up image band */
 .media-band { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
@@ -1223,6 +1289,11 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .notes { grid-template-columns: 1fr; gap: var(--sp-7); }
   .panels { grid-template-columns: 1fr; gap: var(--sp-8); }
+  .voices { grid-template-columns: 1fr; gap: var(--sp-5); }
+  .hero-split { grid-template-columns: 1fr; }
+  /* Stacked, the ghost word sits directly behind the eyebrow and makes it hard
+     to read. Drop it to a texture rather than a legible word. */
+  .hero-ghost { font-size: clamp(3.4rem, 16vw, 7rem); opacity: .03; }
   .section-lead, .section-lead.is-wide { max-width: 30ch; }
   .split, .contact-grid { grid-template-columns: 1fr; }
   .split-media { order: -1; }
