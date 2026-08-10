@@ -23,14 +23,22 @@ from the original page.
 |---|---|
 | Repo | `dsignedbyharish/Shankar-Dental-Hospital` |
 | Live (preview host) | https://shankar-dental-hospital.vercel.app |
-| `main` | deployed, stable — the first three commits |
-| `redesign-sections` | **open in [PR #1](https://github.com/dsignedbyharish/Shankar-Dental-Hospital/pull/1)**, not merged |
+| `main` | deployed, stable — everything described here is on it |
+| Open branches | none — `redesign-sections` is merged and deleted |
 | Pages | 16 |
 | Assets | ~152 images + 44 gallery thumbnails, ~38 MB |
 
-`main` is what is live. The editorial redesign (borderless layout, serif
-display type, parallax, before/after sliders, Dr Shanker in the hero) is
-waiting in PR #1. **Nothing in that PR is on the live site yet.**
+`main` is what is live, and it carries the editorial redesign — borderless
+layout, serif display type, parallax, before/after sliders, Dr Shanker in the
+hero. [PR #1](https://github.com/dsignedbyharish/Shankar-Dental-Hospital/pull/1)
+merged it on 2 August 2026.
+
+> **A trap this document itself fell into.** The handoff docs and `tools/` were
+> committed to `redesign-sections` on 10 August — eight days *after* PR #1 had
+> already been merged. Pushing to the branch of a merged PR does not reopen it
+> and does not carry the commits to `main`, so the tooling and this file sat off
+> `main` until a follow-up merge landed them. Before pushing to a branch, check
+> that its PR is still open.
 
 ## 3. Running it
 
@@ -177,7 +185,10 @@ files, git and a Vercel project. To continue you need:
 
 ## 8. Suggested next steps
 
-1. Review and merge [PR #1](https://github.com/dsignedbyharish/Shankar-Dental-Hospital/pull/1) (or request changes).
+1. Add `canonical` and Open Graph tags to the other 15 pages. Only
+   `index.html` carries them, while `robots.txt` allows the whole site and the
+   client's two old sites are still live with the same source copy — three
+   hosts, near-duplicate content, and only the homepage pointing anywhere.
 2. Point the real domain at Vercel; the SEO metadata already assumes it.
 3. Request professional photography of both consultants and the premises.
 4. Decide whether the repo should be private.
