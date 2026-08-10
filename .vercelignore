@@ -1,0 +1,12 @@
+# Kept in git, kept off the deployed site.
+#
+# Everything here is developer material. Without this file Vercel uploads the
+# whole repo, so /HANDOFF.md and /tools/check.py were being served from the
+# site root — internal notes on a clinical practice's public website, and
+# crawlable, since robots.txt allows everything.
+#
+# The site itself references none of these, so excluding them changes nothing
+# a visitor can see.
+
+HANDOFF.md
+tools/
