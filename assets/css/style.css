@@ -180,7 +180,7 @@ img { max-width: 100%; height: auto; display: block; }
    Listed explicitly rather than applied with `*`, so focus rings and small
    inline shapes keep their normal geometry. */
 @supports (corner-shape: squircle) {
-  .header-inner, .hero-split, .hero-portrait-frame,
+  .header-inner, .hero-split,
   .card-tile, .card-media, .voice, .hero-stats .stat,
   .btn, .btn-sm, .btn-lg, .nav-toggle,
   .media-band-item, .gal-item, .figure img, .figure .zoomable,
@@ -312,11 +312,27 @@ address { font-style: normal; }
   gap: var(--sp-3) var(--sp-6); min-height: 46px; flex-wrap: wrap;
   padding-block: var(--sp-2);
 }
-.topbar-list { display: flex; align-items: center; gap: var(--sp-5); list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.topbar-list { display: flex; align-items: center; gap: var(--sp-7); list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
 .topbar-list li { margin: 0; display: flex; align-items: center; gap: var(--sp-2); }
 .topbar a { color: #d9e8d6; font-weight: var(--fw-medium); display: inline-flex; align-items: center; }
-.topbar a:hover { color: #fff; text-decoration: underline; }
-.topbar svg { width: 14px; height: 14px; flex: none; opacity: .85; }
+/* No underline on hover — it reintroduces exactly the small stroke this design
+   is trying to keep out of the furniture. Brightening is enough. */
+.topbar a:hover { color: #fff; }
+.topbar svg { width: 13px; height: 13px; flex: none; opacity: .6; }
+
+/* The number is the one action on this bar that earns weight. Everything else
+   is reference information the visitor reads once. */
+.topbar-phone { gap: var(--sp-3) !important; }
+.topbar-phone .label {
+  color: var(--on-deep-accent); font-weight: var(--fw-bold);
+  letter-spacing: .16em; text-transform: uppercase; white-space: nowrap;
+}
+.topbar-phone a {
+  color: #fff; font-weight: var(--fw-bold); letter-spacing: .04em;
+  font-size: var(--fs-xs);
+}
+.topbar-phone a:hover { color: var(--on-deep-accent); }
+.topbar-phone svg { opacity: 1; color: var(--on-deep-accent); }
 
 /* The header carries no rule until the page has actually moved. A hairline
    under a header sitting on its own hero is drawing a box for no reason; it
@@ -331,9 +347,17 @@ address { font-style: normal; }
    the drawer, because the drawer can never outrank its own container. */
 /* Floating header card — the header is a rounded panel sitting on the page
    rather than a full-width band welded to the top. */
+/* The band takes the page colour, not `transparent`. A floating card pinned at
+   top:12px leaves a strip above it, and with a transparent band the page
+   scrolls through that strip — the dark hero card was visibly sliding past
+   above the white header pill. The band masks it. */
 .site-header {
-  position: sticky; top: var(--sp-3); z-index: var(--z-drawer);
-  background: transparent; border-bottom: 0;
+  /* Pins at 0, not at --sp-3. A sticky offset positions the element's own box,
+     so `top: 12px` leaves 12px of viewport above it that the header cannot
+     cover, and the page scrolls through the gap. Pinning flush and making the
+     float out of internal padding gives the same look with nothing leaking. */
+  position: sticky; top: 0; z-index: var(--z-drawer);
+  background: var(--bg); border-bottom: 0;
   padding-block: var(--sp-3);
   transition: padding var(--dur-base) var(--ease-out);
 }
@@ -390,6 +414,61 @@ address { font-style: normal; }
 /* Current page: colour *and* a persistent rule, so it is never colour alone. */
 .nav a[aria-current="page"] { color: var(--brand); }
 .nav a[aria-current="page"]::after { transform: scaleX(1); }
+
+/* ---------- "More" dropdown ----------
+   Facilities and Case of the Month move here to bring the top-level count
+   down from six to four (plus the CTA). On mobile this is inert: the panel
+   is unwrapped into the drawer's ordinary flow and picks up the same `.nav a`
+   rules every other link already has — no separate mobile styling needed. */
+.nav-more { position: relative; }
+.nav-more-toggle {
+  display: flex; align-items: center; gap: 3px;
+  min-height: var(--tap); padding: var(--sp-2);
+  background: none; border: 0; cursor: pointer; font-family: inherit;
+  color: var(--ink-2); font-size: var(--fs-2xs); font-weight: var(--fw-semi);
+  letter-spacing: .11em; text-transform: uppercase;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.nav-more-toggle:hover { color: var(--ink); }
+.nav-more-toggle .chev { width: 13px; height: 13px; flex: none; transition: transform var(--dur-base) var(--ease-out); }
+.nav-more-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+/* Reads as "current section" when the open page lives inside the panel. */
+@supports selector(:has(*)) {
+  .nav-more:has(> .nav-more-panel a[aria-current="page"]) .nav-more-toggle { color: var(--brand); }
+}
+
+.nav-more-panel {
+  position: absolute; top: 100%; left: 50%; margin-top: var(--sp-2);
+  transform: translate(-50%, -6px);
+  min-width: 208px; background: var(--bg-pure);
+  border-radius: var(--r-md);
+  box-shadow: 0 2px 4px rgba(18,64,62,.05), 0 24px 46px -22px rgba(18,64,62,.42);
+  padding: var(--sp-2);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out), visibility var(--dur-base);
+}
+@supports (corner-shape: squircle) { .nav-more-panel { corner-shape: squircle; } }
+.nav-more-panel.open { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); }
+.nav-more-panel a {
+  display: flex; align-items: center; min-height: var(--tap);
+  padding: var(--sp-3) var(--sp-4); border-radius: var(--r-sm);
+  font-size: var(--fs-sm); font-weight: var(--fw-medium); color: var(--ink-2); white-space: nowrap;
+}
+.nav-more-panel a:hover { background: var(--bg-alt); color: var(--ink); }
+.nav-more-panel a[aria-current="page"] { color: var(--brand); background: var(--brand-tint); font-weight: var(--fw-semi); }
+
+/* The treatments panel carries nine links plus the hub, so it runs two
+   columns rather than one long list. */
+.nav-more-panel.is-wide {
+  min-width: 480px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--sp-2);
+}
+.nav-more-panel.is-wide .nav-more-all {
+  grid-column: 1 / -1;
+  color: var(--brand); font-weight: var(--fw-bold);
+}
+.nav-more-panel.is-wide .nav-more-all:hover { background: var(--brand-tint); }
 
 .header-cta { display: flex; align-items: center; gap: var(--sp-3); flex: none; }
 /* Scoped under .nav so it outranks `.btn { display: inline-flex }`. */
@@ -546,32 +625,40 @@ address { font-style: normal; }
    large enough to fill it — the only 1600px images in the library are empty
    ward rooms, which read as a government hospital next to copy calling this a
    modern purpose-built centre. */
-/* The card carries the field now, so this column is just the portrait's seat. */
+/* An open stage, not a framed photo box. Built for a background-removed
+   standing cutout: the image is bottom-anchored so the figure's feet sit on
+   the panel's own floor, and sized with `object-fit: contain` so the whole
+   person shows rather than being cropped into a rectangle the way a framed
+   headshot would. The current placeholder is still a cropped headshot, so it
+   reads smaller than the final art will — that is expected until the real
+   cutout replaces it, not a bug in the layout. */
 .hero-figure {
   position: relative; z-index: 2; overflow: visible; background: none;
-  display: flex; align-items: center; justify-content: center;
-  padding: clamp(var(--sp-8), 3vw, var(--sp-12)) clamp(var(--sp-7), 3vw, var(--sp-10));
+  display: flex; align-items: flex-end; justify-content: center;
+  padding: 0;
 }
 .hero-figure::before { content: none; }
 /* Uncovered from the bottom as the page opens. */
 .js .hero-figure { clip-path: inset(0 0 100% 0); transition: clip-path 1300ms var(--ease-out) 120ms; }
 .js .hero-figure.in { clip-path: inset(0 0 0 0); }
 
-.hero-portrait-panel { position: relative; z-index: 2; max-width: 320px; }
-.hero-portrait-panel .hero-portrait-frame {
-  width: 100%; border-radius: var(--r-sm); overflow: hidden;
-  background: rgba(255,255,255,.06);
+.hero-portrait-stage {
+  position: relative; z-index: 2;
+  max-width: min(88%, 360px);
+  max-height: calc(100% - var(--sp-8));
+  width: auto; height: auto; object-fit: contain;
+  filter: drop-shadow(0 24px 40px rgba(0,0,0,.28));
 }
-.hero-portrait-panel .hero-portrait-frame img {
-  width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 16%;
-  filter: saturate(1.04) contrast(1.06);
-  /* The source file has a white strip baked into its bottom edge. The frame
-     clips, so a few percent of scale crops it off rather than retouching. */
-  transform: scale(1.07);
-}
+
+/* Name and role sit as a caption over the image's own base — no card, no
+   border — matching the gradient-scrim caption already used on gallery
+   photos elsewhere on the site, so a floating standing figure does not
+   read as cut off mid-air at the bottom of the panel. */
 .hero-portrait-meta {
-  margin-top: var(--sp-5); padding-top: var(--sp-5);
-  border-top: 1px solid rgba(255,255,255,.18);
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+  padding: var(--sp-14) clamp(var(--sp-7), 4vw, var(--sp-10)) clamp(var(--sp-8), 4vw, var(--sp-10));
+  background: linear-gradient(to top, rgba(16,30,43,.5), transparent);
+  text-align: center;
 }
 .hero-portrait-meta .name {
   display: block; font-family: var(--font-serif); font-weight: 600;
@@ -579,10 +666,7 @@ address { font-style: normal; }
 }
 .hero-portrait-meta .qual {
   display: block; margin-top: 7px; color: var(--on-deep-accent);
-  font-size: var(--fs-2xs); letter-spacing: .13em; text-transform: uppercase; font-weight: var(--fw-semi);
-}
-.hero-portrait-meta .role {
-  display: block; margin-top: 5px; color: var(--on-deep-soft); font-size: var(--fs-sm);
+  font-size: var(--fs-2xs); letter-spacing: .1em; text-transform: uppercase; font-weight: var(--fw-semi);
 }
 
 .hero h1 { color: #fff; margin-bottom: .34em; max-width: 15ch; }
@@ -854,10 +938,15 @@ a.card:hover .card-link svg { transform: translateX(5px); }
    holds two copies of the list and travels exactly -50%, so the loop is
    seamless; the second copy is aria-hidden so the same three references are
    not announced twice. */
+/* Stays inside .wrap rather than bleeding to the viewport edge. Every other
+   section on the page — the heading above this one, the "Read all six
+   references" link below it — starts flush at the same left margin. A
+   full-bleed track floated the first card free of that line, so the row
+   read as unanchored next to a page that is otherwise strict about its grid.
+   The runs-off-the-edge look now happens at the wrap's own edges via the
+   fade masks below, not the viewport's. */
 .marquee {
   position: relative; overflow: hidden;
-  /* escapes the wrap so cards run off both edges rather than stopping short */
-  width: 100vw; margin-left: 50%; transform: translateX(-50%);
   padding-block: var(--sp-2);
 }
 .marquee-track {
@@ -1438,6 +1527,16 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .nav.open { transform: none; }
   .nav a { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-md); border-radius: var(--r-sm); }
   .nav a[aria-current="page"]::after { display: none; }
+  /* The dropdown is a desktop-only affordance. In the drawer, Facilities and
+     Case of the Month just fall into the same flat list as everything else —
+     the panel unwraps into normal flow and its links inherit `.nav a` above. */
+  .nav-more-toggle { display: none; }
+  .nav-more-panel,
+  .nav-more-panel.is-wide {
+    position: static; transform: none; opacity: 1; visibility: visible; pointer-events: auto;
+    display: flex; flex-direction: column; gap: 2px;
+    min-width: 0; padding: 0; margin: 0; box-shadow: none; background: none;
+  }
   .nav-toggle { display: flex; position: relative; z-index: calc(var(--z-drawer) + 1); }
   .header-cta .btn { display: none; }
   .nav .nav-call { display: inline-flex; margin-top: var(--sp-5); }
@@ -1537,40 +1636,10 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   main a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
 }
 
-/* ==========================================================================
-   Hero portrait — the consultant alongside the promise
-   --------------------------------------------------------------------------
-   The only photograph of Dr Shanker is 238x203px, so it is deliberately kept
-   small and framed rather than blown up: a contained portrait reads as art
-   direction, an upscaled one reads as a broken image.
-   ========================================================================== */
-.hero-grid {
-  display: grid; grid-template-columns: minmax(0,1fr) 292px;
-  gap: clamp(var(--sp-10), 6vw, 88px); align-items: end;
-}
-.hero-portrait { position: relative; justify-self: end; }
-.hero-portrait-frame {
-  position: relative; width: 268px; border-radius: var(--r-sm);
-  overflow: hidden; background: var(--bg-alt);
-  /* Uncovered upward as it enters — a mask, not a fade. */
-  clip-path: inset(0 0 0 0);
-}
-.js .hero-portrait .hero-portrait-frame { clip-path: inset(100% 0 0 0); transition: clip-path 1100ms var(--ease-out); }
-.js .hero-portrait.in .hero-portrait-frame { clip-path: inset(0 0 0 0); }
-.hero-portrait-frame img {
-  width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 18%;
-  /* The source is only 238px wide; a light unsharp-style contrast lift keeps
-     it from looking muddy at display size without visible upscaling. */
-  filter: saturate(1.04) contrast(1.05);
-}
-/* Caption sits under the frame as a credit line, not a floating card. The
-   card it replaced overlapped the image and hid part of the face. */
-.hero-portrait-card {
-  padding-top: var(--sp-4); margin-top: var(--sp-4);
-  border-top: 1px solid var(--line); max-width: 268px;
-}
-.hero-portrait-card .name { display: block; font-family: var(--font-serif); font-weight: 600; color: var(--ink); font-size: var(--fs-lg); line-height: 1.25; }
-.hero-portrait-card .qual { display: block; font-size: var(--fs-2xs); color: var(--ink-3); letter-spacing: .09em; text-transform: uppercase; line-height: 1.5; margin-top: 5px; }
+/* Dead code from an earlier hero layout (.hero-grid / .hero-portrait /
+   .hero-portrait-card) removed here — confirmed unreferenced by any of the
+   16 pages before deletion. The active portrait rules live with the rest of
+   the hero, above. */
 
 /* ==========================================================================
    Before / after comparison slider
@@ -1689,8 +1758,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .case, .doc, .gate { padding: 0; }
   .gate { padding: var(--sp-7) var(--sp-6); }
   .hero-copy-inner { padding-inline: var(--sp-5); }
-  .hero-figure { min-height: 38vh; }
-  .hero-figure-cap { left: var(--sp-5); right: var(--sp-5); }
+  .hero-portrait-stage { max-width: 78%; }
   .compare-label { font-size: 9px; padding: 3px var(--sp-2); }
   .card { padding: var(--sp-5) 0 var(--sp-6); }
   .card::before { inset: -10px -14px; }
@@ -1706,7 +1774,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
     padding-inline: var(--sp-6);
     padding-block: clamp(var(--sp-12), 7vw, 80px) clamp(var(--sp-10), 5vw, var(--sp-14));
   }
-  .hero-figure { min-height: 46vh; }
+  .hero-figure { min-height: 44vh; }
 }
 
 /* Reduced motion: kill parallax, the wipe reveal and the progress rail. */
@@ -1719,8 +1787,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
      a mask that never animates is just hidden content. */
   .js .unmask,
   .js .hero-figure,
-  .js .figure > .zoomable, .js .figure > img,
-  .js .hero-portrait .hero-portrait-frame { clip-path: none !important; }
+  .js .figure > .zoomable, .js .figure > img { clip-path: none !important; }
   .js .figure > figcaption { opacity: 1 !important; transform: none !important; }
   .js .reveal .li-ico, .js .stagger .li-ico { opacity: 1 !important; transform: none !important; }
   /* Rules that draw themselves in are simply present. */

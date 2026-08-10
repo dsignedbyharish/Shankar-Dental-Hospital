@@ -93,6 +93,62 @@
   }
 
   /* ======================================================================
+     Nav dropdowns ("Treatment Options", "More")
+     ----------------------------------------------------------------------
+     Desktop only — on mobile every toggle is hidden and each panel is
+     unwrapped into the drawer's normal flow by CSS, so none of this runs
+     against it. Two independent dropdowns share the header, so opening one
+     closes the other rather than letting both sit open at once.
+     ====================================================================== */
+  var moreWraps = Array.prototype.slice.call(document.querySelectorAll('.nav-more'));
+  if (moreWraps.length) {
+    var dropdowns = moreWraps.map(function (wrap) {
+      return { wrap: wrap, toggle: wrap.querySelector('.nav-more-toggle'), panel: wrap.querySelector('.nav-more-panel') };
+    });
+
+    var closeDropdown = function (d) {
+      d.panel.classList.remove('open');
+      d.toggle.setAttribute('aria-expanded', 'false');
+    };
+    var closeAllDropdowns = function (except) {
+      dropdowns.forEach(function (d) { if (d !== except) closeDropdown(d); });
+    };
+    var openDropdown = function (d) {
+      closeAllDropdowns(d);
+      d.panel.classList.add('open');
+      d.toggle.setAttribute('aria-expanded', 'true');
+    };
+
+    dropdowns.forEach(function (d) {
+      d.toggle.addEventListener('click', function () {
+        if (d.panel.classList.contains('open')) closeDropdown(d);
+        else openDropdown(d);
+      });
+    });
+
+    /* Click anywhere outside every dropdown closes whichever is open. */
+    document.addEventListener('click', function (e) {
+      dropdowns.forEach(function (d) {
+        if (!d.wrap.contains(e.target)) closeDropdown(d);
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var open = dropdowns.find(function (d) { return d.panel.classList.contains('open'); });
+      if (!open) return;
+      closeDropdown(open);
+      open.toggle.focus();
+    });
+
+    /* A panel left open while resizing past the breakpoint would sit under
+       the mobile drawer's own layout with stale inline state. */
+    window.addEventListener('resize', function () {
+      if (window.innerWidth <= 1060) closeAllDropdowns();
+    });
+  }
+
+  /* ======================================================================
      Accordions
      ====================================================================== */
   document.querySelectorAll('.acc-head').forEach(function (head) {

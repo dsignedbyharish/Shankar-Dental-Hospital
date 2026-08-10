@@ -30,7 +30,10 @@ NAV_CURRENT = {
     "contact.html": "contact.html",
     "sitemap.html": None,
 }
-# Every treatment detail page highlights "Treatment Options".
+# Every treatment detail page now has its own link inside the "Treatment
+# Options" dropdown, so each maps to itself — that highlights the specific
+# item in the panel, and the .nav-more:has() rule in CSS lights up the
+# toggle button as the current section from that alone.
 TREATMENT_PAGES = [
     "maxillofacial-surgery.html", "craniofacial-surgery.html",
     "orthognathic-surgery.html", "facial-trauma-surgery.html",
@@ -39,7 +42,7 @@ TREATMENT_PAGES = [
     "dental-and-facial-implants.html",
 ]
 for _p in TREATMENT_PAGES:
-    NAV_CURRENT[_p] = "treatments.html"
+    NAV_CURRENT[_p] = _p
 
 
 def slice_region(html, start, end, include_end):
