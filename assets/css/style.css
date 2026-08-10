@@ -7,40 +7,47 @@
 
 :root {
   /* ---------- Colour ----------------------------------------------------
-     The neutrals are warm, not blue-grey. A cream paper under a deep ink is
-     what separates a specialist practice from a clinic template — the cold
-     #f5f8fa greys this replaced read as stock healthcare on every screen.
-     Brand red and the teal are unchanged in role, deepened slightly so they
-     hold against cream rather than white.                                  */
-  --brand:        #a81e2d;
-  --brand-dark:   #83141f;
-  --brand-tint:   #fbf1f0;
+     Deep teal ground, mid teal, vivid lime, cream — taken from the client's
+     reference. Every pair below is measured, not eyeballed.
 
-  --ink:          #101e2b;   /* headings, primary text on light            */
-  --ink-2:        #33475a;   /* body text — 8.6:1 on paper                 */
-  --ink-3:        #5f7386;   /* secondary text — 4.6:1 on paper            */
-  --ink-4:        #8798a8;   /* borders / disabled only, never body text    */
+     THE ONE RULE: lime is a FILL, never text on a light surface. It is 1.5:1
+     on paper — effectively invisible. It reads at 8.8:1 as a field with
+     --on-lime sitting on it (which is what the reference does with its pills)
+     and 7.1:1 as a mark on --bg-deep. --brand stays a text-safe deep green so
+     every `color: var(--brand)` already in this file remains legible.        */
+  --brand:        #1a5c4a;   /* 7.3:1 on paper — links, marks, dark fills   */
+  --brand-dark:   #114539;
+  --brand-tint:   #e6f2ec;
 
-  --teal:         #0e5f66;
-  --teal-dark:    #0a464c;
-  --teal-tint:    #edf6f6;
+  --lime:         #8fe063;   /* fills, and marks on dark — never light text */
+  --lime-dark:    #7bd24e;
+  --on-lime:      #10302f;   /* 8.8:1 on lime                               */
 
-  /* Brass — editorial furniture only: numerals, rules, eyebrow marks.
-     Never body text (3.1:1). */
-  --brass:        #9a7b4f;
-  --brass-soft:   #c8a877;
+  --ink:          #10302f;   /* headings, primary text — 13.2:1 on paper    */
+  --ink-2:        #2c4a47;   /* body text — 9.0:1 on paper                  */
+  --ink-3:        #54706c;   /* secondary — 5.0:1 paper, 4.6:1 sand         */
+  --ink-4:        #8aa09d;   /* borders / disabled only, never body text    */
 
-  --bg:           #fcfaf7;   /* warm paper, not #fff                        */
+  --teal:         #1e6a5f;   /* the mid-teal circles in the reference       */
+  --teal-dark:    #145047;
+  --teal-tint:    #e4f0ec;
+
+  /* Editorial furniture only: numerals, rules, eyebrow marks. Dark enough to
+     clear 4.5:1 on the sand band as well as on paper. */
+  --brass:        #24664f;
+  --brass-soft:   #8fe063;
+
+  --bg:           #f5f8f3;   /* pale green-tinted paper                     */
   --bg-pure:      #ffffff;   /* raised surfaces that must read as lifted    */
-  --bg-alt:       #f4f0e9;   /* warm sand band                              */
-  --bg-deep:      #101e2b;
-  --line:         #e5ddd1;   /* warm hairline                               */
-  --line-soft:    #f0e9dd;
+  --bg-alt:       #e7efe5;   /* soft green band                             */
+  --bg-deep:      #12403e;   /* the reference's ground                      */
+  --line:         #d8e3d5;
+  --line-soft:    #e9f0e6;
 
-  /* On dark surfaces — all ≥4.5:1 against --bg-deep */
-  --on-deep:      #ccd8e2;
-  --on-deep-soft: #a1b3c4;
-  --on-deep-accent: #d7b98a;
+  /* On dark surfaces — all >=4.5:1 against --bg-deep */
+  --on-deep:      #d9e8d6;   /* 9.0:1                                       */
+  --on-deep-soft: #a9c4bf;   /* 6.2:1                                       */
+  --on-deep-accent: #8fe063; /* 7.1:1                                       */
 
   /* ---------- Type ------------------------------------------------------ */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -106,9 +113,9 @@
      Wide, very low-opacity ambient shadows only. Nothing on the page should
      read as a card sitting on a surface — separation comes from whitespace,
      tone and hairlines instead.                                            */
-  --sh-1: 0 1px 1px rgba(14,36,57,.02), 0 6px 18px -10px rgba(14,36,57,.10);
-  --sh-2: 0 2px 4px rgba(14,36,57,.03), 0 18px 44px -20px rgba(14,36,57,.16);
-  --sh-3: 0 4px 8px rgba(14,36,57,.04), 0 40px 90px -40px rgba(14,36,57,.28);
+  --sh-1: 0 1px 1px rgba(18,64,62,.02), 0 6px 18px -10px rgba(18,64,62,.10);
+  --sh-2: 0 2px 4px rgba(18,64,62,.03), 0 18px 44px -20px rgba(18,64,62,.16);
+  --sh-3: 0 4px 8px rgba(18,64,62,.04), 0 40px 90px -40px rgba(18,64,62,.28);
 
   /* ---------- Z-index scale --------------------------------------------- */
   --z-base:    0;
@@ -303,7 +310,7 @@ address { font-style: normal; }
 .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); min-height: 38px; flex-wrap: wrap; }
 .topbar-list { display: flex; align-items: center; gap: var(--sp-5); list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
 .topbar-list li { margin: 0; display: flex; align-items: center; gap: var(--sp-2); }
-.topbar a { color: #dbe7f1; font-weight: var(--fw-medium); display: inline-flex; align-items: center; }
+.topbar a { color: #d9e8d6; font-weight: var(--fw-medium); display: inline-flex; align-items: center; }
 .topbar a:hover { color: #fff; text-decoration: underline; }
 .topbar svg { width: 14px; height: 14px; flex: none; opacity: .85; }
 
@@ -331,7 +338,7 @@ address { font-style: normal; }
   min-height: 84px;
   background: var(--bg-pure);
   border-radius: var(--r-xl);
-  box-shadow: 0 1px 2px rgba(16,30,43,.04), 0 18px 40px -28px rgba(16,30,43,.42);
+  box-shadow: 0 1px 2px rgba(18,64,62,.04), 0 18px 40px -28px rgba(18,64,62,.42);
   padding-inline: clamp(var(--sp-5), 2.4vw, var(--sp-8));
   transition: min-height var(--dur-base) var(--ease-out),
               box-shadow var(--dur-base) var(--ease-out);
@@ -339,7 +346,7 @@ address { font-style: normal; }
 .site-header.is-stuck { padding-block: var(--sp-2); }
 .site-header.is-stuck .header-inner {
   min-height: 66px;
-  box-shadow: 0 2px 4px rgba(16,30,43,.05), 0 22px 48px -26px rgba(16,30,43,.5);
+  box-shadow: 0 2px 4px rgba(18,64,62,.05), 0 22px 48px -26px rgba(18,64,62,.5);
 }
 /* The pill CTA sits at the card's right edge, matching its curve. */
 .header-cta .btn-primary { border-radius: var(--r-full); padding-inline: var(--sp-6); }
@@ -407,7 +414,7 @@ address { font-style: normal; }
 /* Scrim behind the off-canvas menu — tapping it closes the menu. */
 .nav-scrim {
   position: fixed; inset: 0; z-index: calc(var(--z-drawer) - 1);
-  background: rgba(14,36,57,.45); opacity: 0; visibility: hidden;
+  background: rgba(18,64,62,.45); opacity: 0; visibility: hidden;
   transition: opacity var(--dur-base) var(--ease-out), visibility var(--dur-base);
   border: 0; padding: 0; cursor: pointer;
 }
@@ -444,9 +451,9 @@ address { font-style: normal; }
 .btn { position: relative; isolation: isolate; overflow: hidden; }
 .btn:hover::before { transform: scaleY(1); }
 
-.btn-primary { background: var(--brand); color: #fff; box-shadow: none; }
-.btn-primary::before { background: var(--brand-dark); }
-.btn-primary:hover { color: #fff; }
+.btn-primary { background: var(--lime); color: var(--on-lime); box-shadow: none; }
+.btn-primary::before { background: var(--lime-dark); }
+.btn-primary:hover { color: var(--on-lime); }
 .btn-outline { border-color: var(--line); color: var(--ink); background: transparent; }
 .btn-outline::before { background: var(--bg-alt); }
 .btn-outline:hover { border-color: var(--ink-4); color: var(--ink); }
@@ -505,7 +512,7 @@ address { font-style: normal; }
 .hero-split::before {
   content: ""; position: absolute; inset: 0; z-index: 0;
   background: radial-gradient(760px 520px at 76% 14%, rgba(154,123,79,.26), transparent 66%),
-              radial-gradient(600px 420px at 8% 92%, rgba(168,30,45,.20), transparent 70%);
+              radial-gradient(600px 420px at 8% 92%, rgba(143,224,99,.20), transparent 70%);
 }
 /* Oversized brand word ghosted into the field behind the headline. */
 .hero-ghost {
@@ -588,7 +595,7 @@ address { font-style: normal; }
   color: var(--brass); margin-bottom: 1.4em;
 }
 .eyebrow::before { content: ""; width: 34px; height: 1px; background: currentColor; border-radius: 0; }
-.hero .eyebrow { color: var(--brass); }
+.hero .eyebrow { color: var(--on-deep-accent); }
 .bg-deep .eyebrow, .page-head .eyebrow { color: var(--on-deep-accent); }
 .bg-deep .section-index { color: var(--on-deep-accent); }
 .bg-deep .section-index::after { background: rgba(255,255,255,.22); }
@@ -623,11 +630,11 @@ address { font-style: normal; }
 .hero-stats .stat:hover { transform: translateY(-3px); }
 
 .stat-ink   { background: var(--ink);        color: #fff; }
-.stat-brand { background: var(--brand);      color: #fff; }
+.stat-brand { background: var(--lime);       color: var(--on-lime); }
 .stat-teal  { background: var(--teal);       color: #fff; }
 /* Light block uses ink text — brass at full strength is 4.0:1 on white, under
    AA for the 12px label. The soft tint with ink on top is 7.2:1. */
-.stat-brass { background: var(--brass-soft); color: var(--ink); }
+.stat-brass { background: var(--teal-tint);  color: var(--ink); }
 
 .stat-num {
   font-family: var(--font-serif); font-size: clamp(2.3rem, 3.6vw, 3.2rem); font-weight: var(--fw-semi);
@@ -666,7 +673,7 @@ address { font-style: normal; }
 .page-head-inner::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: radial-gradient(620px 400px at 88% 6%, rgba(154,123,79,.16), transparent 68%),
-              radial-gradient(520px 340px at 4% 96%, rgba(168,30,45,.08), transparent 72%);
+              radial-gradient(520px 340px at 4% 96%, rgba(143,224,99,.08), transparent 72%);
 }
 @supports (corner-shape: squircle) { .page-head-inner { corner-shape: squircle; } }
 .page-head h1 { color: var(--ink); margin-bottom: .26em; max-width: 20ch; }
@@ -735,13 +742,13 @@ a.card:hover .card-icon { transform: translateY(-3px); }
   background: var(--bg-pure); border-top: 0; padding: 0; overflow: hidden;
   border-radius: var(--r-lg);
   display: flex; flex-direction: column;
-  box-shadow: 0 1px 2px rgba(16,30,43,.03), 0 18px 38px -30px rgba(16,30,43,.38);
+  box-shadow: 0 1px 2px rgba(18,64,62,.03), 0 18px 38px -30px rgba(18,64,62,.38);
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 .card-tile::after { content: none; }        /* the rule-draw belongs to the flat card */
 .card-tile:hover {
   transform: translateY(-4px);
-  box-shadow: 0 2px 4px rgba(16,30,43,.05), 0 30px 56px -28px rgba(16,30,43,.5);
+  box-shadow: 0 2px 4px rgba(18,64,62,.05), 0 30px 56px -28px rgba(18,64,62,.5);
 }
 .card-media {
   position: relative; aspect-ratio: 16 / 10; overflow: hidden;
@@ -762,7 +769,7 @@ a.card:hover .card-icon { transform: translateY(-3px); }
 }
 .card-media-ico svg { width: 46px; height: 46px; stroke-width: 1.4; }
 .card-teal .card-media-ico { background: var(--teal-tint); color: var(--teal); }
-.card-tile:hover .card-media-ico { transform: translateY(-3px) scale(1.05); background: var(--brand); color: #fff; }
+.card-tile:hover .card-media-ico { transform: translateY(-3px) scale(1.05); background: var(--lime); color: var(--on-lime); }
 .card-tile.card-teal:hover .card-media-ico { background: var(--teal); color: #fff; }
 
 .card-tile h3 { padding: var(--sp-6) var(--sp-6) 0; margin-bottom: .5em; }
@@ -859,12 +866,12 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   margin: 0; background: var(--bg-pure); border-radius: var(--r-lg);
   padding: clamp(var(--sp-6), 2.4vw, var(--sp-8));
   display: flex; flex-direction: column; justify-content: space-between;
-  box-shadow: 0 1px 2px rgba(16,30,43,.03), 0 20px 40px -32px rgba(16,30,43,.4);
+  box-shadow: 0 1px 2px rgba(18,64,62,.03), 0 20px 40px -32px rgba(18,64,62,.4);
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 .voice:hover {
   transform: translateY(-4px);
-  box-shadow: 0 2px 4px rgba(16,30,43,.04), 0 30px 56px -30px rgba(16,30,43,.5);
+  box-shadow: 0 2px 4px rgba(18,64,62,.04), 0 30px 56px -30px rgba(18,64,62,.5);
 }
 .voice-text {
   font-family: var(--font-serif); font-size: var(--fs-lg); line-height: 1.5;
@@ -1046,7 +1053,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .zoomable::after {
   content: ""; position: absolute; top: var(--sp-2); right: var(--sp-2);
   width: 30px; height: 30px; border-radius: var(--r-sm);
-  background: rgba(14,36,57,.62) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5M11 8v6M8 11h6'/%3E%3C/svg%3E") center/17px no-repeat;
+  background: rgba(18,64,62,.62) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5M11 8v6M8 11h6'/%3E%3C/svg%3E") center/17px no-repeat;
   opacity: 0; transition: opacity var(--dur-base) var(--ease-out);
 }
 .zoomable:hover::after, .zoomable:focus-visible::after { opacity: 1; }
@@ -1142,7 +1149,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .gal-item:active img { transform: scale(1.02); transition-duration: var(--dur-press); }
 .gal-cap {
   position: absolute; inset: auto 0 0 0; padding: var(--sp-8) var(--sp-4) var(--sp-4);
-  background: linear-gradient(transparent, rgba(16,30,43,.92));
+  background: linear-gradient(transparent, rgba(18,64,62,.92));
   color: #fff; font-size: var(--fs-2xs); font-weight: var(--fw-semi);
   letter-spacing: .08em; text-transform: uppercase;
   transform: translateY(4px); opacity: .88;
@@ -1164,8 +1171,8 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   animation: lb-zoom var(--dur-slow) var(--ease-out);
 }
 @keyframes lb-zoom { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
-.lb-cap { position: absolute; left: 0; right: 0; bottom: var(--sp-5); text-align: center; color: #d5e2ee; font-size: var(--fs-sm); padding-inline: 76px; }
-.lb-count { display: block; color: #8fa6bd; font-size: var(--fs-xs); margin-top: var(--sp-1); font-variant-numeric: tabular-nums; }
+.lb-cap { position: absolute; left: 0; right: 0; bottom: var(--sp-5); text-align: center; color: #d9e8d6; font-size: var(--fs-sm); padding-inline: 76px; }
+.lb-count { display: block; color: #a9c4bf; font-size: var(--fs-xs); margin-top: var(--sp-1); font-variant-numeric: tabular-nums; }
 .lb-btn {
   position: absolute; width: 48px; height: 48px; border-radius: 50%;
   background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: #fff;
@@ -1211,7 +1218,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 /* ==========================================================================
    CTA band
    ========================================================================== */
-.cta-band { position: relative; background: var(--brand); color: #fff; overflow: hidden; }
+.cta-band { position: relative; background: var(--teal); color: #fff; overflow: hidden; }
 .cta-band::before {
   content: ""; position: absolute; inset: 0;
   background: radial-gradient(700px 320px at 82% 15%, rgba(255,255,255,.13), transparent 70%);
@@ -1246,14 +1253,14 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 }
 .footer-logo { display: flex; align-items: center; gap: var(--sp-3); margin-bottom: var(--sp-5); }
 .footer-logo .logo-name { color: #fff; }
-.footer-logo .logo-sub { color: #92aac0; }
-.footer-brand p { color: #a3bacd; max-width: 34ch; font-size: var(--fs-sm); }
-.footer-motto { font-family: var(--font-serif); font-style: italic; color: #e2b0b6; font-size: var(--fs-md); margin-top: var(--sp-4); }
+.footer-logo .logo-sub { color: #a9c4bf; }
+.footer-brand p { color: #b9cfc9; max-width: 34ch; font-size: var(--fs-sm); }
+.footer-motto { font-family: var(--font-serif); font-style: italic; color: #8fe063; font-size: var(--fs-md); margin-top: var(--sp-4); }
 .footer-contact li { margin-bottom: var(--sp-2); line-height: var(--lh-snug); }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,.1); padding: var(--sp-5) 0;
   display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); flex-wrap: wrap;
-  font-size: var(--fs-xs); color: #92aac0;
+  font-size: var(--fs-xs); color: #a9c4bf;
 }
 .footer-bottom ul { display: flex; gap: var(--sp-5); }
 .footer-bottom ul li { margin: 0; }
@@ -1279,10 +1286,10 @@ a.card:hover .card-link svg { transform: translateX(5px); }
     transition: background var(--dur-fast) var(--ease-out);
   }
   .callbar-btn svg { width: 17px; height: 17px; flex: none; }
-  .callbar-call { background: var(--brand); color: #fff; }
-  .callbar-call:active { background: var(--brand-dark); color: #fff; }
+  .callbar-call { background: var(--lime); color: var(--on-lime); }
+  .callbar-call:active { background: var(--lime-dark); color: var(--on-lime); }
   .callbar-map { background: var(--ink); color: #fff; }
-  .callbar-map:active { background: #1c3145; color: #fff; }
+  .callbar-map:active { background: #1a5c4a; color: #fff; }
 
   /* The bar owns the bottom of the screen, so the page and the back-to-top
      button both have to clear it or they sit underneath. */
@@ -1367,7 +1374,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
     flex-direction: column; align-items: stretch; gap: 2px;
     background: var(--bg); padding: 96px var(--sp-5) var(--sp-7); height: 100dvh; overflow-y: auto;
     transform: translateX(100%); transition: transform var(--dur-slow) var(--ease-out);
-    box-shadow: -8px 0 40px rgba(14,36,57,.16); max-width: 380px; margin-left: auto;
+    box-shadow: -8px 0 40px rgba(18,64,62,.16); max-width: 380px; margin-left: auto;
   }
   .nav.open { transform: none; }
   .nav a { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-md); border-radius: var(--r-sm); }
@@ -1553,7 +1560,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .compare-label {
   position: absolute; top: var(--sp-3); z-index: 2;
   font-size: var(--fs-2xs); font-weight: var(--fw-bold); letter-spacing: .12em; text-transform: uppercase;
-  color: #fff; background: rgba(14,36,57,.72); padding: var(--sp-1) var(--sp-3);
+  color: #fff; background: rgba(18,64,62,.72); padding: var(--sp-1) var(--sp-3);
   border-radius: var(--r-full); pointer-events: none;
 }
 .compare-label.is-before { left: var(--sp-3); }
