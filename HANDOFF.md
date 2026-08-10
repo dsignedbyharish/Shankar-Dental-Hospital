@@ -208,3 +208,39 @@ files, git and a Vercel project. To continue you need:
    small, soft thumbnail.
 3. Decide whether the repo should be private.
 4. Consider WebP/AVIF versions of the gallery images — currently JPEG only.
+
+## 9. Domain cutover
+
+The Vercel project has **no custom domain attached** — its domain list is only
+the three generated `*.vercel.app` names. So going live is two steps, and the
+order is not optional:
+
+> **Add the domain in Vercel *before* changing DNS.** If DNS points at Vercel
+> while the project does not claim the domain, Vercel serves an error page on
+> the practice's live address. That is worse than the old site, and patients
+> see it. The reverse order is safe.
+
+1. **A day ahead**, drop the TTL on the existing records at the registrar to
+   300s. Rollback is then minutes rather than hours.
+2. **In Vercel**, add both `www.shankerdentalcentremadurai.com` and the apex
+   `shankerdentalcentremadurai.com`. Vercel prints the records to create.
+   Nothing changes for visitors yet — the domain simply isn't resolving there.
+3. **At the registrar**, replace the Apache records with Vercel's. Keep a copy
+   of the old values first; they are the rollback.
+4. **Wait for the certificate.** Vercel issues SSL after the domain resolves.
+   Until it does, HTTPS fails — check the domain in Vercel shows valid, not
+   just that the page loads.
+5. **Verify** the real domain serves the new site, and that `www` and apex
+   agree. `curl -sI https://www.shankerdentalcentremadurai.com/` should show a
+   Vercel header rather than `Server: Apache`.
+6. **Only then** submit `sitemap.xml` to Search Console. Submitting while the
+   canonical names a domain that isn't serving the site wastes the crawl.
+7. **Leave the old Apache hosting running** until step 5 passes. It is the
+   fallback, and the only remaining copy of the true full-size originals
+   (see §6).
+
+**Point `dentalmadurai.com` at the new site too — as a 301, not a copy.** It is
+the second of the two mirrored domains. Every canonical names
+`shankerdentalcentremadurai.com`, so `dentalmadurai.com` should redirect there
+rather than serve the same pages, otherwise the duplicate-content split that
+this rebuild set out to fix simply survives at the domain level.
