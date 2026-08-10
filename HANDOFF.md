@@ -92,6 +92,19 @@ An earlier pass used surgical thumbnails there. The original site deliberately
 gated exactly those images; putting them on the landing page contradicts that.
 Photos stay behind the gate.
 
+**The social preview image is the building, not a clinical photo.** Every
+page's `og:image` is the hospital exterior, including on the surgical treatment
+pages. `og:image` is what auto-previews when a link is shared on WhatsApp —
+the most common way this practice gets referred — so a surgical photograph
+there would walk straight past the consent gate, in the one context where the
+person seeing it never chose to. Same reasoning as the specialty cards above.
+
+**Canonicals are absolute and per-page**, pointing at the live domain rather
+than the `.vercel.app` host. `tools/check.py` verifies each one against its own
+filename, not merely that one exists: a page that canonicalises to the homepage
+looks fine, renders fine, and quietly stops ranking. Copying a `<head>` between
+pages is how that happens.
+
 **Asset URLs carry a content hash** (`style.css?v=7a9ec922`).
 `vercel.json` serves `/assets/*` with `Cache-Control: immutable, max-age=1yr`.
 Without the hash, returning visitors keep stale CSS/JS after a deploy — a
@@ -185,11 +198,13 @@ files, git and a Vercel project. To continue you need:
 
 ## 8. Suggested next steps
 
-1. Add `canonical` and Open Graph tags to the other 15 pages. Only
-   `index.html` carries them, while `robots.txt` allows the whole site and the
-   client's two old sites are still live with the same source copy — three
-   hosts, near-duplicate content, and only the homepage pointing anywhere.
-2. Point the real domain at Vercel; the SEO metadata already assumes it.
-3. Request professional photography of both consultants and the premises.
-4. Decide whether the repo should be private.
-5. Consider WebP/AVIF versions of the gallery images — currently JPEG only.
+1. **Point the real domain at Vercel.** Everything else is waiting on this.
+   The canonicals, `sitemap.xml`, `robots.txt` and every `og:` URL already name
+   `shankerdentalcentremadurai.com`, while that domain still serves the old
+   site from Apache. Until it moves, the new site earns nothing.
+2. Request professional photography of both consultants and the premises.
+   Also replace the `og:image`: it is currently the 335×496 hospital exterior,
+   well under the 1200×630 that social cards want, so shared links render a
+   small, soft thumbnail.
+3. Decide whether the repo should be private.
+4. Consider WebP/AVIF versions of the gallery images — currently JPEG only.

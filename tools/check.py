@@ -14,6 +14,10 @@ from urllib.parse import unquote, urlparse
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
+# The live domain, which every canonical and og: URL must be absolute against.
+# Change this in one place if the domain ever changes.
+CANON_BASE = "https://www.shankerdentalcentremadurai.com/"
+
 # Exact-case index of every file. macOS is case-insensitive but the production
 # host is not, so `IP-rooms.JPG` referenced as `.jpg` passes locally and 404s
 # once deployed. This is why we compare case-sensitively.
@@ -68,6 +72,30 @@ for path in sorted(glob.glob("*.html")):
     for tag in re.findall(r"<button[^>]*>", body):
         if "type=" not in tag:
             fail(path, "button without type", tag[:60])
+
+    # --- discoverability -------------------------------------------------
+    # A canonical pointing at the wrong page is silent: nothing looks broken,
+    # the page just stops ranking. Copying a <head> between pages and missing
+    # this one line is the easy way to cause it, so the URL is checked against
+    # the filename rather than merely being present.
+    head = html[: html.find("<body")]
+    canons = re.findall(r'<link rel="canonical" href="([^"]*)"', head)
+    expected = CANON_BASE if path == "index.html" else CANON_BASE + path
+    if len(canons) != 1:
+        fail(path, "canonical count", str(len(canons)))
+    elif canons[0] != expected:
+        fail(path, "wrong canonical", "%s != %s" % (canons[0], expected))
+
+    og = dict(re.findall(r'<meta property="og:([\w:]+)" content="([^"]*)"', head))
+    for key in ("title", "description", "url", "image"):
+        if key not in og:
+            fail(path, "missing og:" + key)
+    # Relative og:image and og:url do not resolve — the card renders blank.
+    for key in ("url", "image"):
+        if key in og and not og[key].startswith("https://"):
+            fail(path, "relative og:" + key, og[key])
+    if "url" in og and canons and og["url"] != canons[0]:
+        fail(path, "og:url != canonical", og["url"])
 
     # --- references ------------------------------------------------------
     for src in re.findall(r'(?:src|data-lb)="([^"]+)"', html):
