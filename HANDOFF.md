@@ -155,12 +155,25 @@ files, git and a Vercel project. To continue you need:
 - **Vercel** — the account the project is linked to, for deploys and the domain
 - **Domain registrar** — only when pointing the live domain at Vercel
 
-> On this machine, git authenticates to GitHub through the macOS keychain
-> (`credential.helper = osxkeychain`). A previous automated session had left
-> broken per-host credential helpers in `~/.gitconfig` pointing at a deleted
-> binary, which silently blocked every GitHub push; those were removed. If
-> pushes start failing with `could not read Username`, check
-> `git config --show-origin --get-regexp '^credential'` for stale entries.
+> **Recurring gotcha on this machine.** Git authenticates to GitHub through the
+> macOS keychain (`credential.helper = osxkeychain`). Something — an automated
+> tool session — periodically writes per-host helpers into `~/.gitconfig`
+> pointing at a `gh` binary inside a temporary directory that later gets
+> deleted:
+>
+> ```
+> credential.https://github.com.helper = !/private/tmp/.../gh_2.96.0_macOS_arm64/bin/gh auth git-credential
+> ```
+>
+> These shadow `osxkeychain`, so **every** GitHub push from **any** repo on this
+> machine fails with `could not read Username`. It has come back at least twice.
+> When it does:
+>
+> ```bash
+> git config --show-origin --get-regexp '^credential'
+> git config --global --unset-all "credential.https://github.com.helper"
+> git config --global --unset-all "credential.https://gist.github.com.helper"
+> ```
 
 ## 8. Suggested next steps
 
