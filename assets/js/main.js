@@ -12,6 +12,12 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  /* Assigned by the reveal section below. Anything that makes hidden content
+     displayable must call this, or elements that were `display: none` when the
+     observer was built stay masked forever — they never intersected, so the
+     observer never fired for them. The consent gate is exactly that case. */
+  var revealRefresh = function () {};
+
   /* Keep Tab inside `container` while it is open. */
   function trapFocus(container, event) {
     var items = Array.prototype.filter.call(
@@ -124,6 +130,10 @@
         agree.addEventListener('click', function () {
           try { sessionStorage.setItem('sdcc-consent', 'yes'); } catch (err) {}
           document.body.classList.remove('needs-consent');
+          /* The clinical figures were display:none until this instant, so the
+             observer never saw them. Without this they stay masked and the
+             page reads as empty — the whole point of passing the gate. */
+          revealRefresh();
           /* Move focus to the now-revealed content so keyboard and screen
              reader users land where the new content starts. */
           var main = document.getElementById('main');
@@ -321,7 +331,7 @@
   /* `.lit` is an in-view flag with no styles of its own — it lets an element
      react to entering the viewport without the opacity fade `.reveal` implies.
      The hero rule and the portrait mask use it. */
-  var reveals = document.querySelectorAll('.reveal, .stagger, .rise, .lit, .unmask');
+  var reveals = document.querySelectorAll('.reveal, .stagger, .rise, .lit, .unmask, .figure');
 
   if (!reveals.length) {
     /* nothing to do */
@@ -336,6 +346,27 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
     reveals.forEach(function (el) { io.observe(el); });
+
+    /* Re-scan after content that was `display: none` becomes displayable.
+       An element with no box never intersects, so the observer will not fire
+       for it later — re-observing is what actually restarts it. Anything
+       already on screen is revealed outright rather than waiting for a scroll
+       the visitor may never make. */
+    revealRefresh = function () {
+      window.requestAnimationFrame(function () {
+        reveals.forEach(function (el) {
+          if (el.classList.contains('in')) return;
+          var box = el.getBoundingClientRect();
+          if (box.top < window.innerHeight && box.bottom > 0) {
+            el.classList.add('in');
+            io.unobserve(el);
+          } else {
+            io.unobserve(el);
+            io.observe(el);
+          }
+        });
+      });
+    };
 
     /* Anything already on screen at load is revealed on the next frame rather
        than waiting for a scroll. Without this an above-the-fold heading inside
@@ -366,7 +397,7 @@
   /* If the user turns reduced-motion on mid-session, drop the animations. */
   var onMotionChange = function () {
     if (!reduceMotion.matches) return;
-    document.querySelectorAll('.reveal, .stagger, .rise, .lit, .unmask').forEach(function (el) {
+    document.querySelectorAll('.reveal, .stagger, .rise, .lit, .unmask, .figure').forEach(function (el) {
       el.classList.add('in');
     });
     document.querySelectorAll('.parallax').forEach(function (el) {

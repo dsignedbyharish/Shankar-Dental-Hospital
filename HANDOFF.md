@@ -131,6 +131,18 @@ remove these.
 **`--ink-4` is not a text colour.** It is 2.96:1 on white. It is for borders and
 disabled states only. Use `--ink-3` for secondary text (4.6:1).
 
+**Any scroll-reveal on gated content must be refreshed when the gate opens.**
+`IntersectionObserver` never fires for a target that is `display: none` when
+`observe()` is called — it has no box, so it cannot intersect, and making it
+visible later does not restart it. Every clinical `.figure` lives inside
+`.clinical`, which is hidden until the visitor accepts the 18+ disclaimer, so
+a reveal effect on those figures leaves them permanently masked: the visitor
+passes the gate and gets a blank page, which is the exact opposite of what the
+gate is for. `main.js` exposes `revealRefresh()` and the consent handler calls
+it. **Anything else that reveals hidden content must call it too.** This is the
+concrete form of the rule in README: never hide content behind an animation
+that may not run.
+
 **The header's `z-index` must clear the drawer scrim, not `--z-sticky`.**
 `.site-header` is `position: sticky` with a `z-index`, which makes it a
 stacking context. The mobile nav drawer lives *inside* it, so the drawer's own

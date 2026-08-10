@@ -672,6 +672,36 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .js .notes.stagger.in .note:nth-child(2)::after { transition-delay: 120ms; }
 .js .notes.stagger.in .note:nth-child(3)::after { transition-delay: 240ms; }
 
+/* Panels — parallel topics that were a single stacked column of h3 + prose.
+   Two columns rather than three: these carry a heading and several sentences,
+   and a third column squeezes the longest one into a ribbon. */
+.panels {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: clamp(var(--sp-8), 4vw, var(--sp-12)) clamp(var(--sp-8), 4vw, var(--sp-12));
+  align-items: start;
+}
+.panel {
+  padding-top: var(--sp-6); border-top: 1px solid var(--line);
+  position: relative;
+}
+.panel h3 { margin-bottom: .7em; }
+.panel p { font-size: var(--fs-md); max-width: none; }
+.panel p:last-child { margin-bottom: 0; }
+.panel-num {
+  display: block; margin-bottom: var(--sp-4);
+  font-family: var(--font-serif); font-size: var(--fs-md); font-weight: 600;
+  color: var(--brass); letter-spacing: .12em; font-variant-numeric: tabular-nums;
+}
+.js .panels.stagger .panel::after {
+  content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
+  background: var(--brass-soft); transform: scaleX(0); transform-origin: left;
+  transition: transform 900ms var(--ease-out);
+}
+.js .panels.stagger.in .panel::after { transform: scaleX(1); }
+.js .panels.stagger.in .panel:nth-child(2)::after { transition-delay: 110ms; }
+.js .panels.stagger.in .panel:nth-child(3)::after { transition-delay: 220ms; }
+.js .panels.stagger.in .panel:nth-child(4)::after { transition-delay: 330ms; }
+
 /* Two-up image band */
 .media-band { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
 .media-band-item { margin: 0; overflow: hidden; border-radius: var(--r-md); background: var(--bg-alt); }
@@ -786,17 +816,45 @@ a.card:hover .card-link svg { transform: translateX(5px); }
    full column even on a phone. */
 .case { padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }
 .case + .case { margin-top: clamp(var(--sp-14), 9vw, 104px); padding-top: clamp(var(--sp-10), 6vw, var(--sp-16)); border-top: 1px solid var(--line); }
+/* The case marker sits on its own rule, drawn in as the chapter arrives. */
 .case-tag {
-  display: block; font-family: var(--font-serif);
-  font-size: var(--fs-sm); font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--brand); background: none; padding: 0; margin-bottom: var(--sp-3);
+  display: flex; align-items: center; gap: var(--sp-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-2xs); font-weight: var(--fw-bold); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--brass); background: none; padding: 0; margin-bottom: var(--sp-5);
 }
+.case-tag::after {
+  content: ""; flex: 1; height: 1px; background: var(--line);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1100ms var(--ease-out) 150ms;
+}
+.case.in .case-tag::after, .reveal.in .case-tag::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) { .case-tag::after { transform: scaleX(1) !important; } }
 .case h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); margin-bottom: .6em; }
 .case h3 { margin-bottom: .7em; }
 
 .figure { margin: clamp(var(--sp-7), 4vw, var(--sp-10)) 0; }
 .figure img { border-radius: var(--r-md); border: 0; width: 100%; background: var(--bg-alt); }
 .figure figcaption { font-size: var(--fs-sm); color: var(--ink-3); margin-top: var(--sp-3); line-height: var(--lh-snug); max-width: 72ch; }
+
+/* Clinical figures uncover upward as they arrive, and the caption follows a
+   beat later — the image is the evidence, the caption is the read on it. */
+.js .figure > .zoomable, .js .figure > img {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1000ms var(--ease-out);
+}
+.js .figure.in > .zoomable, .js .figure.in > img { clip-path: inset(0 0 0 0); }
+.js .figure > figcaption {
+  opacity: 0; transform: translateY(6px);
+  transition: opacity var(--dur-slow) var(--ease-out) 260ms,
+              transform var(--dur-slow) var(--ease-out) 260ms;
+}
+.js .figure.in > figcaption { opacity: 1; transform: none; }
+/* Within a grid the figures arrive in sequence rather than together. */
+.js .figure-grid .figure:nth-child(2) > .zoomable,
+.js .figure-grid .figure:nth-child(2) > img { transition-delay: 110ms; }
+.js .figure-grid .figure:nth-child(3) > .zoomable,
+.js .figure-grid .figure:nth-child(3) > img { transition-delay: 220ms; }
 .figure-grid { display: grid; gap: var(--sp-5); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: var(--sp-6) 0; }
 .figure-grid .figure { margin: 0; }
 
@@ -827,13 +885,25 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .subnav ul { display: flex; gap: var(--sp-1); list-style: none; margin: 0; padding: 0; white-space: nowrap; }
 .subnav li { margin: 0; }
 .subnav a {
+  position: relative;
   display: flex; align-items: center; min-height: var(--tap);
-  padding: var(--sp-3) var(--sp-4); font-size: var(--fs-sm); font-weight: var(--fw-medium); color: var(--ink-3);
-  border-bottom: 2px solid transparent;
-  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fs-2xs); font-weight: var(--fw-semi); color: var(--ink-3);
+  letter-spacing: .08em; text-transform: uppercase;
+  border-bottom: 0;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+/* The indicator grows from the centre instead of the border flicking on, so
+   moving along the strip reads as one bar travelling rather than blinking. */
+.subnav a::after {
+  content: ""; position: absolute; left: var(--sp-3); right: var(--sp-3); bottom: 0; height: 2px;
+  background: var(--brand); transform: scaleX(0);
+  transition: transform var(--dur-base) var(--ease-out);
 }
 .subnav a:hover { color: var(--ink); }
-.subnav a[aria-current="page"] { color: var(--brand); border-bottom-color: var(--brand); font-weight: var(--fw-semi); }
+.subnav a:hover::after { transform: scaleX(.55); }
+.subnav a[aria-current="page"] { color: var(--brand); }
+.subnav a[aria-current="page"]::after { transform: scaleX(1); }
 /* Fade hint that the strip scrolls horizontally. */
 .subnav::after {
   content: ""; position: absolute; top: 0; right: 0; bottom: 2px; width: 40px;
@@ -885,14 +955,20 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 .gal-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
-.gal-item:hover { transform: translateY(-3px); box-shadow: var(--sh-2); }
-.gal-item:hover img { transform: scale(1.06); }
-.gal-item:active { transform: translateY(0) scale(.99); transition-duration: var(--dur-press); }
+/* No lift. The tile stays put and the photograph moves inside its frame —
+   the frame is the window, and windows do not float. */
+.gal-item:hover { transform: none; box-shadow: none; }
+.gal-item:hover img { transform: scale(1.05); }
+.gal-item:active img { transform: scale(1.02); transition-duration: var(--dur-press); }
 .gal-cap {
-  position: absolute; inset: auto 0 0 0; padding: var(--sp-6) var(--sp-3) var(--sp-3);
-  background: linear-gradient(transparent, rgba(14,36,57,.9));
-  color: #fff; font-size: var(--fs-sm); font-weight: var(--fw-semi);
+  position: absolute; inset: auto 0 0 0; padding: var(--sp-8) var(--sp-4) var(--sp-4);
+  background: linear-gradient(transparent, rgba(16,30,43,.92));
+  color: #fff; font-size: var(--fs-2xs); font-weight: var(--fw-semi);
+  letter-spacing: .08em; text-transform: uppercase;
+  transform: translateY(4px); opacity: .88;
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out);
 }
+.gal-item:hover .gal-cap, .gal-item:focus-visible .gal-cap { transform: none; opacity: 1; }
 
 /* Lightbox */
 .lb {
@@ -1094,6 +1170,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .hero-stats .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line-soft); }
   .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .notes { grid-template-columns: 1fr; gap: var(--sp-7); }
+  .panels { grid-template-columns: 1fr; gap: var(--sp-8); }
   .section-lead, .section-lead.is-wide { max-width: 30ch; }
   .split, .contact-grid { grid-template-columns: 1fr; }
   .split-media { order: -1; }
@@ -1367,7 +1444,13 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   /* Anything driven by clip-path must land fully open, not stay masked —
      a mask that never animates is just hidden content. */
   .js .unmask,
+  .js .hero-figure,
+  .js .figure > .zoomable, .js .figure > img,
   .js .hero-portrait .hero-portrait-frame { clip-path: none !important; }
+  .js .figure > figcaption { opacity: 1 !important; transform: none !important; }
+  .js .reveal .li-ico, .js .stagger .li-ico { opacity: 1 !important; transform: none !important; }
+  .js .notes.stagger .note::after,
+  .js .panels.stagger .panel::after { transform: scaleX(1) !important; }
   /* Rules that draw themselves in are simply present. */
   .hero::after,
   .js .hero::after,
