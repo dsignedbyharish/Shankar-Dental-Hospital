@@ -6,30 +6,41 @@
    ========================================================================== */
 
 :root {
-  /* ---------- Colour ---------------------------------------------------- */
-  --brand:        #b0202e;
-  --brand-dark:   #8a1824;
-  --brand-tint:   #fdf2f3;
+  /* ---------- Colour ----------------------------------------------------
+     The neutrals are warm, not blue-grey. A cream paper under a deep ink is
+     what separates a specialist practice from a clinic template — the cold
+     #f5f8fa greys this replaced read as stock healthcare on every screen.
+     Brand red and the teal are unchanged in role, deepened slightly so they
+     hold against cream rather than white.                                  */
+  --brand:        #a81e2d;
+  --brand-dark:   #83141f;
+  --brand-tint:   #fbf1f0;
 
-  --ink:          #0e2439;   /* headings, primary text on light            */
-  --ink-2:        #23415c;   /* body text                                   */
-  --ink-3:        #5a7186;   /* secondary text — 4.6:1 on white             */
+  --ink:          #101e2b;   /* headings, primary text on light            */
+  --ink-2:        #33475a;   /* body text — 8.6:1 on paper                 */
+  --ink-3:        #5f7386;   /* secondary text — 4.6:1 on paper            */
   --ink-4:        #8798a8;   /* borders / disabled only, never body text    */
 
-  --teal:         #0d6e78;
-  --teal-dark:    #0a545c;
-  --teal-tint:    #eff8f9;
+  --teal:         #0e5f66;
+  --teal-dark:    #0a464c;
+  --teal-tint:    #edf6f6;
 
-  --bg:           #ffffff;
-  --bg-alt:       #f5f8fa;
-  --bg-deep:      #0e2439;
-  --line:         #e2e8ef;
-  --line-soft:    #eef2f6;
+  /* Brass — editorial furniture only: numerals, rules, eyebrow marks.
+     Never body text (3.1:1). */
+  --brass:        #9a7b4f;
+  --brass-soft:   #c8a877;
+
+  --bg:           #fcfaf7;   /* warm paper, not #fff                        */
+  --bg-pure:      #ffffff;   /* raised surfaces that must read as lifted    */
+  --bg-alt:       #f4f0e9;   /* warm sand band                              */
+  --bg-deep:      #101e2b;
+  --line:         #e5ddd1;   /* warm hairline                               */
+  --line-soft:    #f0e9dd;
 
   /* On dark surfaces — all ≥4.5:1 against --bg-deep */
-  --on-deep:      #c8d7e4;
-  --on-deep-soft: #9db4c9;
-  --on-deep-accent: #8fd3db;
+  --on-deep:      #ccd8e2;
+  --on-deep-soft: #a1b3c4;
+  --on-deep-accent: #d7b98a;
 
   /* ---------- Type ------------------------------------------------------ */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -69,12 +80,14 @@
   --sp-14: 56px;
   --sp-16: 64px;
 
-  /* ---------- Radius ---------------------------------------------------- */
-  --r-xs:   4px;
-  --r-sm:   8px;
-  --r-md:   12px;
-  --r-lg:   16px;
-  --r-xl:   22px;
+  /* ---------- Radius ----------------------------------------------------
+     Deliberately tight. The previous 12–22px radii were the single strongest
+     "app template" cue on the page; near-square corners read as print. */
+  --r-xs:   2px;
+  --r-sm:   4px;
+  --r-md:   6px;
+  --r-lg:   10px;
+  --r-xl:   14px;
   --r-full: 999px;
 
   /* ---------- Layout ---------------------------------------------------- */
@@ -102,17 +115,19 @@
      Enter uses --ease-out; exit uses --ease-in at --dur-exit (≈65% of enter)
      so dismissals feel quicker than reveals.                              */
   --dur-press: 80ms;        /* press feedback must land inside 100ms */
-  --dur-fast:  150ms;
-  --dur-base:  220ms;
-  --dur-exit:  140ms;
-  --dur-slow:  320ms;
-  --dur-reveal:520ms;
+  --dur-fast:  180ms;
+  --dur-base:  280ms;
+  --dur-exit:  160ms;
+  --dur-slow:  420ms;
+  --dur-reveal:820ms;       /* long, unhurried entrances read as composed */
 
-  --ease-out:    cubic-bezier(.22,.61,.36,1);
+  /* A flatter, longer curve than the old ease-out. Motion that decelerates
+     slowly feels considered; the quick 220ms pop it replaced felt reactive. */
+  --ease-out:    cubic-bezier(.16,.84,.28,1);
   --ease-in:     cubic-bezier(.55,.06,.68,.19);
   --ease-spring: cubic-bezier(.34,1.28,.64,1);
 
-  --stagger: 45ms;
+  --stagger: 70ms;
 }
 
 /* ==========================================================================
@@ -145,6 +160,27 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--brand); text-decoration: none; transition: color var(--dur-fast) var(--ease-out); }
 a:hover { color: var(--brand-dark); }
 
+/* Links inside running text are underlined from the start — an underline that
+   only appears on hover hides the link from anyone not using a mouse. The
+   hover moves the rule closer and darkens it rather than adding it. */
+main p a:not(.btn):not(.card-link),
+main li a:not(.btn):not(.card-link):not(.card),
+.prose a:not(.btn) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .18em;
+  text-decoration-color: var(--brass-soft);
+  transition: text-decoration-color var(--dur-fast) var(--ease-out),
+              text-underline-offset var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+main p a:not(.btn):not(.card-link):hover,
+main li a:not(.btn):not(.card-link):not(.card):hover,
+.prose a:not(.btn):hover {
+  text-decoration-color: currentColor;
+  text-underline-offset: .12em;
+}
+
 /* Display headings are set in the serif at a tighter measure. The serif is
    what stops the page reading like a bootstrap template — it carries the
    "specialist practice" tone the sans alone cannot. */
@@ -156,13 +192,15 @@ h1, h2, h3, h4, h5, h6 {
 h1, h2 {
   font-family: var(--font-serif);
   font-weight: 600;
-  letter-spacing: -.025em;
-  line-height: 1.08;
+  letter-spacing: -.028em;
+  line-height: 1.02;
 }
-h1 { font-size: clamp(2.4rem, 6vw, 4.25rem); }
-h2 { font-size: clamp(1.9rem, 3.8vw, 2.9rem); }
-h3 { font-size: clamp(1.15rem, 1.7vw, 1.4rem); letter-spacing: -.01em; }
-h4 { font-size: var(--fs-lg); }
+h1 { font-size: clamp(2.6rem, 7vw, 5.25rem); }
+h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); }
+/* h3 is the sans voice again — a serif at this size competes with h2 and
+   makes every card look like a chapter opener. */
+h3 { font-size: clamp(1.15rem, 1.7vw, 1.35rem); letter-spacing: -.012em; font-weight: var(--fw-semi); }
+h4 { font-size: var(--fs-lg); font-weight: var(--fw-semi); }
 
 p  { margin: 0 0 1.15em; max-width: 72ch; }   /* line-length-control */
 ul, ol { margin: 0 0 1.3em; padding-left: 1.3em; }
@@ -180,9 +218,9 @@ button, [role="button"] { cursor: pointer; }
   outline-offset: 3px;
   border-radius: var(--r-xs);
 }
-/* On dark surfaces the teal ring loses contrast, so switch to white. */
+/* On dark surfaces the teal ring loses contrast, so switch to white. The hero
+   and page-head are paper now, so they keep the default teal ring. */
 .bg-deep :focus-visible, .site-footer :focus-visible,
-.page-head :focus-visible, .hero :focus-visible,
 .topbar :focus-visible, .cta-band :focus-visible, .lb :focus-visible {
   outline-color: #fff;
 }
@@ -232,22 +270,49 @@ address { font-style: normal; }
 /* ==========================================================================
    Header
    ========================================================================== */
-.topbar { background: var(--ink); color: var(--on-deep-soft); font-size: var(--fs-xs); }
-.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); min-height: var(--sp-10); flex-wrap: wrap; }
+.topbar {
+  background: var(--ink); color: var(--on-deep-soft);
+  font-size: var(--fs-2xs); letter-spacing: .045em;
+}
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); min-height: 38px; flex-wrap: wrap; }
 .topbar-list { display: flex; align-items: center; gap: var(--sp-5); list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
 .topbar-list li { margin: 0; display: flex; align-items: center; gap: var(--sp-2); }
 .topbar a { color: #dbe7f1; font-weight: var(--fw-medium); display: inline-flex; align-items: center; }
 .topbar a:hover { color: #fff; text-decoration: underline; }
 .topbar svg { width: 14px; height: 14px; flex: none; opacity: .85; }
 
+/* The header carries no rule until the page has actually moved. A hairline
+   under a header sitting on its own hero is drawing a box for no reason; it
+   earns its edge once there is content behind it. `.is-stuck` is set from JS
+   and degrades to the resting state if scripts never run. */
+/* z-index must clear the drawer scrim, not --z-sticky. The nav drawer is a
+   child of this header, and `position: sticky` + z-index makes the header a
+   stacking context — so the drawer's own z-index is resolved *inside* it and
+   cannot beat a scrim appended to <body>. At --z-sticky the scrim painted
+   over the open menu and, worse, took the taps: every link press closed the
+   drawer instead of navigating. Raising the header is what actually lifts
+   the drawer, because the drawer can never outrank its own container. */
 .site-header {
-  position: sticky; top: 0; z-index: var(--z-sticky);
-  background: rgba(255,255,255,.94);
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
-  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: var(--z-drawer);
+  background: rgba(252,250,247,.86);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-base) var(--ease-out),
+              background var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-5); min-height: 78px; }
+.site-header.is-stuck {
+  background: rgba(252,250,247,.94);
+  border-bottom-color: var(--line);
+  box-shadow: 0 1px 24px -14px rgba(16,30,43,.5);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-5);
+  min-height: 88px;
+  transition: min-height var(--dur-base) var(--ease-out);
+}
+.site-header.is-stuck .header-inner { min-height: 68px; }
 
 /* Logo */
 .logo { display: flex; align-items: center; gap: var(--sp-3); flex: none; }
@@ -257,25 +322,33 @@ address { font-style: normal; }
 .logo-name { font-family: var(--font-serif); font-size: var(--fs-xl); font-weight: var(--fw-bold); color: var(--brand); letter-spacing: .01em; }
 .logo-sub { font-size: .6rem; letter-spacing: .11em; text-transform: uppercase; color: var(--ink-3); font-weight: var(--fw-semi); white-space: nowrap; }
 
-/* Nav */
-.nav { display: flex; align-items: center; gap: var(--sp-1); }
+/* Nav — small-caps and letterspaced, with a rule that draws in from the left
+   on hover. The tinted pill this replaced was the loudest element in the
+   header and made the current page look like a selected tab. */
+.nav { display: flex; align-items: center; gap: var(--sp-2); }
 .nav a {
-  display: flex; align-items: center; min-height: var(--tap);
-  padding: var(--sp-2) var(--sp-3); border-radius: var(--r-sm);
-  color: var(--ink-2); font-size: var(--fs-sm); font-weight: var(--fw-medium); white-space: nowrap;
-  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
-}
-.nav a:hover { background: var(--bg-alt); color: var(--ink); }
-/* Current page marked by colour *and* a weight change + underline bar, so the
-   state is not conveyed by colour alone. */
-.nav a[aria-current="page"] {
-  color: var(--brand); background: var(--brand-tint); font-weight: var(--fw-semi);
   position: relative;
+  display: flex; align-items: center; min-height: var(--tap);
+  padding: var(--sp-2) var(--sp-2);
+  color: var(--ink-2); white-space: nowrap;
+  font-size: var(--fs-2xs); font-weight: var(--fw-semi);
+  letter-spacing: .11em; text-transform: uppercase;
+  transition: color var(--dur-fast) var(--ease-out);
 }
-.nav a[aria-current="page"]::after {
-  content: ""; position: absolute; left: var(--sp-3); right: var(--sp-3); bottom: 4px;
-  height: 2px; background: var(--brand); border-radius: var(--r-full);
+/* Sits clear of the descenders. The link is 44px tall for the touch target
+   while the text is ~12px and optically centred, so anything above ~14px from
+   the bottom strikes through the label rather than underlining it. */
+.nav a::after {
+  content: ""; position: absolute; left: var(--sp-2); right: var(--sp-2); bottom: 11px;
+  height: 1px; background: var(--brand);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
 }
+.nav a:hover { color: var(--ink); }
+.nav a:hover::after { transform: scaleX(1); }
+/* Current page: colour *and* a persistent rule, so it is never colour alone. */
+.nav a[aria-current="page"] { color: var(--brand); }
+.nav a[aria-current="page"]::after { transform: scaleX(1); }
 
 .header-cta { display: flex; align-items: center; gap: var(--sp-3); flex: none; }
 /* Scoped under .nav so it outranks `.btn { display: inline-flex }`. */
@@ -330,15 +403,33 @@ address { font-style: normal; }
 /* Press feedback within 100ms — the button visibly gives under the finger. */
 .btn:active { transform: scale(.97); transition-duration: var(--dur-press); }
 
+/* Buttons fill from the bottom rather than lifting. A translateY hover is the
+   most-used button interaction on the web and reads as a stock component; a
+   wipe is quieter, and it survives reduced-motion as a plain colour change. */
+.btn::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.btn { position: relative; isolation: isolate; overflow: hidden; }
+.btn:hover::before { transform: scaleY(1); }
+
 .btn-primary { background: var(--brand); color: #fff; box-shadow: none; }
-.btn-primary:hover { background: var(--brand-dark); color: #fff; transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(176,32,46,.55); }
-.btn-primary:active { transform: scale(.97); }
-.btn-outline { border-color: transparent; color: var(--ink); background: var(--bg-alt); }
-.btn-outline:hover { border-color: transparent; background: #e9eff4; color: var(--ink); transform: translateY(-2px); box-shadow: none; }
-.btn-ghost { color: var(--ink); background: rgba(255,255,255,.9); border-color: rgba(255,255,255,.5); }
-.btn-ghost:hover { background: #fff; color: var(--ink); transform: translateY(-2px); }
+.btn-primary::before { background: var(--brand-dark); }
+.btn-primary:hover { color: #fff; }
+.btn-outline { border-color: var(--line); color: var(--ink); background: transparent; }
+.btn-outline::before { background: var(--bg-alt); }
+.btn-outline:hover { border-color: var(--ink-4); color: var(--ink); }
+.btn-ghost { color: var(--ink); background: rgba(255,255,255,.92); border-color: transparent; }
+.btn-ghost::before { background: #fff; }
+.btn-ghost:hover { color: var(--ink); }
 .btn-teal { background: var(--teal); color: #fff; }
-.btn-teal:hover { background: var(--teal-dark); color: #fff; transform: translateY(-2px); }
+.btn-teal::before { background: var(--teal-dark); }
+.btn-teal:hover { color: #fff; }
+
+/* Arrow-carrying buttons advance the arrow instead of moving the button. */
+.btn .arrow { transition: transform var(--dur-base) var(--ease-out); }
+.btn:hover .arrow { transform: translateX(4px); }
 .btn-sm { min-height: 40px; padding: var(--sp-2) var(--sp-4); font-size: var(--fs-xs); }
 .btn-lg { padding: var(--sp-4) var(--sp-8); font-size: var(--fs-md); }
 
@@ -349,62 +440,93 @@ address { font-style: normal; }
 /* ==========================================================================
    Hero
    ========================================================================== */
-.hero { position: relative; background: var(--ink); overflow: hidden; }
-.hero-media { position: absolute; inset: 0; }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; opacity: .38; filter: blur(3px) saturate(.85); }
+/* The hero is paper, not a dark photo with a gradient over it. The only
+   available building shot is 335x496 — blurring it up to full-bleed was
+   spending the most valuable space on the weakest asset. Type carries it. */
+.hero { position: relative; background: var(--bg); overflow: hidden; }
+/* A single hairline ruling off the hero, drawn from the left as the page
+   loads — the one piece of ornament in the composition. */
 .hero::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(105deg, rgba(14,36,57,.96) 0%, rgba(14,36,57,.86) 45%, rgba(14,36,57,.55) 100%);
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--line); transform-origin: left;
+  transform: scaleX(1);                /* no JS: simply present */
+  transition: transform 1400ms var(--ease-out);
 }
-.hero-inner { position: relative; z-index: var(--z-raised); padding: clamp(var(--sp-16), 8vw, 104px) 0 clamp(88px, 9vw, 124px); max-width: none; }
-.hero h1 { color: #fff; margin-bottom: .38em; }
-.hero .lede { font-size: clamp(var(--fs-md), 1.4vw, var(--fs-lg)); color: #cbdae7; margin-bottom: 1.8em; max-width: 46ch; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+.js .hero::after    { transform: scaleX(0); }
+.js .hero.in::after { transform: scaleX(1); }
+
+.hero-inner {
+  position: relative; z-index: var(--z-raised);
+  padding: clamp(var(--sp-14), 7vw, 96px) 0 clamp(var(--sp-14), 7vw, 92px);
+  max-width: none;
+}
+.hero h1 { color: var(--ink); margin-bottom: .34em; max-width: 15ch; }
+.hero .lede {
+  font-size: clamp(var(--fs-lg), 1.5vw, var(--fs-xl));
+  color: var(--ink-2); margin-bottom: 1.7em; max-width: 44ch;
+  line-height: var(--lh-snug);
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; }
 
 .eyebrow {
-  display: inline-flex; align-items: center; gap: var(--sp-2);
-  font-size: var(--fs-2xs); font-weight: var(--fw-bold); letter-spacing: .15em; text-transform: uppercase;
-  color: var(--brand); margin-bottom: 1.1em;
+  display: inline-flex; align-items: center; gap: var(--sp-3);
+  font-size: var(--fs-2xs); font-weight: var(--fw-bold); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--brass); margin-bottom: 1.4em;
 }
-.eyebrow::before { content: ""; width: 26px; height: 2px; background: currentColor; border-radius: var(--r-full); }
-.hero .eyebrow { color: #f2a3ab; }
+.eyebrow::before { content: ""; width: 34px; height: 1px; background: currentColor; border-radius: 0; }
+.hero .eyebrow { color: var(--brass); }
 .bg-deep .eyebrow, .page-head .eyebrow { color: var(--on-deep-accent); }
 .bg-deep .section-index { color: var(--on-deep-accent); }
 .bg-deep .section-index::after { background: rgba(255,255,255,.22); }
 .center .eyebrow { justify-content: center; }
 
-/* Hero stat strip */
+/* Stat row — an editorial band on paper, separated by hairlines. The floating
+   white card that overlapped the hero was the clearest single "template" tell
+   on the page, and it cost 56px of negative margin to place. */
 .hero-stats {
-  position: relative; z-index: var(--z-raised); background: #fff; border-radius: var(--r-xl);
-  box-shadow: var(--sh-2); margin: -56px 0;
+  position: relative; z-index: var(--z-raised); background: none;
+  border-radius: 0; box-shadow: none; margin: 0;
+  border-top: 1px solid var(--line);
   display: grid; grid-template-columns: repeat(4, 1fr);
   list-style: none; padding: 0;
 }
-.hero-stats .stat { padding: var(--sp-7) var(--sp-6); border-right: 1px solid var(--line-soft); margin: 0; }
+.hero-stats .stat {
+  padding: var(--sp-10) var(--sp-6) var(--sp-10) 0;
+  border-right: 1px solid var(--line); margin: 0;
+}
+.hero-stats .stat + .stat { padding-left: var(--sp-6); }
 .hero-stats .stat:last-child { border-right: 0; }
 .stat-num {
-  font-family: var(--font-serif); font-size: var(--fs-3xl); font-weight: var(--fw-bold);
-  color: var(--brand); line-height: 1; margin-bottom: var(--sp-1);
-  font-variant-numeric: tabular-nums;
+  font-family: var(--font-serif); font-size: clamp(2.2rem, 3.4vw, 3rem); font-weight: var(--fw-semi);
+  color: var(--ink); line-height: 1; margin-bottom: var(--sp-3);
+  font-variant-numeric: tabular-nums; letter-spacing: -.02em;
 }
-.stat-label { font-size: var(--fs-sm); color: var(--ink-3); line-height: var(--lh-snug); }
+.stat-label {
+  font-size: var(--fs-2xs); color: var(--ink-3); line-height: var(--lh-snug);
+  letter-spacing: .09em; text-transform: uppercase; font-weight: var(--fw-medium);
+  max-width: 22ch;
+}
 
 /* ---------- Interior page header ---------- */
-.page-head { background: var(--ink); position: relative; overflow: hidden; }
-.page-head::before {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(900px 380px at 88% -25%, rgba(13,110,120,.42), transparent 65%);
-}
-.page-head-inner { position: relative; z-index: var(--z-raised); padding-block: clamp(var(--sp-14), 7vw, 86px) clamp(var(--sp-12), 6vw, 74px); }
-.page-head h1 { color: #fff; margin-bottom: .3em; max-width: 22ch; }
-.page-head p { color: #b3c8da; max-width: 62ch; margin: 0; font-size: var(--fs-md); }
+/* Interior headers are paper too, so an inner page does not open on a slab of
+   navy that the homepage no longer has. The rule below carries the weight. */
+.page-head { background: var(--bg); position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.page-head::before { content: none; }
+.page-head-inner { position: relative; z-index: var(--z-raised); padding-block: clamp(var(--sp-12), 6vw, 78px) clamp(var(--sp-10), 5vw, 62px); }
+.page-head h1 { color: var(--ink); margin-bottom: .26em; max-width: 20ch; }
+.page-head p { color: var(--ink-2); max-width: 60ch; margin: 0; font-size: var(--fs-lg); line-height: var(--lh-snug); }
+.page-head .eyebrow { color: var(--brass); }
 
 /* Breadcrumb */
-.crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); list-style: none; margin: 0 0 1.4em; padding: 0; font-size: var(--fs-sm); }
-.crumbs li { margin: 0; color: #93acc2; display: flex; align-items: center; gap: var(--sp-2); }
-.crumbs li + li::before { content: "/"; color: #64809b; }
-.crumbs a { color: #cadcea; }
-.crumbs a:hover { color: #fff; text-decoration: underline; }
+.crumbs {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2);
+  list-style: none; margin: 0 0 1.8em; padding: 0;
+  font-size: var(--fs-2xs); letter-spacing: .1em; text-transform: uppercase; font-weight: var(--fw-medium);
+}
+.crumbs li { margin: 0; color: var(--ink-3); display: flex; align-items: center; gap: var(--sp-2); }
+.crumbs li + li::before { content: "/"; color: var(--ink-4); }
+.crumbs a { color: var(--ink-3); }
+.crumbs a:hover { color: var(--brand); }
 
 /* ==========================================================================
    Cards & grids
@@ -422,25 +544,23 @@ address { font-style: normal; }
   position: relative; border-top: 1px solid var(--line);
   transition: border-color var(--dur-base) var(--ease-out);
 }
-.card::before {
-  content: ""; position: absolute; inset: -12px -20px;
-  background: var(--bg-alt); border-radius: var(--r-lg);
-  opacity: 0; z-index: -1;
-  transition: opacity var(--dur-base) var(--ease-out);
-}
+/* No hover wash. A tinted rectangle appearing behind a card is the gesture
+   that made this grid read as a tray of boxes; the rule redrawing in the
+   brand colour is enough, and it keeps the page flat and printed. */
+.card::before { content: none; }
 .card::after {
   content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
   background: var(--brand); transform: scaleX(0); transform-origin: left;
-  transition: transform var(--dur-slow) var(--ease-out);
+  transition: transform 620ms var(--ease-out);
 }
 .card h3 { margin-bottom: .5em; }
 .card p { margin-bottom: 1em; }
 .card p:last-child { margin-bottom: 0; }
 a.card { color: inherit; display: block; isolation: isolate; }
 a.card:hover { color: inherit; }
-a.card:hover::before { opacity: 1; }
 a.card:hover::after { transform: scaleX(1); }
-a.card:active::before { opacity: .7; transition-duration: var(--dur-press); }
+a.card:hover h3 { color: var(--brand); }
+.card h3 { transition: color var(--dur-base) var(--ease-out); }
 
 .card-icon {
   width: 46px; height: 46px; display: grid; place-items: center;
@@ -457,8 +577,8 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 
 /* Editorial index numeral — sits behind the card heading. */
 .card-num {
-  font-family: var(--font-serif); font-size: var(--fs-sm); font-weight: 600;
-  color: var(--ink-3); letter-spacing: .1em; display: block; margin-bottom: var(--sp-4);
+  font-family: var(--font-serif); font-size: var(--fs-md); font-weight: 600;
+  color: var(--brass); letter-spacing: .12em; display: block; margin-bottom: var(--sp-5);
   font-variant-numeric: tabular-nums;
 }
 
@@ -582,7 +702,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .callout h4 { margin-bottom: .5em; }
 
 /* ---------- Sub-nav (treatment pages) ---------- */
-.subnav { background: #fff; border-bottom: 1px solid var(--line); position: relative; }
+.subnav { background: var(--bg); border-bottom: 1px solid var(--line); position: relative; }
 .subnav-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
 .subnav ul { display: flex; gap: var(--sp-1); list-style: none; margin: 0; padding: 0; white-space: nowrap; }
 .subnav li { margin: 0; }
@@ -597,7 +717,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 /* Fade hint that the strip scrolls horizontally. */
 .subnav::after {
   content: ""; position: absolute; top: 0; right: 0; bottom: 2px; width: 40px;
-  background: linear-gradient(to right, rgba(255,255,255,0), #fff);
+  background: linear-gradient(to right, rgba(252,250,247,0), var(--bg));
   pointer-events: none;
 }
 
@@ -612,7 +732,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .js body.needs-consent .clinical { display: none; }
 
 .gate {
-  max-width: 720px; margin-inline: auto; background: #fff;
+  max-width: 720px; margin-inline: auto; background: var(--bg-pure);
   border: 1px solid var(--line); border-radius: var(--r-xl);
   padding: clamp(var(--sp-7), 5vw, var(--sp-12)); box-shadow: var(--sh-2); text-align: left;
 }
@@ -723,10 +843,12 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .cta-band .wrap { position: relative; z-index: var(--z-raised); }
 .cta-band h2 { color: #fff; margin-bottom: .35em; }
 .cta-band p { color: rgba(255,255,255,.93); font-size: var(--fs-md); max-width: 56ch; margin-inline: auto; }
-.cta-band .btn-ghost { background: #fff; color: var(--brand); border-color: #fff; }
-.cta-band .btn-ghost:hover { background: rgba(255,255,255,.92); color: var(--brand-dark); }
+.cta-band .btn-ghost { background: var(--bg); color: var(--brand); border-color: var(--bg); }
+.cta-band .btn-ghost::before { background: #fff; }
+.cta-band .btn-ghost:hover { color: var(--brand-dark); }
 .cta-band .btn-outline { background: transparent; border-color: rgba(255,255,255,.6); color: #fff; }
-.cta-band .btn-outline:hover { background: rgba(255,255,255,.14); border-color: #fff; color: #fff; }
+.cta-band .btn-outline::before { background: rgba(255,255,255,.16); }
+.cta-band .btn-outline:hover { border-color: #fff; color: #fff; }
 .cta-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); justify-content: center; margin-top: 2em; }
 
 /* ==========================================================================
@@ -793,11 +915,19 @@ a.card:hover .card-link svg { transform: translateX(5px); }
    --------------------------------------------------------------------------
    Scoped to .js so content is never hidden when scripts are unavailable.
    ========================================================================== */
+/* A shorter travel over a longer duration. The old 18px/520ms fade-up is the
+   default of every scroll library on the web; 10px over 820ms reads as the
+   page settling rather than as an effect being played. */
 .js .reveal {
-  opacity: 0; transform: translateY(18px);
+  opacity: 0; transform: translateY(10px);
   transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
 }
 .js .reveal.in { opacity: 1; transform: none; }
+
+/* Images uncover rather than fade — a mask reads as printing, a fade reads
+   as loading. Applied per-image so a stack reveals in sequence. */
+.js .unmask { clip-path: inset(0 0 100% 0); transition: clip-path 1100ms var(--ease-out); }
+.js .unmask.in { clip-path: inset(0 0 0 0); }
 
 /* Children of a staggered container enter in sequence (45ms apart) so a grid
    reads as a list arriving, not a block appearing. */
@@ -827,7 +957,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .nav {
     position: fixed; inset: 0 0 auto; top: 0; z-index: var(--z-drawer);
     flex-direction: column; align-items: stretch; gap: 2px;
-    background: #fff; padding: 92px var(--sp-5) var(--sp-7); height: 100dvh; overflow-y: auto;
+    background: var(--bg); padding: 96px var(--sp-5) var(--sp-7); height: 100dvh; overflow-y: auto;
     transform: translateX(100%); transition: transform var(--dur-slow) var(--ease-out);
     box-shadow: -8px 0 40px rgba(14,36,57,.16); max-width: 380px; margin-left: auto;
   }
@@ -932,39 +1062,32 @@ a.card:hover .card-link svg { transform: translateX(5px); }
    direction, an upscaled one reads as a broken image.
    ========================================================================== */
 .hero-grid {
-  display: grid; grid-template-columns: minmax(0,1fr) 300px;
-  gap: clamp(var(--sp-8), 5vw, var(--sp-16)); align-items: center;
+  display: grid; grid-template-columns: minmax(0,1fr) 292px;
+  gap: clamp(var(--sp-10), 6vw, 88px); align-items: end;
 }
 .hero-portrait { position: relative; justify-self: end; }
 .hero-portrait-frame {
-  position: relative; width: 268px; border-radius: var(--r-xl);
-  overflow: hidden; background: linear-gradient(160deg, #21445f, #0e2439);
+  position: relative; width: 268px; border-radius: var(--r-sm);
+  overflow: hidden; background: var(--bg-alt);
+  /* Uncovered upward as it enters — a mask, not a fade. */
+  clip-path: inset(0 0 0 0);
 }
+.js .hero-portrait .hero-portrait-frame { clip-path: inset(100% 0 0 0); transition: clip-path 1100ms var(--ease-out); }
+.js .hero-portrait.in .hero-portrait-frame { clip-path: inset(0 0 0 0); }
 .hero-portrait-frame img {
-  width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%;
+  width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 18%;
   /* The source is only 238px wide; a light unsharp-style contrast lift keeps
      it from looking muddy at display size without visible upscaling. */
-  filter: saturate(1.05) contrast(1.06);
+  filter: saturate(1.04) contrast(1.05);
 }
-/* Grounds the cut-out against the hero photograph without hiding the face. */
-.hero-portrait-frame::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(14,36,57,.55));
-}
-.hero-portrait::before {
-  content: ""; position: absolute; inset: -18px -18px -30px;
-  border-radius: var(--r-xl);
-  background: linear-gradient(180deg, rgba(176,32,46,.30), rgba(176,32,46,0));
-  z-index: -1;
-}
+/* Caption sits under the frame as a credit line, not a floating card. The
+   card it replaced overlapped the image and hid part of the face. */
 .hero-portrait-card {
-  position: absolute; left: -32px; bottom: -18px; z-index: 2;
-  background: rgba(255,255,255,.97); backdrop-filter: blur(8px);
-  border-radius: var(--r-md); padding: var(--sp-3) var(--sp-5);
-  box-shadow: var(--sh-2); max-width: 232px;
+  padding-top: var(--sp-4); margin-top: var(--sp-4);
+  border-top: 1px solid var(--line); max-width: 268px;
 }
-.hero-portrait-card .name { display: block; font-family: var(--font-serif); font-weight: 700; color: var(--ink); font-size: var(--fs-md); line-height: 1.25; }
-.hero-portrait-card .qual { display: block; font-size: var(--fs-2xs); color: var(--ink-3); letter-spacing: .04em; line-height: 1.4; margin-top: 2px; }
+.hero-portrait-card .name { display: block; font-family: var(--font-serif); font-weight: 600; color: var(--ink); font-size: var(--fs-lg); line-height: 1.25; }
+.hero-portrait-card .qual { display: block; font-size: var(--fs-2xs); color: var(--ink-3); letter-spacing: .09em; text-transform: uppercase; line-height: 1.5; margin-top: 5px; }
 
 /* ==========================================================================
    Before / after comparison slider
@@ -1054,12 +1177,21 @@ a.card:hover .card-link svg { transform: translateX(5px); }
    Editorial section furniture
    ========================================================================== */
 .section-index {
-  display: flex; align-items: baseline; gap: var(--sp-4);
-  font-family: var(--font-serif); color: var(--ink-3);
-  font-size: var(--fs-sm); letter-spacing: .18em; text-transform: uppercase;
-  margin-bottom: var(--sp-6);
+  display: flex; align-items: center; gap: var(--sp-5);
+  font-family: var(--font-sans); color: var(--brass);
+  font-size: var(--fs-2xs); font-weight: var(--fw-bold);
+  letter-spacing: .22em; text-transform: uppercase;
+  margin-bottom: var(--sp-8);
 }
-.section-index::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+/* The rule extends to the column edge and draws itself in when the section
+   arrives, so the eye is led across before it drops into the heading. */
+.section-index::after {
+  content: ""; flex: 1; height: 1px; background: var(--line);
+  transform: scaleX(1); transform-origin: left;
+  transition: transform 1200ms var(--ease-out) 120ms;
+}
+.js .reveal .section-index::after { transform: scaleX(0); }
+.js .reveal.in .section-index::after { transform: scaleX(1); }
 
 /* Full-bleed band that escapes the wrap without horizontal scroll */
 .bleed { width: 100vw; margin-left: 50%; transform: translateX(-50%); }
@@ -1104,4 +1236,17 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .parallax > img, .parallax > .parallax-inner { transform: none !important; }
   .js .rise > * { transform: none !important; }
   .scroll-progress { display: none; }
+
+  /* Anything driven by clip-path must land fully open, not stay masked —
+     a mask that never animates is just hidden content. */
+  .js .unmask,
+  .js .hero-portrait .hero-portrait-frame { clip-path: none !important; }
+  /* Rules that draw themselves in are simply present. */
+  .hero::after,
+  .js .hero::after,
+  .js .reveal .section-index::after { transform: scaleX(1) !important; }
+  /* The button wipe becomes a plain colour change. */
+  .btn::before { transition: none !important; }
+  /* Header height must not animate on every scroll tick. */
+  .site-header, .header-inner { transition: none !important; }
 }

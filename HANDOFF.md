@@ -131,6 +131,16 @@ remove these.
 **`--ink-4` is not a text colour.** It is 2.96:1 on white. It is for borders and
 disabled states only. Use `--ink-3` for secondary text (4.6:1).
 
+**The header's `z-index` must clear the drawer scrim, not `--z-sticky`.**
+`.site-header` is `position: sticky` with a `z-index`, which makes it a
+stacking context. The mobile nav drawer lives *inside* it, so the drawer's own
+`z-index: var(--z-drawer)` is resolved within the header and can never beat the
+scrim, which is appended to `<body>`. At `--z-sticky` the scrim painted over the
+open menu **and took the taps** — every link press closed the drawer instead of
+navigating, so the mobile menu did nothing. It shipped that way and went
+unnoticed through the whole first build. Raising the header is what lifts the
+drawer; a child cannot outrank its own container.
+
 **`.wrap` + `padding` shorthand is a trap.** `.page-head-inner` and
 `.footer-top` sit on the *same element* as `.wrap`. A `padding: X 0 Y`
 shorthand there wipes out `.wrap`'s `padding-inline` and the content goes flush

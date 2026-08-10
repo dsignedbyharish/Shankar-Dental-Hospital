@@ -318,7 +318,10 @@
   /* ======================================================================
      Reveal on scroll (+ staggered children, + heading wipes)
      ====================================================================== */
-  var reveals = document.querySelectorAll('.reveal, .stagger, .rise');
+  /* `.lit` is an in-view flag with no styles of its own — it lets an element
+     react to entering the viewport without the opacity fade `.reveal` implies.
+     The hero rule and the portrait mask use it. */
+  var reveals = document.querySelectorAll('.reveal, .stagger, .rise, .lit, .unmask');
 
   if (!reveals.length) {
     /* nothing to do */
@@ -363,7 +366,7 @@
   /* If the user turns reduced-motion on mid-session, drop the animations. */
   var onMotionChange = function () {
     if (!reduceMotion.matches) return;
-    document.querySelectorAll('.reveal, .stagger, .rise').forEach(function (el) {
+    document.querySelectorAll('.reveal, .stagger, .rise, .lit, .unmask').forEach(function (el) {
       el.classList.add('in');
     });
     document.querySelectorAll('.parallax').forEach(function (el) {
@@ -372,6 +375,72 @@
   };
   if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', onMotionChange);
   else if (reduceMotion.addListener) reduceMotion.addListener(onMotionChange);
+
+  /* ======================================================================
+     Header state
+     ----------------------------------------------------------------------
+     The header carries no rule while the page is at rest and gains one once
+     there is content behind it. Purely presentational — without scripts the
+     header simply stays in its resting state, which is a valid design.
+     ====================================================================== */
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var hTicking = false;
+    var syncHeader = function () {
+      if (hTicking) return;
+      hTicking = true;
+      window.requestAnimationFrame(function () {
+        header.classList.toggle('is-stuck', window.scrollY > 12);
+        hTicking = false;
+      });
+    };
+    window.addEventListener('scroll', syncHeader, { passive: true });
+    syncHeader();
+  }
+
+  /* ======================================================================
+     Stat count-up
+     ----------------------------------------------------------------------
+     Counts only the numeric part, so "7,500" animates and "NABH" is left
+     alone. The final text is already in the HTML — this replaces it during
+     the animation and restores it exactly, so a failure mid-flight cannot
+     leave a wrong number on screen.
+     ====================================================================== */
+  var stats = document.querySelectorAll('.stat-num');
+  if (stats.length && !reduceMotion.matches && 'IntersectionObserver' in window) {
+    var countIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        countIO.unobserve(el);
+
+        var final = el.textContent;
+        var match = final.match(/^([^\d]*)([\d,]+)(.*)$/);
+        if (!match) return;                       /* e.g. "NABH" — leave it */
+        var prefix = match[1];
+        var suffix = match[3];
+        var target = parseInt(match[2].replace(/,/g, ''), 10);
+        if (!isFinite(target) || target <= 0) return;
+
+        var started = null;
+        var DURATION = 1100;
+        var step = function (now) {
+          if (started === null) started = now;
+          var t = Math.min((now - started) / DURATION, 1);
+          /* ease-out cubic, so it settles rather than stopping dead */
+          var eased = 1 - Math.pow(1 - t, 3);
+          if (t < 1) {
+            el.textContent = prefix + Math.round(target * eased).toLocaleString('en-IN') + suffix;
+            window.requestAnimationFrame(step);
+          } else {
+            el.textContent = final;               /* restore verbatim */
+          }
+        };
+        window.requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 });
+    stats.forEach(function (el) { countIO.observe(el); });
+  }
 
   /* ======================================================================
      Current year
