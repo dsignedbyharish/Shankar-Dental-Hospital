@@ -1404,28 +1404,92 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 /* ==========================================================================
    Contact
    ========================================================================== */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(var(--sp-8), 5vw, 60px); align-items: start; }
-.info-row { display: flex; gap: var(--sp-4); padding: var(--sp-5) 0; border-bottom: 1px solid var(--line-soft); }
-.info-row:first-child { padding-top: 0; }
-.info-row:last-child { border-bottom: 0; }
-.info-ico {
-  width: var(--tap); height: var(--tap); border-radius: var(--r-md); flex: none; display: grid; place-items: center;
-  background: var(--brand-tint); color: var(--brand);
-}
-.info-ico svg { width: 21px; height: 21px; }
-.info-row h3 {
-  margin-bottom: .28em; font-size: var(--fs-2xs); letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ink-3); font-weight: var(--fw-bold);
-}
-.info-row p { margin: 0; color: var(--ink); font-size: var(--fs-md); line-height: var(--lh-snug); }
-.info-row a { color: var(--ink); font-weight: var(--fw-semi); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
-.info-row a:hover { color: var(--brand); text-decoration-color: currentColor; }
-
 .hours { list-style: none; padding: 0; margin: 0; }
 .hours li { display: flex; justify-content: space-between; gap: var(--sp-4); padding: var(--sp-3) 0; border-bottom: 1px solid var(--line-soft); margin: 0; font-size: var(--fs-sm); }
 .hours li:last-child { border-bottom: 0; }
 .hours .day { color: var(--ink-3); }
 .hours .time { color: var(--ink); font-weight: var(--fw-semi); text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Contact cards — the same colour-blocked language as .hero-stats (ghost
+   circle, squircle corner, hover lift), reused here rather than inventing a
+   second card style, so the contact page reads as this site and not a
+   template dropped in from elsewhere. Phone takes the lime "primary action"
+   card, matching how lime marks the primary button everywhere else — it is
+   the one method here that actually converts a visit into an appointment. */
+.info-cards {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-5);
+}
+.info-card {
+  position: relative; overflow: hidden;
+  border-radius: var(--r-md);
+  padding: clamp(var(--sp-6), 2.4vw, var(--sp-7));
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.info-card::after {
+  content: ""; position: absolute; top: -26px; right: -26px;
+  width: 100px; height: 100px; border-radius: 50%;
+  background: currentColor; opacity: .07;
+}
+.info-card:hover { transform: translateY(-3px); }
+.info-card-ico {
+  width: 40px; height: 40px; margin-bottom: var(--sp-4);
+  display: grid; place-items: center; border-radius: var(--r-sm);
+  background: rgba(255,255,255,.14); position: relative; z-index: 1;
+}
+.info-card-ico svg { width: 21px; height: 21px; }
+.info-card h3 {
+  /* The site's global `h1..h6 { color: var(--ink) }` reset sets color
+     directly on every heading — that is not inheritance, so it wins over
+     whatever .info-card-ink/-teal/etc. set on the card unless undone here.
+     Without this every card's label rendered as dark ink text regardless of
+     background, including the two dark cards, which read as unreadably low
+     contrast rather than just wrong-colour. */
+  color: inherit;
+  font-size: var(--fs-2xs); letter-spacing: .1em; text-transform: uppercase;
+  font-weight: var(--fw-bold); margin-bottom: .5em; position: relative; z-index: 1;
+}
+.info-card p { margin: 0; font-size: var(--fs-md); line-height: var(--lh-snug); position: relative; z-index: 1; }
+.info-card a { color: inherit; font-weight: var(--fw-semi); text-decoration: underline; text-decoration-color: currentColor; text-decoration-thickness: 1px; text-underline-offset: 3px; opacity: .95; }
+.info-card a:hover { opacity: 1; }
+
+.info-card-ink   { background: var(--ink);   color: #fff; }
+.info-card-brand { background: var(--lime);  color: var(--on-lime); }
+.info-card-brand .info-card-ico { background: rgba(16,48,47,.12); }
+.info-card-teal  { background: var(--teal);  color: #fff; }
+.info-card-pale  { background: var(--teal-tint); color: var(--ink); }
+.info-card-pale .info-card-ico { background: rgba(18,64,62,.08); }
+
+/* Clinic timings uses the .hours list inside a card instead of a paragraph —
+   same component the old layout used, just re-themed to sit on a colour
+   fill rather than white. */
+.info-card .hours { margin-top: var(--sp-1); }
+.info-card .hours li { border-bottom-color: rgba(0,0,0,.08); padding: var(--sp-2) 0; font-size: var(--fs-xs); }
+.info-card-pale .hours li { border-bottom-color: rgba(18,64,62,.12); }
+.info-card .hours .day { color: inherit; opacity: .75; }
+.info-card .hours .time { color: inherit; }
+
+@supports (corner-shape: squircle) { .info-card { corner-shape: squircle; } }
+@media (prefers-reduced-motion: reduce) { .info-card:hover { transform: none; } }
+
+@media (max-width: 1060px) { .info-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px)  { .info-cards { grid-template-columns: 1fr; } }
+
+/* ---------- Map card ---------- */
+.map-card { position: relative; }
+.map-pin {
+  position: absolute; right: var(--sp-5); bottom: var(--sp-5); z-index: 2;
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-5); border-radius: var(--r-full);
+  background: var(--bg-pure); color: var(--ink);
+  font-size: var(--fs-sm); font-weight: var(--fw-semi);
+  box-shadow: 0 2px 4px rgba(18,64,62,.06), 0 18px 34px -18px rgba(18,64,62,.4);
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.map-pin svg { width: 18px; height: 18px; }
+.map-pin:hover { background: var(--brand); color: #fff; transform: translateY(-2px); }
+@media (max-width: 680px) { .map-pin { right: var(--sp-3); bottom: var(--sp-3); padding: var(--sp-2) var(--sp-4); font-size: var(--fs-xs); } }
+@media (prefers-reduced-motion: reduce) { .map-pin:hover { transform: none; } }
 
 .map-embed { border-radius: var(--r-lg); overflow: hidden; border: 0; box-shadow: var(--sh-1); }
 .map-embed iframe { display: block; width: 100%; height: 420px; border: 0; }
@@ -1650,7 +1714,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
      to read. Drop it to a texture rather than a legible word. */
   .hero-ghost { font-size: clamp(3.4rem, 16vw, 7rem); opacity: .03; }
   .section-lead, .section-lead.is-wide { max-width: 30ch; }
-  .split, .contact-grid { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; }
   .split-media { order: -1; }
   .doc { grid-template-columns: 1fr; }
   .doc-photo { max-width: 240px; }
@@ -1688,7 +1752,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .footer-contact a,
   .footer-bottom a,
   .crumbs a,
-  .info-row a,
+  .info-card a,
   .logo { display: inline-flex; align-items: center; min-height: var(--tap); }
   .topbar .wrap { padding-block: var(--sp-1); }
   .site-footer ul li { margin-bottom: var(--sp-1); }
