@@ -81,13 +81,17 @@
   --sp-16: 64px;
 
   /* ---------- Radius ----------------------------------------------------
-     Deliberately tight. The previous 12–22px radii were the single strongest
-     "app template" cue on the page; near-square corners read as print. */
-  --r-xs:   2px;
-  --r-sm:   4px;
-  --r-md:   6px;
-  --r-lg:   10px;
-  --r-xl:   14px;
+     Generous and continuous. Paired with `corner-shape` below, these are
+     superellipse corners rather than circular arcs — the iOS squircle, where
+     the curve eases into the straight edge instead of meeting it at a visible
+     tangent. Browsers without `corner-shape` fall back to plain rounding at
+     the same radius, which still looks right, just slightly less smooth. */
+  --r-xs:   6px;
+  --r-sm:   10px;
+  --r-md:   16px;
+  --r-lg:   24px;
+  --r-xl:   32px;
+  --r-2xl:  44px;
   --r-full: 999px;
 
   /* ---------- Layout ---------------------------------------------------- */
@@ -156,6 +160,25 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
+
+/* ---------- Continuous (iOS-style) corners ----------
+   `squircle` is a superellipse, not a circular arc: the curvature ramps into
+   the straight edge instead of meeting it at a tangent, which is why an iOS
+   tile reads smoother than a plain `border-radius` at the same value. Behind
+   @supports because it is recent — anything that does not understand it keeps
+   the same radius as an ordinary round corner, which is a fine fallback.
+   Listed explicitly rather than applied with `*`, so focus rings and small
+   inline shapes keep their normal geometry. */
+@supports (corner-shape: squircle) {
+  .header-inner, .hero-split, .hero-portrait-frame,
+  .card-tile, .card-media, .voice, .hero-stats .stat,
+  .btn, .btn-sm, .btn-lg, .nav-toggle,
+  .media-band-item, .gal-item, .figure img, .figure .zoomable,
+  .split-media img, .doc-photo, .map-embed, .callout, .gate,
+  .li-ico, .info-ico, .gate-icon, .callbar-btn, .lb img {
+    corner-shape: squircle;
+  }
+}
 
 a { color: var(--brand); text-decoration: none; transition: color var(--dur-fast) var(--ease-out); }
 a:hover { color: var(--brand-dark); }
@@ -679,6 +702,52 @@ a.card:hover h3 { color: var(--brand); }
 .card-icon svg { width: 30px; height: 30px; stroke-width: 1.5; }
 .card-teal .card-icon { color: var(--teal); }
 a.card:hover .card-icon { transform: translateY(-3px); }
+
+/* ---------- Card tile ----------
+   Media slot on top, then title, description, "Explore" link. The slot is a
+   fixed 16/10 box holding the icon on a tinted field: when photography lands,
+   an <img> goes inside the same slot and no other measurement changes. */
+.card-tile {
+  background: var(--bg-pure); border-top: 0; padding: 0; overflow: hidden;
+  border-radius: var(--r-lg);
+  display: flex; flex-direction: column;
+  box-shadow: 0 1px 2px rgba(16,30,43,.03), 0 18px 38px -30px rgba(16,30,43,.38);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+.card-tile::after { content: none; }        /* the rule-draw belongs to the flat card */
+.card-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(16,30,43,.05), 0 30px 56px -28px rgba(16,30,43,.5);
+}
+.card-media {
+  position: relative; aspect-ratio: 16 / 10; overflow: hidden;
+  background: var(--bg-alt);
+  display: grid; place-items: center;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+}
+/* Present for the day a photograph replaces the icon. */
+.card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out); }
+.card-tile:hover .card-media img { transform: scale(1.04); }
+/* Sized to hold the slot on its own until a photograph fills it — a 64px chip
+   in a 16/10 box read as a placeholder rather than a composition. */
+.card-media-ico {
+  width: 96px; height: 96px; display: grid; place-items: center;
+  border-radius: var(--r-lg);
+  background: var(--brand-tint); color: var(--brand);
+  transition: transform var(--dur-base) var(--ease-spring), background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+.card-media-ico svg { width: 46px; height: 46px; stroke-width: 1.4; }
+.card-teal .card-media-ico { background: var(--teal-tint); color: var(--teal); }
+.card-tile:hover .card-media-ico { transform: translateY(-3px) scale(1.05); background: var(--brand); color: #fff; }
+.card-tile.card-teal:hover .card-media-ico { background: var(--teal); color: #fff; }
+
+.card-tile h3 { padding: var(--sp-6) var(--sp-6) 0; margin-bottom: .5em; }
+.card-tile p  { padding-inline: var(--sp-6); font-size: var(--fs-sm); color: var(--ink-3); }
+.card-tile .card-link { margin: auto var(--sp-6) var(--sp-6); }
+@media (prefers-reduced-motion: reduce) {
+  .card-tile:hover { transform: none; }
+  .card-tile:hover .card-media img, .card-tile:hover .card-media-ico { transform: none; }
+}
 
 .card-link { display: inline-flex; align-items: center; gap: var(--sp-2); font-weight: var(--fw-semi); font-size: var(--fs-sm); color: var(--brand); margin-top: var(--sp-1); }
 .card-link svg { width: 15px; height: 15px; transition: transform var(--dur-base) var(--ease-out); }
