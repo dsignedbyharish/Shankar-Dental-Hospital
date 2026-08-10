@@ -884,6 +884,57 @@ a.card:hover .card-icon { transform: translateY(-3px); }
   .card-tile:hover .card-media img, .card-tile:hover .card-media-ico { transform: none; }
 }
 
+/* ---------- Treatment carousel ----------
+   Nine cards is too many for a static grid to show without scrolling the
+   page a long way; a horizontal track with arrow controls lets a visitor
+   browse in place. Scroll-snap gives the "one card at a time" feel that a
+   raw overflow-x scroller does not, and the arrows are a convenience on top
+   of — not a replacement for — native touch/trackpad scrolling. */
+.carousel { position: relative; }
+.carousel-track {
+  display: flex; gap: var(--sp-6);
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-block: var(--sp-2) var(--sp-4); margin-block: calc(-1 * var(--sp-2)) calc(-1 * var(--sp-4));
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-track > .carousel-item {
+  flex: 0 0 min(340px, 82vw);
+  scroll-snap-align: start;
+}
+
+.carousel-btn {
+  position: absolute; top: 50%; z-index: 3;
+  width: 52px; height: 52px; margin-top: -26px;
+  border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--bg-pure); color: var(--ink);
+  display: grid; place-items: center;
+  box-shadow: 0 2px 4px rgba(18,64,62,.06), 0 18px 34px -18px rgba(18,64,62,.4);
+  transition: background var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out),
+              opacity var(--dur-fast) var(--ease-out);
+}
+.carousel-btn svg { width: 22px; height: 22px; }
+.carousel-btn:hover { background: var(--brand); color: #fff; transform: translateY(-50%) scale(1.05); }
+.carousel-btn:active { transform: translateY(-50%) scale(.94); }
+.carousel-btn[disabled] { opacity: 0; visibility: hidden; pointer-events: none; }
+.carousel-prev { left: -26px; }
+.carousel-next { right: -26px; }
+@supports (corner-shape: squircle) { .carousel-btn { corner-shape: squircle; } }
+
+/* Below the track width where the arrows would overhang the viewport edge,
+   dock them just inside the wrap instead of floating past it. */
+@media (max-width: 1180px) {
+  .carousel-prev { left: 0; }
+  .carousel-next { right: 0; }
+}
+@media (max-width: 680px) {
+  .carousel-btn { display: none; }   /* touch scroll is the primary input here anyway */
+  .carousel-track { gap: var(--sp-4); }
+}
+@media (prefers-reduced-motion: reduce) { .carousel-track { scroll-behavior: auto; } }
+
 .card-link { display: inline-flex; align-items: center; gap: var(--sp-2); font-weight: var(--fw-semi); font-size: var(--fs-sm); color: var(--brand); margin-top: var(--sp-1); }
 .card-link svg { width: 15px; height: 15px; transition: transform var(--dur-base) var(--ease-out); }
 a.card:hover .card-link svg { transform: translateX(5px); }
@@ -1543,16 +1594,46 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .nav.open { transform: none; }
   .nav a { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-md); border-radius: var(--r-sm); }
   .nav a[aria-current="page"]::after { display: none; }
-  /* The dropdown is a desktop-only affordance. In the drawer, Facilities and
-     Case of the Month just fall into the same flat list as everything else —
-     the panel unwraps into normal flow and its links inherit `.nav a` above. */
-  .nav-more-toggle { display: none; }
+  /* In the drawer, both dropdowns become accordions rather than dumping
+     everything into one long flat list — nine treatment cards with
+     thumbnails, always expanded, was most of the drawer's height before a
+     visitor reached Contact. The toggle becomes the accordion header (same
+     row styling as every other drawer link) and the panel collapses to
+     max-height: 0 until `.open`, which the existing dropdown click handler
+     already applies — no JS branching needed for mobile vs desktop. */
+  .nav-more-toggle {
+    display: flex; width: 100%; justify-content: space-between;
+    padding: var(--sp-3) var(--sp-4); border-radius: var(--r-sm);
+    font-size: var(--fs-md); font-weight: var(--fw-medium);
+    letter-spacing: normal; text-transform: none; color: var(--ink-2);
+  }
+  .nav-more-toggle .chev { transition: transform var(--dur-base) var(--ease-out); }
+  .nav-more-toggle[aria-expanded="true"] { color: var(--ink); }
+  .nav-more-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
   .nav-more-panel,
   .nav-more-panel.is-wide {
     position: static; transform: none; opacity: 1; visibility: visible; pointer-events: auto;
     display: flex; flex-direction: column; gap: 2px;
-    min-width: 0; padding: 0; margin: 0; box-shadow: none; background: none;
+    min-width: 0; max-width: none; padding: 0 0 0 var(--sp-4); margin: 0;
+    box-shadow: none; background: none;
+    max-height: 0; overflow: hidden;
+    transition: max-height var(--dur-slow) var(--ease-out);
   }
+  /* A generous cap rather than measuring real content height — the panels
+     top out at ten short rows, well under this, so every item still fits. */
+  .nav-more-panel.open { max-height: 600px; }
+
+  /* Thumbnails are a desktop affordance where the panel has room to spare;
+     in a narrow drawer nine images before Contact is more scroll than menu.
+     Text links only here — the three-column grid collapses back to one. */
+  .nav-more-panel.is-wide { display: flex; }
+  .nav-more-panel.is-wide img { display: none; }
+  .nav-more-panel.is-wide a:not(.nav-more-all) { flex-direction: row; padding: var(--sp-3) var(--sp-4); }
+  .nav-more-panel.is-wide a:not(.nav-more-all) span {
+    font-size: var(--fs-md); font-weight: var(--fw-medium); color: var(--ink-2); white-space: normal;
+  }
+  .nav-more-panel.is-wide a[aria-current="page"] span { color: var(--brand); font-weight: var(--fw-semi); }
   .nav-toggle { display: flex; position: relative; z-index: calc(var(--z-drawer) + 1); }
   .header-cta .btn { display: none; }
   .nav .nav-call { display: inline-flex; margin-top: var(--sp-5); }
