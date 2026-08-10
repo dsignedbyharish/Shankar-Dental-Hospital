@@ -86,12 +86,15 @@
      the curve eases into the straight edge instead of meeting it at a visible
      tangent. Browsers without `corner-shape` fall back to plain rounding at
      the same radius, which still looks right, just slightly less smooth. */
-  --r-xs:   6px;
-  --r-sm:   10px;
-  --r-md:   16px;
-  --r-lg:   24px;
-  --r-xl:   32px;
-  --r-2xl:  44px;
+  /* The large end climbs hard; the small end stays moderate on purpose. A
+     34px icon chip at a 28px radius is just a circle, so --r-xs/--r-sm are
+     tuned for small boxes and --r-lg upward for panels and cards. */
+  --r-xs:   8px;
+  --r-sm:   12px;
+  --r-md:   18px;
+  --r-lg:   32px;
+  --r-xl:   44px;
+  --r-2xl:  60px;
   --r-full: 999px;
 
   /* ---------- Layout ---------------------------------------------------- */
@@ -492,7 +495,7 @@ address { font-style: normal; }
 
 .hero-split {
   position: relative; overflow: hidden;
-  border-radius: clamp(var(--r-lg), 1.6vw, 26px);
+  border-radius: clamp(var(--r-lg), 2.2vw, var(--r-2xl));
   background: var(--bg-deep);
   max-width: var(--wrap); margin-inline: auto;
   display: grid; grid-template-columns: 1.15fr .85fr;
@@ -642,9 +645,30 @@ address { font-style: normal; }
 /* ---------- Interior page header ---------- */
 /* Interior headers are paper too, so an inner page does not open on a slab of
    navy that the homepage no longer has. The rule below carries the weight. */
-.page-head { background: var(--bg); position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+/* Interior headers echo the homepage hero: a rounded card on the paper rather
+   than a full-width band. Lighter key — sand, not ink — so an inner page does
+   not open as heavily as the homepage does. */
+.page-head {
+  background: var(--bg); position: relative; overflow: visible; border-bottom: 0;
+  padding-inline: clamp(var(--sp-4), 2vw, var(--sp-6));
+  padding-bottom: clamp(var(--sp-6), 2vw, var(--sp-8));
+}
 .page-head::before { content: none; }
-.page-head-inner { position: relative; z-index: var(--z-raised); padding-block: clamp(var(--sp-12), 6vw, 78px) clamp(var(--sp-10), 5vw, 62px); }
+.page-head-inner {
+  position: relative; z-index: var(--z-raised);
+  background: var(--bg-alt);
+  border-radius: clamp(var(--r-lg), 1.8vw, var(--r-2xl));
+  overflow: hidden;
+  padding: clamp(var(--sp-10), 5vw, 72px) clamp(var(--sp-7), 4vw, var(--sp-14))
+           clamp(var(--sp-10), 5vw, 64px);
+}
+/* Same depth field as the hero card, at a fraction of the strength. */
+.page-head-inner::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(620px 400px at 88% 6%, rgba(154,123,79,.16), transparent 68%),
+              radial-gradient(520px 340px at 4% 96%, rgba(168,30,45,.08), transparent 72%);
+}
+@supports (corner-shape: squircle) { .page-head-inner { corner-shape: squircle; } }
 .page-head h1 { color: var(--ink); margin-bottom: .26em; max-width: 20ch; }
 .page-head p { color: var(--ink-2); max-width: 60ch; margin: 0; font-size: var(--fs-lg); line-height: var(--lh-snug); }
 .page-head .eyebrow { color: var(--brass); }
@@ -990,7 +1014,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .case h3 { margin-bottom: .7em; }
 
 .figure { margin: clamp(var(--sp-7), 4vw, var(--sp-10)) 0; }
-.figure img { border-radius: var(--r-md); border: 0; width: 100%; background: var(--bg-alt); }
+.figure img { border-radius: var(--r-lg); border: 0; width: 100%; background: var(--bg-alt); }
 .figure figcaption { font-size: var(--fs-sm); color: var(--ink-3); margin-top: var(--sp-3); line-height: var(--lh-snug); max-width: 72ch; }
 
 /* Clinical figures uncover upward as they arrive, and the caption follows a
@@ -1106,7 +1130,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
    ========================================================================== */
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: var(--sp-5); }
 .gal-item {
-  position: relative; display: block; border-radius: var(--r-sm); overflow: hidden;
+  position: relative; display: block; border-radius: var(--r-lg); overflow: hidden;
   background: var(--bg-alt); border: 0; cursor: zoom-in;
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
@@ -1492,7 +1516,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
    ========================================================================== */
 .compare {
   position: relative; margin: clamp(var(--sp-7), 4vw, var(--sp-10)) 0;
-  border-radius: var(--r-md); overflow: hidden; background: var(--bg-alt);
+  border-radius: var(--r-lg); overflow: hidden; background: var(--bg-alt);
   --pos: 50%;
   touch-action: pan-y;   /* let the page scroll vertically over the slider */
 }
