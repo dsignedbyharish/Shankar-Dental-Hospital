@@ -455,11 +455,67 @@ address { font-style: normal; }
 .js .hero::after    { transform: scaleX(0); }
 .js .hero.in::after { transform: scaleX(1); }
 
-.hero-inner {
-  position: relative; z-index: var(--z-raised);
-  padding: clamp(var(--sp-14), 7vw, 96px) 0 clamp(var(--sp-14), 7vw, 92px);
-  max-width: none;
+/* Split hero: type on paper against a full-height image that bleeds to the
+   viewport edge. The copy column keeps the site gutter by reproducing the
+   wrap's own centring maths, so the h1 lines up with every heading below it. */
+.hero-split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: stretch; min-height: min(76vh, 720px);
 }
+.hero-copy { display: flex; align-items: center; }
+.hero-copy-inner {
+  width: 100%;
+  padding-block: clamp(var(--sp-14), 7vw, 96px);
+  padding-left: max(var(--sp-6), calc((100vw - var(--wrap)) / 2 + var(--sp-6)));
+  padding-right: clamp(var(--sp-8), 5vw, var(--sp-16));
+}
+
+/* Deep ink panel. It gives the right half real weight without a photograph
+   large enough to fill it — the only 1600px images in the library are empty
+   ward rooms, which read as a government hospital next to copy calling this a
+   modern purpose-built centre. */
+.hero-figure {
+  position: relative; overflow: hidden;
+  background: var(--bg-deep);
+  display: flex; align-items: center;
+  padding: clamp(var(--sp-10), 5vw, var(--sp-16));
+}
+.hero-figure::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(680px 420px at 78% 18%, rgba(154,123,79,.30), transparent 68%);
+}
+/* Uncovered from the bottom as the page opens. */
+.js .hero-figure { clip-path: inset(0 0 100% 0); transition: clip-path 1300ms var(--ease-out) 120ms; }
+.js .hero-figure.in { clip-path: inset(0 0 0 0); }
+
+.hero-portrait-panel { position: relative; z-index: 2; max-width: 320px; }
+.hero-portrait-panel .hero-portrait-frame {
+  width: 100%; border-radius: var(--r-sm); overflow: hidden;
+  background: rgba(255,255,255,.06);
+}
+.hero-portrait-panel .hero-portrait-frame img {
+  width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 16%;
+  filter: saturate(1.04) contrast(1.06);
+  /* The source file has a white strip baked into its bottom edge. The frame
+     clips, so a few percent of scale crops it off rather than retouching. */
+  transform: scale(1.07);
+}
+.hero-portrait-meta {
+  margin-top: var(--sp-5); padding-top: var(--sp-5);
+  border-top: 1px solid rgba(255,255,255,.18);
+}
+.hero-portrait-meta .name {
+  display: block; font-family: var(--font-serif); font-weight: 600;
+  color: #fff; font-size: var(--fs-xl); line-height: 1.2;
+}
+.hero-portrait-meta .qual {
+  display: block; margin-top: 7px; color: var(--on-deep-accent);
+  font-size: var(--fs-2xs); letter-spacing: .13em; text-transform: uppercase; font-weight: var(--fw-semi);
+}
+.hero-portrait-meta .role {
+  display: block; margin-top: 5px; color: var(--on-deep-soft); font-size: var(--fs-sm);
+}
+
 .hero h1 { color: var(--ink); margin-bottom: .34em; max-width: 15ch; }
 .hero .lede {
   font-size: clamp(var(--fs-lg), 1.5vw, var(--fs-xl));
@@ -582,20 +638,84 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   font-variant-numeric: tabular-nums;
 }
 
+/* ---------- Section lead + note columns ----------
+   Long stacked prose was the heaviest reading on the site. The notes grid
+   keeps the wording exactly and only changes the shape: three short columns
+   under a hanging numeral instead of one tall block. */
+.section-lead { max-width: 34ch; margin-bottom: clamp(var(--sp-10), 5vw, var(--sp-14)); }
+.section-lead.is-wide { max-width: 46ch; }
+
+.notes {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(var(--sp-8), 4vw, var(--sp-12));
+}
+.notes .note {
+  margin: 0; padding-top: var(--sp-6);
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.notes .note p { margin: 0; font-size: var(--fs-md); color: var(--ink-2); max-width: none; }
+.note-num {
+  display: block; margin-bottom: var(--sp-5);
+  font-family: var(--font-serif); font-size: var(--fs-lg); font-weight: 600;
+  color: var(--brass); letter-spacing: .12em; font-variant-numeric: tabular-nums;
+}
+/* The rule above each note draws across as the row arrives. */
+.js .notes.stagger .note { position: relative; }
+.js .notes.stagger .note::after {
+  content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
+  background: var(--brass-soft); transform: scaleX(0); transform-origin: left;
+  transition: transform 900ms var(--ease-out);
+}
+.js .notes.stagger.in .note::after { transform: scaleX(1); }
+.js .notes.stagger.in .note:nth-child(2)::after { transition-delay: 120ms; }
+.js .notes.stagger.in .note:nth-child(3)::after { transition-delay: 240ms; }
+
+/* Two-up image band */
+.media-band { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
+.media-band-item { margin: 0; overflow: hidden; border-radius: var(--r-md); background: var(--bg-alt); }
+.media-band-item img { width: 100%; aspect-ratio: 3/2; object-fit: cover; transition: transform 900ms var(--ease-out); }
+.media-band-item:hover img { transform: scale(1.03); }
+
 /* ---------- Split / media rows ---------- */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(var(--sp-8), 5vw, var(--sp-16)); align-items: center; }
 .split-media img { border-radius: var(--r-lg); box-shadow: none; width: 100%; }
 .split-media.stack-2 { display: grid; gap: var(--sp-4); }
 
-/* ---------- Feature list ---------- */
-.checklist { list-style: none; padding: 0; margin: 0 0 1.3em; }
-.checklist li { position: relative; padding-left: var(--sp-8); margin-bottom: .95em; }
-.checklist li::before {
-  content: ""; position: absolute; left: 0; top: .42em;
-  width: 20px; height: 20px; border-radius: 50%;
-  background: var(--teal-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d6e78' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat;
+/* ---------- Feature list ----------
+   Each item carries an icon matched to what it says, not a repeated tick.
+   Items with no clear subject keep the tick — a wrong icon is worse than a
+   neutral one. See tools/ note in HANDOFF §5. */
+.checklist { list-style: none; padding: 0; margin: 0 0 1.4em; }
+.checklist li {
+  position: relative; display: flex; gap: var(--sp-4);
+  padding-left: 0; margin-bottom: 1.05em; align-items: flex-start;
 }
-.bg-deep .checklist li::before { background-color: rgba(143,211,219,.16); }
+.li-ico {
+  width: 34px; height: 34px; flex: none; padding: 7px;
+  border-radius: var(--r-sm);
+  color: var(--teal); background: var(--teal-tint);
+  margin-top: -2px;
+  transition: transform var(--dur-base) var(--ease-spring),
+              background var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out);
+}
+.checklist li:hover .li-ico {
+  transform: translateY(-2px) scale(1.06);
+  background: var(--teal); color: #fff;
+}
+.bg-deep .li-ico { background: rgba(215,185,138,.16); color: var(--on-deep-accent); }
+.bg-deep .checklist li:hover .li-ico { background: var(--on-deep-accent); color: var(--ink); }
+
+/* Icons draw in with their item rather than all at once. */
+.js .reveal .li-ico, .js .stagger .li-ico { opacity: 0; transform: translateY(6px); }
+.js .reveal.in .li-ico, .js .stagger.in .li-ico { opacity: 1; transform: none; }
+.js .checklist li:nth-child(1) .li-ico { transition-delay: 60ms; }
+.js .checklist li:nth-child(2) .li-ico { transition-delay: 120ms; }
+.js .checklist li:nth-child(3) .li-ico { transition-delay: 180ms; }
+.js .checklist li:nth-child(4) .li-ico { transition-delay: 240ms; }
+.js .checklist li:nth-child(n+5) .li-ico { transition-delay: 300ms; }
 
 /* ==========================================================================
    Doctors
@@ -973,6 +1093,8 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .hero-stats .stat:nth-child(2) { border-right: 0; }
   .hero-stats .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line-soft); }
   .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .notes { grid-template-columns: 1fr; gap: var(--sp-7); }
+  .section-lead, .section-lead.is-wide { max-width: 30ch; }
   .split, .contact-grid { grid-template-columns: 1fr; }
   .split-media { order: -1; }
   .doc { grid-template-columns: 1fr; }
@@ -984,6 +1106,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   body { font-size: var(--fs-md); }          /* 16px — avoids iOS auto-zoom */
   .topbar-list .hide-sm { display: none; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .media-band { grid-template-columns: 1fr; gap: var(--sp-4); }
   .hero-stats { margin-top: -34px; border-radius: var(--r-lg); }
   .hero-stats .stat { padding: var(--sp-5) var(--sp-4); }
   .stat-num { font-size: 1.7rem; }
@@ -1214,11 +1337,9 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .section-sm { padding: var(--sp-12) 0; }
   .case, .doc, .gate { padding: 0; }
   .gate { padding: var(--sp-7) var(--sp-6); }
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-portrait { justify-self: start; margin-top: var(--sp-8); }
-  .hero-portrait-frame { width: 200px; }
-  .hero-portrait::before { inset: -10px -10px -18px; }
-  .hero-portrait-card { left: auto; right: -16px; bottom: 16px; max-width: 190px; padding: var(--sp-2) var(--sp-4); }
+  .hero-copy-inner { padding-inline: var(--sp-5); }
+  .hero-figure { min-height: 38vh; }
+  .hero-figure-cap { left: var(--sp-5); right: var(--sp-5); }
   .compare-label { font-size: 9px; padding: 3px var(--sp-2); }
   .card { padding: var(--sp-5) 0 var(--sp-6); }
   .card::before { inset: -10px -14px; }
@@ -1227,8 +1348,14 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 }
 
 @media (max-width: 1060px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-portrait { justify-self: start; }
+  /* Stacked: copy first, then the image as a band. Keeping the split at this
+     width squeezes the h1 to four or five words a line. */
+  .hero-split { grid-template-columns: 1fr; min-height: 0; }
+  .hero-copy-inner {
+    padding-inline: var(--sp-6);
+    padding-block: clamp(var(--sp-12), 7vw, 80px) clamp(var(--sp-10), 5vw, var(--sp-14));
+  }
+  .hero-figure { min-height: 46vh; }
 }
 
 /* Reduced motion: kill parallax, the wipe reveal and the progress rail. */

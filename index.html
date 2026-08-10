@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=93e14369">
+<link rel="stylesheet" href="assets/css/style.css?v=b02b3d13">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="canonical" href="https://www.shankerdentalcentremadurai.com/">
@@ -96,9 +96,9 @@
 <main id="main">
 
   <section class="hero lit" aria-labelledby="hero-heading">
-    <div class="wrap">
-      <div class="hero-inner hero-grid">
-        <div>
+    <div class="hero-split">
+      <div class="hero-copy">
+        <div class="hero-copy-inner">
           <span class="eyebrow">Madurai, Tamil Nadu</span>
           <h1 id="hero-heading" class="rise"><span>Saving faces and changing lives</span></h1>
           <p class="lede">
@@ -111,14 +111,21 @@
             <a class="btn btn-outline btn-lg" href="treatments.html">Explore treatments</a>
           </div>
         </div>
+      </div>
 
-        <div class="hero-portrait lit">
+      <!-- Portrait panel. The source is 238x203, so it is shown at ~320px —
+           about 1.3x — rather than filled edge to edge, which would be a 6x
+           upscale. The panel gives it presence; the frame stays honest.
+           When real photography lands this becomes a full-bleed image. -->
+      <div class="hero-figure lit">
+        <div class="hero-portrait-panel">
           <div class="hero-portrait-frame">
             <img src="assets/images/staffimg1.jpg" alt="Dr Shanker Mohan, Oral and Maxillofacial Surgeon" width="238" height="203" fetchpriority="high">
           </div>
-          <div class="hero-portrait-card">
+          <div class="hero-portrait-meta">
             <span class="name">Dr. Shanker Mohan</span>
             <span class="qual">MDS, AO/ASIF, FFDRCS, FDSRCS</span>
+            <span class="role">Oral &amp; Maxillofacial Surgeon</span>
           </div>
         </div>
       </div>
@@ -136,32 +143,50 @@
 
   <section class="section" aria-labelledby="welcome-heading">
     <div class="wrap">
-      <div class="split">
-        <div class="reveal">
-          <p class="section-index"><span>01 &mdash; The centre</span></p>
-          <h2 id="welcome-heading" class="rise"><span>Welcome to Shanker Dental and Craniofacial Centre</span></h2>
+      <div class="section-lead reveal">
+        <p class="section-index"><span>01 &mdash; The centre</span></p>
+        <h2 id="welcome-heading" class="rise"><span>Welcome to Shanker Dental and Craniofacial Centre</span></h2>
+      </div>
+
+      <!-- The same three paragraphs, broken into columns. Long stacked prose
+           was the densest reading on the page; nothing here is reworded. -->
+      <ol class="notes reveal stagger">
+        <li class="note">
+          <span class="note-num">01</span>
           <p>
             Shanker Dental and Craniofacial Centre is a one of a kind, modern purpose-built centre situated in
             the heart of Madurai having a clinically clean but comfortable and relaxing environment with all the
             latest hi-tech equipment needed for treating complex facial surgical and non-surgical cases.
           </p>
+        </li>
+        <li class="note">
+          <span class="note-num">02</span>
           <p>
             We have all the necessary infrastructure under one roof including state of the art dental treatment
             suites, Dental and Maxillofacial radiology (including fully digital OPG and Cephalometry &ndash; full
             mouth X-ray facility), modern integrated operating theatres with anaesthesia workstations with
             ventilators, LED lights, multi-parameter monitors, defibrillators, infusion pumps and so on.
           </p>
+        </li>
+        <li class="note">
+          <span class="note-num">03</span>
           <p>
             Our doctors are very highly qualified having extensive hands-on experience in both India and the UK.
             We meet all international standards that would be expected by a similar surgical setup anywhere in
             the western world. All of this enables us to provide the highest quality care for our patients.
           </p>
-          <p class="actions-row"><a class="btn btn-outline" href="doctors.html">Meet the doctors</a></p>
-        </div>
-        <div class="split-media stack-2 reveal">
+        </li>
+      </ol>
+
+      <p class="actions-row"><a class="btn btn-outline" href="doctors.html">Meet the doctors</a></p>
+
+      <div class="media-band reveal mt-12">
+        <figure class="media-band-item unmask">
           <img src="assets/images/Outpetient-facility-two.jpg" alt="Outpatient waiting and reception area at Shanker Dental and Craniofacial Centre" loading="lazy" decoding="async" width="800" height="533">
+        </figure>
+        <figure class="media-band-item unmask">
           <img src="assets/images/Outptient-facilty-one.jpg" alt="Patients seated in the outpatient facility with patient education screens on the wall" loading="lazy" decoding="async" width="800" height="533">
-        </div>
+        </figure>
       </div>
     </div>
   </section>
@@ -187,10 +212,10 @@
             for specialised training of nursing graduates in maxillofacial surgery.
           </p>
           <ul class="checklist">
-            <li>Fully digital OPG, Cephalometry and RVG imaging on site &mdash; no need to go elsewhere for X-rays</li>
-            <li>Integrated operating theatres with ventilators, defibrillators and multi-parameter monitoring</li>
-            <li>Strict sterilisation protocols with cassette-based instrument packs and disposables throughout</li>
-            <li>Treatment delivered only by postgraduate-qualified consultants</li>
+            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M3 12h18"/></svg>Fully digital OPG, Cephalometry and RVG imaging on site &mdash; no need to go elsewhere for X-rays</li>
+            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12h3l2-5 4 10 2.5-6 1.5 3h5"/></svg>Integrated operating theatres with ventilators, defibrillators and multi-parameter monitoring</li>
+            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 5 6v5.5c0 4 3 7.7 7 9.5 4-1.8 7-5.5 7-9.5V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Strict sterilisation protocols with cassette-based instrument packs and disposables throughout</li>
+            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/></svg>Treatment delivered only by postgraduate-qualified consultants</li>
           </ul>
           <p class="actions-row"><a class="btn btn-outline" href="facilities.html">Tour our facilities</a></p>
         </div>
@@ -435,6 +460,6 @@
   <p class="lb-cap" aria-live="polite"><span class="lb-cap-text"></span><span class="lb-count"></span></p>
 </div>
 
-<script src="assets/js/main.js?v=93e14369"></script>
+<script src="assets/js/main.js?v=b02b3d13"></script>
 </body>
 </html>
