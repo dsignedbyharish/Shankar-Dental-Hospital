@@ -539,29 +539,50 @@ address { font-style: normal; }
 /* Stat row — an editorial band on paper, separated by hairlines. The floating
    white card that overlapped the hero was the clearest single "template" tell
    on the page, and it cost 56px of negative margin to place. */
+/* Colour-blocked stat cards. The hairline row these replaced was honest but
+   quiet — the numbers are the practice's strongest plain facts and they were
+   whispering. Each block carries its own field; three dark, one light, so the
+   row has rhythm rather than four identical tiles. */
 .hero-stats {
   position: relative; z-index: var(--z-raised); background: none;
-  border-radius: 0; box-shadow: none; margin: 0;
-  border-top: 1px solid var(--line);
+  border-radius: 0; box-shadow: none; margin: 0; border-top: 0;
   display: grid; grid-template-columns: repeat(4, 1fr);
-  list-style: none; padding: 0;
+  gap: var(--sp-4); list-style: none; padding: 0;
 }
 .hero-stats .stat {
-  padding: var(--sp-10) var(--sp-6) var(--sp-10) 0;
-  border-right: 1px solid var(--line); margin: 0;
+  margin: 0; border: 0; border-radius: var(--r-md);
+  padding: clamp(var(--sp-7), 2.6vw, var(--sp-10));
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 190px; position: relative; overflow: hidden;
+  transition: transform var(--dur-base) var(--ease-out);
 }
-.hero-stats .stat + .stat { padding-left: var(--sp-6); }
-.hero-stats .stat:last-child { border-right: 0; }
+/* A ghosted mark in the corner of each block, echoing the numeral. */
+.hero-stats .stat::after {
+  content: ""; position: absolute; top: -30px; right: -30px;
+  width: 130px; height: 130px; border-radius: 50%;
+  background: currentColor; opacity: .07;
+}
+.hero-stats .stat:hover { transform: translateY(-3px); }
+
+.stat-ink   { background: var(--ink);        color: #fff; }
+.stat-brand { background: var(--brand);      color: #fff; }
+.stat-teal  { background: var(--teal);       color: #fff; }
+/* Light block uses ink text — brass at full strength is 4.0:1 on white, under
+   AA for the 12px label. The soft tint with ink on top is 7.2:1. */
+.stat-brass { background: var(--brass-soft); color: var(--ink); }
+
 .stat-num {
-  font-family: var(--font-serif); font-size: clamp(2.2rem, 3.4vw, 3rem); font-weight: var(--fw-semi);
-  color: var(--ink); line-height: 1; margin-bottom: var(--sp-3);
+  font-family: var(--font-serif); font-size: clamp(2.3rem, 3.6vw, 3.2rem); font-weight: var(--fw-semi);
+  color: inherit; line-height: 1; margin-bottom: var(--sp-3);
   font-variant-numeric: tabular-nums; letter-spacing: -.02em;
+  position: relative; z-index: 1;
 }
 .stat-label {
-  font-size: var(--fs-2xs); color: var(--ink-3); line-height: var(--lh-snug);
-  letter-spacing: .09em; text-transform: uppercase; font-weight: var(--fw-medium);
-  max-width: 22ch;
+  font-size: var(--fs-2xs); color: inherit; opacity: .82; line-height: var(--lh-snug);
+  letter-spacing: .1em; text-transform: uppercase; font-weight: var(--fw-semi);
+  max-width: 22ch; position: relative; z-index: 1;
 }
+@media (prefers-reduced-motion: reduce) { .hero-stats .stat:hover { transform: none; } }
 
 /* ---------- Interior page header ---------- */
 /* Interior headers are paper too, so an inner page does not open on a slab of
@@ -1078,6 +1099,38 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .footer-bottom ul { display: flex; gap: var(--sp-5); }
 .footer-bottom ul li { margin: 0; }
 
+/* ---------- Persistent call bar ----------
+   Phone-only. On desktop the header CTA and the top bar already carry the
+   number twice; a third floating copy would just be noise. */
+.callbar { display: none; }
+
+@media (max-width: 680px) {
+  .callbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-sticky);
+    display: grid; grid-template-columns: 1.6fr 1fr;
+    gap: 1px; background: var(--line);
+    border-top: 1px solid var(--line);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  .callbar-btn {
+    display: flex; align-items: center; justify-content: center; gap: var(--sp-2);
+    min-height: 56px; padding: var(--sp-3) var(--sp-4);
+    font-size: var(--fs-2xs); font-weight: var(--fw-bold);
+    letter-spacing: .09em; text-transform: uppercase;
+    transition: background var(--dur-fast) var(--ease-out);
+  }
+  .callbar-btn svg { width: 17px; height: 17px; flex: none; }
+  .callbar-call { background: var(--brand); color: #fff; }
+  .callbar-call:active { background: var(--brand-dark); color: #fff; }
+  .callbar-map { background: var(--ink); color: #fff; }
+  .callbar-map:active { background: #1c3145; color: #fff; }
+
+  /* The bar owns the bottom of the screen, so the page and the back-to-top
+     button both have to clear it or they sit underneath. */
+  body { padding-bottom: 56px; }
+  .to-top { bottom: calc(56px + var(--sp-4)); }
+}
+
 /* Back to top */
 .to-top {
   position: fixed; right: var(--sp-5); bottom: var(--sp-5); z-index: var(--z-sticky);
@@ -1166,8 +1219,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .nav a.nav-call { color: #fff; padding: var(--sp-3) var(--sp-6); }
   .nav a.nav-call:hover { color: #fff; background: var(--brand-dark); }
   .hero-stats { grid-template-columns: repeat(2, 1fr); margin-bottom: 0; }
-  .hero-stats .stat:nth-child(2) { border-right: 0; }
-  .hero-stats .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line-soft); }
+  .hero-stats .stat { min-height: 160px; }
   .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .notes { grid-template-columns: 1fr; gap: var(--sp-7); }
   .panels { grid-template-columns: 1fr; gap: var(--sp-8); }
@@ -1184,9 +1236,10 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .topbar-list .hide-sm { display: none; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .media-band { grid-template-columns: 1fr; gap: var(--sp-4); }
-  .hero-stats { margin-top: -34px; border-radius: var(--r-lg); }
-  .hero-stats .stat { padding: var(--sp-5) var(--sp-4); }
-  .stat-num { font-size: 1.7rem; }
+  .hero-stats { gap: var(--sp-3); }
+  .hero-stats .stat { min-height: 128px; padding: var(--sp-5); }
+  .hero-stats .stat::after { width: 84px; height: 84px; top: -22px; right: -22px; }
+  .stat-num { font-size: 1.9rem; }
   .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--sp-3); }
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
