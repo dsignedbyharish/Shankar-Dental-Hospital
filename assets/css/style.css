@@ -282,7 +282,13 @@ button, [role="button"] { cursor: pointer; }
 .mt-12 { margin-top: var(--sp-12); }
 .mb-8 { margin-bottom: var(--sp-8); }
 .actions-row { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-8); }
-.actions-center { justify-content: center; }
+/* `justify-content: center` only centers the buttons *within* this box — when
+   the row is a <p>, the general `p { max-width: 72ch }` rule shrinks the box
+   itself below the full width, and nothing recentred the box, so it sat flush
+   left with its lone button trivially "centered" inside a left-anchored strip.
+   margin-inline: auto centers the box too; harmless when the row is already
+   full width (auto margins on a non-constrained box do nothing). */
+.actions-center { justify-content: center; margin-inline: auto; }
 .info-body { flex: 1; }
 address { font-style: normal; }
 
@@ -458,17 +464,43 @@ address { font-style: normal; }
 .nav-more-panel a:hover { background: var(--bg-alt); color: var(--ink); }
 .nav-more-panel a[aria-current="page"] { color: var(--brand); background: var(--brand-tint); font-weight: var(--fw-semi); }
 
-/* The treatments panel carries nine links plus the hub, so it runs two
-   columns rather than one long list. */
+/* The treatments panel carries nine links plus the hub, each with a preview
+   thumbnail, so it runs three wide columns rather than the plain "More"
+   list — big enough that the image actually reads, not just a token icon. */
 .nav-more-panel.is-wide {
-  min-width: 480px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--sp-2);
+  min-width: 720px; max-width: 92vw;
+  padding: var(--sp-4);
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2);
 }
 .nav-more-panel.is-wide .nav-more-all {
   grid-column: 1 / -1;
   color: var(--brand); font-weight: var(--fw-bold);
+  padding-block: var(--sp-2);
 }
 .nav-more-panel.is-wide .nav-more-all:hover { background: var(--brand-tint); }
+
+/* Thumbnail tiles: image on top, label below, replacing the plain text row
+   the "More" panel still uses. */
+.nav-more-panel.is-wide a:not(.nav-more-all) {
+  flex-direction: column; align-items: stretch; gap: 0;
+  height: auto; min-height: 0; padding: var(--sp-2);
+  border-radius: var(--r-md);
+}
+.nav-more-panel.is-wide a:not(.nav-more-all) img {
+  width: 100%; aspect-ratio: 16 / 10; object-fit: cover;
+  border-radius: var(--r-sm); margin-bottom: var(--sp-3);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.nav-more-panel.is-wide a:not(.nav-more-all) span {
+  font-size: var(--fs-xs); font-weight: var(--fw-semi); color: var(--ink-2);
+  white-space: normal; line-height: var(--lh-snug);
+}
+.nav-more-panel.is-wide a:not(.nav-more-all):hover img { transform: scale(1.04); }
+.nav-more-panel.is-wide a:not(.nav-more-all):hover span { color: var(--ink); }
+.nav-more-panel.is-wide a[aria-current="page"] span { color: var(--brand); }
+@supports (corner-shape: squircle) {
+  .nav-more-panel.is-wide a:not(.nav-more-all) img { corner-shape: squircle; }
+}
 
 .header-cta { display: flex; align-items: center; gap: var(--sp-3); flex: none; }
 /* Scoped under .nav so it outranks `.btn { display: inline-flex }`. */
@@ -632,41 +664,25 @@ address { font-style: normal; }
    headshot would. The current placeholder is still a cropped headshot, so it
    reads smaller than the final art will — that is expected until the real
    cutout replaces it, not a bug in the layout. */
-.hero-figure {
-  position: relative; z-index: 2; overflow: visible; background: none;
-  display: flex; align-items: flex-end; justify-content: center;
-  padding: 0;
-}
-.hero-figure::before { content: none; }
+/* Image only, filling the panel. The previous version overlaid a name/role
+   caption on a lower z-index than the image itself — z-index: 1 under the
+   image's z-index: 2 — so the caption was compositing behind an opaque
+   photo, not on top of it. Rebuilt without that layer: the stage is
+   absolutely positioned edge-to-edge (`inset: 0`) against this panel, which
+   is the same fill pattern used elsewhere in this file (.hero-media,
+   .card-media img) and does not depend on percentage-height flex children
+   resolving correctly through a grid/flex ancestor chain, which is fragile
+   across breakpoints and was the likely reason the previous sizing read as
+   inconsistent. */
+.hero-figure { position: relative; z-index: 2; overflow: hidden; background: none; }
 /* Uncovered from the bottom as the page opens. */
 .js .hero-figure { clip-path: inset(0 0 100% 0); transition: clip-path 1300ms var(--ease-out) 120ms; }
 .js .hero-figure.in { clip-path: inset(0 0 0 0); }
 
 .hero-portrait-stage {
-  position: relative; z-index: 2;
-  max-width: min(88%, 360px);
-  max-height: calc(100% - var(--sp-8));
-  width: auto; height: auto; object-fit: contain;
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: contain; object-position: center;
   filter: drop-shadow(0 24px 40px rgba(0,0,0,.28));
-}
-
-/* Name and role sit as a caption over the image's own base — no card, no
-   border — matching the gradient-scrim caption already used on gallery
-   photos elsewhere on the site, so a floating standing figure does not
-   read as cut off mid-air at the bottom of the panel. */
-.hero-portrait-meta {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
-  padding: var(--sp-14) clamp(var(--sp-7), 4vw, var(--sp-10)) clamp(var(--sp-8), 4vw, var(--sp-10));
-  background: linear-gradient(to top, rgba(16,30,43,.5), transparent);
-  text-align: center;
-}
-.hero-portrait-meta .name {
-  display: block; font-family: var(--font-serif); font-weight: 600;
-  color: #fff; font-size: var(--fs-xl); line-height: 1.2;
-}
-.hero-portrait-meta .qual {
-  display: block; margin-top: 7px; color: var(--on-deep-accent);
-  font-size: var(--fs-2xs); letter-spacing: .1em; text-transform: uppercase; font-weight: var(--fw-semi);
 }
 
 .hero h1 { color: #fff; margin-bottom: .34em; max-width: 15ch; }
@@ -1716,8 +1732,15 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   pointer-events: none;
 }
 
-/* Headings that wipe up into place as they enter */
-.js .rise { overflow: hidden; }
+/* Headings that wipe up into place as they enter. `.rise` sits directly on
+   h1/h2, which run line-height 1.02 — almost no room in the line box above
+   ascenders or below descenders. `overflow: hidden` on that box clipped the
+   descender off any letter that has one ("changing", "craniofacial", any
+   g/y/j/p/q), not just in the hero but on every .rise heading on the page.
+   padding-bottom opens room inside the clipped box; the matching negative
+   margin keeps the space before the next element exactly what it was, so
+   nothing below the heading shifts. */
+.js .rise { overflow: hidden; padding-bottom: .22em; margin-bottom: calc(.6em - .22em); }
 .js .rise > * {
   display: block;
   transform: translateY(105%);
@@ -1758,7 +1781,6 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .case, .doc, .gate { padding: 0; }
   .gate { padding: var(--sp-7) var(--sp-6); }
   .hero-copy-inner { padding-inline: var(--sp-5); }
-  .hero-portrait-stage { max-width: 78%; }
   .compare-label { font-size: 9px; padding: 3px var(--sp-2); }
   .card { padding: var(--sp-5) 0 var(--sp-6); }
   .card::before { inset: -10px -14px; }
