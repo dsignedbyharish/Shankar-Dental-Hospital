@@ -427,6 +427,9 @@ address { font-style: normal; }
    is unwrapped into the drawer's ordinary flow and picks up the same `.nav a`
    rules every other link already has — no separate mobile styling needed. */
 .nav-more { position: relative; }
+/* Mobile-only stand-in for the desktop dropdown; the <1060px media query
+   below is what actually reveals it. */
+.nav-more-flat { display: none; }
 .nav-more-toggle {
   display: flex; align-items: center; gap: 3px;
   min-height: var(--tap); padding: var(--sp-2);
@@ -904,36 +907,31 @@ a.card:hover .card-icon { transform: translateY(-3px); }
   scroll-snap-align: start;
 }
 
+/* Controls sit in a row below the track rather than floating over its sides
+   — floating arrows either overhung the wrap at narrower widths or sat on
+   top of the cards themselves. The track loops (see main.js), so both
+   arrows stay active permanently; neither ever needs a disabled state. */
+.carousel-controls { display: flex; justify-content: center; gap: var(--sp-4); margin-top: var(--sp-7); }
 .carousel-btn {
-  position: absolute; top: 50%; z-index: 3;
-  width: 52px; height: 52px; margin-top: -26px;
+  position: static;
+  width: 52px; height: 52px;
   border-radius: 50%; border: 0; cursor: pointer;
   background: var(--bg-pure); color: var(--ink);
   display: grid; place-items: center;
   box-shadow: 0 2px 4px rgba(18,64,62,.06), 0 18px 34px -18px rgba(18,64,62,.4);
   transition: background var(--dur-fast) var(--ease-out),
-              transform var(--dur-fast) var(--ease-out),
-              opacity var(--dur-fast) var(--ease-out);
+              transform var(--dur-fast) var(--ease-out);
 }
 .carousel-btn svg { width: 22px; height: 22px; }
-.carousel-btn:hover { background: var(--brand); color: #fff; transform: translateY(-50%) scale(1.05); }
-.carousel-btn:active { transform: translateY(-50%) scale(.94); }
-.carousel-btn[disabled] { opacity: 0; visibility: hidden; pointer-events: none; }
-.carousel-prev { left: -26px; }
-.carousel-next { right: -26px; }
+.carousel-btn:hover { background: var(--brand); color: #fff; transform: scale(1.06); }
+.carousel-btn:active { transform: scale(.94); }
 @supports (corner-shape: squircle) { .carousel-btn { corner-shape: squircle; } }
 
-/* Below the track width where the arrows would overhang the viewport edge,
-   dock them just inside the wrap instead of floating past it. */
-@media (max-width: 1180px) {
-  .carousel-prev { left: 0; }
-  .carousel-next { right: 0; }
+@media (max-width: 680px) { .carousel-track { gap: var(--sp-4); } }
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { scroll-behavior: auto; }
+  .carousel-btn:hover, .carousel-btn:active { transform: none; }
 }
-@media (max-width: 680px) {
-  .carousel-btn { display: none; }   /* touch scroll is the primary input here anyway */
-  .carousel-track { gap: var(--sp-4); }
-}
-@media (prefers-reduced-motion: reduce) { .carousel-track { scroll-behavior: auto; } }
 
 .card-link { display: inline-flex; align-items: center; gap: var(--sp-2); font-weight: var(--fw-semi); font-size: var(--fs-sm); color: var(--brand); margin-top: var(--sp-1); }
 .card-link svg { width: 15px; height: 15px; transition: transform var(--dur-base) var(--ease-out); }
@@ -1648,56 +1646,57 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 }
 
 @media (max-width: 1060px) {
+  /* A fixed, full-screen popup rather than a right-docked sliding drawer —
+     fades and scales in centred, covers the whole viewport, and closes on
+     the same toggle button (shown as a close/X icon while open, positioned
+     above the popup via z-index so it stays reachable throughout). */
   .nav {
-    position: fixed; inset: 0 0 auto; top: 0; z-index: var(--z-drawer);
-    flex-direction: column; align-items: stretch; gap: 2px;
-    background: var(--bg); padding: 96px var(--sp-5) var(--sp-7); height: 100dvh; overflow-y: auto;
-    transform: translateX(100%); transition: transform var(--dur-slow) var(--ease-out);
-    box-shadow: -8px 0 40px rgba(18,64,62,.16); max-width: 380px; margin-left: auto;
+    position: fixed; inset: 0; z-index: var(--z-drawer);
+    flex-direction: column; align-items: stretch; justify-content: center; gap: 2px;
+    background: var(--bg); padding: 96px var(--sp-6) var(--sp-7); height: 100dvh;
+    max-width: none; margin: 0; overflow-y: auto;
+    opacity: 0; visibility: hidden; transform: scale(.97);
+    transition: opacity var(--dur-slow) var(--ease-out),
+                transform var(--dur-slow) var(--ease-out),
+                visibility var(--dur-slow);
+    box-shadow: none;
   }
-  .nav.open { transform: none; }
-  .nav a { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-md); border-radius: var(--r-sm); }
+  .nav.open { opacity: 1; visibility: visible; transform: none; }
+  /* `.nav a` is `display: flex` (set in the base rule, for icon+label pairs),
+     so `text-align: center` has no effect on it — same trap as
+     .section-index above. justify-content is the property that actually
+     centers a flex container's content; without it every link sat flush
+     left regardless of this rule, while .nav-more-flat (which does set
+     justify-content) was the only one visibly centered — inconsistent. */
+  .nav a { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-lg); border-radius: var(--r-sm); justify-content: center; }
   .nav a[aria-current="page"]::after { display: none; }
-  /* In the drawer, both dropdowns become accordions rather than dumping
-     everything into one long flat list — nine treatment cards with
-     thumbnails, always expanded, was most of the drawer's height before a
-     visitor reached Contact. The toggle becomes the accordion header (same
-     row styling as every other drawer link) and the panel collapses to
-     max-height: 0 until `.open`, which the existing dropdown click handler
-     already applies — no JS branching needed for mobile vs desktop. */
-  .nav-more-toggle {
-    display: flex; width: 100%; justify-content: space-between;
-    padding: var(--sp-3) var(--sp-4); border-radius: var(--r-sm);
-    font-size: var(--fs-md); font-weight: var(--fw-medium);
-    letter-spacing: normal; text-transform: none; color: var(--ink-2);
-  }
-  .nav-more-toggle .chev { transition: transform var(--dur-base) var(--ease-out); }
-  .nav-more-toggle[aria-expanded="true"] { color: var(--ink); }
-  .nav-more-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
 
-  .nav-more-panel,
-  .nav-more-panel.is-wide {
+  /* No dropdowns in the popup — every item is a plain, individually flat
+     link. Treatment Options collapses from the desktop's nine-item image
+     panel to a single link through to the hub page; the toggle/chevron and
+     the desktop panel are both hidden here rather than reused as an
+     accordion, since a popup menu is exactly the wrong place to make a
+     visitor tap twice to reach a page. */
+  .nav-more-toggle, .nav-more-panel.is-wide { display: none; }
+  .nav-more-flat {
+    display: flex; align-items: center; min-height: var(--tap);
+    padding: var(--sp-3) var(--sp-4); border-radius: var(--r-sm);
+    font-size: var(--fs-lg); font-weight: var(--fw-medium); color: var(--ink-2);
+    text-align: center; justify-content: center;
+  }
+  .nav-more-flat:hover { background: var(--bg-alt); color: var(--ink); }
+
+  /* "More" holds only Facilities and Case of the Month — two items is not
+     enough to justify hiding them behind a tap, so its panel stays
+     permanently open and unstyled as a group; the links inherit `.nav a`
+     above like everything else in the list. */
+  .nav-more-panel:not(.is-wide) {
     position: static; transform: none; opacity: 1; visibility: visible; pointer-events: auto;
     display: flex; flex-direction: column; gap: 2px;
-    min-width: 0; max-width: none; padding: 0 0 0 var(--sp-4); margin: 0;
+    min-width: 0; max-width: none; padding: 0; margin: 0;
     box-shadow: none; background: none;
-    max-height: 0; overflow: hidden;
-    transition: max-height var(--dur-slow) var(--ease-out);
   }
-  /* A generous cap rather than measuring real content height — the panels
-     top out at ten short rows, well under this, so every item still fits. */
-  .nav-more-panel.open { max-height: 600px; }
 
-  /* Thumbnails are a desktop affordance where the panel has room to spare;
-     in a narrow drawer nine images before Contact is more scroll than menu.
-     Text links only here — the three-column grid collapses back to one. */
-  .nav-more-panel.is-wide { display: flex; }
-  .nav-more-panel.is-wide img { display: none; }
-  .nav-more-panel.is-wide a:not(.nav-more-all) { flex-direction: row; padding: var(--sp-3) var(--sp-4); }
-  .nav-more-panel.is-wide a:not(.nav-more-all) span {
-    font-size: var(--fs-md); font-weight: var(--fw-medium); color: var(--ink-2); white-space: normal;
-  }
-  .nav-more-panel.is-wide a[aria-current="page"] span { color: var(--brand); font-weight: var(--fw-semi); }
   .nav-toggle { display: flex; position: relative; z-index: calc(var(--z-drawer) + 1); }
   .header-cta .btn { display: none; }
   .nav .nav-call { display: inline-flex; margin-top: var(--sp-5); }
@@ -1896,8 +1895,15 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 /* ==========================================================================
    Editorial section furniture
    ========================================================================== */
+/* justify-content: center, unconditionally — not gated behind a .center
+   ancestor. The box already matches its own column's width (a flex
+   container fills its parent like any block box), so without this the label
+   sits flush-left inside that column regardless of whether the box itself
+   happens to be centered on the page; only text short enough to nearly fill
+   its box read as "centered" by coincidence. This makes every instance
+   actually center its text within whatever column it sits in. */
 .section-index {
-  display: flex; align-items: center; gap: var(--sp-5);
+  display: flex; align-items: center; justify-content: center; gap: var(--sp-5);
   font-family: var(--font-sans); color: var(--brass);
   font-size: var(--fs-2xs); font-weight: var(--fw-bold);
   letter-spacing: .22em; text-transform: uppercase;

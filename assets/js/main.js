@@ -280,7 +280,9 @@
      ----------------------------------------------------------------------
      Arrows are a convenience on top of native scroll, not a replacement —
      the track is a plain overflow-x scroller underneath, so touch and
-     trackpad scrolling work with or without this script.
+     trackpad scrolling work with or without this script. Both arrows stay
+     permanently active: past the last card, next wraps to the first; before
+     the first, prev wraps to the last.
      ====================================================================== */
   document.querySelectorAll('.carousel').forEach(function (car) {
     var track = car.querySelector('.carousel-track');
@@ -293,24 +295,23 @@
       var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
       return item ? item.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
     };
+    var atStart = function () { return track.scrollLeft <= 1; };
+    var atEnd = function () { return track.scrollLeft >= track.scrollWidth - track.clientWidth - 1; };
 
     prev.addEventListener('click', function () {
-      track.scrollBy({ left: -step(), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      if (atStart()) {
+        track.scrollTo({ left: track.scrollWidth, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      } else {
+        track.scrollBy({ left: -step(), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      }
     });
     next.addEventListener('click', function () {
-      track.scrollBy({ left: step(), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      if (atEnd()) {
+        track.scrollTo({ left: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      } else {
+        track.scrollBy({ left: step(), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      }
     });
-
-    /* Hide whichever arrow points at nothing, rather than leaving it live
-       to scroll past the end of the track. */
-    var updateArrows = function () {
-      var max = track.scrollWidth - track.clientWidth - 1;
-      prev.disabled = track.scrollLeft <= 0;
-      next.disabled = max <= 0 || track.scrollLeft >= max;
-    };
-    track.addEventListener('scroll', updateArrows, { passive: true });
-    window.addEventListener('resize', updateArrows);
-    updateArrows();
   });
 
   /* ======================================================================
