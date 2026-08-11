@@ -1610,9 +1610,14 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .js .reveal.in { opacity: 1; transform: none; }
 
 /* Images uncover rather than fade — a mask reads as printing, a fade reads
-   as loading. Applied per-image so a stack reveals in sequence. */
-.js .unmask { clip-path: inset(0 0 100% 0); transition: clip-path 1100ms var(--ease-out); }
-.js .unmask.in { clip-path: inset(0 0 0 0); }
+   as loading. Applied per-image so a stack reveals in sequence.
+   The clip-path lives on the `img`, not on `.unmask` itself: Chromium factors
+   clip-path into IntersectionObserver's intersection geometry, so a fully
+   clipped `.unmask` reports zero intersection forever — the element can never
+   trigger the very observer that would reveal it. Clipping the child instead
+   leaves `.unmask` an ordinary, unclipped observer target. */
+.js .unmask img { clip-path: inset(0 0 100% 0); transition: clip-path 1100ms var(--ease-out); }
+.js .unmask.in img { clip-path: inset(0 0 0 0); }
 
 /* Children of a staggered container enter in sequence (45ms apart) so a grid
    reads as a list arriving, not a block appearing. */
@@ -1888,20 +1893,22 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 /* ==========================================================================
    Editorial section furniture
    ========================================================================== */
-/* justify-content: center, unconditionally — not gated behind a .center
-   ancestor. The box already matches its own column's width (a flex
-   container fills its parent like any block box), so without this the label
-   sits flush-left inside that column regardless of whether the box itself
-   happens to be centered on the page; only text short enough to nearly fill
-   its box read as "centered" by coincidence. This makes every instance
-   actually center its text within whatever column it sits in. */
+/* Left by default, matching the heading that follows it — the eyebrow and
+   its h2 are one visual unit and must share an edge. Only `.center` sections
+   (a lead-in sitting above a full-width grid, no split/column beside it)
+   centre both; everywhere else — `.section-lead` and `.split` columns — the
+   heading is left-aligned by default, so the eyebrow must be too. A flex
+   container does not inherit `text-align` for its own children (same trap
+   as `.nav a` and `.actions-center`), hence `justify-content` rather than
+   `text-align` for whichever alignment applies. */
 .section-index {
-  display: flex; align-items: center; justify-content: center; gap: var(--sp-5);
+  display: flex; align-items: center; justify-content: flex-start; gap: var(--sp-5);
   font-family: var(--font-sans); color: var(--brass);
   font-size: var(--fs-2xs); font-weight: var(--fw-bold);
   letter-spacing: .22em; text-transform: uppercase;
   margin-bottom: var(--sp-8);
 }
+.center .section-index { justify-content: center; }
 
 /* Full-bleed band that escapes the wrap without horizontal scroll */
 .bleed { width: 100vw; margin-left: 50%; transform: translateX(-50%); }
@@ -1951,7 +1958,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 
   /* Anything driven by clip-path must land fully open, not stay masked —
      a mask that never animates is just hidden content. */
-  .js .unmask,
+  .js .unmask img,
   .js .hero-figure,
   .js .figure > .zoomable, .js .figure > img { clip-path: none !important; }
   .js .figure > figcaption { opacity: 1 !important; transform: none !important; }
