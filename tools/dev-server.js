@@ -34,7 +34,11 @@ const TYPES = {
 /* vercel.json header rules, with Vercel's path patterns turned into regexes. */
 const vercel = JSON.parse(fs.readFileSync(path.join(ROOT, 'vercel.json'), 'utf8'));
 const headerRules = (vercel.headers || []).map(function (rule) {
-  const re = new RegExp('^' + rule.source.replace(/\(\.\*\)/g, '.*') + '$');
+  /* "(.*)" is any tail; ":name*" is zero or more path segments, so
+     "/admin/:path*" also matches "/admin" itself, as it does on Vercel. */
+  const re = new RegExp('^' + rule.source
+    .replace(/\(\.\*\)/g, '.*')
+    .replace(/\/:\w+\*/g, '(?:/.*)?') + '$');
   return { re: re, headers: rule.headers };
 });
 const redirects = (vercel.redirects || []).reduce(function (m, r) { m[r.source] = r.destination; return m; }, {});
