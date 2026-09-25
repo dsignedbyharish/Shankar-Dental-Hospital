@@ -111,15 +111,33 @@ for path in sorted(glob.glob("*.html")):
             fail(path, "dead link", href)
 
 # --- asset versioning ----------------------------------------------------
-# /assets/* is served immutable for a year (see vercel.json), so the CSS and JS
-# URLs must carry a version or returning visitors keep stale files forever.
-for path in sorted(glob.glob("*.html")):
+# /assets/* is served immutable for a year (see vercel.json), so every CSS and
+# JS URL must carry a version that matches the file's current contents, or
+# returning visitors keep stale files forever. The Tamil files once shipped
+# with no version at all, which meant no translation fix could ever reach
+# anyone who had visited before. tools/bump_assets.py fixes what this finds.
+import hashlib
+for path in sorted(glob.glob("*.html") + glob.glob("admin/*.html")):
     html = open(path, encoding="utf-8").read()
-    for asset in ("assets/css/style.css", "assets/js/main.js"):
-        for m in re.finditer(re.escape(asset) + r'(\?v=[a-f0-9]+)?', html):
-            if not m.group(1):
-                fail(path, "unversioned asset", asset)
-                break
+    for m in re.finditer(r'((?:\.\./)?assets/(?:css|js)/[\w.-]+\.(?:css|js))(\?v=([0-9a-f]*))?(?=")', html):
+        ref, version = m.group(1), m.group(3)
+        with open(os.path.normpath(ref.replace("../", "")), "rb") as f:
+            want = hashlib.sha256(f.read()).hexdigest()[:8]
+        if not version:
+            fail(path, "unversioned asset", ref)
+        elif version != want:
+            fail(path, "stale asset version", "%s (run tools/bump_assets.py)" % ref)
+
+# --- generated case archive -------------------------------------------------
+# The Case of the Month blocks are rendered from data/cases.json. A hand edit
+# to the HTML, or a JSON edit without a rebuild, makes the two disagree.
+import subprocess
+try:
+    r = subprocess.run(["node", "tools/build-cases.js", "--check"], capture_output=True, text=True)
+    if r.returncode != 0:
+        fail("case-of-the-month.html", "cases out of date", (r.stderr or r.stdout).strip())
+except FileNotFoundError:
+    print("note: node not found, skipped the case archive check")
 
 pages = len(glob.glob("*.html"))
 if problems:

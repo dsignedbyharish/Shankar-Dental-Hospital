@@ -1,0 +1,973 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "2025-11-bimaxillary-orthognathic-surgery",
+      "year": 2025,
+      "month": 11,
+      "title": "Bimaxillary orthognathic surgery: Le Fort I impaction, sagittal split osteotomy and genioplasty",
+      "titleTa": "",
+      "topic": "orthognathic",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-november-2025.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2025-11-bimaxillary-orthognathic-surgery-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2025-10-parotid-sialolith-removal",
+      "year": 2025,
+      "month": 10,
+      "title": "Removal of a parotid sialolith (salivary stone)",
+      "titleTa": "",
+      "topic": "maxillofacial",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-october-2025.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2025-10-parotid-sialolith-removal-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2025-09-surprise-finding-after-a-fall",
+      "year": 2025,
+      "month": 9,
+      "title": "A surprise finding eight months after a fall in the garden",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-september-2025-image.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2025-09-surprise-finding-after-a-fall-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2025-07-full-mouth-implant-rehabilitation",
+      "year": 2025,
+      "month": 7,
+      "title": "Full mouth rehabilitation with upper and lower dental implants",
+      "titleTa": "",
+      "topic": "implants",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-july-2025.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2025-07-full-mouth-implant-rehabilitation-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2025-06-cleft-secondary-alveolar-bone-grafting",
+      "year": 2025,
+      "month": 6,
+      "title": "Cleft lip and palate: secondary alveolar bone grafting",
+      "titleTa": "",
+      "topic": "cleft",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-june-2025.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2025-06-cleft-secondary-alveolar-bone-grafting-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2025-05-facial-nerve-palsy-treatment-options",
+      "year": 2025,
+      "month": 5,
+      "title": "Facial nerve palsy: a review of treatment options",
+      "titleTa": "",
+      "topic": "maxillofacial",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-may-2025.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2025-05-facial-nerve-palsy-treatment-options-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2025-04-frontal-bone-orbital-roof-floor-injury",
+      "year": 2025,
+      "month": 4,
+      "title": "Frontal bone injury with orbital roof and floor fractures",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-april-2025.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2025-04-frontal-bone-orbital-roof-floor-injury-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2025-03-buccal-fat-pad-flap",
+      "year": 2025,
+      "month": 3,
+      "title": "Buccal fat pad flap: a simple, versatile technique",
+      "titleTa": "",
+      "topic": "maxillofacial",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-march-2025.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2025-03-buccal-fat-pad-flap-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2025-02-cleft-le-fort-i-advancement-iliac-crest-graft",
+      "year": 2025,
+      "month": 2,
+      "title": "Cleft patient: Le Fort I advancement osteotomy with iliac crest bone grafting",
+      "titleTa": "",
+      "topic": "cleft",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-feb-2025.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2025-02-cleft-le-fort-i-advancement-iliac-crest-graft-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2024-11-recurrent-giant-cell-granuloma",
+      "year": 2024,
+      "month": 11,
+      "title": "Recurrent central giant cell granuloma: enucleation and calcitonin therapy",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-november-2024.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2024-11-recurrent-giant-cell-granuloma-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2024-10-nasal-bone-fracture-mua",
+      "year": 2024,
+      "month": 10,
+      "title": "Nasal bone fracture: manipulation under anaesthesia (MUA)",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-october-2024.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2024-10-nasal-bone-fracture-mua-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2024-09-pan-facial-trauma-miniplating",
+      "year": 2024,
+      "month": 9,
+      "title": "Pan-facial trauma: zygoma, maxillary and mandibular fractures treated with miniplates",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-sept-2024.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2024-09-pan-facial-trauma-miniplating-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2024-08-submental-intubation-craniofacial-trauma",
+      "year": 2024,
+      "month": 8,
+      "title": "Submental intubation: an alternative to tracheostomy in craniofacial trauma",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-august-2024.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2024-08-submental-intubation-craniofacial-trauma-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2024-07-maxillary-necrosis-cavernous-sinus-thrombosis",
+      "year": 2024,
+      "month": 7,
+      "title": "Avascular necrosis of the maxilla presenting with cavernous sinus thrombosis",
+      "titleTa": "",
+      "topic": "maxillofacial",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-july-2024.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2024-07-maxillary-necrosis-cavernous-sinus-thrombosis-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2024-04-submucous-fibrosis-band-release",
+      "year": 2024,
+      "month": 4,
+      "title": "Submucous fibrosis: band release, skin grafting and hemiglossectomy",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-april-2024.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2024-04-submucous-fibrosis-band-release-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2024-03-mandibular-giant-cell-granuloma-enucleation",
+      "year": 2024,
+      "month": 3,
+      "title": "Central giant cell granuloma of the mandible: enucleation and calcitonin therapy",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-march-2024.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2024-03-mandibular-giant-cell-granuloma-enucleation-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2024-02-superior-orbital-fissure-syndrome",
+      "year": 2024,
+      "month": 2,
+      "title": "Superior orbital fissure syndrome",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-feb-2024.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2024-02-superior-orbital-fissure-syndrome-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2024-01-malunited-le-fort-iii-palatal-fistula",
+      "year": 2024,
+      "month": 1,
+      "title": "Malunited Le Fort III fracture with palatal fistula: osteotomy and von Langenbeck closure",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-jan-2024.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2024-01-malunited-le-fort-iii-palatal-fistula-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-12-central-giant-cell-granuloma-marginal-resection",
+      "year": 2023,
+      "month": 12,
+      "title": "Aggressive central giant cell granuloma: marginal resection and calcitonin therapy",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-dec-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-12-central-giant-cell-granuloma-marginal-resection-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-11-maxillary-infection-necrosis-rehabilitation",
+      "year": 2023,
+      "month": 11,
+      "title": "Maxillary infection causing avascular necrosis: debridement and prosthetic rehabilitation",
+      "titleTa": "",
+      "topic": "maxillofacial",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-nov-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-11-maxillary-infection-necrosis-rehabilitation-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-10-papillon-lefevre-syndrome",
+      "year": 2023,
+      "month": 10,
+      "title": "Papillon-Lefèvre syndrome: treating a rare condition",
+      "titleTa": "",
+      "topic": "maxillofacial",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-october-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-10-papillon-lefevre-syndrome-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-09-bat-ear-correction-otoplasty",
+      "year": 2023,
+      "month": 9,
+      "title": "Bat ear correction (otoplasty)",
+      "titleTa": "",
+      "topic": "maxillofacial",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-sept-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-09-bat-ear-correction-otoplasty-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-08-palatal-pleomorphic-adenoma-excision",
+      "year": 2023,
+      "month": 8,
+      "title": "Pleomorphic adenoma of the palate: wide excision and secondary healing",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-august-2023.jpg",
+          "w": 1260,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-08-palatal-pleomorphic-adenoma-excision-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-07-orbital-reconstruction-3d-printed-titanium",
+      "year": 2023,
+      "month": 7,
+      "title": "Orbital reconstruction with a custom 3D-printed titanium prosthesis, a first in Madurai",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-july-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-07-orbital-reconstruction-3d-printed-titanium-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-06-craniofacial-trauma-multiple-fractures",
+      "year": 2023,
+      "month": 6,
+      "title": "Craniofacial trauma: frontal, maxillary, naso-ethmoid and mandibular fractures with extradural and subdural haemorrhage",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-june-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-06-craniofacial-trauma-multiple-fractures-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-05-jallikattu-and-maxillofacial-surgery",
+      "year": 2023,
+      "month": 5,
+      "title": "Jallikattu and maxillofacial surgery",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-may-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-05-jallikattu-and-maxillofacial-surgery-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-04-cleft-palate-von-langenbeck-repair",
+      "year": 2023,
+      "month": 4,
+      "title": "Cleft palate repair using von Langenbeck's technique",
+      "titleTa": "",
+      "topic": "cleft",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-april-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-04-cleft-palate-von-langenbeck-repair-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-03-aggressive-fibromatosis-mandibular-resection",
+      "year": 2023,
+      "month": 3,
+      "title": "Aggressive fibromatosis: mandibular resection and reconstruction plating",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-march-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-03-aggressive-fibromatosis-mandibular-resection-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-02-adenomatoid-odontogenic-tumour",
+      "year": 2023,
+      "month": 2,
+      "title": "Adenomatoid odontogenic tumour of the mandible",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-feb-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-02-adenomatoid-odontogenic-tumour-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2023-01-tmj-ankylosis-esmarch-coronoidectomy",
+      "year": 2023,
+      "month": 1,
+      "title": "TMJ ankylosis treated with Esmarch's procedure and contralateral coronoidectomy",
+      "titleTa": "",
+      "topic": "tmj",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-jan-2023.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2023-01-tmj-ankylosis-esmarch-coronoidectomy-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-11-gorlin-goltz-syndrome-okc",
+      "year": 2022,
+      "month": 11,
+      "title": "Gorlin-Goltz syndrome: enucleation and marsupialisation of odontogenic keratocysts",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-november-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-11-gorlin-goltz-syndrome-okc-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-10-mandibular-ameloblastoma-segmental-resection",
+      "year": 2022,
+      "month": 10,
+      "title": "Mandibular ameloblastoma: segmental resection with reconstruction plating",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-october-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-10-mandibular-ameloblastoma-segmental-resection-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-09-alveolar-osteodistraction-for-implants",
+      "year": 2022,
+      "month": 9,
+      "title": "Intraoral alveolar osteodistraction to build bone for dental implants",
+      "titleTa": "",
+      "topic": "implants",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-sept-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-09-alveolar-osteodistraction-for-implants-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-08-tmj-ankylosis-multiplanar-distraction",
+      "year": 2022,
+      "month": 8,
+      "title": "TMJ ankylosis treated with multiplanar osteodistractors",
+      "titleTa": "",
+      "topic": "tmj",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-aug-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-08-tmj-ankylosis-multiplanar-distraction-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-07-mandibular-osteoma",
+      "year": 2022,
+      "month": 7,
+      "title": "Osteoma of the mandible",
+      "titleTa": "",
+      "topic": "pathology",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-july-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-07-mandibular-osteoma-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-06-bsso-mandibular-setback",
+      "year": 2022,
+      "month": 6,
+      "title": "Bilateral sagittal split osteotomy (BSSO) of the mandible with setback",
+      "titleTa": "",
+      "topic": "orthognathic",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-june-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-06-bsso-mandibular-setback-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-05-impacted-canine-piggyback-technique",
+      "year": 2022,
+      "month": 5,
+      "title": "Impacted canine brought into line with orthodontics (piggyback technique)",
+      "titleTa": "",
+      "topic": "orthodontics",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-may-2022-year.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-05-impacted-canine-piggyback-technique-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-05-sarpe-rapid-palatal-expansion",
+      "year": 2022,
+      "month": 5,
+      "title": "SARPE: surgically assisted rapid palatal expansion",
+      "titleTa": "",
+      "topic": "orthognathic",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-may-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-05-sarpe-rapid-palatal-expansion-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-04-foreign-body-face-after-fall",
+      "year": 2022,
+      "month": 4,
+      "title": "Foreign body in the face after a fall: a surprise finding during exploration",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-april-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-04-foreign-body-face-after-fall-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-03-tongue-abscess",
+      "year": 2022,
+      "month": 3,
+      "title": "Tongue abscess: a rare case",
+      "titleTa": "",
+      "topic": "maxillofacial",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-march-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-03-tongue-abscess-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-02-apert-syndrome-sarpe-bimaxillary",
+      "year": 2022,
+      "month": 2,
+      "title": "Apert syndrome: orthodontics, SARPE and bimaxillary osteotomy (Le Fort I and BSSO setback)",
+      "titleTa": "",
+      "topic": "craniofacial",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-feb-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-02-apert-syndrome-sarpe-bimaxillary-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2022-01-bsso-mandibular-setback-class-i",
+      "year": 2022,
+      "month": 1,
+      "title": "Bilateral sagittal split osteotomy (BSSO) with mandibular setback to Class I",
+      "titleTa": "",
+      "topic": "orthognathic",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-jan-2022.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2022-01-bsso-mandibular-setback-class-i-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2020-12-facial-laceration-medial-canthal-repair",
+      "year": 2020,
+      "month": 12,
+      "title": "Severe facial laceration with medial canthal detachment repair",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-december-2020.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2020-12-facial-laceration-medial-canthal-repair-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    },
+    {
+      "id": "2020-08-traumatic-sialocele-artificial-salivary-duct",
+      "year": 2020,
+      "month": 8,
+      "title": "Traumatic sialocele: creating an artificial salivary duct for drainage",
+      "titleTa": "",
+      "topic": "trauma",
+      "pages": [
+        {
+          "src": "assets/images/interesting-case-of-the-month-august-2020.jpg",
+          "w": 1236,
+          "h": 1600
+        }
+      ],
+      "card": {
+        "src": "assets/images/cases/2020-08-traumatic-sialocele-artificial-salivary-duct-card.jpg",
+        "w": 640,
+        "h": 480
+      },
+      "published": true,
+      "cropY": 0.165
+    }
+  ]
+}

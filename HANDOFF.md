@@ -45,9 +45,13 @@ merged it on 2 August 2026.
 No build step, no dependencies, no package manager. It is plain HTML/CSS/JS.
 
 ```bash
-python3 -m http.server 8787      # then open http://localhost:8787
+node tools/dev-server.js         # http://localhost:8791, admin panel included
 python3 tools/check.py           # pre-deploy validation — run before every push
+python3 tools/bump_assets.py     # after editing anything in assets/css or assets/js
 ```
+
+`python3 -m http.server` still serves the public pages, but only the Node dev
+server runs the admin API (see §10). It has no dependencies beyond Node 18+.
 
 Deploy is automatic: any push to `main` triggers a Vercel build. There is
 nothing to compile.
@@ -108,9 +112,11 @@ pages is how that happens.
 **Asset URLs carry a content hash** (`style.css?v=7a9ec922`).
 `vercel.json` serves `/assets/*` with `Cache-Control: immutable, max-age=1yr`.
 Without the hash, returning visitors keep stale CSS/JS after a deploy — a
-half-broken site they cannot fix without a hard refresh. `tools/check.py`
-fails the build if a version is missing. If you edit CSS or JS, bump the hash
-in all 16 files (search-and-replace the old `?v=` value).
+half-broken site they cannot fix without a hard refresh. Every CSS and JS
+file carries its **own** hash, written by `python3 tools/bump_assets.py`, and
+`tools/check.py` fails if any version is missing **or no longer matches the
+file**. (The language-toggle files once had no version at all, so no fix to
+them could ever reach a returning visitor.)
 
 **Filename case matters.**
 `assets/images/IP-rooms.JPG` is uppercase. macOS is case-insensitive so a wrong
@@ -266,3 +272,129 @@ the second of the two mirrored domains. Every canonical names
 `shankerdentalcentremadurai.com`, so `dentalmadurai.com` should redirect there
 rather than serve the same pages, otherwise the duplicate-content split that
 this rebuild set out to fix simply survives at the domain level.
+
+## 10. Case of the Month and the admin panel
+
+### How the archive is built
+
+`data/cases.json` is the source of truth: one entry per case with its month,
+year, title (plus a Tamil title once Tamil is on), topic, page images and card image. The
+archive on `case-of-the-month.html` and the "Latest cases" list on
+`index.html` are **generated** into the blocks between
+`<!-- cases:archive:start -->` / `<!-- cases:latest:start -->` and their
+`:end` markers. Never hand-edit inside those markers.
+
+| File | Role |
+|---|---|
+| `api/_lib/cases.js` | The one renderer and validator, shared by everything below |
+| `tools/build-cases.js` | Re-renders the blocks after a hand edit to the JSON (`--check` reports drift; `check.py` runs it) |
+| `api/admin/*.js` | The admin API (Vercel functions) |
+| `admin/index.html`, `assets/{css,js}/admin.*` | The admin panel |
+| `tools/dev-server.js` | Local server that runs the same API with local storage |
+
+The archive shows newest first, grouped by year, filterable by topic
+(`?topic=trauma` is shareable), and each case can be linked directly
+(`case-of-the-month.html#case-<id>`). The homepage list links there. The
+homepage never shows clinical images, only titles, per §5.
+
+Cards show a 4:3 crop of page 1 starting just under the letterhead
+(`cropY`, 0.165 of the page height by default). Multi-page cases open as one
+item in the viewer and page through before moving to the next case.
+
+### How publishing works
+
+The clinic signs in at `/admin/`, drops in the month's PDF (or a JPG/PNG),
+fills in month, year, title and topic (plus a Tamil title once Tamil is on), and presses
+Publish. The browser renders the PDF to 1236px-wide JPEG pages with pdf.js
+(loaded from jsDelivr, pinned to 6.3.289), so the server only ever receives
+images. The API validates them, names each file by its content hash (so a
+replaced document always gets a new URL under the year-long `/assets` cache)
+and makes **one commit** to `main` through the GitHub API containing the
+images, `data/cases.json`, the regenerated pages and the sitemap date. Vercel
+deploys that commit like any push, so a case is live about a minute later
+and every change can be reverted in git.
+
+Editing a case (title, topic, month, re-crop, replace the document) and
+Hide/Show work the same way. Nothing is ever deleted: hidden cases stay in
+the JSON with `"published": false`.
+
+### Setting it up on Vercel (one time)
+
+In the Vercel project, **Settings, Environment Variables**, Production:
+
+| Variable | Value |
+|---|---|
+| `ADMIN_PASSWORD` | The password the clinic signs in with. 8 characters or more. |
+| `GITHUB_TOKEN` | A GitHub **fine-grained** personal access token, repository access limited to `dsignedbyharish/Shankar-Dental-Hospital`, permission **Contents: Read and write**. Nothing else. |
+| `ADMIN_SESSION_SECRET` | Optional. Any long random string. If unset, sessions are signed with a key derived from the password, so changing the password signs everyone out anyway. |
+| `GITHUB_REPO`, `GITHUB_BRANCH` | Optional. Default to the repo above and `main`. |
+
+Redeploy after adding them. Until they exist the panel says so instead of
+failing. Fine-grained tokens expire: when the panel reports that GitHub
+refused the request, issue a new token and replace `GITHUB_TOKEN`.
+
+### Security notes
+
+- One shared password, exchanged for an HttpOnly, SameSite=Strict, signed
+  session cookie scoped to `/api/admin` (8 hours). Wrong passwords wait
+  700ms. Every write also needs an `X-Admin-Request` header, which a
+  cross-site page cannot send.
+- `/admin/` has its own Content-Security-Policy in `vercel.json`, is
+  `noindex`, and is disallowed in `robots.txt`.
+- The repo is public, so anything published is public in git too, exactly
+  like the 44 existing posters (§6).
+
+### Testing locally
+
+`node tools/dev-server.js`, then `http://localhost:8791/admin/` with the
+password `shanker-local` (or `ADMIN_PASSWORD` if you set one). Storage is
+local: publishing writes straight into this checkout, which you can inspect
+with `git diff` and throw away with `git checkout -- <files>` (only after
+checking `git status` for work of your own).
+
+### Traps found while building it
+
+- **`[data-year]` is taken.** `main.js` fills every `[data-year]` element
+  with the current year for the footer copyright. The archive's year groups
+  once used that attribute and were wiped to "2026". They use
+  `data-case-year`.
+- **pdf.js 5+:** the document proxy has no `destroy()`; the loading task
+  does. And render with `intent: 'print'`: the default display intent paces
+  itself on `requestAnimationFrame`, which stops in a background tab.
+- **`behavior: 'auto'` is not instant** when the page has CSS
+  `scroll-behavior: smooth`. Use `'instant'` to really jump.
+
+## 11. Tamil (switched off: "coming soon")
+
+The Tamil version is **not live yet**. The top-bar toggle is kept where
+visitors expect it, tagged "Soon", and opens a short note saying the Tamil
+version is being prepared. Nothing is translated, the dictionary
+(`assets/js/i18n-data.js`) is an empty placeholder that is never loaded, and
+generated pages carry no Tamil. The admin hides the Tamil title field.
+
+It is controlled by one switch that exists in two places, which must match:
+
+- `TAMIL_LIVE` in `assets/js/i18n.js` (what visitors get), and
+- `TAMIL_LIVE` in `api/_lib/cases.js` (generated pages and the admin).
+
+**Switching it on** is prepared as a separate branch, `tamil-translation`,
+which sits one commit ahead of `main`: it sets both switches, adds the
+dictionary and the case titles, and rebuilds. Merge it, then run
+`node tools/build-cases.js` and `python3 tools/bump_assets.py` (the admin may
+have published cases on `main` in the meantime), `python3 tools/check.py`,
+and push.
+
+## 12. Motion and interaction added in this pass
+
+- Page-to-page cross-fades (CSS `@view-transition`; the header is its own
+  layer and stays put). Off under reduced motion; unsupported browsers
+  navigate normally.
+- On phones and tablets the header slides away while reading down and
+  returns on any scroll up. It publishes its current height as
+  `--header-h`, which the sticky case filter and page index use.
+- Treatment pages with three or more sections get a sticky "On this page"
+  index built from their own headings, marking the section being read.
+- The mobile menu's items enter in sequence.
+- Fixed along the way: back-to-top sat on the phone call bar (a media query
+  placed before the base rule it was meant to override), the menu button
+  overflowed the header on 320px phones.

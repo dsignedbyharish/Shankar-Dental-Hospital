@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Tamil / English language toggle: button and Tamil type support.
+   --------------------------------------------------------------------------
+   Font stacks are redefined only for html.lang-ta, so English pages are
+   unaffected. Inter/Source Serif 4 have no Tamil glyphs, so listing a Tamil
+   face after them lets the browser fall back per character: English words
+   inside a Tamil sentence (the bracketed medical terms) keep rendering in
+   Inter, Tamil script renders in Noto Sans/Serif Tamil, in one text run.
+   ========================================================================== */
+html.lang-ta {
+  --font-sans: 'Inter', 'Noto Sans Tamil', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: 'Source Serif 4', 'Noto Serif Tamil', Georgia, "Times New Roman", serif;
+}
+
+/* A returning Tamil reader: the <head> script sets this before first paint,
+   and i18n.js clears it once the dictionary has been applied. Text waits
+   hidden rather than flashing English. The animation is the safety net: if
+   the script never runs, the English shows after 2s instead of nothing. */
+html.i18n-pending [data-i18n] {
+  visibility: hidden;
+  animation: i18n-reveal 0s linear 2s forwards;
+}
+@keyframes i18n-reveal { to { visibility: visible; } }
+
+/* ---------- Tamil typography ----------
+   Tamil has no letter case, and the wide tracking the English labels use
+   (eyebrows, nav, stat labels, breadcrumbs) pulls its consonant-vowel
+   clusters apart until words stop reading as words. Setting it on the
+   [data-i18n] spans themselves overrides what they would inherit, so every
+   tracked label is covered without listing each component. */
+html.lang-ta [data-i18n] { letter-spacing: normal; text-transform: none; }
+
+/* Tamil glyphs carry marks above and below the line, so the tight display
+   leading clips them and the Latin-tuned sizes turn a short slogan into four
+   lines. Smaller, looser display type reads as the same hierarchy. */
+html.lang-ta h1 { font-size: clamp(2.05rem, 5vw, 3.7rem); line-height: 1.24; }
+html.lang-ta h2 { font-size: clamp(1.6rem, 3.1vw, 2.45rem); line-height: 1.3; }
+html.lang-ta h3 { line-height: 1.42; }
+html.lang-ta .case-feature-title { font-size: clamp(1.3rem, 2.4vw, 1.95rem); line-height: 1.4; }
+html.lang-ta .hero h1 { max-width: 13em; }
+html.lang-ta .page-head h1 { max-width: 16em; }
+
+/* Body copy and list text get more leading; the 12px labels step up to 13px,
+   where Tamil conjuncts stay legible. */
+html.lang-ta p,
+html.lang-ta li,
+html.lang-ta .prose p { line-height: 1.8; }
+html.lang-ta .eyebrow,
+html.lang-ta .section-index,
+html.lang-ta .stat-label,
+html.lang-ta .crumbs,
+html.lang-ta .case-topic,
+html.lang-ta .case-teaser-label,
+html.lang-ta .gal-cap,
+html.lang-ta .footer-col-title { font-size: var(--fs-xs); }
+html.lang-ta .logo-sub { font-size: .66rem; letter-spacing: 0; }
+html.lang-ta .case-card-title { line-height: 1.6; -webkit-line-clamp: 4; }
+html.lang-ta .case-latest-title { line-height: 1.6; }
+html.lang-ta .case-latest-link { grid-template-columns: 10.5em minmax(0, 1fr) 28px; }
+html.lang-ta .btn { line-height: 1.35; }
+
+/* Desktop nav: Tamil labels run longer than English at the same size, so
+   the gaps tighten rather than letting the bar wrap. */
+@media (min-width: 1061px) {
+  html.lang-ta .nav a,
+  html.lang-ta .nav-more-toggle { font-size: var(--fs-xs); padding-inline: 7px; }
+}
+/* The top bar would wrap to two rows in Tamil below very wide screens; the
+   address and email are on the contact page and footer, so they step aside. */
+@media (max-width: 1440px) {
+  html.lang-ta .topbar-list .hide-sm { display: none; }
+}
+@media (max-width: 680px) {
+  html.lang-ta .case-latest-link { grid-template-columns: minmax(0, 1fr) 24px; }
+}
+
+/* ---------- Toggle ---------- */
+.lang-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 32px; padding: 0 var(--sp-3); border-radius: var(--r-full);
+  border: 1px solid rgba(255, 255, 255, .3); background: transparent;
+  color: inherit; font: inherit; font-size: var(--fs-2xs); font-weight: var(--fw-semi);
+  letter-spacing: .02em; cursor: pointer; white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.lang-toggle:hover { background: rgba(255, 255, 255, .12); }
+.lang-toggle svg { width: 14px; height: 14px; flex: none; transition: transform var(--dur-slow) var(--ease-out); }
+.lang-toggle:hover svg { transform: rotate(-18deg); }
+.lang-toggle[aria-busy="true"] { cursor: progress; }
+.lang-toggle[aria-busy="true"] svg { animation: lang-spin 900ms linear infinite; }
+@keyframes lang-spin { to { transform: rotate(360deg); } }
+.lang-toggle-label { min-width: 2.6em; text-align: left; }
+
+/* Header/topbar sit on light and near-white surfaces in some contexts
+   (mobile popup), so the outline needs a legible variant there too. */
+.header-inner .lang-toggle,
+.nav .lang-toggle {
+  border-color: var(--line); color: var(--ink-2);
+}
+.header-inner .lang-toggle:hover,
+.nav .lang-toggle:hover { background: var(--bg-alt); }
+
+@media (max-width: 1060px) {
+  .nav .lang-toggle {
+    margin-top: var(--sp-3); align-self: flex-start;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lang-toggle:hover svg, .lang-toggle[aria-busy="true"] svg { transform: none; animation: none; }
+}
+
+/* ---------- Tamil "coming soon" (TAMIL_LIVE = false in i18n.js) ----------
+   The toggle stays where visitors expect it, tagged "Soon", and opens a
+   short note instead of switching language. */
+.lang-soon-wrap { position: relative; }
+.lang-toggle.is-soon { gap: 7px; padding-right: 5px; }
+.lang-soon-badge {
+  font-size: .625rem; font-weight: var(--fw-bold); letter-spacing: .06em; text-transform: uppercase;
+  line-height: 1; padding: 4px 7px; border-radius: var(--r-full);
+  background: var(--lime); color: var(--on-lime);
+}
+.lang-soon-note {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: var(--z-modal);
+  width: min(300px, calc(100vw - 32px)); padding: var(--sp-4) var(--sp-5);
+  background: var(--bg-pure); color: var(--ink-2); border-radius: var(--r-md);
+  box-shadow: var(--sh-3); font-size: var(--fs-sm); line-height: var(--lh-snug); letter-spacing: 0;
+  display: flex; flex-direction: column; gap: 4px; text-align: left;
+  animation: lang-note-in var(--dur-base) var(--ease-out);
+}
+.lang-soon-note[hidden] { display: none; }
+.lang-soon-note strong { font-family: 'Noto Sans Tamil', var(--font-sans); color: var(--ink); font-size: var(--fs-md); }
+@keyframes lang-note-in { from { opacity: 0; transform: translateY(-6px); } }
+@media (max-width: 680px) {
+  .lang-soon-note { right: auto; left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lang-soon-note { animation: none; }
+}

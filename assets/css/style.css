@@ -197,7 +197,7 @@ a:hover { color: var(--brand-dark); }
    only appears on hover hides the link from anyone not using a mouse. The
    hover moves the rule closer and darkens it rather than adding it. */
 main p a:not(.btn):not(.card-link),
-main li a:not(.btn):not(.card-link):not(.card),
+main li a:not(.btn):not(.card-link):not(.card):not(.case-card-link):not(.case-latest-link),
 .prose a:not(.btn) {
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -392,6 +392,16 @@ address { font-style: normal; }
 .logo-text { display: flex; flex-direction: column; line-height: 1.12; }
 .logo-name { font-family: var(--font-serif); font-size: var(--fs-xl); font-weight: var(--fw-bold); color: var(--brand); letter-spacing: .01em; }
 .logo-sub { font-size: .6rem; letter-spacing: .11em; text-transform: uppercase; color: var(--ink-3); font-weight: var(--fw-semi); white-space: nowrap; }
+/* On a phone the logo is the one thing in the header that can give way.
+   With `flex: none` it held its full one-line width and pushed the menu
+   button 7px past the screen edge (at 320px in English, and at 375px with
+   the longer Tamil line). Now the subtitle wraps instead. */
+@media (max-width: 480px) {
+  .logo { flex: 0 1 auto; min-width: 0; }
+  .logo-text { min-width: 0; }
+  .logo-sub { white-space: normal; line-height: 1.3; }
+  .header-cta { flex: none; }
+}
 
 /* Nav — small-caps and letterspaced, with a rule that draws in from the left
    on hover. The tinted pill this replaced was the loudest element in the
@@ -1391,6 +1401,206 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .lb-close { top: var(--sp-5); right: var(--sp-5); }
 .lb-prev { left: var(--sp-5); top: 50%; margin-top: -24px; }
 .lb-next { right: var(--sp-5); top: 50%; margin-top: -24px; }
+/* The image swaps in place when paging, so the zoom-in entrance replays
+   per slide rather than only when the viewer first opens. */
+.lb img.is-swapping { animation: none; opacity: 0; }
+
+/* ==========================================================================
+   Case of the Month
+   --------------------------------------------------------------------------
+   Generated from data/cases.json (api/_lib/cases.js). Newest first, grouped
+   by year, filterable by topic. The poster itself is a full page of text and
+   figures, so cards show a 4:3 crop from just under the letterhead (title
+   band and figures) and the whole page opens in the viewer.
+   ========================================================================== */
+.case-date {
+  display: block; font-size: var(--fs-sm); font-weight: var(--fw-semi);
+  color: var(--ink-3); font-variant-numeric: tabular-nums; letter-spacing: .01em;
+}
+.case-topic {
+  display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
+  font-size: var(--fs-2xs); font-weight: var(--fw-semi); line-height: 1.3;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--brand); background: var(--brand-tint);
+  padding: 5px 11px 5px 9px; border-radius: var(--r-full);
+}
+.case-topic::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .75; flex: none; }
+
+/* ---------- Featured (latest) case ---------- */
+.case-feature {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(var(--sp-8), 4.5vw, var(--sp-16)); align-items: center;
+  margin-bottom: clamp(var(--sp-14), 7vw, 104px);
+}
+.case-feature-media {
+  position: relative; display: block; overflow: hidden; cursor: zoom-in;
+  border-radius: var(--r-lg); background: var(--bg-alt); box-shadow: var(--sh-2);
+}
+.case-feature-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform 900ms var(--ease-out); }
+.case-feature-media:hover img { transform: scale(1.03); }
+.case-feature-zoom {
+  position: absolute; right: var(--sp-5); bottom: var(--sp-5);
+  width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(255,255,255,.94); color: var(--ink); box-shadow: var(--sh-2);
+  transition: transform var(--dur-base) var(--ease-spring), background var(--dur-fast) var(--ease-out);
+}
+.case-feature-zoom svg { width: 22px; height: 22px; }
+.case-feature-media:hover .case-feature-zoom { transform: scale(1.08); background: var(--lime); color: var(--on-lime); }
+.case-feature .eyebrow { margin-bottom: var(--sp-4); }
+.case-feature .case-date { font-size: var(--fs-md); color: var(--brass); margin-bottom: var(--sp-3); }
+.case-feature-title { font-size: clamp(1.9rem, 3.3vw, 2.75rem); line-height: 1.08; margin-bottom: var(--sp-5); max-width: 22ch; }
+.case-feature .actions-row { margin-top: var(--sp-7); }
+@supports (corner-shape: squircle) { .case-feature-media, .case-card-link { corner-shape: squircle; } }
+
+/* ---------- Topic filter ----------
+   Buttons only mean something with scripts, so the bar is hidden without
+   them and the full archive simply shows. It pins under the header while
+   browsing, since 40-odd cards is a long way to scroll back up for it. */
+.case-toolbar {
+  display: none; gap: var(--sp-2); flex-wrap: nowrap;
+  overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain;
+  position: sticky; top: var(--header-h, 88px); z-index: var(--z-raised);
+  padding-block: var(--sp-3); margin-bottom: var(--sp-2);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.case-toolbar::-webkit-scrollbar { display: none; }
+.js .case-toolbar { display: flex; }
+/* One row that scrolls, rather than a two-row sticky bar covering the grid.
+   The fades only appear on the side that actually has more chips. */
+.case-toolbar.can-right { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
+.case-toolbar.can-left { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent); }
+.case-toolbar.can-left.can-right { -webkit-mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent); }
+.case-chip { flex: none; }
+.case-chip {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  min-height: 40px; padding: 0 var(--sp-4); border-radius: var(--r-full);
+  border: 1px solid var(--line); background: var(--bg-pure); color: var(--ink-2);
+  font: inherit; font-size: var(--fs-sm); font-weight: var(--fw-medium); white-space: nowrap; cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out), transform var(--dur-press) var(--ease-out);
+}
+.case-chip:hover { border-color: var(--ink-4); color: var(--ink); }
+.case-chip:active { transform: scale(.96); }
+.case-chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.case-chip-count {
+  font-size: var(--fs-2xs); font-weight: var(--fw-semi); font-variant-numeric: tabular-nums;
+  min-width: 22px; padding: 1px 6px; border-radius: var(--r-full); text-align: center;
+  background: var(--bg-alt); color: var(--ink-3);
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.case-chip[aria-pressed="true"] .case-chip-count { background: rgba(255,255,255,.18); color: #fff; }
+.case-results { font-size: var(--fs-sm); color: var(--ink-3); margin: 0 0 var(--sp-4); min-height: 1.5em; }
+
+/* ---------- Year groups + cards ---------- */
+.case-year { padding-top: var(--sp-10); }
+.case-year[hidden] { display: none; }
+.case-year-title {
+  display: flex; align-items: baseline; gap: var(--sp-4);
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom: var(--sp-7);
+  padding-bottom: var(--sp-4); border-bottom: 1px solid var(--line);
+  font-variant-numeric: lining-nums;
+}
+.case-year-count { font-family: var(--font-sans); font-size: var(--fs-sm); font-weight: var(--fw-medium); letter-spacing: 0; color: var(--ink-3); }
+.case-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 268px), 1fr));
+  gap: clamp(var(--sp-5), 2vw, var(--sp-7)); list-style: none; margin: 0; padding: 0;
+}
+.case-card { margin: 0; scroll-margin-top: 170px; }
+.case-card[hidden] { display: none; }
+.case-card-link {
+  display: flex; flex-direction: column; height: 100%; overflow: hidden; color: inherit; cursor: zoom-in;
+  background: var(--bg-pure); border-radius: var(--r-lg);
+  box-shadow: 0 1px 2px rgba(18,64,62,.03), 0 18px 38px -30px rgba(18,64,62,.38);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+.case-card-link:hover {
+  color: inherit; transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(18,64,62,.05), 0 30px 56px -28px rgba(18,64,62,.5);
+}
+.case-card-link:active { transform: translateY(-1px) scale(.99); transition-duration: var(--dur-press); }
+.case-card-media { display: block; overflow: hidden; background: var(--bg-alt); aspect-ratio: 4 / 3; }
+.case-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out); }
+.case-card-link:hover .case-card-media img { transform: scale(1.05); }
+.case-card-body { display: flex; flex-direction: column; gap: var(--sp-3); flex: 1; padding: var(--sp-5) var(--sp-6) var(--sp-6); }
+.case-card-title {
+  font-family: var(--font-sans); font-size: var(--fs-md); font-weight: var(--fw-semi);
+  line-height: var(--lh-snug); letter-spacing: -.005em; margin: 0; color: var(--ink);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.case-card-link:hover .case-card-title { color: var(--brand); }
+.case-card .case-topic { margin-top: auto; }
+.case-pages { font-size: var(--fs-2xs); color: var(--ink-3); }
+
+/* Arriving from a link to one case (the homepage list, a shared URL): the
+   card gets a ring that fades, so the eye finds it in the grid. */
+.case-card.is-target .case-card-link { animation: case-ping 2.4s var(--ease-out) 1; }
+@keyframes case-ping {
+  0%, 30% { box-shadow: 0 0 0 4px var(--lime), 0 30px 56px -28px rgba(18,64,62,.5); }
+  100%    { box-shadow: 0 0 0 0 transparent, 0 18px 38px -30px rgba(18,64,62,.38); }
+}
+
+.case-note {
+  margin: clamp(var(--sp-12), 6vw, var(--sp-16)) 0 0; padding-top: var(--sp-6);
+  border-top: 1px solid var(--line); font-size: var(--fs-sm); color: var(--ink-3); max-width: 80ch;
+}
+
+/* ---------- Homepage teaser: text only, no clinical imagery ---------- */
+.case-teaser {
+  display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(var(--sp-10), 6vw, 96px); align-items: start;
+}
+.case-teaser-intro p:not(.section-index):not(.actions-row) { color: var(--ink-2); max-width: 46ch; }
+.case-teaser-label {
+  font-size: var(--fs-2xs); font-weight: var(--fw-bold); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-3); margin: 0 0 var(--sp-2);
+}
+.case-latest { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.case-latest li { margin: 0; border-bottom: 1px solid var(--line); }
+.case-latest-link {
+  display: grid; grid-template-columns: 9.5em minmax(0, 1fr) 28px;
+  grid-template-areas: "date title arrow" "date topic arrow";
+  column-gap: var(--sp-6); row-gap: var(--sp-3); align-items: start;
+  padding: var(--sp-6) var(--sp-4); margin-inline: calc(-1 * var(--sp-4));
+  border-radius: var(--r-md); color: inherit;
+  transition: background var(--dur-base) var(--ease-out);
+}
+.case-latest-link:hover { background: var(--bg-alt); color: inherit; }
+.case-latest .case-date { grid-area: date; padding-top: 2px; }
+.case-latest-title {
+  grid-area: title; color: var(--ink); font-weight: var(--fw-semi);
+  font-size: var(--fs-lg); line-height: var(--lh-snug);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.case-latest .case-topic { grid-area: topic; justify-self: start; }
+.case-latest-arrow { grid-area: arrow; align-self: center; color: var(--brand); display: grid; place-items: center; }
+.case-latest-arrow svg { width: 20px; height: 20px; transition: transform var(--dur-base) var(--ease-out); }
+.case-latest-link:hover .case-latest-title { color: var(--brand); }
+.case-latest-link:hover .case-latest-arrow svg { transform: translateX(5px); }
+
+@media (max-width: 1060px) {
+  .case-feature { grid-template-columns: 1fr; }
+  .case-teaser { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .case-toolbar {
+    margin-inline: calc(-1 * var(--sp-6)); padding-inline: var(--sp-6);
+    scroll-padding-inline: var(--sp-6);
+  }
+  .case-latest-link {
+    grid-template-columns: minmax(0, 1fr) 24px;
+    grid-template-areas: "date arrow" "title arrow" "topic arrow";
+    row-gap: var(--sp-2); padding-block: var(--sp-5);
+  }
+  .case-feature-zoom { width: 44px; height: 44px; right: var(--sp-4); bottom: var(--sp-4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-card-link:hover, .case-card-link:active { transform: none; }
+  .case-card-link:hover .case-card-media img, .case-feature-media:hover img { transform: none; }
+  .case-card.is-target .case-card-link { animation: none; box-shadow: 0 0 0 4px var(--lime); }
+  .case-latest-link:hover .case-latest-arrow svg { transform: none; }
+}
 
 /* ==========================================================================
    Contact
@@ -1563,8 +1773,7 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 
   /* The bar owns the bottom of the screen, so the page and the back-to-top
      button both have to clear it or they sit underneath. */
-  body { padding-bottom: 56px; }
-  .to-top { bottom: calc(56px + var(--sp-4)); }
+  body { padding-bottom: calc(57px + env(safe-area-inset-bottom, 0px)); }
 }
 
 /* Back to top */
@@ -1582,6 +1791,13 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 .to-top:hover { background: var(--brand); transform: translateY(-3px); }
 .to-top:active { transform: scale(.92); }
 .to-top svg { width: 19px; height: 19px; }
+/* Must come after the base rule above. It used to sit inside the call-bar
+   block earlier in the file, where this later base rule's `bottom` beat it
+   at equal specificity, so on phones the button sat on top of the
+   "Directions" half of the call bar. */
+@media (max-width: 680px) {
+  .to-top { bottom: calc(57px + env(safe-area-inset-bottom, 0px) + var(--sp-3)); right: var(--sp-4); }
+}
 
 /* Sitemap page */
 .sitemap-col ul { list-style: none; padding: 0; }
@@ -1645,13 +1861,20 @@ a.card:hover .card-link svg { transform: translateX(5px); }
 
 @media (max-width: 1060px) {
   /* A fixed, full-screen popup rather than a right-docked sliding drawer —
-     fades and scales in centred, covers the whole viewport, and closes on
-     the same toggle button (shown as a close/X icon while open, positioned
-     above the popup via z-index so it stays reachable throughout). */
+     fades and scales in, covers the whole viewport, and closes on the same
+     toggle button (shown as a close/X icon while open). The toggle is
+     pinned to a fixed viewport corner while open (see [aria-expanded="true"]
+     below) rather than left in the header's normal flow — the header above
+     it varies in height (topbar wraps to two lines on narrow phones), so a
+     flow position would drift under the popup's own content on some screen
+     sizes. Top-aligned rather than vertically centred so the list starts in
+     the same place regardless of viewport height, instead of leaving large,
+     unbalanced gaps on tall/tablet screens or pushing the last item (the
+     call button) below the fold on short ones. */
   .nav {
     position: fixed; inset: 0; z-index: var(--z-drawer);
-    flex-direction: column; align-items: stretch; justify-content: center; gap: 2px;
-    background: var(--bg); padding: 96px var(--sp-6) var(--sp-7); height: 100dvh;
+    flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 2px;
+    background: var(--bg); padding: 88px var(--sp-6) var(--sp-7); height: 100dvh;
     max-width: none; margin: 0; overflow-y: auto;
     opacity: 0; visibility: hidden; transform: scale(.97);
     transition: opacity var(--dur-slow) var(--ease-out),
@@ -1666,7 +1889,12 @@ a.card:hover .card-link svg { transform: translateX(5px); }
      centers a flex container's content; without it every link sat flush
      left regardless of this rule, while .nav-more-flat (which does set
      justify-content) was the only one visibly centered — inconsistent. */
-  .nav a { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-lg); border-radius: var(--r-sm); justify-content: center; }
+  /* `white-space: nowrap` on the base `.nav a` rule (set for the desktop bar,
+     where every label is short) is never overridden here, so it silently
+     carries into the popup too — clipped by `.btn`'s own `overflow: hidden`
+     (needed for its hover fill-wipe), the call button's longer label loses
+     its last couple of letters on narrow phones. Allow wrapping instead. */
+  .nav a { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-lg); border-radius: var(--r-sm); justify-content: center; white-space: normal; }
   .nav a[aria-current="page"]::after { display: none; }
 
   /* No dropdowns in the popup — every item is a plain, individually flat
@@ -1696,6 +1924,10 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   }
 
   .nav-toggle { display: flex; position: relative; z-index: calc(var(--z-drawer) + 1); }
+  /* Pin to a fixed corner only while the popup is open (see comment above
+     `.nav` for why) — closed, it stays in the header's normal flow next to
+     the logo. */
+  .nav-toggle[aria-expanded="true"] { position: fixed; top: var(--sp-4); right: var(--sp-4); }
   .header-cta .btn { display: none; }
   .nav .nav-call { display: inline-flex; margin-top: var(--sp-5); }
   .nav a.nav-call { color: #fff; padding: var(--sp-3) var(--sp-6); }
@@ -1716,6 +1948,20 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   .doc { grid-template-columns: 1fr; }
   .doc-photo { max-width: 240px; }
   .doc-photo img { aspect-ratio: 4/5; }
+}
+
+/* Short viewports (landscape phones) — the popup's full item list plus the
+   call button doesn't fit a ~375px-tall screen at portrait sizing, and the
+   only cue that more content exists below is the browser's own scrollbar,
+   easy to miss. Tighten row height/spacing/type so the whole menu — call
+   button included — fits without scrolling wherever that's feasible, and
+   needs at most a small, clearly-scrollable amount where it isn't. */
+@media (max-width: 1060px) and (max-height: 500px) {
+  .nav { padding-top: 72px; padding-bottom: var(--sp-4); gap: 0; }
+  .nav a { padding-block: var(--sp-2); font-size: var(--fs-md); min-height: 38px; }
+  .nav .nav-more-flat { padding-block: var(--sp-2); font-size: var(--fs-md); min-height: 38px; }
+  .nav .nav-call { margin-top: var(--sp-3); }
+  .nav a.nav-call { padding-block: var(--sp-2); }
 }
 
 @media (max-width: 680px) {
@@ -1969,3 +2215,93 @@ a.card:hover .card-link svg { transform: translateX(5px); }
   /* Header height must not animate on every scroll tick. */
   .site-header, .header-inner { transition: none !important; }
 }
+
+/* ==========================================================================
+   Page-to-page transitions
+   --------------------------------------------------------------------------
+   Same-origin navigations cross-fade instead of flashing white, and the
+   header is its own layer, so it stays put (or eases between its resting
+   and condensed sizes) while the page beneath it changes. Browsers without
+   cross-document view transitions simply navigate as before.
+   ========================================================================== */
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: site-header; }
+::view-transition-old(root) { animation: vt-out 160ms var(--ease-in) both; }
+::view-transition-new(root) { animation: vt-in 420ms var(--ease-out) both; }
+::view-transition-group(site-header) { animation-duration: 320ms; animation-timing-function: var(--ease-out); }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+
+/* ==========================================================================
+   Header that steps aside while reading (phones and tablets; main.js)
+   ========================================================================== */
+@media (max-width: 1060px) {
+  .site-header { transition: transform var(--dur-slow) var(--ease-out), padding var(--dur-base) var(--ease-out); }
+  .site-header.is-away { transform: translateY(calc(-100% - 4px)); }
+}
+
+/* ==========================================================================
+   Mobile menu: items enter in sequence
+   --------------------------------------------------------------------------
+   --i is each item's position (set in main.js). Only the entrance is
+   staggered; on close everything leaves together with the popup.
+   ========================================================================== */
+@media (max-width: 1060px) {
+  .nav > a, .nav .nav-more-flat, .nav .nav-more-panel:not(.is-wide) > a {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-reveal) var(--ease-out),
+                color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+  }
+  .nav.open > a, .nav.open .nav-more-flat, .nav.open .nav-more-panel:not(.is-wide) > a {
+    opacity: 1; transform: none;
+    transition-delay: calc(80ms + var(--i, 0) * 45ms);
+  }
+  /* Colour and hover changes must not wait for the entrance delay. */
+  .nav.open > a:hover, .nav.open .nav-more-flat:hover, .nav.open .nav-more-panel:not(.is-wide) > a:hover { transition-delay: 0ms; }
+}
+
+/* ==========================================================================
+   "On this page" index (treatment pages; built by main.js)
+   ========================================================================== */
+.toc {
+  position: sticky; top: var(--header-h, 88px); z-index: var(--z-raised);
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  transition: top var(--dur-slow) var(--ease-out);
+}
+.toc-row {
+  max-width: var(--wrap); margin-inline: auto; padding: var(--sp-3) var(--sp-6);
+  display: flex; align-items: center; gap: var(--sp-2);
+  overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.toc-row::-webkit-scrollbar { display: none; }
+.toc-row.can-right { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
+.toc-row.can-left { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent); }
+.toc-row.can-left.can-right { -webkit-mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent); }
+.toc-label {
+  flex: none; font-size: var(--fs-2xs); font-weight: var(--fw-bold); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-3); margin-right: var(--sp-2);
+}
+.toc-chip {
+  flex: none; display: inline-flex; align-items: center; min-height: 36px; padding: 0 var(--sp-4);
+  border-radius: var(--r-full); font-size: var(--fs-sm); font-weight: var(--fw-medium); white-space: nowrap;
+  color: var(--ink-2); background: transparent; border: 1px solid transparent;
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+.toc-chip:hover { color: var(--ink); border-color: var(--line); background: var(--bg-pure); }
+.toc-chip[aria-current="true"] { background: var(--ink); color: #fff; }
+/* Jumping to a section must clear the header and this bar. */
+.clinical h2[id] { scroll-margin-top: calc(var(--header-h, 88px) + 72px); }
+@media (max-width: 680px) {
+  .toc-row { padding-inline: var(--sp-4); }
+  .toc-label { display: none; }
+}
+
+/* ---------- Homepage: welcome heading ----------
+   At the 34ch lead width the four-line heading left the right half of the
+   section empty. Two balanced lines across the section read as a title. */
+.section-lead.is-xwide { max-width: 46rem; }

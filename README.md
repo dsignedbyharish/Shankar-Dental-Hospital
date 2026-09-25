@@ -21,7 +21,10 @@ treatments.html                            Treatment Options hub
   oral-and-maxillofacial-pathology.html
   orthodontics.html                        (was orthodontics-madurai.html)
   dental-and-facial-implants.html
-case-of-the-month.html                     44-case archive, 2020–2025
+case-of-the-month.html                     Case archive, generated from data/cases.json
+admin/                                     Case archive admin panel (noindex)
+api/                                       Admin API (Vercel functions)
+data/cases.json                            Every case: dates, titles, topic, images
 contact.html                               Address, hours, map
 sitemap.html                               Human-readable sitemap
 
@@ -43,12 +46,23 @@ Then open <http://localhost:8787>.
 
 ## Tooling
 
-There is no build step — the HTML is the source. Two scripts keep it honest:
+There is no build step: the HTML is the source. These keep it honest:
 
 ```bash
+node tools/dev-server.js       # local preview on :8791, with the admin panel working
 python3 tools/check.py         # pre-deploy validation; exits non-zero on any problem
+python3 tools/bump_assets.py   # re-stamp ?v= hashes after any CSS/JS edit
 python3 tools/sync_chrome.py   # push header/nav/footer from index.html to all pages
+python3 tools/i18n_audit.py    # language toggle: untranslated and unused entries
+node tools/build-cases.js      # rebuild the case archive after editing data/cases.json
 ```
+
+## Case of the Month admin
+
+The clinic adds each month's case at `/admin/`: upload the PDF, add the
+title and topic, publish. It commits to this
+repo and the site updates in about a minute. Setup and internals are in
+HANDOFF.md §10.
 
 The shared chrome is duplicated across all 16 pages, so edit it in `index.html`
 and run `sync_chrome.py` rather than hand-editing sixteen files. Run `check.py`

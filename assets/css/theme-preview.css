@@ -211,7 +211,8 @@
 .theme-fab-option.is-active .theme-fab-check { opacity: 1; }
 
 @media (max-width: 680px) {
-  .theme-fab { left: var(--sp-3); bottom: var(--sp-3); }
+  /* Above the phone call bar, not on top of its "Call" button. */
+  .theme-fab { left: var(--sp-3); bottom: calc(57px + env(safe-area-inset-bottom, 0px) + var(--sp-3)); }
   .theme-fab-panel { width: calc(100vw - var(--sp-6) - var(--sp-3)); max-width: 280px; }
 }
 

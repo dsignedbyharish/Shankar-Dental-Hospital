@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#12403e">
+<title>Case archive admin | Shanker Dental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css?v=c33788ae">
+<link rel="stylesheet" href="../assets/css/admin.css?v=9157afc3">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body class="admin">
+<a class="skip" href="#admin-main">Skip to content</a>
+
+<header class="adm-bar">
+  <div class="adm-bar-inner">
+    <a class="adm-brand" href="./">
+      <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#1a5c4a" d="M12 2c-1.7 0-2.6.7-4 .7S5.2 2 4 3c-1.5 1.2-2 3.6-1.4 6.7.5 2.5 1.2 4.2 1.6 6.7.4 2.3.6 5.2 1.3 6.7.5 1.1 1.9 1.2 2.4 0 .7-1.6.9-4.2 1.3-6 .3-1.3.8-2.1 1.5-2.1h.6c.7 0 1.2.8 1.5 2.1.4 1.8.6 4.4 1.3 6 .5 1.2 1.9 1.1 2.4 0 .7-1.5.9-4.4 1.3-6.7.4-2.5 1.1-4.2 1.6-6.7C21.9 6.6 21.4 4.2 20 3c-1.2-1-2.6-.3-4-.3S13.7 2 12 2Z"/></svg>
+      <span class="adm-brand-text"><strong>Shanker</strong><span>Case archive</span></span>
+    </a>
+    <div class="adm-bar-actions">
+      <span class="adm-mode" id="adm-mode" hidden></span>
+      <a class="adm-link" href="../case-of-the-month.html" target="_blank" rel="noopener">
+        <span>View site</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+        <span class="sr-only">(opens in a new tab)</span>
+      </a>
+      <button class="adm-link" type="button" id="sign-out" hidden>Sign out</button>
+    </div>
+  </div>
+</header>
+
+<main id="admin-main" tabindex="-1">
+
+  <!-- Loading -->
+  <section class="adm-view adm-center" id="view-loading" aria-busy="true">
+    <span class="adm-spinner" aria-hidden="true"></span>
+    <p class="sr-only">Loading</p>
+  </section>
+
+  <!-- Sign in -->
+  <section class="adm-view adm-center" id="view-login" hidden aria-labelledby="login-title">
+    <form class="adm-login" id="login-form" novalidate>
+      <div class="adm-login-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      </div>
+      <h1 id="login-title">Case archive</h1>
+      <p class="adm-muted">Sign in to add or update the Interesting Case of the Month.</p>
+      <label class="adm-label" for="password">Password</label>
+      <div class="adm-password">
+        <input class="adm-input" type="password" id="password" name="password" autocomplete="current-password" required>
+        <button class="adm-reveal" type="button" id="reveal-password" aria-label="Show password" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <p class="adm-error" id="login-error" role="alert" hidden></p>
+      <button class="btn btn-primary adm-block" type="submit" id="login-submit">Sign in</button>
+    </form>
+  </section>
+
+  <!-- List -->
+  <section class="adm-view" id="view-list" hidden aria-labelledby="list-title">
+    <div class="adm-wrap">
+      <div class="adm-head">
+        <div>
+          <p class="eyebrow">Interesting Case of the Month</p>
+          <h1 id="list-title" tabindex="-1">All cases</h1>
+          <p class="adm-muted" id="list-summary"></p>
+        </div>
+        <button class="btn btn-primary adm-add" type="button" id="add-case">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
+          Add a case
+        </button>
+      </div>
+
+      <div class="adm-banner" id="setup-banner" hidden role="status"></div>
+
+      <div class="adm-tools">
+        <label class="adm-search">
+          <span class="sr-only">Search cases</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" id="search" placeholder="Search titles" autocomplete="off">
+        </label>
+        <label class="adm-select-wrap">
+          <span class="sr-only">Filter by year</span>
+          <select class="adm-input" id="year-filter"><option value="">All years</option></select>
+        </label>
+        <label class="adm-select-wrap">
+          <span class="sr-only">Filter by status</span>
+          <select class="adm-input" id="status-filter">
+            <option value="">Live and hidden</option>
+            <option value="live">Live on the site</option>
+            <option value="hidden">Hidden</option>
+          </select>
+        </label>
+      </div>
+
+      <ul class="adm-list" id="case-list" role="list" aria-live="polite"></ul>
+      <p class="adm-empty" id="list-empty" hidden>No cases match that search.</p>
+    </div>
+  </section>
+
+  <!-- Add / edit -->
+  <section class="adm-view" id="view-editor" hidden aria-labelledby="editor-title">
+    <form class="adm-wrap" id="editor-form" novalidate>
+      <button class="adm-back" type="button" id="editor-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg>
+        All cases
+      </button>
+      <h1 id="editor-title" tabindex="-1">Add a case</h1>
+
+      <div class="adm-editor">
+        <div class="adm-steps">
+
+          <fieldset class="adm-step">
+            <legend><span class="adm-step-num">1</span> Case document</legend>
+            <p class="adm-hint">The PDF you publish each month, exactly as it should appear. A JPG or PNG of the page works too.</p>
+            <div class="adm-drop" id="dropzone">
+              <input type="file" id="file" accept="application/pdf,image/jpeg,image/png,image/webp" class="adm-file">
+              <label for="file" class="adm-drop-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M12 18v-6M9 15l3-3 3 3"/></svg>
+                <span class="adm-drop-title"><strong>Choose the PDF</strong> or drop it here</span>
+                <span class="adm-drop-sub">PDF, JPG or PNG. Up to 8 pages.</span>
+              </label>
+            </div>
+            <div class="adm-progress" id="doc-progress" hidden>
+              <span class="adm-progress-bar"><span id="doc-progress-fill"></span></span>
+              <span class="adm-progress-text" id="doc-progress-text" role="status"></span>
+            </div>
+            <p class="adm-error" id="doc-error" role="alert" hidden></p>
+            <div class="adm-pages" id="doc-pages" hidden>
+              <ol class="adm-page-strip" id="page-strip" role="list"></ol>
+              <button class="btn btn-outline btn-sm" type="button" id="replace-doc">Choose a different file</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="adm-step">
+            <legend><span class="adm-step-num">2</span> Details</legend>
+            <div class="adm-row">
+              <div class="adm-field">
+                <label class="adm-label" for="month">Month</label>
+                <select class="adm-input" id="month" required></select>
+              </div>
+              <div class="adm-field">
+                <label class="adm-label" for="year">Year</label>
+                <input class="adm-input" type="number" id="year" inputmode="numeric" min="2000" required>
+              </div>
+            </div>
+            <div class="adm-field">
+              <label class="adm-label" for="title">Title</label>
+              <textarea class="adm-input adm-textarea" id="title" rows="2" maxlength="200" required placeholder="e.g. Removal of a parotid sialolith (salivary stone)"></textarea>
+              <p class="adm-field-foot"><span class="adm-hint">Written as a short sentence, like the heading on the PDF.</span><span class="adm-count" id="title-count"></span></p>
+              <p class="adm-error" id="title-error" role="alert" hidden></p>
+            </div>
+            <div class="adm-field">
+              <label class="adm-label" for="title-ta">Title in Tamil <span class="adm-optional">optional</span></label>
+              <textarea class="adm-input adm-textarea" id="title-ta" rows="2" maxlength="300" lang="ta"></textarea>
+              <p class="adm-hint">Shown when a visitor switches the site to Tamil. Leave it empty and the English title is shown instead.</p>
+              <p class="adm-error" id="title-ta-error" role="alert" hidden></p>
+            </div>
+            <div class="adm-field">
+              <label class="adm-label" for="topic">Topic</label>
+              <select class="adm-input" id="topic" required></select>
+              <p class="adm-hint">Visitors can filter the archive by topic, and the case links to that treatment page.</p>
+            </div>
+            <label class="adm-switch">
+              <input type="checkbox" id="published" checked>
+              <span class="adm-switch-track" aria-hidden="true"><span class="adm-switch-thumb"></span></span>
+              <span class="adm-switch-text"><strong>Show on the website</strong><span class="adm-hint">Turn off to save it without publishing yet.</span></span>
+            </label>
+          </fieldset>
+
+          <fieldset class="adm-step" id="crop-step" disabled>
+            <legend><span class="adm-step-num">3</span> Card picture</legend>
+            <p class="adm-hint">The archive shows part of page 1 on each card. Slide to choose which part.</p>
+            <label class="adm-label" for="crop">Position on the page</label>
+            <input class="adm-range" type="range" id="crop" min="0" max="0.6" step="0.005" value="0.165">
+          </fieldset>
+        </div>
+
+        <aside class="adm-preview" aria-label="Preview">
+          <p class="adm-preview-label">How it will look</p>
+          <div class="adm-preview-card case-card">
+            <div class="case-card-link">
+              <span class="case-card-media"><canvas id="card-canvas" width="640" height="480" aria-hidden="true"></canvas><span class="adm-preview-empty" id="card-empty">Add the case document to see the card</span></span>
+              <span class="case-card-body">
+                <span class="case-date" id="pv-date"></span>
+                <span class="case-card-title" id="pv-title">Case title</span>
+                <span class="case-topic" id="pv-topic"></span>
+              </span>
+            </div>
+          </div>
+          <p class="adm-preview-note" id="pv-note"></p>
+        </aside>
+      </div>
+
+      <div class="adm-actions">
+        <p class="adm-error" id="form-error" role="alert" hidden></p>
+        <button class="btn btn-outline" type="button" id="editor-cancel">Cancel</button>
+        <button class="btn btn-primary" type="submit" id="editor-submit">Publish case</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Publishing / done -->
+  <section class="adm-view adm-center" id="view-done" hidden aria-labelledby="done-title">
+    <div class="adm-done">
+      <div class="adm-done-icon" id="done-icon" aria-hidden="true">
+        <span class="adm-spinner"></span>
+        <svg class="adm-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+      </div>
+      <h1 id="done-title" tabindex="-1">Publishing</h1>
+      <p class="adm-muted" id="done-text" role="status"></p>
+      <div class="adm-done-actions" id="done-actions" hidden>
+        <a class="btn btn-primary" id="done-view" href="../case-of-the-month.html" target="_blank" rel="noopener">View on the site</a>
+        <button class="btn btn-outline" type="button" id="done-another">Add another case</button>
+        <button class="btn btn-outline" type="button" id="done-list">Back to all cases</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="adm-toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="../assets/js/admin.js?v=fcaa5794"></script>
+</body>
+</html>

@@ -8,13 +8,16 @@
 <meta name="theme-color" content="#12403e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=2d4bc3fa">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=c33788ae">
+<!-- Tamil/English toggle: assets/css/i18n.css, assets/js/i18n.js (+ the lazily
+     loaded dictionary assets/js/i18n-data.js) and the data-i18n markers. -->
+<link rel="stylesheet" href="assets/css/i18n.css?v=0d27d059">
 <!-- TEMPORARY client color-preview tool — see removal note at the top of
      assets/css/theme-preview.css. Not part of the finished site. -->
-<link rel="stylesheet" href="assets/css/theme-preview.css">
+<link rel="stylesheet" href="assets/css/theme-preview.css?v=f6164b3a">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<script>document.documentElement.classList.add('js');</script>
+<script>(function(d){d.classList.add('js');try{if(localStorage.getItem('sdcc-lang')==='ta'){d.classList.add('lang-ta','i18n-pending');d.lang='ta';}}catch(e){}})(document.documentElement);</script>
 <link rel="canonical" href="https://www.shankerdentalcentremadurai.com/oral-and-maxillofacial-pathology.html">
 <meta property="og:title" content="Oral and Maxillofacial Pathology Madurai: Shanker Dental &amp; Craniofacial Centre">
 <meta property="og:description" content="Treatment of benign and malignant head and neck lesions in Madurai: ameloblastoma resection with fibula free flap, central giant cell granuloma, Gorlin-Goltz syndrome and more.">
@@ -25,18 +28,19 @@
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="needs-consent">
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main"><span data-i18n>Skip to content</span></a>
 <div class="scroll-progress" aria-hidden="true"></div>
 
 <div class="topbar">
   <div class="wrap">
     <ul class="topbar-list">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span>Mon-Sat 9:30am-1pm &amp; 4pm-8pm</span></li>
-      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span>17/33 Rajaji Street, Gandhi Nagar, Madurai 20</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span><span data-i18n>Mon-Sat 9:30am-1pm &amp; 4pm-8pm</span></span></li>
+      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span><span data-i18n>17/33 Rajaji Street, Gandhi Nagar, Madurai 20</span></span></li>
     </ul>
     <ul class="topbar-list">
-      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:orthomax@gmail.com">orthomax@gmail.com</a></li>
-      <li class="topbar-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <span class="label">Appointments</span> <a href="tel:+919159999362">+91 91599 99362</a></li>
+      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:orthomax@gmail.com"><span data-i18n>orthomax@gmail.com</span></a></li>
+      <li class="topbar-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <span class="label"><span data-i18n>Appointments</span></span> <a href="tel:+919159999362">+91 91599 99362</a></li>
+      <li><button class="lang-toggle" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9Z"/></svg><span class="lang-toggle-label">தமிழ்</span></button></li>
     </ul>
   </div>
 </div>
@@ -46,53 +50,53 @@
     <a class="logo" href="index.html">
       <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#1a5c4a" d="M12 2c-1.7 0-2.6.7-4 .7S5.2 2 4 3c-1.5 1.2-2 3.6-1.4 6.7.5 2.5 1.2 4.2 1.6 6.7.4 2.3.6 5.2 1.3 6.7.5 1.1 1.9 1.2 2.4 0 .7-1.6.9-4.2 1.3-6 .3-1.3.8-2.1 1.5-2.1h.6c.7 0 1.2.8 1.5 2.1.4 1.8.6 4.4 1.3 6 .5 1.2 1.9 1.1 2.4 0 .7-1.5.9-4.4 1.3-6.7.4-2.5 1.1-4.2 1.6-6.7C21.9 6.6 21.4 4.2 20 3c-1.2-1-2.6-.3-4-.3S13.7 2 12 2Z"/></svg>
       <span class="logo-text">
-        <span class="logo-name">Shanker</span>
-        <span class="logo-sub">Dental &amp; Craniofacial Centre</span>
+        <span class="logo-name"><span data-i18n>Shanker</span></span>
+        <span class="logo-sub"><span data-i18n>Dental &amp; Craniofacial Centre</span></span>
       </span>
-      <span class="sr-only">, home</span>
+      <span class="sr-only"><span data-i18n>, home</span></span>
     </a>
 
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="doctors.html">Meet the Doctors</a>
+      <a href="index.html"><span data-i18n>Home</span></a>
+      <a href="doctors.html"><span data-i18n>Meet the Doctors</span></a>
       <div class="nav-more">
-        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n>
           Treatment Options
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+          </span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <!-- Mobile-only: the full-screen menu is a flat list with no
              dropdowns, so this single link stands in for the desktop
              nine-item image panel there. -->
-        <a class="nav-more-flat" href="treatments.html">Treatment Options</a>
+        <a class="nav-more-flat" href="treatments.html"><span data-i18n>Treatment Options</span></a>
         <div class="nav-more-panel is-wide">
-          <a href="treatments.html" class="nav-more-all">All Treatment Options</a>
-          <a href="maxillofacial-surgery.html"><img src="assets/images/treatment-maxillofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Maxillofacial Surgery</span></a>
-          <a href="craniofacial-surgery.html"><img src="assets/images/treatment-craniofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Craniofacial Surgery</span></a>
-          <a href="orthognathic-surgery.html"><img src="assets/images/treatment-orthognathic-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Facial Deformity Correction</span></a>
-          <a href="facial-trauma-surgery.html"><img src="assets/images/treatment-facial-trauma-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Facial Trauma Surgery</span></a>
-          <a href="cleft-lip-and-palate-surgery.html"><img src="assets/images/treatment-cleft-lip-palate.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Cleft Lip &amp; Palate Surgery</span></a>
-          <a href="tmj-surgery.html"><img src="assets/images/treatment-tmj-jaw-joint.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>TMJ: Jaw Joint Surgery</span></a>
-          <a href="oral-and-maxillofacial-pathology.html" aria-current="page"><img src="assets/images/treatment-pathology-head-neck.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Pathology: Head &amp; Neck</span></a>
-          <a href="orthodontics.html"><img src="assets/images/treatment-orthodontics.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Orthodontics</span></a>
-          <a href="dental-and-facial-implants.html"><img src="assets/images/treatment-dental-implants.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Dental &amp; Facial Implants</span></a>
+          <a href="treatments.html" class="nav-more-all"><span data-i18n>All Treatment Options</span></a>
+          <a href="maxillofacial-surgery.html"><img src="assets/images/treatment-maxillofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Maxillofacial Surgery</span></span></a>
+          <a href="craniofacial-surgery.html"><img src="assets/images/treatment-craniofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Craniofacial Surgery</span></span></a>
+          <a href="orthognathic-surgery.html"><img src="assets/images/treatment-orthognathic-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Facial Deformity Correction</span></span></a>
+          <a href="facial-trauma-surgery.html"><img src="assets/images/treatment-facial-trauma-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Facial Trauma Surgery</span></span></a>
+          <a href="cleft-lip-and-palate-surgery.html"><img src="assets/images/treatment-cleft-lip-palate.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Cleft Lip &amp; Palate Surgery</span></span></a>
+          <a href="tmj-surgery.html"><img src="assets/images/treatment-tmj-jaw-joint.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>TMJ: Jaw Joint Surgery</span></span></a>
+          <a href="oral-and-maxillofacial-pathology.html" aria-current="page"><img src="assets/images/treatment-pathology-head-neck.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Pathology: Head &amp; Neck</span></span></a>
+          <a href="orthodontics.html"><img src="assets/images/treatment-orthodontics.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Orthodontics</span></span></a>
+          <a href="dental-and-facial-implants.html"><img src="assets/images/treatment-dental-implants.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Dental &amp; Facial Implants</span></span></a>
         </div>
       </div>
       <div class="nav-more">
-        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n>
           More
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+          </span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-more-panel">
-          <a href="facilities.html">Facilities</a>
-          <a href="case-of-the-month.html">Case of the Month</a>
+          <a href="facilities.html"><span data-i18n>Facilities</span></a>
+          <a href="case-of-the-month.html"><span data-i18n>Case of the Month</span></a>
         </div>
       </div>
-      <a href="contact.html">Contact</a>
-      <a class="btn btn-primary nav-call" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call for an appointment</a>
+      <a href="contact.html"><span data-i18n>Contact</span></a>
+      <a class="btn btn-primary nav-call" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span data-i18n> Call for an appointment</span></a>
     </nav>
 
     <div class="header-cta">
-      <a class="btn btn-primary btn-sm" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Book Appointment</a>
+      <a class="btn btn-primary btn-sm" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span data-i18n> Book Appointment</span></a>
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav"><span></span></button>
     </div>
   </div>
@@ -103,25 +107,25 @@
   <section class="page-head">
     <div class="wrap page-head-inner">
       <nav aria-label="Breadcrumb">
-        <ol class="crumbs"><li><a href="index.html">Home</a></li><li><a href="treatments.html">Treatment Options</a></li><li><span aria-current="page">Oral and Maxillofacial Pathology</span></li></ol>
+        <ol class="crumbs"><li><a href="index.html"><span data-i18n>Home</span></a></li><li><a href="treatments.html"><span data-i18n>Treatment Options</span></a></li><li><span aria-current="page"><span data-i18n>Oral and Maxillofacial Pathology</span></span></li></ol>
       </nav>
-      <h1>Oral and Maxillofacial Pathology</h1>
-      <p>Pathology of the maxillofacial region can vary from benign to malignant lesions, proper diagnosis and correct treatment is vital to get the best results.</p>
+      <h1><span data-i18n>Oral and Maxillofacial Pathology</span></h1>
+      <p><span data-i18n>Pathology of the maxillofacial region can vary from benign to malignant lesions, proper diagnosis and correct treatment is vital to get the best results.</span></p>
     </div>
   </section>
 
   <nav class="subnav" aria-label="Treatments">
     <div class="wrap subnav-scroll">
       <ul>
-        <li><a href="maxillofacial-surgery.html">Maxillofacial Surgery</a></li>
-        <li><a href="craniofacial-surgery.html">Craniofacial Surgery</a></li>
-        <li><a href="orthognathic-surgery.html">Orthognathic Surgery</a></li>
-        <li><a href="facial-trauma-surgery.html">Facial Trauma</a></li>
-        <li><a href="cleft-lip-and-palate-surgery.html">Cleft Lip &amp; Palate</a></li>
-        <li><a href="tmj-surgery.html">TMJ: Jaw Joint</a></li>
-        <li><a href="oral-and-maxillofacial-pathology.html" aria-current="page">Pathology</a></li>
-        <li><a href="orthodontics.html">Orthodontics</a></li>
-        <li><a href="dental-and-facial-implants.html">Dental &amp; Facial Implants</a></li>
+        <li><a href="maxillofacial-surgery.html"><span data-i18n>Maxillofacial Surgery</span></a></li>
+        <li><a href="craniofacial-surgery.html"><span data-i18n>Craniofacial Surgery</span></a></li>
+        <li><a href="orthognathic-surgery.html"><span data-i18n>Orthognathic Surgery</span></a></li>
+        <li><a href="facial-trauma-surgery.html"><span data-i18n>Facial Trauma</span></a></li>
+        <li><a href="cleft-lip-and-palate-surgery.html"><span data-i18n>Cleft Lip &amp; Palate</span></a></li>
+        <li><a href="tmj-surgery.html"><span data-i18n>TMJ: Jaw Joint</span></a></li>
+        <li><a href="oral-and-maxillofacial-pathology.html" aria-current="page"><span data-i18n>Pathology</span></a></li>
+        <li><a href="orthodontics.html"><span data-i18n>Orthodontics</span></a></li>
+        <li><a href="dental-and-facial-implants.html"><span data-i18n>Dental &amp; Facial Implants</span></a></li>
       </ul>
     </div>
   </nav>
@@ -132,28 +136,28 @@
         <div class="gate-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3 4 6v5.5c0 4.6 3.2 8.6 8 9.5 4.8-.9 8-4.9 8-9.5V6Z"/><path d="M12 8.5v4M12 16h.01"/></svg>
         </div>
-        <h2>Please read before continuing</h2>
-        <p>
+        <h2><span data-i18n>Please read before continuing</span></h2>
+        <p><span data-i18n>
           Maxillofacial surgery and Orthodontics concerns surgical and non-surgical treatment of the face, head and
           neck and jaws. The following pages contain surgical pictures including intra-operative, pre and post
           operative images. We understand that it may not be appropriate for general viewing and these images are
           shown with the sole aim of educating and creating awareness among the general population about the
           problems associated with facial surgery, its potential complications and its possible solutions.
-        </p>
-        <p>
+        </span></p>
+        <p><span data-i18n>
           These images are completely under the copyright of the hospital and the viewer does not have any claim
           whatsoever to these images.
-        </p>
+        </span></p>
         <div class="gate-agree">
           <input type="checkbox" id="consent-check">
-          <label for="consent-check">
+          <label for="consent-check"><span data-i18n>
             I am above the age of 18 years, I will not download or misuse these images in any way, and I agree to
             all the terms and conditions unconditionally and agree to follow the guidelines set by the hospital.
-          </label>
+          </span></label>
         </div>
         <div class="gate-actions">
-          <button class="btn btn-primary btn-lg" type="button" id="consent-agree" disabled aria-disabled="true">Agree &amp; continue</button>
-          <p class="gate-hint">Tick the box above to continue.</p>
+          <button class="btn btn-primary btn-lg" type="button" id="consent-agree" disabled aria-disabled="true"><span data-i18n>Agree &amp; continue</span></button>
+          <p class="gate-hint"><span data-i18n>Tick the box above to continue.</span></p>
         </div>
       </div>
     </div>
@@ -163,13 +167,13 @@
 
     <section class="section">
       <div class="wrap wrap-narrow prose reveal">
-        <p class="lede-text">
+        <p class="lede-text"><span data-i18n>
           Pathology of the maxillofacial region can vary from benign to malignant (cancer) lesions. Proper
           diagnosis and correct treatment is vital to get the best results. Some of the pathology can be treated by
           medicines alone while others may need surgical intervention with or without reconstruction. Tumours in
           the head and neck region are more complex to treat as the anatomy is more complex, any scars created
           cannot be hidden, and the ability to speak and chew food must be maintained.
-        </p>
+        </span></p>
       </div>
     </section>
 
@@ -177,21 +181,21 @@
       <div class="wrap wrap-narrow">
 
         <article class="case reveal">
-          <span class="case-tag">Case 1</span>
-          <h2>Ameloblastoma Mandible: resection with fibula bone free flap</h2>
-          <p>
+          <span class="case-tag"><span data-i18n>Case 1</span></span>
+          <h2><span data-i18n>Ameloblastoma Mandible: resection with fibula bone free flap</span></h2>
+          <p><span data-i18n>
             A young lady presented to us with a swelling in her right side mandible for the past 2 years. It was
             slowly enlarging in size and causing numbness of the lower lip. OPG revealed a large multi-cystic
             lesion approximately 12 x 4 cm in size and extending into the condyle, coronoid and ramus of mandible
             with root resorption of her teeth. Biopsy confirmed an ameloblastoma.
-          </p>
-          <p>
+          </span></p>
+          <p><span data-i18n>
             Ameloblastoma is a locally aggressive tumour which usually doesn&rsquo;t metastasise. There are however
             reports of metastasis and also reports of carcinomatous changes. These tumours are also usually
             radio-resistant and there are also reports of cancer occurring if radiotherapy is given. The treatment
             of choice for ameloblastoma is resection with a wide margin.
-          </p>
-          <p>
+          </span></p>
+          <p><span data-i18n>
             A submandibular approach was done along with a lip split to get good access to the entire tumour. Care
             was taken to preserve the marginal mandibular branch of the facial nerve and the facial artery and vein
             were ligated during the approach. Wide resection was done with 1 cm clearance all around including the
@@ -201,15 +205,15 @@
             when it was clear that she was free of tumour, we did a fibula bone free flap transfer. This was
             followed with dental reconstruction. It is now 14 years post-operative with no evidence of the tumour
             and she is leading a normal life with a normal diet.
-          </p>
+          </span></p>
           <div class="figure-grid">
-<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Ameloblastoma-Mandible-one.jpg" data-cap="Large ameloblastoma involving one half of the lower jaw." aria-label="Enlarge image: Large ameloblastoma involving one half of the lower jaw."><img src="assets/images/Ameloblastoma-Mandible-one.jpg" alt="Large ameloblastoma involving one half of the lower jaw." loading="lazy" decoding="async" width="1280" height="508"></button><figcaption>Large ameloblastoma involving one half of the lower jaw.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Ameloblastoma-Mandible-two.jpg" data-cap="Large ameloblastoma involving one half of the lower jaw." aria-label="Enlarge image: Large ameloblastoma involving one half of the lower jaw."><img src="assets/images/Ameloblastoma-Mandible-two.jpg" alt="Large ameloblastoma involving one half of the lower jaw." loading="lazy" decoding="async" width="1280" height="670"></button><figcaption>Large ameloblastoma involving one half of the lower jaw.</figcaption></figure></div><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Ameloblastoma-Mandible-3.jpg" data-cap="Wide resection of the ameloblastoma done and recon plating done. This was followed by fibula free flap transfer." aria-label="Enlarge image: Wide resection of the ameloblastoma done and recon plating done. This was followed by fibula free flap transfer."><img src="assets/images/Ameloblastoma-Mandible-3.jpg" alt="Wide resection of the ameloblastoma done and recon plating done. This was followed by fibula free flap transfer." loading="lazy" decoding="async" width="1280" height="496"></button><figcaption>Wide resection of the ameloblastoma done and recon plating done. This was followed by fibula free flap transfer.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Ameloblastoma-Mandible-4.jpg" data-cap="14 years post-op, scars are nearly invisible, there is minimal morbidity with no recurrence till date. The patient is able to eat normally." aria-label="Enlarge image: 14 years post-op, scars are nearly invisible, there is minimal morbidity with no recurrence till date. The patient is able to eat normally."><img src="assets/images/Ameloblastoma-Mandible-4.jpg" alt="14 years post-op, scars are nearly invisible, there is minimal morbidity with no recurrence till date. The patient is able to eat normally." loading="lazy" decoding="async" width="1280" height="535"></button><figcaption>14 years post-op, scars are nearly invisible, there is minimal morbidity with no recurrence till date. The patient is able to eat normally.</figcaption></figure>
+<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Ameloblastoma-Mandible-one.jpg" data-cap="Large ameloblastoma involving one half of the lower jaw." aria-label="Enlarge image: Large ameloblastoma involving one half of the lower jaw."><img src="assets/images/Ameloblastoma-Mandible-one.jpg" alt="Large ameloblastoma involving one half of the lower jaw." loading="lazy" decoding="async" width="1280" height="508"></button><figcaption><span data-i18n>Large ameloblastoma involving one half of the lower jaw.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Ameloblastoma-Mandible-two.jpg" data-cap="Large ameloblastoma involving one half of the lower jaw." aria-label="Enlarge image: Large ameloblastoma involving one half of the lower jaw."><img src="assets/images/Ameloblastoma-Mandible-two.jpg" alt="Large ameloblastoma involving one half of the lower jaw." loading="lazy" decoding="async" width="1280" height="670"></button><figcaption><span data-i18n>Large ameloblastoma involving one half of the lower jaw.</span></figcaption></figure></div><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Ameloblastoma-Mandible-3.jpg" data-cap="Wide resection of the ameloblastoma done and recon plating done. This was followed by fibula free flap transfer." aria-label="Enlarge image: Wide resection of the ameloblastoma done and recon plating done. This was followed by fibula free flap transfer."><img src="assets/images/Ameloblastoma-Mandible-3.jpg" alt="Wide resection of the ameloblastoma done and recon plating done. This was followed by fibula free flap transfer." loading="lazy" decoding="async" width="1280" height="496"></button><figcaption><span data-i18n>Wide resection of the ameloblastoma done and recon plating done. This was followed by fibula free flap transfer.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Ameloblastoma-Mandible-4.jpg" data-cap="14 years post-op, scars are nearly invisible, there is minimal morbidity with no recurrence till date. The patient is able to eat normally." aria-label="Enlarge image: 14 years post-op, scars are nearly invisible, there is minimal morbidity with no recurrence till date. The patient is able to eat normally."><img src="assets/images/Ameloblastoma-Mandible-4.jpg" alt="14 years post-op, scars are nearly invisible, there is minimal morbidity with no recurrence till date. The patient is able to eat normally." loading="lazy" decoding="async" width="1280" height="535"></button><figcaption><span data-i18n>14 years post-op, scars are nearly invisible, there is minimal morbidity with no recurrence till date. The patient is able to eat normally.</span></figcaption></figure>
         </article>
 
         <article class="case reveal">
-          <span class="case-tag">Case 2</span>
-          <h2>Central Giant Cell Granuloma (CGCG)</h2>
-          <p>
+          <span class="case-tag"><span data-i18n>Case 2</span></span>
+          <h2><span data-i18n>Central Giant Cell Granuloma (CGCG)</span></h2>
+          <p><span data-i18n>
             A young girl came to us with a large swelling of her right mandible. Biopsy done showed osteoclastic
             cells with fibroblasts and a provisional diagnosis of central giant cell granuloma was given. CT scans
             and OPG showed a large multilocular lesion occupying the entire body of the mandible with perforation on
@@ -217,27 +221,27 @@
             was decided to do an enucleation and remove the lesion in-toto completely intraorally and then follow it
             up with calcitonin therapy to prevent any recurrence. The teeth from canine to the molars were root
             canal treated in an attempt to save them. This was done by a Consultant in Endodontics.
-          </p>
-          <p>
+          </span></p>
+          <p><span data-i18n>
             Under general anaesthesia, the entire body and ramus of mandible was exposed via an envelope flap
             incision and the entire tumour was removed. Care was taken to preserve the inferior alveolar nerve
             during the entire procedure. The impacted wisdom tooth was removed and there was no iatrogenic or
             pathological fracture of the mandible. Clinically, the patient recovered well. The beauty of this
             procedure is that a large tumour has been removed completely intraorally, no scars on the face,
             she has all her teeth intact and no numbness present. Basically the morbidity is very minimal.
-          </p>
-          <p>
+          </span></p>
+          <p><span data-i18n>
             Post-op histopathology confirmed this to be a central giant cell granuloma and she was then referred to
             an Endocrinologist for calcitonin injections. The calcitonin therapy was done over a period of 2 years.
             It is now 7 years post-op with no recurrence.
-          </p>
-<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Central-Giant-cell-granuloma-1.jpg" data-cap="Pre-op central giant cell granuloma with perforation of cortex of mandible lingually and labially." aria-label="Enlarge image: Pre-op central giant cell granuloma with perforation of cortex of mandible lingually and labially."><img src="assets/images/Central-Giant-cell-granuloma-1.jpg" alt="Pre-op central giant cell granuloma with perforation of cortex of mandible lingually and labially." loading="lazy" decoding="async" width="1280" height="963"></button><figcaption>Pre-op central giant cell granuloma with perforation of cortex of mandible lingually and labially.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Central-Giant-cell-granuloma-2.jpg" data-cap="Intra and post-op showing the entire tumour has been removed entirely via intraoral approach (no scars on the face)." aria-label="Enlarge image: Intra and post-op showing the entire tumour has been removed entirely via intraoral approach (no scars on the face)."><img src="assets/images/Central-Giant-cell-granuloma-2.jpg" alt="Intra and post-op showing the entire tumour has been removed entirely via intraoral approach (no scars on the face)." loading="lazy" decoding="async" width="1149" height="788"></button><figcaption>Intra and post-op showing the entire tumour has been removed entirely via intraoral approach (no scars on the face).</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Central-Giant-cell-granuloma-3.jpg" data-cap="OPG X-rays showing 7 years follow-up with no recurrence." aria-label="Enlarge image: OPG X-rays showing 7 years follow-up with no recurrence."><img src="assets/images/Central-Giant-cell-granuloma-3.jpg" alt="OPG X-rays showing 7 years follow-up with no recurrence." loading="lazy" decoding="async" width="927" height="500"></button><figcaption>OPG X-rays showing 7 years follow-up with no recurrence.</figcaption></figure>
+          </span></p>
+<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Central-Giant-cell-granuloma-1.jpg" data-cap="Pre-op central giant cell granuloma with perforation of cortex of mandible lingually and labially." aria-label="Enlarge image: Pre-op central giant cell granuloma with perforation of cortex of mandible lingually and labially."><img src="assets/images/Central-Giant-cell-granuloma-1.jpg" alt="Pre-op central giant cell granuloma with perforation of cortex of mandible lingually and labially." loading="lazy" decoding="async" width="1280" height="963"></button><figcaption><span data-i18n>Pre-op central giant cell granuloma with perforation of cortex of mandible lingually and labially.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Central-Giant-cell-granuloma-2.jpg" data-cap="Intra and post-op showing the entire tumour has been removed entirely via intraoral approach (no scars on the face)." aria-label="Enlarge image: Intra and post-op showing the entire tumour has been removed entirely via intraoral approach (no scars on the face)."><img src="assets/images/Central-Giant-cell-granuloma-2.jpg" alt="Intra and post-op showing the entire tumour has been removed entirely via intraoral approach (no scars on the face)." loading="lazy" decoding="async" width="1149" height="788"></button><figcaption><span data-i18n>Intra and post-op showing the entire tumour has been removed entirely via intraoral approach (no scars on the face).</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Central-Giant-cell-granuloma-3.jpg" data-cap="OPG X-rays showing 7 years follow-up with no recurrence." aria-label="Enlarge image: OPG X-rays showing 7 years follow-up with no recurrence."><img src="assets/images/Central-Giant-cell-granuloma-3.jpg" alt="OPG X-rays showing 7 years follow-up with no recurrence." loading="lazy" decoding="async" width="927" height="500"></button><figcaption><span data-i18n>OPG X-rays showing 7 years follow-up with no recurrence.</span></figcaption></figure>
         </article>
 
         <article class="case reveal">
-          <span class="case-tag">Case 3</span>
-          <h2>Gorlin-Goltz syndrome (Odontogenic keratocysts)</h2>
-          <p>
+          <span class="case-tag"><span data-i18n>Case 3</span></span>
+          <h2><span data-i18n>Gorlin-Goltz syndrome (Odontogenic keratocysts)</span></h2>
+          <p><span data-i18n>
             A 28 year old came to us with pain and swelling in his maxilla with a foul smelling discharge. He had
             previously been operated elsewhere for a cyst removal in the maxilla 2 years ago. He also had multiple
             dermal cysts in his foot, hand and mouth. OPG revealed large cystic lesions in all four quadrants. CT
@@ -245,37 +249,37 @@
             He was taken up for surgery and had the odontogenic keratocysts enucleated from all four quadrants along
             with all the impacted teeth removed at the same time. Marsupialisation was then done to prevent any
             recurrence. Post-operatively he recovered well with no complications. He is now on regular follow-up.
-          </p>
-          <p>
+          </span></p>
+          <p><span data-i18n>
             Gorlin-Goltz syndrome is otherwise known as basal cell nevus bifid rib syndrome. It is an autosomal
             dominant condition due to mutations found in chromosome arm 9q. The characteristics of this syndrome
             include multiple impacted teeth with odontogenic keratocysts, bifid ribs, intracranial calcifications of
             falx cerebri, multiple dermal cysts and most importantly basal cell carcinomas (BCC) of skin. Only 10%
             of affected patients do not have BCCs. Fair skin and exposure to sunlight are predisposing conditions to
             basal cell carcinomas.
-          </p>
+          </span></p>
           <div class="callout">
-            <p>
+            <p><span data-i18n>
               Another important point to remember is that the odontogenic keratocysts have a very high recurrence
               rate and can recur even after 5-10 years. Therefore long term follow-up for both the keratocysts
               and basal cell carcinomas is vital. Luckily this patient did not have any skin cancer lesions.
-            </p>
+            </span></p>
           </div>
-<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Gorlin-Gotz-syndrome-1.jpg" data-cap="Pre and post-op OPG X-rays showing odontogenic keratocysts and impacted teeth removed." aria-label="Enlarge image: Pre and post-op OPG X-rays showing odontogenic keratocysts and impacted teeth removed."><img src="assets/images/Gorlin-Gotz-syndrome-1.jpg" alt="Pre and post-op OPG X-rays showing odontogenic keratocysts and impacted teeth removed." loading="lazy" decoding="async" width="1280" height="307"></button><figcaption>Pre and post-op OPG X-rays showing odontogenic keratocysts and impacted teeth removed.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Gorlin-Gotz-syndrome-2.jpg" data-cap="Calcified falx cerebri and odontogenic keratocysts in all four quadrants of maxilla and mandible." aria-label="Enlarge image: Calcified falx cerebri and odontogenic keratocysts in all four quadrants of maxilla and mandible."><img src="assets/images/Gorlin-Gotz-syndrome-2.jpg" alt="Calcified falx cerebri and odontogenic keratocysts in all four quadrants of maxilla and mandible." loading="lazy" decoding="async" width="825" height="447"></button><figcaption>Calcified falx cerebri and odontogenic keratocysts in all four quadrants of maxilla and mandible.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Gorlin-Gotz-syndrome-13.jpg" data-cap="Bifid ribs and multiple dermal cysts." aria-label="Enlarge image: Bifid ribs and multiple dermal cysts."><img src="assets/images/Gorlin-Gotz-syndrome-13.jpg" alt="Bifid ribs and multiple dermal cysts." loading="lazy" decoding="async" width="1032" height="423"></button><figcaption>Bifid ribs and multiple dermal cysts.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Gorlin-Gotz-syndrome-4.jpg" data-cap="Large odontogenic keratocysts enucleated and marsupialised from all four quadrants along with removal of all impacted teeth." aria-label="Enlarge image: Large odontogenic keratocysts enucleated and marsupialised from all four quadrants along with removal of all impacted teeth."><img src="assets/images/Gorlin-Gotz-syndrome-4.jpg" alt="Large odontogenic keratocysts enucleated and marsupialised from all four quadrants along with removal of all impacted teeth." loading="lazy" decoding="async" width="744" height="324"></button><figcaption>Large odontogenic keratocysts enucleated and marsupialised from all four quadrants along with removal of all impacted teeth.</figcaption></figure>
+<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Gorlin-Gotz-syndrome-1.jpg" data-cap="Pre and post-op OPG X-rays showing odontogenic keratocysts and impacted teeth removed." aria-label="Enlarge image: Pre and post-op OPG X-rays showing odontogenic keratocysts and impacted teeth removed."><img src="assets/images/Gorlin-Gotz-syndrome-1.jpg" alt="Pre and post-op OPG X-rays showing odontogenic keratocysts and impacted teeth removed." loading="lazy" decoding="async" width="1280" height="307"></button><figcaption><span data-i18n>Pre and post-op OPG X-rays showing odontogenic keratocysts and impacted teeth removed.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Gorlin-Gotz-syndrome-2.jpg" data-cap="Calcified falx cerebri and odontogenic keratocysts in all four quadrants of maxilla and mandible." aria-label="Enlarge image: Calcified falx cerebri and odontogenic keratocysts in all four quadrants of maxilla and mandible."><img src="assets/images/Gorlin-Gotz-syndrome-2.jpg" alt="Calcified falx cerebri and odontogenic keratocysts in all four quadrants of maxilla and mandible." loading="lazy" decoding="async" width="825" height="447"></button><figcaption><span data-i18n>Calcified falx cerebri and odontogenic keratocysts in all four quadrants of maxilla and mandible.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Gorlin-Gotz-syndrome-13.jpg" data-cap="Bifid ribs and multiple dermal cysts." aria-label="Enlarge image: Bifid ribs and multiple dermal cysts."><img src="assets/images/Gorlin-Gotz-syndrome-13.jpg" alt="Bifid ribs and multiple dermal cysts." loading="lazy" decoding="async" width="1032" height="423"></button><figcaption><span data-i18n>Bifid ribs and multiple dermal cysts.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Gorlin-Gotz-syndrome-4.jpg" data-cap="Large odontogenic keratocysts enucleated and marsupialised from all four quadrants along with removal of all impacted teeth." aria-label="Enlarge image: Large odontogenic keratocysts enucleated and marsupialised from all four quadrants along with removal of all impacted teeth."><img src="assets/images/Gorlin-Gotz-syndrome-4.jpg" alt="Large odontogenic keratocysts enucleated and marsupialised from all four quadrants along with removal of all impacted teeth." loading="lazy" decoding="async" width="744" height="324"></button><figcaption><span data-i18n>Large odontogenic keratocysts enucleated and marsupialised from all four quadrants along with removal of all impacted teeth.</span></figcaption></figure>
         </article>
 
         <article class="case reveal">
-          <span class="case-tag">Case 4</span>
-          <h2>Tooth in Orbit</h2>
-          <p>
+          <span class="case-tag"><span data-i18n>Case 4</span></span>
+          <h2><span data-i18n>Tooth in Orbit</span></h2>
+          <p><span data-i18n>
             A 6 year old presented with a swelling in her right orbital region. The swelling was gradually
             increasing in size and causing the eyeball to be pushed upward and outward (hyperglobus and
             exophthalmos). CT scans revealed a tooth inside the orbit cone and surrounded with abnormal tissues
             (teratoma). It was decided to enucleate the lesion. The teratoma was removed under general anaesthesia
             via a subciliary approach. Vision and eye movements were normal. The hyperglobus and exophthalmos were
             corrected.
-          </p>
-<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Tooth-in-Orbit-1.jpg" data-cap="Pre-operative photos and CT showing a fully developed tooth in the orbit lying close to the optic nerve." aria-label="Enlarge image: Pre-operative photos and CT showing a fully developed tooth in the orbit lying close to the optic nerve."><img src="assets/images/Tooth-in-Orbit-1.jpg" alt="Pre-operative photos and CT showing a fully developed tooth in the orbit lying close to the optic nerve." loading="lazy" decoding="async" width="1218" height="906"></button><figcaption>Pre-operative photos and CT showing a fully developed tooth in the orbit lying close to the optic nerve.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Tooth-in-Orbit-2.jpg" data-cap="A subciliary approach was done and the teratoma was exposed and enucleated in toto and suturing was done." aria-label="Enlarge image: A subciliary approach was done and the teratoma was exposed and enucleated in toto and suturing was done."><img src="assets/images/Tooth-in-Orbit-2.jpg" alt="A subciliary approach was done and the teratoma was exposed and enucleated in toto and suturing was done." loading="lazy" decoding="async" width="1300" height="322"></button><figcaption>A subciliary approach was done and the teratoma was exposed and enucleated in toto and suturing was done.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Tooth-in-Orbit-3.jpg" data-cap="Pre and post-op pictures with the tooth removed. Note the correction in hyperglobus and exophthalmos, eyeballs are at the same level post-op." aria-label="Enlarge image: Pre and post-op pictures with the tooth removed. Note the correction in hyperglobus and exophthalmos, eyeballs are at the same level post-op."><img src="assets/images/Tooth-in-Orbit-3.jpg" alt="Pre and post-op pictures with the tooth removed. Note the correction in hyperglobus and exophthalmos, eyeballs are at the same level post-op." loading="lazy" decoding="async" width="1300" height="360"></button><figcaption>Pre and post-op pictures with the tooth removed. Note the correction in hyperglobus and exophthalmos, eyeballs are at the same level post-op.</figcaption></figure>
+          </span></p>
+<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Tooth-in-Orbit-1.jpg" data-cap="Pre-operative photos and CT showing a fully developed tooth in the orbit lying close to the optic nerve." aria-label="Enlarge image: Pre-operative photos and CT showing a fully developed tooth in the orbit lying close to the optic nerve."><img src="assets/images/Tooth-in-Orbit-1.jpg" alt="Pre-operative photos and CT showing a fully developed tooth in the orbit lying close to the optic nerve." loading="lazy" decoding="async" width="1218" height="906"></button><figcaption><span data-i18n>Pre-operative photos and CT showing a fully developed tooth in the orbit lying close to the optic nerve.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Tooth-in-Orbit-2.jpg" data-cap="A subciliary approach was done and the teratoma was exposed and enucleated in toto and suturing was done." aria-label="Enlarge image: A subciliary approach was done and the teratoma was exposed and enucleated in toto and suturing was done."><img src="assets/images/Tooth-in-Orbit-2.jpg" alt="A subciliary approach was done and the teratoma was exposed and enucleated in toto and suturing was done." loading="lazy" decoding="async" width="1300" height="322"></button><figcaption><span data-i18n>A subciliary approach was done and the teratoma was exposed and enucleated in toto and suturing was done.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/Tooth-in-Orbit-3.jpg" data-cap="Pre and post-op pictures with the tooth removed. Note the correction in hyperglobus and exophthalmos, eyeballs are at the same level post-op." aria-label="Enlarge image: Pre and post-op pictures with the tooth removed. Note the correction in hyperglobus and exophthalmos, eyeballs are at the same level post-op."><img src="assets/images/Tooth-in-Orbit-3.jpg" alt="Pre and post-op pictures with the tooth removed. Note the correction in hyperglobus and exophthalmos, eyeballs are at the same level post-op." loading="lazy" decoding="async" width="1300" height="360"></button><figcaption><span data-i18n>Pre and post-op pictures with the tooth removed. Note the correction in hyperglobus and exophthalmos, eyeballs are at the same level post-op.</span></figcaption></figure>
         </article>
 
       </div>
@@ -285,11 +289,11 @@
 
   <section class="cta-band section-sm" aria-labelledby="cta-heading">
     <div class="wrap center">
-      <h2 id="cta-heading">Ready to talk to a specialist?</h2>
-      <p>We are located 2 minutes&rsquo; walk from the Anna Bus Stand, with adequate off-street car parking.</p>
+      <h2 id="cta-heading"><span data-i18n>Ready to talk to a specialist?</span></h2>
+      <p><span data-i18n>We are located 2 minutes&rsquo; walk from the Anna Bus Stand, with adequate off-street car parking.</span></p>
       <div class="cta-actions">
-        <a class="btn btn-ghost btn-lg" href="tel:+919159999362">Call +91 91599 99362</a>
-        <a class="btn btn-outline btn-lg" href="contact.html">Get directions</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+919159999362"><span data-i18n>Call +91 91599 99362</span></a>
+        <a class="btn btn-outline btn-lg" href="contact.html"><span data-i18n>Get directions</span></a>
       </div>
     </div>
   </section>
@@ -302,61 +306,61 @@
       <div class="footer-logo">
         <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#ffffff" d="M12 2c-1.7 0-2.6.7-4 .7S5.2 2 4 3c-1.5 1.2-2 3.6-1.4 6.7.5 2.5 1.2 4.2 1.6 6.7.4 2.3.6 5.2 1.3 6.7.5 1.1 1.9 1.2 2.4 0 .7-1.6.9-4.2 1.3-6 .3-1.3.8-2.1 1.5-2.1h.6c.7 0 1.2.8 1.5 2.1.4 1.8.6 4.4 1.3 6 .5 1.2 1.9 1.1 2.4 0 .7-1.5.9-4.4 1.3-6.7.4-2.5 1.1-4.2 1.6-6.7C21.9 6.6 21.4 4.2 20 3c-1.2-1-2.6-.3-4-.3S13.7 2 12 2Z"/></svg>
         <span class="logo-text">
-          <span class="logo-name">Shanker</span>
-          <span class="logo-sub">Dental &amp; Craniofacial Centre</span>
+          <span class="logo-name"><span data-i18n>Shanker</span></span>
+          <span class="logo-sub"><span data-i18n>Dental &amp; Craniofacial Centre</span></span>
         </span>
       </div>
-      <p>Madurai&rsquo;s purpose-built multi-specialty centre for maxillofacial surgery, craniofacial surgery, orthodontics and implantology.</p>
-      <p class="footer-motto">&ldquo;Saving faces and changing lives&rdquo;</p>
+      <p><span data-i18n>Madurai&rsquo;s purpose-built multi-specialty centre for maxillofacial surgery, craniofacial surgery, orthodontics and implantology.</span></p>
+      <p class="footer-motto"><span data-i18n>&ldquo;Saving faces and changing lives&rdquo;</span></p>
     </div>
 
     <nav class="footer-nav" aria-label="Footer">
-      <h2 class="footer-col-title">Explore</h2>
+      <h2 class="footer-col-title"><span data-i18n>Explore</span></h2>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="doctors.html">Meet the Doctors</a></li>
-        <li><a href="facilities.html">Facilities</a></li>
-        <li><a href="treatments.html">Treatment Options</a></li>
-        <li><a href="case-of-the-month.html">Case of the Month</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="index.html"><span data-i18n>Home</span></a></li>
+        <li><a href="doctors.html"><span data-i18n>Meet the Doctors</span></a></li>
+        <li><a href="facilities.html"><span data-i18n>Facilities</span></a></li>
+        <li><a href="treatments.html"><span data-i18n>Treatment Options</span></a></li>
+        <li><a href="case-of-the-month.html"><span data-i18n>Case of the Month</span></a></li>
+        <li><a href="contact.html"><span data-i18n>Contact Us</span></a></li>
       </ul>
     </nav>
 
     <nav class="footer-nav" aria-label="Treatments">
-      <h2 class="footer-col-title">Treatments</h2>
+      <h2 class="footer-col-title"><span data-i18n>Treatments</span></h2>
       <ul>
-        <li><a href="maxillofacial-surgery.html">Maxillofacial Surgery</a></li>
-        <li><a href="craniofacial-surgery.html">Craniofacial Surgery</a></li>
-        <li><a href="orthognathic-surgery.html">Orthognathic Surgery</a></li>
-        <li><a href="facial-trauma-surgery.html">Facial Trauma</a></li>
-        <li><a href="cleft-lip-and-palate-surgery.html">Cleft Lip &amp; Palate</a></li>
-        <li><a href="tmj-surgery.html">TMJ: Jaw Joint</a></li>
-        <li><a href="oral-and-maxillofacial-pathology.html">Pathology</a></li>
+        <li><a href="maxillofacial-surgery.html"><span data-i18n>Maxillofacial Surgery</span></a></li>
+        <li><a href="craniofacial-surgery.html"><span data-i18n>Craniofacial Surgery</span></a></li>
+        <li><a href="orthognathic-surgery.html"><span data-i18n>Orthognathic Surgery</span></a></li>
+        <li><a href="facial-trauma-surgery.html"><span data-i18n>Facial Trauma</span></a></li>
+        <li><a href="cleft-lip-and-palate-surgery.html"><span data-i18n>Cleft Lip &amp; Palate</span></a></li>
+        <li><a href="tmj-surgery.html"><span data-i18n>TMJ: Jaw Joint</span></a></li>
+        <li><a href="oral-and-maxillofacial-pathology.html"><span data-i18n>Pathology</span></a></li>
       </ul>
     </nav>
 
     <div>
-      <h2 class="footer-col-title">Visit us</h2>
+      <h2 class="footer-col-title"><span data-i18n>Visit us</span></h2>
       <ul class="footer-contact">
-        <li><address>Shanker Dental &amp; Craniofacial Centre<br>17/33 Rajaji Street,<br>Gandhi Nagar, Madurai 20</address></li>
+        <li><address><span data-i18n>Shanker Dental &amp; Craniofacial Centre</span><br><span data-i18n>17/33 Rajaji Street,</span><br><span data-i18n>Gandhi Nagar, Madurai 20</span></address></li>
         <li><a href="tel:+919159999362">+91 91599 99362</a></li>
         <li><a href="tel:+919788473879">+91 97884 73879</a></li>
-        <li><a href="mailto:orthomax@gmail.com">orthomax@gmail.com</a></li>
+        <li><a href="mailto:orthomax@gmail.com"><span data-i18n>orthomax@gmail.com</span></a></li>
       </ul>
-      <h2 class="footer-col-title mt-6">Clinic timings</h2>
+      <h2 class="footer-col-title mt-6"><span data-i18n>Clinic timings</span></h2>
       <ul class="footer-contact">
-        <li>Mon-Sat: 9:30am-1pm, 4pm-8pm</li>
-        <li>Sunday: 9:30am-1pm</li>
+        <li><span data-i18n>Mon-Sat: 9:30am-1pm, 4pm-8pm</span></li>
+        <li><span data-i18n>Sunday: 9:30am-1pm</span></li>
       </ul>
     </div>
   </div>
 
   <div class="wrap">
     <div class="footer-bottom">
-      <div>&copy; <span data-year>2026</span> Shanker Dental &amp; Craniofacial Centre. All rights reserved.</div>
+      <div>&copy; <span data-year>2026</span><span data-i18n> Shanker Dental &amp; Craniofacial Centre. All rights reserved.</span></div>
       <ul>
-        <li><a href="sitemap.html">Sitemap</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="sitemap.html"><span data-i18n>Sitemap</span></a></li>
+        <li><a href="contact.html"><span data-i18n>Contact</span></a></li>
       </ul>
     </div>
   </div>
@@ -368,11 +372,11 @@
 <div class="callbar">
   <a class="callbar-btn callbar-call" href="tel:+919159999362">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-    <span>Call the centre</span>
+    <span><span data-i18n>Call the centre</span></span>
   </a>
   <a class="callbar-btn callbar-map" href="contact.html">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-    <span>Directions</span>
+    <span><span data-i18n>Directions</span></span>
   </a>
 </div>
 
@@ -388,8 +392,9 @@
   <p class="lb-cap" aria-live="polite"><span class="lb-cap-text"></span><span class="lb-count"></span></p>
 </div>
 
-<script src="assets/js/main.js?v=2d4bc3fa"></script>
+<script src="assets/js/main.js?v=618a79d4"></script>
+<script src="assets/js/i18n.js?v=8a6f8624" data-dict="assets/js/i18n-data.js?v=4bca07e8"></script>
 <!-- TEMPORARY client color-preview tool — remove alongside theme-preview.css. -->
-<script src="assets/js/theme-preview.js"></script>
+<script src="assets/js/theme-preview.js?v=69a1dcc8"></script>
 </body>
 </html>

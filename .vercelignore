@@ -10,3 +10,8 @@
 
 HANDOFF.md
 tools/
+
+# Developer docs and the case data (the admin API reads cases from GitHub,
+# not from the deployment), so neither needs to be public.
+README.md
+data/

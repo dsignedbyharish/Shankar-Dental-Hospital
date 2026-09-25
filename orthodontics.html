@@ -8,13 +8,16 @@
 <meta name="theme-color" content="#12403e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=2d4bc3fa">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=c33788ae">
+<!-- Tamil/English toggle: assets/css/i18n.css, assets/js/i18n.js (+ the lazily
+     loaded dictionary assets/js/i18n-data.js) and the data-i18n markers. -->
+<link rel="stylesheet" href="assets/css/i18n.css?v=0d27d059">
 <!-- TEMPORARY client color-preview tool — see removal note at the top of
      assets/css/theme-preview.css. Not part of the finished site. -->
-<link rel="stylesheet" href="assets/css/theme-preview.css">
+<link rel="stylesheet" href="assets/css/theme-preview.css?v=f6164b3a">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<script>document.documentElement.classList.add('js');</script>
+<script>(function(d){d.classList.add('js');try{if(localStorage.getItem('sdcc-lang')==='ta'){d.classList.add('lang-ta','i18n-pending');d.lang='ta';}}catch(e){}})(document.documentElement);</script>
 <link rel="canonical" href="https://www.shankerdentalcentremadurai.com/orthodontics.html">
 <meta property="og:title" content="Orthodontics Madurai: Braces, Invisalign &amp; Dentofacial Orthopedics | Shanker Dental Centre">
 <meta property="og:description" content="Orthodontic treatment in Madurai: removable, functional and fixed appliances, certified Invisalign, and combined orthodontic-orthognathic surgery for skeletal deformity.">
@@ -25,18 +28,19 @@
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="needs-consent">
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main"><span data-i18n>Skip to content</span></a>
 <div class="scroll-progress" aria-hidden="true"></div>
 
 <div class="topbar">
   <div class="wrap">
     <ul class="topbar-list">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span>Mon-Sat 9:30am-1pm &amp; 4pm-8pm</span></li>
-      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span>17/33 Rajaji Street, Gandhi Nagar, Madurai 20</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span><span data-i18n>Mon-Sat 9:30am-1pm &amp; 4pm-8pm</span></span></li>
+      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span><span data-i18n>17/33 Rajaji Street, Gandhi Nagar, Madurai 20</span></span></li>
     </ul>
     <ul class="topbar-list">
-      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:orthomax@gmail.com">orthomax@gmail.com</a></li>
-      <li class="topbar-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <span class="label">Appointments</span> <a href="tel:+919159999362">+91 91599 99362</a></li>
+      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:orthomax@gmail.com"><span data-i18n>orthomax@gmail.com</span></a></li>
+      <li class="topbar-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <span class="label"><span data-i18n>Appointments</span></span> <a href="tel:+919159999362">+91 91599 99362</a></li>
+      <li><button class="lang-toggle" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9Z"/></svg><span class="lang-toggle-label">தமிழ்</span></button></li>
     </ul>
   </div>
 </div>
@@ -46,53 +50,53 @@
     <a class="logo" href="index.html">
       <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#1a5c4a" d="M12 2c-1.7 0-2.6.7-4 .7S5.2 2 4 3c-1.5 1.2-2 3.6-1.4 6.7.5 2.5 1.2 4.2 1.6 6.7.4 2.3.6 5.2 1.3 6.7.5 1.1 1.9 1.2 2.4 0 .7-1.6.9-4.2 1.3-6 .3-1.3.8-2.1 1.5-2.1h.6c.7 0 1.2.8 1.5 2.1.4 1.8.6 4.4 1.3 6 .5 1.2 1.9 1.1 2.4 0 .7-1.5.9-4.4 1.3-6.7.4-2.5 1.1-4.2 1.6-6.7C21.9 6.6 21.4 4.2 20 3c-1.2-1-2.6-.3-4-.3S13.7 2 12 2Z"/></svg>
       <span class="logo-text">
-        <span class="logo-name">Shanker</span>
-        <span class="logo-sub">Dental &amp; Craniofacial Centre</span>
+        <span class="logo-name"><span data-i18n>Shanker</span></span>
+        <span class="logo-sub"><span data-i18n>Dental &amp; Craniofacial Centre</span></span>
       </span>
-      <span class="sr-only">, home</span>
+      <span class="sr-only"><span data-i18n>, home</span></span>
     </a>
 
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="doctors.html">Meet the Doctors</a>
+      <a href="index.html"><span data-i18n>Home</span></a>
+      <a href="doctors.html"><span data-i18n>Meet the Doctors</span></a>
       <div class="nav-more">
-        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n>
           Treatment Options
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+          </span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <!-- Mobile-only: the full-screen menu is a flat list with no
              dropdowns, so this single link stands in for the desktop
              nine-item image panel there. -->
-        <a class="nav-more-flat" href="treatments.html">Treatment Options</a>
+        <a class="nav-more-flat" href="treatments.html"><span data-i18n>Treatment Options</span></a>
         <div class="nav-more-panel is-wide">
-          <a href="treatments.html" class="nav-more-all">All Treatment Options</a>
-          <a href="maxillofacial-surgery.html"><img src="assets/images/treatment-maxillofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Maxillofacial Surgery</span></a>
-          <a href="craniofacial-surgery.html"><img src="assets/images/treatment-craniofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Craniofacial Surgery</span></a>
-          <a href="orthognathic-surgery.html"><img src="assets/images/treatment-orthognathic-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Facial Deformity Correction</span></a>
-          <a href="facial-trauma-surgery.html"><img src="assets/images/treatment-facial-trauma-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Facial Trauma Surgery</span></a>
-          <a href="cleft-lip-and-palate-surgery.html"><img src="assets/images/treatment-cleft-lip-palate.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Cleft Lip &amp; Palate Surgery</span></a>
-          <a href="tmj-surgery.html"><img src="assets/images/treatment-tmj-jaw-joint.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>TMJ: Jaw Joint Surgery</span></a>
-          <a href="oral-and-maxillofacial-pathology.html"><img src="assets/images/treatment-pathology-head-neck.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Pathology: Head &amp; Neck</span></a>
-          <a href="orthodontics.html" aria-current="page"><img src="assets/images/treatment-orthodontics.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Orthodontics</span></a>
-          <a href="dental-and-facial-implants.html"><img src="assets/images/treatment-dental-implants.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Dental &amp; Facial Implants</span></a>
+          <a href="treatments.html" class="nav-more-all"><span data-i18n>All Treatment Options</span></a>
+          <a href="maxillofacial-surgery.html"><img src="assets/images/treatment-maxillofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Maxillofacial Surgery</span></span></a>
+          <a href="craniofacial-surgery.html"><img src="assets/images/treatment-craniofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Craniofacial Surgery</span></span></a>
+          <a href="orthognathic-surgery.html"><img src="assets/images/treatment-orthognathic-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Facial Deformity Correction</span></span></a>
+          <a href="facial-trauma-surgery.html"><img src="assets/images/treatment-facial-trauma-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Facial Trauma Surgery</span></span></a>
+          <a href="cleft-lip-and-palate-surgery.html"><img src="assets/images/treatment-cleft-lip-palate.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Cleft Lip &amp; Palate Surgery</span></span></a>
+          <a href="tmj-surgery.html"><img src="assets/images/treatment-tmj-jaw-joint.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>TMJ: Jaw Joint Surgery</span></span></a>
+          <a href="oral-and-maxillofacial-pathology.html"><img src="assets/images/treatment-pathology-head-neck.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Pathology: Head &amp; Neck</span></span></a>
+          <a href="orthodontics.html" aria-current="page"><img src="assets/images/treatment-orthodontics.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Orthodontics</span></span></a>
+          <a href="dental-and-facial-implants.html"><img src="assets/images/treatment-dental-implants.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Dental &amp; Facial Implants</span></span></a>
         </div>
       </div>
       <div class="nav-more">
-        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n>
           More
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+          </span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-more-panel">
-          <a href="facilities.html">Facilities</a>
-          <a href="case-of-the-month.html">Case of the Month</a>
+          <a href="facilities.html"><span data-i18n>Facilities</span></a>
+          <a href="case-of-the-month.html"><span data-i18n>Case of the Month</span></a>
         </div>
       </div>
-      <a href="contact.html">Contact</a>
-      <a class="btn btn-primary nav-call" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call for an appointment</a>
+      <a href="contact.html"><span data-i18n>Contact</span></a>
+      <a class="btn btn-primary nav-call" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span data-i18n> Call for an appointment</span></a>
     </nav>
 
     <div class="header-cta">
-      <a class="btn btn-primary btn-sm" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Book Appointment</a>
+      <a class="btn btn-primary btn-sm" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span data-i18n> Book Appointment</span></a>
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav"><span></span></button>
     </div>
   </div>
@@ -103,25 +107,25 @@
   <section class="page-head">
     <div class="wrap page-head-inner">
       <nav aria-label="Breadcrumb">
-        <ol class="crumbs"><li><a href="index.html">Home</a></li><li><a href="treatments.html">Treatment Options</a></li><li><span aria-current="page">Orthodontics and Dentofacial Orthopedics</span></li></ol>
+        <ol class="crumbs"><li><a href="index.html"><span data-i18n>Home</span></a></li><li><a href="treatments.html"><span data-i18n>Treatment Options</span></a></li><li><span aria-current="page"><span data-i18n>Orthodontics and Dentofacial Orthopedics</span></span></li></ol>
       </nav>
-      <h1>Orthodontics and Dentofacial Orthopedics</h1>
-      <p>Straightening crooked teeth with removable, functional and fixed appliances, Invisalign, and, where the jaws are involved, corrective jaw surgery.</p>
+      <h1><span data-i18n>Orthodontics and Dentofacial Orthopedics</span></h1>
+      <p><span data-i18n>Straightening crooked teeth with removable, functional and fixed appliances, Invisalign, and, where the jaws are involved, corrective jaw surgery.</span></p>
     </div>
   </section>
 
   <nav class="subnav" aria-label="Treatments">
     <div class="wrap subnav-scroll">
       <ul>
-        <li><a href="maxillofacial-surgery.html">Maxillofacial Surgery</a></li>
-        <li><a href="craniofacial-surgery.html">Craniofacial Surgery</a></li>
-        <li><a href="orthognathic-surgery.html">Orthognathic Surgery</a></li>
-        <li><a href="facial-trauma-surgery.html">Facial Trauma</a></li>
-        <li><a href="cleft-lip-and-palate-surgery.html">Cleft Lip &amp; Palate</a></li>
-        <li><a href="tmj-surgery.html">TMJ: Jaw Joint</a></li>
-        <li><a href="oral-and-maxillofacial-pathology.html">Pathology</a></li>
-        <li><a href="orthodontics.html" aria-current="page">Orthodontics</a></li>
-        <li><a href="dental-and-facial-implants.html">Dental &amp; Facial Implants</a></li>
+        <li><a href="maxillofacial-surgery.html"><span data-i18n>Maxillofacial Surgery</span></a></li>
+        <li><a href="craniofacial-surgery.html"><span data-i18n>Craniofacial Surgery</span></a></li>
+        <li><a href="orthognathic-surgery.html"><span data-i18n>Orthognathic Surgery</span></a></li>
+        <li><a href="facial-trauma-surgery.html"><span data-i18n>Facial Trauma</span></a></li>
+        <li><a href="cleft-lip-and-palate-surgery.html"><span data-i18n>Cleft Lip &amp; Palate</span></a></li>
+        <li><a href="tmj-surgery.html"><span data-i18n>TMJ: Jaw Joint</span></a></li>
+        <li><a href="oral-and-maxillofacial-pathology.html"><span data-i18n>Pathology</span></a></li>
+        <li><a href="orthodontics.html" aria-current="page"><span data-i18n>Orthodontics</span></a></li>
+        <li><a href="dental-and-facial-implants.html"><span data-i18n>Dental &amp; Facial Implants</span></a></li>
       </ul>
     </div>
   </nav>
@@ -132,28 +136,28 @@
         <div class="gate-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3 4 6v5.5c0 4.6 3.2 8.6 8 9.5 4.8-.9 8-4.9 8-9.5V6Z"/><path d="M12 8.5v4M12 16h.01"/></svg>
         </div>
-        <h2>Please read before continuing</h2>
-        <p>
+        <h2><span data-i18n>Please read before continuing</span></h2>
+        <p><span data-i18n>
           Maxillofacial surgery and Orthodontics concerns surgical and non-surgical treatment of the face, head and
           neck and jaws. The following pages contain surgical pictures including intra-operative, pre and post
           operative images. We understand that it may not be appropriate for general viewing and these images are
           shown with the sole aim of educating and creating awareness among the general population about the
           problems associated with facial surgery, its potential complications and its possible solutions.
-        </p>
-        <p>
+        </span></p>
+        <p><span data-i18n>
           These images are completely under the copyright of the hospital and the viewer does not have any claim
           whatsoever to these images.
-        </p>
+        </span></p>
         <div class="gate-agree">
           <input type="checkbox" id="consent-check">
-          <label for="consent-check">
+          <label for="consent-check"><span data-i18n>
             I am above the age of 18 years, I will not download or misuse these images in any way, and I agree to
             all the terms and conditions unconditionally and agree to follow the guidelines set by the hospital.
-          </label>
+          </span></label>
         </div>
         <div class="gate-actions">
-          <button class="btn btn-primary btn-lg" type="button" id="consent-agree" disabled aria-disabled="true">Agree &amp; continue</button>
-          <p class="gate-hint">Tick the box above to continue.</p>
+          <button class="btn btn-primary btn-lg" type="button" id="consent-agree" disabled aria-disabled="true"><span data-i18n>Agree &amp; continue</span></button>
+          <p class="gate-hint"><span data-i18n>Tick the box above to continue.</span></p>
         </div>
       </div>
     </div>
@@ -163,34 +167,34 @@
 
     <section class="section">
       <div class="wrap wrap-narrow prose reveal">
-        <p>
+        <p><span data-i18n>
           In our society, initial impressions in any relationship are based mainly on looks and only later, as the
           relationship evolves, do good character, loyalty, understanding and love become the major factors and
           looks recede. At least initially, before any relationship evolves, how you look plays a major role.
-        </p>
-        <p>
+        </span></p>
+        <p><span data-i18n>
           A major cause for poor facial aesthetics is crooked teeth (dental malocclusion deformity) and in some
           severe cases even the entire jaw may be crooked and need correction (skeletal deformity). The branch
           which deals with straightening crooked teeth is called Orthodontics and the specialist doctor dealing
           with this is called an Orthodontist.
-        </p>
+        </span></p>
         <div class="callout">
-          <p>
+          <p><span data-i18n>
             To qualify to be an Orthodontist in India you need to undergo a further 3 years of specialised training
             after the 5 year undergraduate BDS degree. After the specialised training and passing all the relevant
             examinations, an MDS degree in Orthodontics and Dentofacial Orthopedics is awarded. This is a
             registrable degree with the Dental Council of India. All our doctors are fully qualified and certified
             postgraduates with over 20 years of clinical experience post-graduation. They have also undergone
             extensive hands-on training in the full range of orthodontics to provide you with the best results.
-          </p>
+          </span></p>
         </div>
 
-        <h2>Three main treatment options</h2>
-        <p>There are basically 3 main types of treatment options for patients with facial deformity and crooked teeth:</p>
+        <h2><span data-i18n>Three main treatment options</span></h2>
+        <p><span data-i18n>There are basically 3 main types of treatment options for patients with facial deformity and crooked teeth:</span></p>
         <ul class="checklist">
-          <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m20 6-11 11-5-5"/></svg>Removable and functional appliances</li>
-          <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m20 6-11 11-5-5"/></svg>Fixed appliances</li>
-          <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m20 6-11 11-5-5"/></svg>Orthognathic (corrective jaw) surgery</li>
+          <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m20 6-11 11-5-5"/></svg><span data-i18n>Removable and functional appliances</span></li>
+          <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m20 6-11 11-5-5"/></svg><span data-i18n>Fixed appliances</span></li>
+          <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m20 6-11 11-5-5"/></svg><span data-i18n>Orthognathic (corrective jaw) surgery</span></li>
         </ul>
 
         <!-- Four parallel modalities. These were a single stacked column of
@@ -198,25 +202,25 @@
         <div class="panels reveal stagger mt-12">
           <article class="panel">
             <span class="panel-num">01</span>
-            <h3>Removable and functional appliances</h3>
-            <p>
+            <h3><span data-i18n>Removable and functional appliances</span></h3>
+            <p><span data-i18n>
               These are appliances that can be removed by you and cleaned. They are used for minor movements of teeth.
               Functional appliances are slightly more complex than simple removable appliances and use the power of your
               muscles and growth to produce changes in your teeth.
-            </p>
+            </span></p>
           </article>
 
           <article class="panel">
             <span class="panel-num">02</span>
-            <h3>Fixed appliances</h3>
-            <p>
+            <h3><span data-i18n>Fixed appliances</span></h3>
+            <p><span data-i18n>
               These are the most commonly used type of appliance. They are fixed to the teeth and can be used to perform
               complex movements of the teeth. They are generally more expensive but can produce movements that are
               usually not possible with removable appliances. Orthodontic treatment usually takes between 6 months to 3
               years based on the complexity of treatment that you need. You will need monthly checkups during this
               period to adjust the appliances that you are wearing and also to monitor your progress.
-            </p>
-            <p>
+            </span></p>
+            <p><span data-i18n>
               There is usually no pain involved in orthodontic treatment though you may need to have some teeth removed
               prior to commencement of your orthodontic treatment (for example to create space between your teeth in
               case of severe crowding). Treatment also cannot be done on decaying teeth and therefore you may need
@@ -224,24 +228,24 @@
               and ceramic brackets available, the ceramic brackets are cosmetically more pleasing as they are
               tooth coloured and nearly invisible. We usually use 3M orthodontic kits and wires (imported from USA /
               Germany) for best results.
-            </p>
+            </span></p>
           </article>
 
           <article class="panel">
             <span class="panel-num">03</span>
-            <h3>Invisalign appliances</h3>
-            <p>
+            <h3><span data-i18n>Invisalign appliances</span></h3>
+            <p><span data-i18n>
               Lately, we also provide a more aesthetic modality of treatment called Invisalign. These are quite similar
               to fixed appliances but instead of a wire, we use transparent splints. Aesthetics during treatment is the
               main benefit from this modality of treatment. Even though a majority of the work is done in the lab prior,
               treatment however is still best done under a fully qualified and certified orthodontist for best results.
-            </p>
+            </span></p>
           </article>
 
           <article class="panel">
             <span class="panel-num">04</span>
-            <h3>Orthognathic surgery</h3>
-            <p>
+            <h3><span data-i18n>Orthognathic surgery</span></h3>
+            <p><span data-i18n>
               In certain patients the deformity may not be confined to only the teeth but affect the jaws (underlying
               bone) as well. Small abnormalities can be corrected with orthodontics alone (using fixed and removable
               appliances). More serious problems require corrective surgery together with orthodontics to move all or
@@ -251,7 +255,7 @@
               complicated surgical procedures. Surgery is usually done from inside the mouth leaving no visible external
               scars. Your stay in the hospital will vary from 2-7 days based on the type of operation you had and
               also on how quickly you recover.
-            </p>
+            </span></p>
           </article>
         </div>
       </div>
@@ -261,33 +265,33 @@
       <div class="wrap wrap-narrow">
 
         <article class="case reveal">
-          <span class="case-tag">Case 1</span>
-          <h2>Spacing with impacted canines</h2>
-          <p>
+          <span class="case-tag"><span data-i18n>Case 1</span></span>
+          <h2><span data-i18n>Spacing with impacted canines</span></h2>
+          <p><span data-i18n>
             This young man presented to us with gross spacing between his teeth and impacted canines. He underwent
             orthodontics with us (3M 0.022 MBT straight wire technique, non extraction) for a period of 12
             months followed by a retention phase. Results as you can see are fantastic and he had a vast improvement
             in aesthetics, function and confidence as well. Fixed orthodontics is a painless treatment modality and
             when done by properly qualified and trained orthodontists, results are excellent.
-          </p>
+          </span></p>
           <div class="figure-grid">
-<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-1-pre-post-image-final.jpg" data-cap="Pre and post-treatment comparison." aria-label="Enlarge image: Pre and post-treatment comparison."><img src="assets/images/case-1-pre-post-image-final.jpg" alt="Pre and post-treatment comparison." loading="lazy" decoding="async" width="705" height="179"></button><figcaption>Pre and post-treatment comparison.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-1-pre-post-image2.jpg" data-cap="Pre and post-treatment comparison." aria-label="Enlarge image: Pre and post-treatment comparison."><img src="assets/images/case-1-pre-post-image2.jpg" alt="Pre and post-treatment comparison." loading="lazy" decoding="async" width="700" height="250"></button><figcaption>Pre and post-treatment comparison.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-1-pre-post-image1.jpg" data-cap="Pre and post-treatment comparison." aria-label="Enlarge image: Pre and post-treatment comparison."><img src="assets/images/case-1-pre-post-image1.jpg" alt="Pre and post-treatment comparison." loading="lazy" decoding="async" width="700" height="250"></button><figcaption>Pre and post-treatment comparison.</figcaption></figure>
+<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-1-pre-post-image-final.jpg" data-cap="Pre and post-treatment comparison." aria-label="Enlarge image: Pre and post-treatment comparison."><img src="assets/images/case-1-pre-post-image-final.jpg" alt="Pre and post-treatment comparison." loading="lazy" decoding="async" width="705" height="179"></button><figcaption><span data-i18n>Pre and post-treatment comparison.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-1-pre-post-image2.jpg" data-cap="Pre and post-treatment comparison." aria-label="Enlarge image: Pre and post-treatment comparison."><img src="assets/images/case-1-pre-post-image2.jpg" alt="Pre and post-treatment comparison." loading="lazy" decoding="async" width="700" height="250"></button><figcaption><span data-i18n>Pre and post-treatment comparison.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-1-pre-post-image1.jpg" data-cap="Pre and post-treatment comparison." aria-label="Enlarge image: Pre and post-treatment comparison."><img src="assets/images/case-1-pre-post-image1.jpg" alt="Pre and post-treatment comparison." loading="lazy" decoding="async" width="700" height="250"></button><figcaption><span data-i18n>Pre and post-treatment comparison.</span></figcaption></figure>
           </div>
         </article>
 
         <article class="case reveal">
-          <span class="case-tag">Case 2</span>
-          <h2>Retained deciduous with cross-bite and maxillary protrusion</h2>
-          <p>
+          <span class="case-tag"><span data-i18n>Case 2</span></span>
+          <h2><span data-i18n>Retained deciduous with cross-bite and maxillary protrusion</span></h2>
+          <p><span data-i18n>
             This young man presented to us with multiple retained milk teeth (deciduous) with a localised
             cross-bite. He underwent fixed orthodontic treatment with us (3M Metal 0.022 MBT straight wire technique,
             non extraction) for a period of 14 months followed by a retention phase. Results were very good
             and the patient and his parents were very happy with the outcome.
-          </p>
+          </span></p>
 <figure class="compare-figure">
   <div class="compare">
-    <span class="compare-label is-before">Before</span>
-    <span class="compare-label is-after">After</span>
+    <span class="compare-label is-before"><span data-i18n>Before</span></span>
+    <span class="compare-label is-after"><span data-i18n>After</span></span>
     <div class="compare-media">
       <img src="assets/images/case-2-pre-image1.jpg" alt="Before: Drag to compare. Pre-treatment with retained deciduous teeth and a localised cross-bite, and after 14 months of fixed appliance treatment." loading="lazy" decoding="async" width="700" height="250">
       <div class="compare-after">
@@ -298,28 +302,28 @@
            id="cmp3" aria-label="Reveal the after image. Drag to compare. Pre-treatment with retained deciduous teeth and a localised cross-bite, and after 14 months of fixed appliance treatment.">
     <span class="compare-handle" aria-hidden="true"></span>
   </div>
-  <figcaption class="compare-caption">Drag to compare. Pre-treatment with retained deciduous teeth and a localised cross-bite, and after 14 months of fixed appliance treatment.</figcaption>
-</figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-2-introp-image2.jpg" data-cap="During treatment with fixed appliances." aria-label="Enlarge image: During treatment with fixed appliances."><img src="assets/images/case-2-introp-image2.jpg" alt="During treatment with fixed appliances." loading="lazy" decoding="async" width="700" height="250"></button><figcaption>During treatment with fixed appliances.</figcaption></figure>
+  <figcaption class="compare-caption"><span data-i18n>Drag to compare. Pre-treatment with retained deciduous teeth and a localised cross-bite, and after 14 months of fixed appliance treatment.</span></figcaption>
+</figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-2-introp-image2.jpg" data-cap="During treatment with fixed appliances." aria-label="Enlarge image: During treatment with fixed appliances."><img src="assets/images/case-2-introp-image2.jpg" alt="During treatment with fixed appliances." loading="lazy" decoding="async" width="700" height="250"></button><figcaption><span data-i18n>During treatment with fixed appliances.</span></figcaption></figure>
         </article>
 
         <article class="case reveal">
-          <span class="case-tag">Case 3</span>
-          <h2>Scissor bite correction</h2>
-          <p>
+          <span class="case-tag"><span data-i18n>Case 3</span></span>
+          <h2><span data-i18n>Scissor bite correction</span></h2>
+          <p><span data-i18n>
             This patient presented to us with a scissor type bite. He underwent fixed orthodontics using straight
             wire technique (3M 0.022 MBT kit with non extraction and bite plane). There was a dramatic improvement
             in both the aesthetics and function (ability to chew food). The total treatment time was around 14
             months and he was stable post orthodontics with no relapse.
-          </p>
+          </span></p>
           <div class="figure-grid">
-<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-3--image1.jpg" data-cap="Scissor bite, pre-treatment." aria-label="Enlarge image: Scissor bite, pre-treatment."><img src="assets/images/case-3--image1.jpg" alt="Scissor bite, pre-treatment." loading="lazy" decoding="async" width="750" height="200"></button><figcaption>Scissor bite, pre-treatment.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-3--image2.jpg" data-cap="Scissor bite, post-treatment." aria-label="Enlarge image: Scissor bite, post-treatment."><img src="assets/images/case-3--image2.jpg" alt="Scissor bite, post-treatment." loading="lazy" decoding="async" width="750" height="200"></button><figcaption>Scissor bite, post-treatment.</figcaption></figure>
+<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-3--image1.jpg" data-cap="Scissor bite, pre-treatment." aria-label="Enlarge image: Scissor bite, pre-treatment."><img src="assets/images/case-3--image1.jpg" alt="Scissor bite, pre-treatment." loading="lazy" decoding="async" width="750" height="200"></button><figcaption><span data-i18n>Scissor bite, pre-treatment.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-3--image2.jpg" data-cap="Scissor bite, post-treatment." aria-label="Enlarge image: Scissor bite, post-treatment."><img src="assets/images/case-3--image2.jpg" alt="Scissor bite, post-treatment." loading="lazy" decoding="async" width="750" height="200"></button><figcaption><span data-i18n>Scissor bite, post-treatment.</span></figcaption></figure>
           </div>
         </article>
 
         <article class="case reveal">
-          <span class="case-tag">Case 4</span>
-          <h2>Orthodontics with surgically assisted rapid palatal expansion (SARPE) followed by orthognathic surgery</h2>
-          <p>
+          <span class="case-tag"><span data-i18n>Case 4</span></span>
+          <h2><span data-i18n>Orthodontics with surgically assisted rapid palatal expansion (SARPE) followed by orthognathic surgery</span></h2>
+          <p><span data-i18n>
             This young man presented to us with untreated craniosynostosis and had a severe midface deficiency.
             Ability to chew food was compromised and he had a poor aesthetic appearance. He underwent orthodontics
             with us. During the orthodontic treatment we corrected his constricted maxilla using SARPE (Surgically
@@ -327,23 +331,23 @@
             aligned, the maxillary retrognathism was corrected via orthognathic surgery (Le Fort I maxilla with BSSO
             mandible). On follow-up, his treatment was stable with no relapse seen and he has had a vast improvement
             in aesthetics and function and is able to eat a normal diet.
-          </p>
+          </span></p>
           <div class="figure-grid">
-<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case4-img1.jpg" data-cap="SARPE and orthognathic surgery, stage 1." aria-label="Enlarge image: SARPE and orthognathic surgery, stage 1."><img src="assets/images/case4-img1.jpg" alt="SARPE and orthognathic surgery, stage 1." loading="lazy" decoding="async" width="750" height="230"></button><figcaption>SARPE and orthognathic surgery, stage 1.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case4-img2.jpg" data-cap="SARPE and orthognathic surgery, stage 2." aria-label="Enlarge image: SARPE and orthognathic surgery, stage 2."><img src="assets/images/case4-img2.jpg" alt="SARPE and orthognathic surgery, stage 2." loading="lazy" decoding="async" width="750" height="180"></button><figcaption>SARPE and orthognathic surgery, stage 2.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case4-img3.jpg" data-cap="SARPE and orthognathic surgery, stage 3." aria-label="Enlarge image: SARPE and orthognathic surgery, stage 3."><img src="assets/images/case4-img3.jpg" alt="SARPE and orthognathic surgery, stage 3." loading="lazy" decoding="async" width="750" height="230"></button><figcaption>SARPE and orthognathic surgery, stage 3.</figcaption></figure>
+<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case4-img1.jpg" data-cap="SARPE and orthognathic surgery, stage 1." aria-label="Enlarge image: SARPE and orthognathic surgery, stage 1."><img src="assets/images/case4-img1.jpg" alt="SARPE and orthognathic surgery, stage 1." loading="lazy" decoding="async" width="750" height="230"></button><figcaption><span data-i18n>SARPE and orthognathic surgery, stage 1.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case4-img2.jpg" data-cap="SARPE and orthognathic surgery, stage 2." aria-label="Enlarge image: SARPE and orthognathic surgery, stage 2."><img src="assets/images/case4-img2.jpg" alt="SARPE and orthognathic surgery, stage 2." loading="lazy" decoding="async" width="750" height="180"></button><figcaption><span data-i18n>SARPE and orthognathic surgery, stage 2.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case4-img3.jpg" data-cap="SARPE and orthognathic surgery, stage 3." aria-label="Enlarge image: SARPE and orthognathic surgery, stage 3."><img src="assets/images/case4-img3.jpg" alt="SARPE and orthognathic surgery, stage 3." loading="lazy" decoding="async" width="750" height="230"></button><figcaption><span data-i18n>SARPE and orthognathic surgery, stage 3.</span></figcaption></figure>
           </div>
         </article>
 
         <article class="case reveal">
-          <span class="case-tag">Case 5</span>
-          <h2>Orthodontics with Orthognathic Surgery</h2>
-          <p>
+          <span class="case-tag"><span data-i18n>Case 5</span></span>
+          <h2><span data-i18n>Orthodontics with Orthognathic Surgery</span></h2>
+          <p><span data-i18n>
             This patient presented to us with severe mandibular retrusion with bi-maxillary protrusion of her teeth.
             She underwent orthodontics (3M kit with 0.022 MBT, extraction) followed by mandible advancement
             osteotomy via a bilateral sagittal split osteotomy (BSSO). Post treatment the entire treatment was
             stable with no relapse.
-          </p>
+          </span></p>
           <div class="figure-grid">
-<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-5-img1.jpg" data-cap="Combined orthodontic and orthognathic treatment, stage 1." aria-label="Enlarge image: Combined orthodontic and orthognathic treatment, stage 1."><img src="assets/images/case-5-img1.jpg" alt="Combined orthodontic and orthognathic treatment, stage 1." loading="lazy" decoding="async" width="750" height="550"></button><figcaption>Combined orthodontic and orthognathic treatment, stage 1.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-5-img2.jpg" data-cap="Combined orthodontic and orthognathic treatment, stage 2." aria-label="Enlarge image: Combined orthodontic and orthognathic treatment, stage 2."><img src="assets/images/case-5-img2.jpg" alt="Combined orthodontic and orthognathic treatment, stage 2." loading="lazy" decoding="async" width="700" height="250"></button><figcaption>Combined orthodontic and orthognathic treatment, stage 2.</figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-5-img3.jpg" data-cap="Combined orthodontic and orthognathic treatment, stage 3." aria-label="Enlarge image: Combined orthodontic and orthognathic treatment, stage 3."><img src="assets/images/case-5-img3.jpg" alt="Combined orthodontic and orthognathic treatment, stage 3." loading="lazy" decoding="async" width="750" height="550"></button><figcaption>Combined orthodontic and orthognathic treatment, stage 3.</figcaption></figure>
+<figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-5-img1.jpg" data-cap="Combined orthodontic and orthognathic treatment, stage 1." aria-label="Enlarge image: Combined orthodontic and orthognathic treatment, stage 1."><img src="assets/images/case-5-img1.jpg" alt="Combined orthodontic and orthognathic treatment, stage 1." loading="lazy" decoding="async" width="750" height="550"></button><figcaption><span data-i18n>Combined orthodontic and orthognathic treatment, stage 1.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-5-img2.jpg" data-cap="Combined orthodontic and orthognathic treatment, stage 2." aria-label="Enlarge image: Combined orthodontic and orthognathic treatment, stage 2."><img src="assets/images/case-5-img2.jpg" alt="Combined orthodontic and orthognathic treatment, stage 2." loading="lazy" decoding="async" width="700" height="250"></button><figcaption><span data-i18n>Combined orthodontic and orthognathic treatment, stage 2.</span></figcaption></figure><figure class="figure "><button type="button" class="zoomable" data-lb="assets/images/case-5-img3.jpg" data-cap="Combined orthodontic and orthognathic treatment, stage 3." aria-label="Enlarge image: Combined orthodontic and orthognathic treatment, stage 3."><img src="assets/images/case-5-img3.jpg" alt="Combined orthodontic and orthognathic treatment, stage 3." loading="lazy" decoding="async" width="750" height="550"></button><figcaption><span data-i18n>Combined orthodontic and orthognathic treatment, stage 3.</span></figcaption></figure>
           </div>
         </article>
 
@@ -354,11 +358,11 @@
 
   <section class="cta-band section-sm" aria-labelledby="cta-heading">
     <div class="wrap center">
-      <h2 id="cta-heading">Ready to talk to a specialist?</h2>
-      <p>We are located 2 minutes&rsquo; walk from the Anna Bus Stand, with adequate off-street car parking.</p>
+      <h2 id="cta-heading"><span data-i18n>Ready to talk to a specialist?</span></h2>
+      <p><span data-i18n>We are located 2 minutes&rsquo; walk from the Anna Bus Stand, with adequate off-street car parking.</span></p>
       <div class="cta-actions">
-        <a class="btn btn-ghost btn-lg" href="tel:+919159999362">Call +91 91599 99362</a>
-        <a class="btn btn-outline btn-lg" href="contact.html">Get directions</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+919159999362"><span data-i18n>Call +91 91599 99362</span></a>
+        <a class="btn btn-outline btn-lg" href="contact.html"><span data-i18n>Get directions</span></a>
       </div>
     </div>
   </section>
@@ -371,61 +375,61 @@
       <div class="footer-logo">
         <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#ffffff" d="M12 2c-1.7 0-2.6.7-4 .7S5.2 2 4 3c-1.5 1.2-2 3.6-1.4 6.7.5 2.5 1.2 4.2 1.6 6.7.4 2.3.6 5.2 1.3 6.7.5 1.1 1.9 1.2 2.4 0 .7-1.6.9-4.2 1.3-6 .3-1.3.8-2.1 1.5-2.1h.6c.7 0 1.2.8 1.5 2.1.4 1.8.6 4.4 1.3 6 .5 1.2 1.9 1.1 2.4 0 .7-1.5.9-4.4 1.3-6.7.4-2.5 1.1-4.2 1.6-6.7C21.9 6.6 21.4 4.2 20 3c-1.2-1-2.6-.3-4-.3S13.7 2 12 2Z"/></svg>
         <span class="logo-text">
-          <span class="logo-name">Shanker</span>
-          <span class="logo-sub">Dental &amp; Craniofacial Centre</span>
+          <span class="logo-name"><span data-i18n>Shanker</span></span>
+          <span class="logo-sub"><span data-i18n>Dental &amp; Craniofacial Centre</span></span>
         </span>
       </div>
-      <p>Madurai&rsquo;s purpose-built multi-specialty centre for maxillofacial surgery, craniofacial surgery, orthodontics and implantology.</p>
-      <p class="footer-motto">&ldquo;Saving faces and changing lives&rdquo;</p>
+      <p><span data-i18n>Madurai&rsquo;s purpose-built multi-specialty centre for maxillofacial surgery, craniofacial surgery, orthodontics and implantology.</span></p>
+      <p class="footer-motto"><span data-i18n>&ldquo;Saving faces and changing lives&rdquo;</span></p>
     </div>
 
     <nav class="footer-nav" aria-label="Footer">
-      <h2 class="footer-col-title">Explore</h2>
+      <h2 class="footer-col-title"><span data-i18n>Explore</span></h2>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="doctors.html">Meet the Doctors</a></li>
-        <li><a href="facilities.html">Facilities</a></li>
-        <li><a href="treatments.html">Treatment Options</a></li>
-        <li><a href="case-of-the-month.html">Case of the Month</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="index.html"><span data-i18n>Home</span></a></li>
+        <li><a href="doctors.html"><span data-i18n>Meet the Doctors</span></a></li>
+        <li><a href="facilities.html"><span data-i18n>Facilities</span></a></li>
+        <li><a href="treatments.html"><span data-i18n>Treatment Options</span></a></li>
+        <li><a href="case-of-the-month.html"><span data-i18n>Case of the Month</span></a></li>
+        <li><a href="contact.html"><span data-i18n>Contact Us</span></a></li>
       </ul>
     </nav>
 
     <nav class="footer-nav" aria-label="Treatments">
-      <h2 class="footer-col-title">Treatments</h2>
+      <h2 class="footer-col-title"><span data-i18n>Treatments</span></h2>
       <ul>
-        <li><a href="maxillofacial-surgery.html">Maxillofacial Surgery</a></li>
-        <li><a href="craniofacial-surgery.html">Craniofacial Surgery</a></li>
-        <li><a href="orthognathic-surgery.html">Orthognathic Surgery</a></li>
-        <li><a href="facial-trauma-surgery.html">Facial Trauma</a></li>
-        <li><a href="cleft-lip-and-palate-surgery.html">Cleft Lip &amp; Palate</a></li>
-        <li><a href="tmj-surgery.html">TMJ: Jaw Joint</a></li>
-        <li><a href="oral-and-maxillofacial-pathology.html">Pathology</a></li>
+        <li><a href="maxillofacial-surgery.html"><span data-i18n>Maxillofacial Surgery</span></a></li>
+        <li><a href="craniofacial-surgery.html"><span data-i18n>Craniofacial Surgery</span></a></li>
+        <li><a href="orthognathic-surgery.html"><span data-i18n>Orthognathic Surgery</span></a></li>
+        <li><a href="facial-trauma-surgery.html"><span data-i18n>Facial Trauma</span></a></li>
+        <li><a href="cleft-lip-and-palate-surgery.html"><span data-i18n>Cleft Lip &amp; Palate</span></a></li>
+        <li><a href="tmj-surgery.html"><span data-i18n>TMJ: Jaw Joint</span></a></li>
+        <li><a href="oral-and-maxillofacial-pathology.html"><span data-i18n>Pathology</span></a></li>
       </ul>
     </nav>
 
     <div>
-      <h2 class="footer-col-title">Visit us</h2>
+      <h2 class="footer-col-title"><span data-i18n>Visit us</span></h2>
       <ul class="footer-contact">
-        <li><address>Shanker Dental &amp; Craniofacial Centre<br>17/33 Rajaji Street,<br>Gandhi Nagar, Madurai 20</address></li>
+        <li><address><span data-i18n>Shanker Dental &amp; Craniofacial Centre</span><br><span data-i18n>17/33 Rajaji Street,</span><br><span data-i18n>Gandhi Nagar, Madurai 20</span></address></li>
         <li><a href="tel:+919159999362">+91 91599 99362</a></li>
         <li><a href="tel:+919788473879">+91 97884 73879</a></li>
-        <li><a href="mailto:orthomax@gmail.com">orthomax@gmail.com</a></li>
+        <li><a href="mailto:orthomax@gmail.com"><span data-i18n>orthomax@gmail.com</span></a></li>
       </ul>
-      <h2 class="footer-col-title mt-6">Clinic timings</h2>
+      <h2 class="footer-col-title mt-6"><span data-i18n>Clinic timings</span></h2>
       <ul class="footer-contact">
-        <li>Mon-Sat: 9:30am-1pm, 4pm-8pm</li>
-        <li>Sunday: 9:30am-1pm</li>
+        <li><span data-i18n>Mon-Sat: 9:30am-1pm, 4pm-8pm</span></li>
+        <li><span data-i18n>Sunday: 9:30am-1pm</span></li>
       </ul>
     </div>
   </div>
 
   <div class="wrap">
     <div class="footer-bottom">
-      <div>&copy; <span data-year>2026</span> Shanker Dental &amp; Craniofacial Centre. All rights reserved.</div>
+      <div>&copy; <span data-year>2026</span><span data-i18n> Shanker Dental &amp; Craniofacial Centre. All rights reserved.</span></div>
       <ul>
-        <li><a href="sitemap.html">Sitemap</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="sitemap.html"><span data-i18n>Sitemap</span></a></li>
+        <li><a href="contact.html"><span data-i18n>Contact</span></a></li>
       </ul>
     </div>
   </div>
@@ -437,11 +441,11 @@
 <div class="callbar">
   <a class="callbar-btn callbar-call" href="tel:+919159999362">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-    <span>Call the centre</span>
+    <span><span data-i18n>Call the centre</span></span>
   </a>
   <a class="callbar-btn callbar-map" href="contact.html">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-    <span>Directions</span>
+    <span><span data-i18n>Directions</span></span>
   </a>
 </div>
 
@@ -457,8 +461,9 @@
   <p class="lb-cap" aria-live="polite"><span class="lb-cap-text"></span><span class="lb-count"></span></p>
 </div>
 
-<script src="assets/js/main.js?v=2d4bc3fa"></script>
+<script src="assets/js/main.js?v=618a79d4"></script>
+<script src="assets/js/i18n.js?v=8a6f8624" data-dict="assets/js/i18n-data.js?v=4bca07e8"></script>
 <!-- TEMPORARY client color-preview tool — remove alongside theme-preview.css. -->
-<script src="assets/js/theme-preview.js"></script>
+<script src="assets/js/theme-preview.js?v=69a1dcc8"></script>
 </body>
 </html>

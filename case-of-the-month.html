@@ -8,13 +8,16 @@
 <meta name="theme-color" content="#12403e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=2d4bc3fa">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=c33788ae">
+<!-- Tamil/English toggle: assets/css/i18n.css, assets/js/i18n.js (+ the lazily
+     loaded dictionary assets/js/i18n-data.js) and the data-i18n markers. -->
+<link rel="stylesheet" href="assets/css/i18n.css?v=0d27d059">
 <!-- TEMPORARY client color-preview tool — see removal note at the top of
      assets/css/theme-preview.css. Not part of the finished site. -->
-<link rel="stylesheet" href="assets/css/theme-preview.css">
+<link rel="stylesheet" href="assets/css/theme-preview.css?v=f6164b3a">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<script>document.documentElement.classList.add('js');</script>
+<script>(function(d){d.classList.add('js');try{if(localStorage.getItem('sdcc-lang')==='ta'){d.classList.add('lang-ta','i18n-pending');d.lang='ta';}}catch(e){}})(document.documentElement);</script>
 <link rel="canonical" href="https://www.shankerdentalcentremadurai.com/case-of-the-month.html">
 <meta property="og:title" content="Interesting Case of the Month: Shanker Dental &amp; Craniofacial Centre, Madurai">
 <meta property="og:description" content="A monthly archive of interesting maxillofacial and craniofacial cases treated at Shanker Dental &amp; Craniofacial Centre, Madurai.">
@@ -25,18 +28,19 @@
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="needs-consent">
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main"><span data-i18n>Skip to content</span></a>
 <div class="scroll-progress" aria-hidden="true"></div>
 
 <div class="topbar">
   <div class="wrap">
     <ul class="topbar-list">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span>Mon-Sat 9:30am-1pm &amp; 4pm-8pm</span></li>
-      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span>17/33 Rajaji Street, Gandhi Nagar, Madurai 20</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span><span data-i18n>Mon-Sat 9:30am-1pm &amp; 4pm-8pm</span></span></li>
+      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span><span data-i18n>17/33 Rajaji Street, Gandhi Nagar, Madurai 20</span></span></li>
     </ul>
     <ul class="topbar-list">
-      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:orthomax@gmail.com">orthomax@gmail.com</a></li>
-      <li class="topbar-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <span class="label">Appointments</span> <a href="tel:+919159999362">+91 91599 99362</a></li>
+      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:orthomax@gmail.com"><span data-i18n>orthomax@gmail.com</span></a></li>
+      <li class="topbar-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <span class="label"><span data-i18n>Appointments</span></span> <a href="tel:+919159999362">+91 91599 99362</a></li>
+      <li><button class="lang-toggle" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9Z"/></svg><span class="lang-toggle-label">தமிழ்</span></button></li>
     </ul>
   </div>
 </div>
@@ -46,53 +50,53 @@
     <a class="logo" href="index.html">
       <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#1a5c4a" d="M12 2c-1.7 0-2.6.7-4 .7S5.2 2 4 3c-1.5 1.2-2 3.6-1.4 6.7.5 2.5 1.2 4.2 1.6 6.7.4 2.3.6 5.2 1.3 6.7.5 1.1 1.9 1.2 2.4 0 .7-1.6.9-4.2 1.3-6 .3-1.3.8-2.1 1.5-2.1h.6c.7 0 1.2.8 1.5 2.1.4 1.8.6 4.4 1.3 6 .5 1.2 1.9 1.1 2.4 0 .7-1.5.9-4.4 1.3-6.7.4-2.5 1.1-4.2 1.6-6.7C21.9 6.6 21.4 4.2 20 3c-1.2-1-2.6-.3-4-.3S13.7 2 12 2Z"/></svg>
       <span class="logo-text">
-        <span class="logo-name">Shanker</span>
-        <span class="logo-sub">Dental &amp; Craniofacial Centre</span>
+        <span class="logo-name"><span data-i18n>Shanker</span></span>
+        <span class="logo-sub"><span data-i18n>Dental &amp; Craniofacial Centre</span></span>
       </span>
-      <span class="sr-only">, home</span>
+      <span class="sr-only"><span data-i18n>, home</span></span>
     </a>
 
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="doctors.html">Meet the Doctors</a>
+      <a href="index.html"><span data-i18n>Home</span></a>
+      <a href="doctors.html"><span data-i18n>Meet the Doctors</span></a>
       <div class="nav-more">
-        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n>
           Treatment Options
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+          </span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <!-- Mobile-only: the full-screen menu is a flat list with no
              dropdowns, so this single link stands in for the desktop
              nine-item image panel there. -->
-        <a class="nav-more-flat" href="treatments.html">Treatment Options</a>
+        <a class="nav-more-flat" href="treatments.html"><span data-i18n>Treatment Options</span></a>
         <div class="nav-more-panel is-wide">
-          <a href="treatments.html" class="nav-more-all">All Treatment Options</a>
-          <a href="maxillofacial-surgery.html"><img src="assets/images/treatment-maxillofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Maxillofacial Surgery</span></a>
-          <a href="craniofacial-surgery.html"><img src="assets/images/treatment-craniofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Craniofacial Surgery</span></a>
-          <a href="orthognathic-surgery.html"><img src="assets/images/treatment-orthognathic-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Facial Deformity Correction</span></a>
-          <a href="facial-trauma-surgery.html"><img src="assets/images/treatment-facial-trauma-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Facial Trauma Surgery</span></a>
-          <a href="cleft-lip-and-palate-surgery.html"><img src="assets/images/treatment-cleft-lip-palate.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Cleft Lip &amp; Palate Surgery</span></a>
-          <a href="tmj-surgery.html"><img src="assets/images/treatment-tmj-jaw-joint.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>TMJ: Jaw Joint Surgery</span></a>
-          <a href="oral-and-maxillofacial-pathology.html"><img src="assets/images/treatment-pathology-head-neck.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Pathology: Head &amp; Neck</span></a>
-          <a href="orthodontics.html"><img src="assets/images/treatment-orthodontics.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Orthodontics</span></a>
-          <a href="dental-and-facial-implants.html"><img src="assets/images/treatment-dental-implants.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Dental &amp; Facial Implants</span></a>
+          <a href="treatments.html" class="nav-more-all"><span data-i18n>All Treatment Options</span></a>
+          <a href="maxillofacial-surgery.html"><img src="assets/images/treatment-maxillofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Maxillofacial Surgery</span></span></a>
+          <a href="craniofacial-surgery.html"><img src="assets/images/treatment-craniofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Craniofacial Surgery</span></span></a>
+          <a href="orthognathic-surgery.html"><img src="assets/images/treatment-orthognathic-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Facial Deformity Correction</span></span></a>
+          <a href="facial-trauma-surgery.html"><img src="assets/images/treatment-facial-trauma-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Facial Trauma Surgery</span></span></a>
+          <a href="cleft-lip-and-palate-surgery.html"><img src="assets/images/treatment-cleft-lip-palate.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Cleft Lip &amp; Palate Surgery</span></span></a>
+          <a href="tmj-surgery.html"><img src="assets/images/treatment-tmj-jaw-joint.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>TMJ: Jaw Joint Surgery</span></span></a>
+          <a href="oral-and-maxillofacial-pathology.html"><img src="assets/images/treatment-pathology-head-neck.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Pathology: Head &amp; Neck</span></span></a>
+          <a href="orthodontics.html"><img src="assets/images/treatment-orthodontics.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Orthodontics</span></span></a>
+          <a href="dental-and-facial-implants.html"><img src="assets/images/treatment-dental-implants.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Dental &amp; Facial Implants</span></span></a>
         </div>
       </div>
       <div class="nav-more">
-        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n>
           More
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+          </span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-more-panel">
-          <a href="facilities.html">Facilities</a>
-          <a href="case-of-the-month.html" aria-current="page">Case of the Month</a>
+          <a href="facilities.html"><span data-i18n>Facilities</span></a>
+          <a href="case-of-the-month.html" aria-current="page"><span data-i18n>Case of the Month</span></a>
         </div>
       </div>
-      <a href="contact.html">Contact</a>
-      <a class="btn btn-primary nav-call" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call for an appointment</a>
+      <a href="contact.html"><span data-i18n>Contact</span></a>
+      <a class="btn btn-primary nav-call" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span data-i18n> Call for an appointment</span></a>
     </nav>
 
     <div class="header-cta">
-      <a class="btn btn-primary btn-sm" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Book Appointment</a>
+      <a class="btn btn-primary btn-sm" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span data-i18n> Book Appointment</span></a>
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav"><span></span></button>
     </div>
   </div>
@@ -103,10 +107,10 @@
   <section class="page-head">
     <div class="wrap page-head-inner">
       <nav aria-label="Breadcrumb">
-        <ol class="crumbs"><li><a href="index.html">Home</a></li><li><span aria-current="page">Case of the Month</span></li></ol>
+        <ol class="crumbs"><li><a href="index.html"><span data-i18n>Home</span></a></li><li><span aria-current="page"><span data-i18n>Case of the Month</span></span></li></ol>
       </nav>
-      <h1>Interesting Case of the Month</h1>
-      <p>Every month we document an interesting case from our theatre lists, in addition to our routine clinical work.</p>
+      <h1><span data-i18n>Interesting Case of the Month</span></h1>
+      <p><span data-i18n>Every month we document an interesting case from our theatre lists, in addition to our routine clinical work.</span></p>
     </div>
   </section>
 
@@ -116,274 +120,553 @@
         <div class="gate-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3 4 6v5.5c0 4.6 3.2 8.6 8 9.5 4.8-.9 8-4.9 8-9.5V6Z"/><path d="M12 8.5v4M12 16h.01"/></svg>
         </div>
-        <h2>Please read before continuing</h2>
-        <p>
+        <h2><span data-i18n>Please read before continuing</span></h2>
+        <p><span data-i18n>
           Maxillofacial surgery and Orthodontics concerns surgical and non-surgical treatment of the face, head and
           neck and jaws. The following pages contain surgical pictures including intra-operative, pre and post
           operative images. We understand that it may not be appropriate for general viewing and these images are
           shown with the sole aim of educating and creating awareness among the general population about the
           problems associated with facial surgery, its potential complications and its possible solutions.
-        </p>
-        <p>
+        </span></p>
+        <p><span data-i18n>
           These images are completely under the copyright of the hospital and the viewer does not have any claim
           whatsoever to these images.
-        </p>
+        </span></p>
         <div class="gate-agree">
           <input type="checkbox" id="consent-check">
-          <label for="consent-check">
+          <label for="consent-check"><span data-i18n>
             I am above the age of 18 years, I will not download or misuse these images in any way, and I agree to
             all the terms and conditions unconditionally and agree to follow the guidelines set by the hospital.
-          </label>
+          </span></label>
         </div>
         <div class="gate-actions">
-          <button class="btn btn-primary btn-lg" type="button" id="consent-agree" disabled aria-disabled="true">Agree &amp; continue</button>
-          <p class="gate-hint">Tick the box above to continue.</p>
+          <button class="btn btn-primary btn-lg" type="button" id="consent-agree" disabled aria-disabled="true"><span data-i18n>Agree &amp; continue</span></button>
+          <p class="gate-hint"><span data-i18n>Tick the box above to continue.</span></p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="clinical">
-    <section class="section">
-      <div class="wrap">
-        <p class="measure mb-8">
-          These images are shown with the sole aim of educating and creating awareness among the general population
-          about the problems associated with facial surgery, its potential complications and its possible solutions.
-          Select any case to view it full size.
+<!-- cases:archive:start -->
+<section class="section case-archive" aria-labelledby="latest-case-heading">
+  <div class="wrap">
+    <article class="case-feature reveal">
+      <a class="case-feature-media" href="assets/images/interesting-case-of-the-month-november-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-november-2025.jpg" data-lb-kind="case" data-cap="November 2025, Bimaxillary orthognathic surgery: Le Fort I impaction, sagittal split osteotomy and genioplasty" aria-label="Open the case: Bimaxillary orthognathic surgery: Le Fort I impaction, sagittal split osteotomy and genioplasty">
+        <img src="assets/images/cases/2025-11-bimaxillary-orthognathic-surgery-card.jpg" alt="" decoding="async" width="640" height="480">
+        <span class="case-feature-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg></span>
+      </a>
+      <div class="case-feature-body">
+        <p class="eyebrow"><span data-i18n>Latest case</span></p>
+        <p class="case-date"><span data-i18n>November 2025</span></p>
+        <h2 id="latest-case-heading" class="case-feature-title"><span data-i18n>Bimaxillary orthognathic surgery: Le Fort I impaction, sagittal split osteotomy and genioplasty</span></h2>
+        <span class="case-topic"><span data-i18n>Jaw correction</span></span>
+        <p class="actions-row">
+          <a class="btn btn-primary" href="assets/images/interesting-case-of-the-month-november-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-november-2025.jpg" data-lb-kind="case" data-cap="November 2025, Bimaxillary orthognathic surgery: Le Fort I impaction, sagittal split osteotomy and genioplasty"><span data-i18n>Read the case</span></a>
+          <a class="btn btn-outline" href="orthognathic-surgery.html"><span data-i18n>Explore Facial Deformity Correction</span></a>
         </p>
-        <div class="gallery reveal stagger">
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-dec-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-dec-2023.jpg" data-cap="Case 1, December 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-dec-2023.jpg" alt="Interesting case of the month 1, December 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 1 &middot; December 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-feb-2025.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-feb-2025.jpg" data-cap="Case 2, February 2025">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-feb-2025.jpg" alt="Interesting case of the month 2, February 2025" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 2 &middot; February 2025</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-march-2025.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-march-2025.jpg" data-cap="Case 3, March 2025">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-march-2025.jpg" alt="Interesting case of the month 3, March 2025" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 3 &middot; March 2025</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-april-2025.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-april-2025.jpg" data-cap="Case 4, April 2025">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-april-2025.jpg" alt="Interesting case of the month 4, April 2025" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 4 &middot; April 2025</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-may-2025.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-may-2025.jpg" data-cap="Case 5, May 2025">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-may-2025.jpg" alt="Interesting case of the month 5, May 2025" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 5 &middot; May 2025</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-june-2025.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-june-2025.jpg" data-cap="Case 6, June 2025">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-june-2025.jpg" alt="Interesting case of the month 6, June 2025" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 6 &middot; June 2025</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-july-2025.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-july-2025.jpg" data-cap="Case 7, July 2025">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-july-2025.jpg" alt="Interesting case of the month 7, July 2025" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 7 &middot; July 2025</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-august-2020.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-august-2020.jpg" data-cap="Case 8, August 2020">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-august-2020.jpg" alt="Interesting case of the month 8, August 2020" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 8 &middot; August 2020</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-september-2025-image.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-september-2025-image.jpg" data-cap="Case 9, September 2025">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-september-2025-image.jpg" alt="Interesting case of the month 9, September 2025" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 9 &middot; September 2025</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-october-2025.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-october-2025.jpg" data-cap="Case 10, October 2025">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-october-2025.jpg" alt="Interesting case of the month 10, October 2025" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 10 &middot; October 2025</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-november-2025.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-november-2025.jpg" data-cap="Case 11, November 2025">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-november-2025.jpg" alt="Interesting case of the month 11, November 2025" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 11 &middot; November 2025</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-december-2020.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-december-2020.jpg" data-cap="Case 12, December 2020">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-december-2020.jpg" alt="Interesting case of the month 12, December 2020" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 12 &middot; December 2020</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-jan-2024.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-jan-2024.jpg" data-cap="Case 13, January 2024">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-jan-2024.jpg" alt="Interesting case of the month 13, January 2024" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 13 &middot; January 2024</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-feb-2024.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-feb-2024.jpg" data-cap="Case 14, February 2024">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-feb-2024.jpg" alt="Interesting case of the month 14, February 2024" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 14 &middot; February 2024</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-march-2024.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-march-2024.jpg" data-cap="Case 15, March 2024">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-march-2024.jpg" alt="Interesting case of the month 15, March 2024" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 15 &middot; March 2024</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-april-2024.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-april-2024.jpg" data-cap="Case 16, April 2024">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-april-2024.jpg" alt="Interesting case of the month 16, April 2024" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 16 &middot; April 2024</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-may-2022-year.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-may-2022-year.jpg" data-cap="Case 17, May 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-may-2022-year.jpg" alt="Interesting case of the month 17, May 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 17 &middot; May 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-sept-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-sept-2022.jpg" data-cap="Case 18, September 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-sept-2022.jpg" alt="Interesting case of the month 18, September 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 18 &middot; September 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-july-2024.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-july-2024.jpg" data-cap="Case 19, July 2024">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-july-2024.jpg" alt="Interesting case of the month 19, July 2024" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 19 &middot; July 2024</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-august-2024.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-august-2024.jpg" data-cap="Case 20, August 2024">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-august-2024.jpg" alt="Interesting case of the month 20, August 2024" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 20 &middot; August 2024</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-sept-2024.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-sept-2024.jpg" data-cap="Case 21, September 2024">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-sept-2024.jpg" alt="Interesting case of the month 21, September 2024" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 21 &middot; September 2024</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-october-2024.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-october-2024.jpg" data-cap="Case 22, October 2024">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-october-2024.jpg" alt="Interesting case of the month 22, October 2024" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 22 &middot; October 2024</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-november-2024.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-november-2024.jpg" data-cap="Case 23, November 2024">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-november-2024.jpg" alt="Interesting case of the month 23, November 2024" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 23 &middot; November 2024</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-june-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-june-2023.jpg" data-cap="Case 24, June 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-june-2023.jpg" alt="Interesting case of the month 24, June 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 24 &middot; June 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-jan-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-jan-2023.jpg" data-cap="Case 25, January 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-jan-2023.jpg" alt="Interesting case of the month 25, January 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 25 &middot; January 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-feb-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-feb-2023.jpg" data-cap="Case 26, February 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-feb-2023.jpg" alt="Interesting case of the month 26, February 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 26 &middot; February 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-march-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-march-2023.jpg" data-cap="Case 27, March 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-march-2023.jpg" alt="Interesting case of the month 27, March 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 27 &middot; March 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-april-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-april-2023.jpg" data-cap="Case 28, April 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-april-2023.jpg" alt="Interesting case of the month 28, April 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 28 &middot; April 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-may-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-may-2023.jpg" data-cap="Case 29, May 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-may-2023.jpg" alt="Interesting case of the month 29, May 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 29 &middot; May 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-october-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-october-2022.jpg" data-cap="Case 30, October 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-october-2022.jpg" alt="Interesting case of the month 30, October 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 30 &middot; October 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-july-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-july-2023.jpg" data-cap="Case 31, July 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-july-2023.jpg" alt="Interesting case of the month 31, July 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 31 &middot; July 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-august-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-august-2023.jpg" data-cap="Case 32, August 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-august-2023.jpg" alt="Interesting case of the month 32, August 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 32 &middot; August 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-sept-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-sept-2023.jpg" data-cap="Case 33, September 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-sept-2023.jpg" alt="Interesting case of the month 33, September 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 33 &middot; September 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-october-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-october-2023.jpg" data-cap="Case 34, October 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-october-2023.jpg" alt="Interesting case of the month 34, October 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 34 &middot; October 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-nov-2023.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-nov-2023.jpg" data-cap="Case 35, November 2023">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-nov-2023.jpg" alt="Interesting case of the month 35, November 2023" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 35 &middot; November 2023</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-november-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-november-2022.jpg" data-cap="Case 36, November 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-november-2022.jpg" alt="Interesting case of the month 36, November 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 36 &middot; November 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-jan-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-jan-2022.jpg" data-cap="Case 37, January 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-jan-2022.jpg" alt="Interesting case of the month 37, January 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 37 &middot; January 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-feb-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-feb-2022.jpg" data-cap="Case 38, February 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-feb-2022.jpg" alt="Interesting case of the month 38, February 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 38 &middot; February 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-march-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-march-2022.jpg" data-cap="Case 39, March 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-march-2022.jpg" alt="Interesting case of the month 39, March 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 39 &middot; March 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-april-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-april-2022.jpg" data-cap="Case 40, April 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-april-2022.jpg" alt="Interesting case of the month 40, April 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 40 &middot; April 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-may-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-may-2022.jpg" data-cap="Case 41, May 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-may-2022.jpg" alt="Interesting case of the month 41, May 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 41 &middot; May 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-june-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-june-2022.jpg" data-cap="Case 42, June 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-june-2022.jpg" alt="Interesting case of the month 42, June 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 42 &middot; June 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-july-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-july-2022.jpg" data-cap="Case 43, July 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-july-2022.jpg" alt="Interesting case of the month 43, July 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 43 &middot; July 2022</span>
-        </a>
-        <a class="gal-item" href="assets/images/interesting-case-of-the-month-aug-2022.jpg"
-           data-lb="assets/images/interesting-case-of-the-month-aug-2022.jpg" data-cap="Case 44, August 2022">
-          <img src="assets/images/thumbs/interesting-case-of-the-month-aug-2022.jpg" alt="Interesting case of the month 44, August 2022" loading="lazy" width="560" height="420">
-          <span class="gal-cap">Case 44 &middot; August 2022</span>
-        </a>
-        </div>
       </div>
-    </section>
+    </article>
+
+    <div class="case-browse">
+      <div class="case-toolbar" role="group" aria-label="Filter cases by topic">
+      <button class="case-chip" type="button" data-topic="all" aria-pressed="true"><span data-i18n>All cases</span> <span class="case-chip-count">44</span></button>
+      <button class="case-chip" type="button" data-topic="trauma" aria-pressed="false"><span data-i18n>Facial trauma</span> <span class="case-chip-count">13</span></button>
+      <button class="case-chip" type="button" data-topic="pathology" aria-pressed="false"><span data-i18n>Tumours &amp; cysts</span> <span class="case-chip-count">10</span></button>
+      <button class="case-chip" type="button" data-topic="maxillofacial" aria-pressed="false"><span data-i18n>Maxillofacial surgery</span> <span class="case-chip-count">8</span></button>
+      <button class="case-chip" type="button" data-topic="orthognathic" aria-pressed="false"><span data-i18n>Jaw correction</span> <span class="case-chip-count">4</span></button>
+      <button class="case-chip" type="button" data-topic="cleft" aria-pressed="false"><span data-i18n>Cleft lip &amp; palate</span> <span class="case-chip-count">3</span></button>
+      <button class="case-chip" type="button" data-topic="tmj" aria-pressed="false"><span data-i18n>Jaw joint (TMJ)</span> <span class="case-chip-count">2</span></button>
+      <button class="case-chip" type="button" data-topic="implants" aria-pressed="false"><span data-i18n>Implants</span> <span class="case-chip-count">2</span></button>
+      <button class="case-chip" type="button" data-topic="orthodontics" aria-pressed="false"><span data-i18n>Orthodontics</span> <span class="case-chip-count">1</span></button>
+      <button class="case-chip" type="button" data-topic="craniofacial" aria-pressed="false"><span data-i18n>Craniofacial</span> <span class="case-chip-count">1</span></button>
+      </div>
+      <p class="case-results" aria-live="polite" data-total="44"></p>
+
+      <section class="case-year" data-case-year="2025" aria-labelledby="cases-2025">
+        <h2 class="case-year-title" id="cases-2025">2025 <span class="case-year-count"><span data-i18n>9 cases</span></span></h2>
+        <ul class="case-grid stagger" role="list">
+          <li class="case-card" id="case-2025-11-bimaxillary-orthognathic-surgery" data-topic="orthognathic">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-november-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-november-2025.jpg" data-lb-kind="case" data-cap="November 2025, Bimaxillary orthognathic surgery: Le Fort I impaction, sagittal split osteotomy and genioplasty">
+              <span class="case-card-media"><img src="assets/images/cases/2025-11-bimaxillary-orthognathic-surgery-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>November 2025</span></span>
+                <h3 class="case-card-title"><span data-i18n>Bimaxillary orthognathic surgery: Le Fort I impaction, sagittal split osteotomy and genioplasty</span></h3>
+                <span class="case-topic"><span data-i18n>Jaw correction</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2025-10-parotid-sialolith-removal" data-topic="maxillofacial">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-october-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-october-2025.jpg" data-lb-kind="case" data-cap="October 2025, Removal of a parotid sialolith (salivary stone)">
+              <span class="case-card-media"><img src="assets/images/cases/2025-10-parotid-sialolith-removal-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>October 2025</span></span>
+                <h3 class="case-card-title"><span data-i18n>Removal of a parotid sialolith (salivary stone)</span></h3>
+                <span class="case-topic"><span data-i18n>Maxillofacial surgery</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2025-09-surprise-finding-after-a-fall" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-september-2025-image.jpg" data-lb="assets/images/interesting-case-of-the-month-september-2025-image.jpg" data-lb-kind="case" data-cap="September 2025, A surprise finding eight months after a fall in the garden">
+              <span class="case-card-media"><img src="assets/images/cases/2025-09-surprise-finding-after-a-fall-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>September 2025</span></span>
+                <h3 class="case-card-title"><span data-i18n>A surprise finding eight months after a fall in the garden</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2025-07-full-mouth-implant-rehabilitation" data-topic="implants">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-july-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-july-2025.jpg" data-lb-kind="case" data-cap="July 2025, Full mouth rehabilitation with upper and lower dental implants">
+              <span class="case-card-media"><img src="assets/images/cases/2025-07-full-mouth-implant-rehabilitation-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>July 2025</span></span>
+                <h3 class="case-card-title"><span data-i18n>Full mouth rehabilitation with upper and lower dental implants</span></h3>
+                <span class="case-topic"><span data-i18n>Implants</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2025-06-cleft-secondary-alveolar-bone-grafting" data-topic="cleft">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-june-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-june-2025.jpg" data-lb-kind="case" data-cap="June 2025, Cleft lip and palate: secondary alveolar bone grafting">
+              <span class="case-card-media"><img src="assets/images/cases/2025-06-cleft-secondary-alveolar-bone-grafting-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>June 2025</span></span>
+                <h3 class="case-card-title"><span data-i18n>Cleft lip and palate: secondary alveolar bone grafting</span></h3>
+                <span class="case-topic"><span data-i18n>Cleft lip &amp; palate</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2025-05-facial-nerve-palsy-treatment-options" data-topic="maxillofacial">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-may-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-may-2025.jpg" data-lb-kind="case" data-cap="May 2025, Facial nerve palsy: a review of treatment options">
+              <span class="case-card-media"><img src="assets/images/cases/2025-05-facial-nerve-palsy-treatment-options-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>May 2025</span></span>
+                <h3 class="case-card-title"><span data-i18n>Facial nerve palsy: a review of treatment options</span></h3>
+                <span class="case-topic"><span data-i18n>Maxillofacial surgery</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2025-04-frontal-bone-orbital-roof-floor-injury" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-april-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-april-2025.jpg" data-lb-kind="case" data-cap="April 2025, Frontal bone injury with orbital roof and floor fractures">
+              <span class="case-card-media"><img src="assets/images/cases/2025-04-frontal-bone-orbital-roof-floor-injury-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>April 2025</span></span>
+                <h3 class="case-card-title"><span data-i18n>Frontal bone injury with orbital roof and floor fractures</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2025-03-buccal-fat-pad-flap" data-topic="maxillofacial">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-march-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-march-2025.jpg" data-lb-kind="case" data-cap="March 2025, Buccal fat pad flap: a simple, versatile technique">
+              <span class="case-card-media"><img src="assets/images/cases/2025-03-buccal-fat-pad-flap-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>March 2025</span></span>
+                <h3 class="case-card-title"><span data-i18n>Buccal fat pad flap: a simple, versatile technique</span></h3>
+                <span class="case-topic"><span data-i18n>Maxillofacial surgery</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2025-02-cleft-le-fort-i-advancement-iliac-crest-graft" data-topic="cleft">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-feb-2025.jpg" data-lb="assets/images/interesting-case-of-the-month-feb-2025.jpg" data-lb-kind="case" data-cap="February 2025, Cleft patient: Le Fort I advancement osteotomy with iliac crest bone grafting">
+              <span class="case-card-media"><img src="assets/images/cases/2025-02-cleft-le-fort-i-advancement-iliac-crest-graft-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>February 2025</span></span>
+                <h3 class="case-card-title"><span data-i18n>Cleft patient: Le Fort I advancement osteotomy with iliac crest bone grafting</span></h3>
+                <span class="case-topic"><span data-i18n>Cleft lip &amp; palate</span></span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-year" data-case-year="2024" aria-labelledby="cases-2024">
+        <h2 class="case-year-title" id="cases-2024">2024 <span class="case-year-count"><span data-i18n>9 cases</span></span></h2>
+        <ul class="case-grid stagger" role="list">
+          <li class="case-card" id="case-2024-11-recurrent-giant-cell-granuloma" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-november-2024.jpg" data-lb="assets/images/interesting-case-of-the-month-november-2024.jpg" data-lb-kind="case" data-cap="November 2024, Recurrent central giant cell granuloma: enucleation and calcitonin therapy">
+              <span class="case-card-media"><img src="assets/images/cases/2024-11-recurrent-giant-cell-granuloma-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>November 2024</span></span>
+                <h3 class="case-card-title"><span data-i18n>Recurrent central giant cell granuloma: enucleation and calcitonin therapy</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2024-10-nasal-bone-fracture-mua" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-october-2024.jpg" data-lb="assets/images/interesting-case-of-the-month-october-2024.jpg" data-lb-kind="case" data-cap="October 2024, Nasal bone fracture: manipulation under anaesthesia (MUA)">
+              <span class="case-card-media"><img src="assets/images/cases/2024-10-nasal-bone-fracture-mua-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>October 2024</span></span>
+                <h3 class="case-card-title"><span data-i18n>Nasal bone fracture: manipulation under anaesthesia (MUA)</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2024-09-pan-facial-trauma-miniplating" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-sept-2024.jpg" data-lb="assets/images/interesting-case-of-the-month-sept-2024.jpg" data-lb-kind="case" data-cap="September 2024, Pan-facial trauma: zygoma, maxillary and mandibular fractures treated with miniplates">
+              <span class="case-card-media"><img src="assets/images/cases/2024-09-pan-facial-trauma-miniplating-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>September 2024</span></span>
+                <h3 class="case-card-title"><span data-i18n>Pan-facial trauma: zygoma, maxillary and mandibular fractures treated with miniplates</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2024-08-submental-intubation-craniofacial-trauma" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-august-2024.jpg" data-lb="assets/images/interesting-case-of-the-month-august-2024.jpg" data-lb-kind="case" data-cap="August 2024, Submental intubation: an alternative to tracheostomy in craniofacial trauma">
+              <span class="case-card-media"><img src="assets/images/cases/2024-08-submental-intubation-craniofacial-trauma-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>August 2024</span></span>
+                <h3 class="case-card-title"><span data-i18n>Submental intubation: an alternative to tracheostomy in craniofacial trauma</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2024-07-maxillary-necrosis-cavernous-sinus-thrombosis" data-topic="maxillofacial">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-july-2024.jpg" data-lb="assets/images/interesting-case-of-the-month-july-2024.jpg" data-lb-kind="case" data-cap="July 2024, Avascular necrosis of the maxilla presenting with cavernous sinus thrombosis">
+              <span class="case-card-media"><img src="assets/images/cases/2024-07-maxillary-necrosis-cavernous-sinus-thrombosis-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>July 2024</span></span>
+                <h3 class="case-card-title"><span data-i18n>Avascular necrosis of the maxilla presenting with cavernous sinus thrombosis</span></h3>
+                <span class="case-topic"><span data-i18n>Maxillofacial surgery</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2024-04-submucous-fibrosis-band-release" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-april-2024.jpg" data-lb="assets/images/interesting-case-of-the-month-april-2024.jpg" data-lb-kind="case" data-cap="April 2024, Submucous fibrosis: band release, skin grafting and hemiglossectomy">
+              <span class="case-card-media"><img src="assets/images/cases/2024-04-submucous-fibrosis-band-release-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>April 2024</span></span>
+                <h3 class="case-card-title"><span data-i18n>Submucous fibrosis: band release, skin grafting and hemiglossectomy</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2024-03-mandibular-giant-cell-granuloma-enucleation" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-march-2024.jpg" data-lb="assets/images/interesting-case-of-the-month-march-2024.jpg" data-lb-kind="case" data-cap="March 2024, Central giant cell granuloma of the mandible: enucleation and calcitonin therapy">
+              <span class="case-card-media"><img src="assets/images/cases/2024-03-mandibular-giant-cell-granuloma-enucleation-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>March 2024</span></span>
+                <h3 class="case-card-title"><span data-i18n>Central giant cell granuloma of the mandible: enucleation and calcitonin therapy</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2024-02-superior-orbital-fissure-syndrome" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-feb-2024.jpg" data-lb="assets/images/interesting-case-of-the-month-feb-2024.jpg" data-lb-kind="case" data-cap="February 2024, Superior orbital fissure syndrome">
+              <span class="case-card-media"><img src="assets/images/cases/2024-02-superior-orbital-fissure-syndrome-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>February 2024</span></span>
+                <h3 class="case-card-title"><span data-i18n>Superior orbital fissure syndrome</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2024-01-malunited-le-fort-iii-palatal-fistula" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-jan-2024.jpg" data-lb="assets/images/interesting-case-of-the-month-jan-2024.jpg" data-lb-kind="case" data-cap="January 2024, Malunited Le Fort III fracture with palatal fistula: osteotomy and von Langenbeck closure">
+              <span class="case-card-media"><img src="assets/images/cases/2024-01-malunited-le-fort-iii-palatal-fistula-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>January 2024</span></span>
+                <h3 class="case-card-title"><span data-i18n>Malunited Le Fort III fracture with palatal fistula: osteotomy and von Langenbeck closure</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-year" data-case-year="2023" aria-labelledby="cases-2023">
+        <h2 class="case-year-title" id="cases-2023">2023 <span class="case-year-count"><span data-i18n>12 cases</span></span></h2>
+        <ul class="case-grid stagger" role="list">
+          <li class="case-card" id="case-2023-12-central-giant-cell-granuloma-marginal-resection" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-dec-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-dec-2023.jpg" data-lb-kind="case" data-cap="December 2023, Aggressive central giant cell granuloma: marginal resection and calcitonin therapy">
+              <span class="case-card-media"><img src="assets/images/cases/2023-12-central-giant-cell-granuloma-marginal-resection-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>December 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Aggressive central giant cell granuloma: marginal resection and calcitonin therapy</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-11-maxillary-infection-necrosis-rehabilitation" data-topic="maxillofacial">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-nov-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-nov-2023.jpg" data-lb-kind="case" data-cap="November 2023, Maxillary infection causing avascular necrosis: debridement and prosthetic rehabilitation">
+              <span class="case-card-media"><img src="assets/images/cases/2023-11-maxillary-infection-necrosis-rehabilitation-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>November 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Maxillary infection causing avascular necrosis: debridement and prosthetic rehabilitation</span></h3>
+                <span class="case-topic"><span data-i18n>Maxillofacial surgery</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-10-papillon-lefevre-syndrome" data-topic="maxillofacial">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-october-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-october-2023.jpg" data-lb-kind="case" data-cap="October 2023, Papillon-Lefèvre syndrome: treating a rare condition">
+              <span class="case-card-media"><img src="assets/images/cases/2023-10-papillon-lefevre-syndrome-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>October 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Papillon-Lefèvre syndrome: treating a rare condition</span></h3>
+                <span class="case-topic"><span data-i18n>Maxillofacial surgery</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-09-bat-ear-correction-otoplasty" data-topic="maxillofacial">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-sept-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-sept-2023.jpg" data-lb-kind="case" data-cap="September 2023, Bat ear correction (otoplasty)">
+              <span class="case-card-media"><img src="assets/images/cases/2023-09-bat-ear-correction-otoplasty-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>September 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Bat ear correction (otoplasty)</span></h3>
+                <span class="case-topic"><span data-i18n>Maxillofacial surgery</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-08-palatal-pleomorphic-adenoma-excision" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-august-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-august-2023.jpg" data-lb-kind="case" data-cap="August 2023, Pleomorphic adenoma of the palate: wide excision and secondary healing">
+              <span class="case-card-media"><img src="assets/images/cases/2023-08-palatal-pleomorphic-adenoma-excision-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>August 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Pleomorphic adenoma of the palate: wide excision and secondary healing</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-07-orbital-reconstruction-3d-printed-titanium" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-july-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-july-2023.jpg" data-lb-kind="case" data-cap="July 2023, Orbital reconstruction with a custom 3D-printed titanium prosthesis, a first in Madurai">
+              <span class="case-card-media"><img src="assets/images/cases/2023-07-orbital-reconstruction-3d-printed-titanium-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>July 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Orbital reconstruction with a custom 3D-printed titanium prosthesis, a first in Madurai</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-06-craniofacial-trauma-multiple-fractures" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-june-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-june-2023.jpg" data-lb-kind="case" data-cap="June 2023, Craniofacial trauma: frontal, maxillary, naso-ethmoid and mandibular fractures with extradural and subdural haemorrhage">
+              <span class="case-card-media"><img src="assets/images/cases/2023-06-craniofacial-trauma-multiple-fractures-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>June 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Craniofacial trauma: frontal, maxillary, naso-ethmoid and mandibular fractures with extradural and subdural haemorrhage</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-05-jallikattu-and-maxillofacial-surgery" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-may-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-may-2023.jpg" data-lb-kind="case" data-cap="May 2023, Jallikattu and maxillofacial surgery">
+              <span class="case-card-media"><img src="assets/images/cases/2023-05-jallikattu-and-maxillofacial-surgery-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>May 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Jallikattu and maxillofacial surgery</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-04-cleft-palate-von-langenbeck-repair" data-topic="cleft">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-april-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-april-2023.jpg" data-lb-kind="case" data-cap="April 2023, Cleft palate repair using von Langenbeck&#39;s technique">
+              <span class="case-card-media"><img src="assets/images/cases/2023-04-cleft-palate-von-langenbeck-repair-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>April 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Cleft palate repair using von Langenbeck&#39;s technique</span></h3>
+                <span class="case-topic"><span data-i18n>Cleft lip &amp; palate</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-03-aggressive-fibromatosis-mandibular-resection" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-march-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-march-2023.jpg" data-lb-kind="case" data-cap="March 2023, Aggressive fibromatosis: mandibular resection and reconstruction plating">
+              <span class="case-card-media"><img src="assets/images/cases/2023-03-aggressive-fibromatosis-mandibular-resection-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>March 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Aggressive fibromatosis: mandibular resection and reconstruction plating</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-02-adenomatoid-odontogenic-tumour" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-feb-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-feb-2023.jpg" data-lb-kind="case" data-cap="February 2023, Adenomatoid odontogenic tumour of the mandible">
+              <span class="case-card-media"><img src="assets/images/cases/2023-02-adenomatoid-odontogenic-tumour-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>February 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>Adenomatoid odontogenic tumour of the mandible</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2023-01-tmj-ankylosis-esmarch-coronoidectomy" data-topic="tmj">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-jan-2023.jpg" data-lb="assets/images/interesting-case-of-the-month-jan-2023.jpg" data-lb-kind="case" data-cap="January 2023, TMJ ankylosis treated with Esmarch&#39;s procedure and contralateral coronoidectomy">
+              <span class="case-card-media"><img src="assets/images/cases/2023-01-tmj-ankylosis-esmarch-coronoidectomy-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>January 2023</span></span>
+                <h3 class="case-card-title"><span data-i18n>TMJ ankylosis treated with Esmarch&#39;s procedure and contralateral coronoidectomy</span></h3>
+                <span class="case-topic"><span data-i18n>Jaw joint (TMJ)</span></span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-year" data-case-year="2022" aria-labelledby="cases-2022">
+        <h2 class="case-year-title" id="cases-2022">2022 <span class="case-year-count"><span data-i18n>12 cases</span></span></h2>
+        <ul class="case-grid stagger" role="list">
+          <li class="case-card" id="case-2022-11-gorlin-goltz-syndrome-okc" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-november-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-november-2022.jpg" data-lb-kind="case" data-cap="November 2022, Gorlin-Goltz syndrome: enucleation and marsupialisation of odontogenic keratocysts">
+              <span class="case-card-media"><img src="assets/images/cases/2022-11-gorlin-goltz-syndrome-okc-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>November 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Gorlin-Goltz syndrome: enucleation and marsupialisation of odontogenic keratocysts</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-10-mandibular-ameloblastoma-segmental-resection" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-october-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-october-2022.jpg" data-lb-kind="case" data-cap="October 2022, Mandibular ameloblastoma: segmental resection with reconstruction plating">
+              <span class="case-card-media"><img src="assets/images/cases/2022-10-mandibular-ameloblastoma-segmental-resection-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>October 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Mandibular ameloblastoma: segmental resection with reconstruction plating</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-09-alveolar-osteodistraction-for-implants" data-topic="implants">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-sept-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-sept-2022.jpg" data-lb-kind="case" data-cap="September 2022, Intraoral alveolar osteodistraction to build bone for dental implants">
+              <span class="case-card-media"><img src="assets/images/cases/2022-09-alveolar-osteodistraction-for-implants-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>September 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Intraoral alveolar osteodistraction to build bone for dental implants</span></h3>
+                <span class="case-topic"><span data-i18n>Implants</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-08-tmj-ankylosis-multiplanar-distraction" data-topic="tmj">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-aug-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-aug-2022.jpg" data-lb-kind="case" data-cap="August 2022, TMJ ankylosis treated with multiplanar osteodistractors">
+              <span class="case-card-media"><img src="assets/images/cases/2022-08-tmj-ankylosis-multiplanar-distraction-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>August 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>TMJ ankylosis treated with multiplanar osteodistractors</span></h3>
+                <span class="case-topic"><span data-i18n>Jaw joint (TMJ)</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-07-mandibular-osteoma" data-topic="pathology">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-july-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-july-2022.jpg" data-lb-kind="case" data-cap="July 2022, Osteoma of the mandible">
+              <span class="case-card-media"><img src="assets/images/cases/2022-07-mandibular-osteoma-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>July 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Osteoma of the mandible</span></h3>
+                <span class="case-topic"><span data-i18n>Tumours &amp; cysts</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-06-bsso-mandibular-setback" data-topic="orthognathic">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-june-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-june-2022.jpg" data-lb-kind="case" data-cap="June 2022, Bilateral sagittal split osteotomy (BSSO) of the mandible with setback">
+              <span class="case-card-media"><img src="assets/images/cases/2022-06-bsso-mandibular-setback-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>June 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Bilateral sagittal split osteotomy (BSSO) of the mandible with setback</span></h3>
+                <span class="case-topic"><span data-i18n>Jaw correction</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-05-impacted-canine-piggyback-technique" data-topic="orthodontics">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-may-2022-year.jpg" data-lb="assets/images/interesting-case-of-the-month-may-2022-year.jpg" data-lb-kind="case" data-cap="May 2022, Impacted canine brought into line with orthodontics (piggyback technique)">
+              <span class="case-card-media"><img src="assets/images/cases/2022-05-impacted-canine-piggyback-technique-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>May 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Impacted canine brought into line with orthodontics (piggyback technique)</span></h3>
+                <span class="case-topic"><span data-i18n>Orthodontics</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-05-sarpe-rapid-palatal-expansion" data-topic="orthognathic">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-may-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-may-2022.jpg" data-lb-kind="case" data-cap="May 2022, SARPE: surgically assisted rapid palatal expansion">
+              <span class="case-card-media"><img src="assets/images/cases/2022-05-sarpe-rapid-palatal-expansion-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>May 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>SARPE: surgically assisted rapid palatal expansion</span></h3>
+                <span class="case-topic"><span data-i18n>Jaw correction</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-04-foreign-body-face-after-fall" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-april-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-april-2022.jpg" data-lb-kind="case" data-cap="April 2022, Foreign body in the face after a fall: a surprise finding during exploration">
+              <span class="case-card-media"><img src="assets/images/cases/2022-04-foreign-body-face-after-fall-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>April 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Foreign body in the face after a fall: a surprise finding during exploration</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-03-tongue-abscess" data-topic="maxillofacial">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-march-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-march-2022.jpg" data-lb-kind="case" data-cap="March 2022, Tongue abscess: a rare case">
+              <span class="case-card-media"><img src="assets/images/cases/2022-03-tongue-abscess-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>March 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Tongue abscess: a rare case</span></h3>
+                <span class="case-topic"><span data-i18n>Maxillofacial surgery</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-02-apert-syndrome-sarpe-bimaxillary" data-topic="craniofacial">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-feb-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-feb-2022.jpg" data-lb-kind="case" data-cap="February 2022, Apert syndrome: orthodontics, SARPE and bimaxillary osteotomy (Le Fort I and BSSO setback)">
+              <span class="case-card-media"><img src="assets/images/cases/2022-02-apert-syndrome-sarpe-bimaxillary-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>February 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Apert syndrome: orthodontics, SARPE and bimaxillary osteotomy (Le Fort I and BSSO setback)</span></h3>
+                <span class="case-topic"><span data-i18n>Craniofacial</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2022-01-bsso-mandibular-setback-class-i" data-topic="orthognathic">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-jan-2022.jpg" data-lb="assets/images/interesting-case-of-the-month-jan-2022.jpg" data-lb-kind="case" data-cap="January 2022, Bilateral sagittal split osteotomy (BSSO) with mandibular setback to Class I">
+              <span class="case-card-media"><img src="assets/images/cases/2022-01-bsso-mandibular-setback-class-i-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>January 2022</span></span>
+                <h3 class="case-card-title"><span data-i18n>Bilateral sagittal split osteotomy (BSSO) with mandibular setback to Class I</span></h3>
+                <span class="case-topic"><span data-i18n>Jaw correction</span></span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-year" data-case-year="2020" aria-labelledby="cases-2020">
+        <h2 class="case-year-title" id="cases-2020">2020 <span class="case-year-count"><span data-i18n>2 cases</span></span></h2>
+        <ul class="case-grid stagger" role="list">
+          <li class="case-card" id="case-2020-12-facial-laceration-medial-canthal-repair" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-december-2020.jpg" data-lb="assets/images/interesting-case-of-the-month-december-2020.jpg" data-lb-kind="case" data-cap="December 2020, Severe facial laceration with medial canthal detachment repair">
+              <span class="case-card-media"><img src="assets/images/cases/2020-12-facial-laceration-medial-canthal-repair-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>December 2020</span></span>
+                <h3 class="case-card-title"><span data-i18n>Severe facial laceration with medial canthal detachment repair</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="case-card" id="case-2020-08-traumatic-sialocele-artificial-salivary-duct" data-topic="trauma">
+            <a class="case-card-link" href="assets/images/interesting-case-of-the-month-august-2020.jpg" data-lb="assets/images/interesting-case-of-the-month-august-2020.jpg" data-lb-kind="case" data-cap="August 2020, Traumatic sialocele: creating an artificial salivary duct for drainage">
+              <span class="case-card-media"><img src="assets/images/cases/2020-08-traumatic-sialocele-artificial-salivary-duct-card.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></span>
+              <span class="case-card-body">
+                <span class="case-date"><span data-i18n>August 2020</span></span>
+                <h3 class="case-card-title"><span data-i18n>Traumatic sialocele: creating an artificial salivary duct for drainage</span></h3>
+                <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <p class="case-note"><span data-i18n>These images are shown with the sole aim of educating and creating awareness among the general population about the problems associated with facial surgery, its potential complications and its possible solutions. Select any case to read it full size.</span></p>
+    </div>
+  </div>
+</section>
+<!-- cases:archive:end -->
   </div>
 
   <section class="cta-band section-sm" aria-labelledby="cta-heading">
     <div class="wrap center">
-      <h2 id="cta-heading">Ready to talk to a specialist?</h2>
-      <p>We are located 2 minutes&rsquo; walk from the Anna Bus Stand, with adequate off-street car parking.</p>
+      <h2 id="cta-heading"><span data-i18n>Ready to talk to a specialist?</span></h2>
+      <p><span data-i18n>We are located 2 minutes&rsquo; walk from the Anna Bus Stand, with adequate off-street car parking.</span></p>
       <div class="cta-actions">
-        <a class="btn btn-ghost btn-lg" href="tel:+919159999362">Call +91 91599 99362</a>
-        <a class="btn btn-outline btn-lg" href="contact.html">Get directions</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+919159999362"><span data-i18n>Call +91 91599 99362</span></a>
+        <a class="btn btn-outline btn-lg" href="contact.html"><span data-i18n>Get directions</span></a>
       </div>
     </div>
   </section>
@@ -396,61 +679,61 @@
       <div class="footer-logo">
         <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#ffffff" d="M12 2c-1.7 0-2.6.7-4 .7S5.2 2 4 3c-1.5 1.2-2 3.6-1.4 6.7.5 2.5 1.2 4.2 1.6 6.7.4 2.3.6 5.2 1.3 6.7.5 1.1 1.9 1.2 2.4 0 .7-1.6.9-4.2 1.3-6 .3-1.3.8-2.1 1.5-2.1h.6c.7 0 1.2.8 1.5 2.1.4 1.8.6 4.4 1.3 6 .5 1.2 1.9 1.1 2.4 0 .7-1.5.9-4.4 1.3-6.7.4-2.5 1.1-4.2 1.6-6.7C21.9 6.6 21.4 4.2 20 3c-1.2-1-2.6-.3-4-.3S13.7 2 12 2Z"/></svg>
         <span class="logo-text">
-          <span class="logo-name">Shanker</span>
-          <span class="logo-sub">Dental &amp; Craniofacial Centre</span>
+          <span class="logo-name"><span data-i18n>Shanker</span></span>
+          <span class="logo-sub"><span data-i18n>Dental &amp; Craniofacial Centre</span></span>
         </span>
       </div>
-      <p>Madurai&rsquo;s purpose-built multi-specialty centre for maxillofacial surgery, craniofacial surgery, orthodontics and implantology.</p>
-      <p class="footer-motto">&ldquo;Saving faces and changing lives&rdquo;</p>
+      <p><span data-i18n>Madurai&rsquo;s purpose-built multi-specialty centre for maxillofacial surgery, craniofacial surgery, orthodontics and implantology.</span></p>
+      <p class="footer-motto"><span data-i18n>&ldquo;Saving faces and changing lives&rdquo;</span></p>
     </div>
 
     <nav class="footer-nav" aria-label="Footer">
-      <h2 class="footer-col-title">Explore</h2>
+      <h2 class="footer-col-title"><span data-i18n>Explore</span></h2>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="doctors.html">Meet the Doctors</a></li>
-        <li><a href="facilities.html">Facilities</a></li>
-        <li><a href="treatments.html">Treatment Options</a></li>
-        <li><a href="case-of-the-month.html">Case of the Month</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="index.html"><span data-i18n>Home</span></a></li>
+        <li><a href="doctors.html"><span data-i18n>Meet the Doctors</span></a></li>
+        <li><a href="facilities.html"><span data-i18n>Facilities</span></a></li>
+        <li><a href="treatments.html"><span data-i18n>Treatment Options</span></a></li>
+        <li><a href="case-of-the-month.html"><span data-i18n>Case of the Month</span></a></li>
+        <li><a href="contact.html"><span data-i18n>Contact Us</span></a></li>
       </ul>
     </nav>
 
     <nav class="footer-nav" aria-label="Treatments">
-      <h2 class="footer-col-title">Treatments</h2>
+      <h2 class="footer-col-title"><span data-i18n>Treatments</span></h2>
       <ul>
-        <li><a href="maxillofacial-surgery.html">Maxillofacial Surgery</a></li>
-        <li><a href="craniofacial-surgery.html">Craniofacial Surgery</a></li>
-        <li><a href="orthognathic-surgery.html">Orthognathic Surgery</a></li>
-        <li><a href="facial-trauma-surgery.html">Facial Trauma</a></li>
-        <li><a href="cleft-lip-and-palate-surgery.html">Cleft Lip &amp; Palate</a></li>
-        <li><a href="tmj-surgery.html">TMJ: Jaw Joint</a></li>
-        <li><a href="oral-and-maxillofacial-pathology.html">Pathology</a></li>
+        <li><a href="maxillofacial-surgery.html"><span data-i18n>Maxillofacial Surgery</span></a></li>
+        <li><a href="craniofacial-surgery.html"><span data-i18n>Craniofacial Surgery</span></a></li>
+        <li><a href="orthognathic-surgery.html"><span data-i18n>Orthognathic Surgery</span></a></li>
+        <li><a href="facial-trauma-surgery.html"><span data-i18n>Facial Trauma</span></a></li>
+        <li><a href="cleft-lip-and-palate-surgery.html"><span data-i18n>Cleft Lip &amp; Palate</span></a></li>
+        <li><a href="tmj-surgery.html"><span data-i18n>TMJ: Jaw Joint</span></a></li>
+        <li><a href="oral-and-maxillofacial-pathology.html"><span data-i18n>Pathology</span></a></li>
       </ul>
     </nav>
 
     <div>
-      <h2 class="footer-col-title">Visit us</h2>
+      <h2 class="footer-col-title"><span data-i18n>Visit us</span></h2>
       <ul class="footer-contact">
-        <li><address>Shanker Dental &amp; Craniofacial Centre<br>17/33 Rajaji Street,<br>Gandhi Nagar, Madurai 20</address></li>
+        <li><address><span data-i18n>Shanker Dental &amp; Craniofacial Centre</span><br><span data-i18n>17/33 Rajaji Street,</span><br><span data-i18n>Gandhi Nagar, Madurai 20</span></address></li>
         <li><a href="tel:+919159999362">+91 91599 99362</a></li>
         <li><a href="tel:+919788473879">+91 97884 73879</a></li>
-        <li><a href="mailto:orthomax@gmail.com">orthomax@gmail.com</a></li>
+        <li><a href="mailto:orthomax@gmail.com"><span data-i18n>orthomax@gmail.com</span></a></li>
       </ul>
-      <h2 class="footer-col-title mt-6">Clinic timings</h2>
+      <h2 class="footer-col-title mt-6"><span data-i18n>Clinic timings</span></h2>
       <ul class="footer-contact">
-        <li>Mon-Sat: 9:30am-1pm, 4pm-8pm</li>
-        <li>Sunday: 9:30am-1pm</li>
+        <li><span data-i18n>Mon-Sat: 9:30am-1pm, 4pm-8pm</span></li>
+        <li><span data-i18n>Sunday: 9:30am-1pm</span></li>
       </ul>
     </div>
   </div>
 
   <div class="wrap">
     <div class="footer-bottom">
-      <div>&copy; <span data-year>2026</span> Shanker Dental &amp; Craniofacial Centre. All rights reserved.</div>
+      <div>&copy; <span data-year>2026</span><span data-i18n> Shanker Dental &amp; Craniofacial Centre. All rights reserved.</span></div>
       <ul>
-        <li><a href="sitemap.html">Sitemap</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="sitemap.html"><span data-i18n>Sitemap</span></a></li>
+        <li><a href="contact.html"><span data-i18n>Contact</span></a></li>
       </ul>
     </div>
   </div>
@@ -462,11 +745,11 @@
 <div class="callbar">
   <a class="callbar-btn callbar-call" href="tel:+919159999362">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-    <span>Call the centre</span>
+    <span><span data-i18n>Call the centre</span></span>
   </a>
   <a class="callbar-btn callbar-map" href="contact.html">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-    <span>Directions</span>
+    <span><span data-i18n>Directions</span></span>
   </a>
 </div>
 
@@ -482,8 +765,9 @@
   <p class="lb-cap" aria-live="polite"><span class="lb-cap-text"></span><span class="lb-count"></span></p>
 </div>
 
-<script src="assets/js/main.js?v=2d4bc3fa"></script>
+<script src="assets/js/main.js?v=618a79d4"></script>
+<script src="assets/js/i18n.js?v=8a6f8624" data-dict="assets/js/i18n-data.js?v=4bca07e8"></script>
 <!-- TEMPORARY client color-preview tool — remove alongside theme-preview.css. -->
-<script src="assets/js/theme-preview.js"></script>
+<script src="assets/js/theme-preview.js?v=69a1dcc8"></script>
 </body>
 </html>

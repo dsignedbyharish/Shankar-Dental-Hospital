@@ -8,13 +8,16 @@
 <meta name="theme-color" content="#12403e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=2d4bc3fa">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=c33788ae">
+<!-- Tamil/English toggle: assets/css/i18n.css, assets/js/i18n.js (+ the lazily
+     loaded dictionary assets/js/i18n-data.js) and the data-i18n markers. -->
+<link rel="stylesheet" href="assets/css/i18n.css?v=0d27d059">
 <!-- TEMPORARY client color-preview tool — see removal note at the top of
      assets/css/theme-preview.css. Not part of the finished site. -->
-<link rel="stylesheet" href="assets/css/theme-preview.css">
+<link rel="stylesheet" href="assets/css/theme-preview.css?v=f6164b3a">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<script>document.documentElement.classList.add('js');</script>
+<script>(function(d){d.classList.add('js');try{if(localStorage.getItem('sdcc-lang')==='ta'){d.classList.add('lang-ta','i18n-pending');d.lang='ta';}}catch(e){}})(document.documentElement);</script>
 <link rel="canonical" href="https://www.shankerdentalcentremadurai.com/">
 <meta name="keywords" content="Implant Dentist Madurai, Oral and Maxillofacial surgery Madurai, Orthodontics Madurai, Craniofacial surgery, Cleft lip and palate Madurai, dental hospital Madurai">
 <meta property="og:title" content="Shanker Dental &amp; Craniofacial Centre: Madurai">
@@ -52,18 +55,19 @@
 </script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main"><span data-i18n>Skip to content</span></a>
 <div class="scroll-progress" aria-hidden="true"></div>
 
 <div class="topbar">
   <div class="wrap">
     <ul class="topbar-list">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span>Mon-Sat 9:30am-1pm &amp; 4pm-8pm</span></li>
-      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span>17/33 Rajaji Street, Gandhi Nagar, Madurai 20</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span><span data-i18n>Mon-Sat 9:30am-1pm &amp; 4pm-8pm</span></span></li>
+      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span><span data-i18n>17/33 Rajaji Street, Gandhi Nagar, Madurai 20</span></span></li>
     </ul>
     <ul class="topbar-list">
-      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:orthomax@gmail.com">orthomax@gmail.com</a></li>
-      <li class="topbar-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <span class="label">Appointments</span> <a href="tel:+919159999362">+91 91599 99362</a></li>
+      <li class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:orthomax@gmail.com"><span data-i18n>orthomax@gmail.com</span></a></li>
+      <li class="topbar-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <span class="label"><span data-i18n>Appointments</span></span> <a href="tel:+919159999362">+91 91599 99362</a></li>
+      <li><button class="lang-toggle" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9Z"/></svg><span class="lang-toggle-label">தமிழ்</span></button></li>
     </ul>
   </div>
 </div>
@@ -73,53 +77,53 @@
     <a class="logo" href="index.html">
       <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#1a5c4a" d="M12 2c-1.7 0-2.6.7-4 .7S5.2 2 4 3c-1.5 1.2-2 3.6-1.4 6.7.5 2.5 1.2 4.2 1.6 6.7.4 2.3.6 5.2 1.3 6.7.5 1.1 1.9 1.2 2.4 0 .7-1.6.9-4.2 1.3-6 .3-1.3.8-2.1 1.5-2.1h.6c.7 0 1.2.8 1.5 2.1.4 1.8.6 4.4 1.3 6 .5 1.2 1.9 1.1 2.4 0 .7-1.5.9-4.4 1.3-6.7.4-2.5 1.1-4.2 1.6-6.7C21.9 6.6 21.4 4.2 20 3c-1.2-1-2.6-.3-4-.3S13.7 2 12 2Z"/></svg>
       <span class="logo-text">
-        <span class="logo-name">Shanker</span>
-        <span class="logo-sub">Dental &amp; Craniofacial Centre</span>
+        <span class="logo-name"><span data-i18n>Shanker</span></span>
+        <span class="logo-sub"><span data-i18n>Dental &amp; Craniofacial Centre</span></span>
       </span>
-      <span class="sr-only">, home</span>
+      <span class="sr-only"><span data-i18n>, home</span></span>
     </a>
 
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="doctors.html">Meet the Doctors</a>
+      <a href="index.html" aria-current="page"><span data-i18n>Home</span></a>
+      <a href="doctors.html"><span data-i18n>Meet the Doctors</span></a>
       <div class="nav-more">
-        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n>
           Treatment Options
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+          </span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <!-- Mobile-only: the full-screen menu is a flat list with no
              dropdowns, so this single link stands in for the desktop
              nine-item image panel there. -->
-        <a class="nav-more-flat" href="treatments.html">Treatment Options</a>
+        <a class="nav-more-flat" href="treatments.html"><span data-i18n>Treatment Options</span></a>
         <div class="nav-more-panel is-wide">
-          <a href="treatments.html" class="nav-more-all">All Treatment Options</a>
-          <a href="maxillofacial-surgery.html"><img src="assets/images/treatment-maxillofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Maxillofacial Surgery</span></a>
-          <a href="craniofacial-surgery.html"><img src="assets/images/treatment-craniofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Craniofacial Surgery</span></a>
-          <a href="orthognathic-surgery.html"><img src="assets/images/treatment-orthognathic-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Facial Deformity Correction</span></a>
-          <a href="facial-trauma-surgery.html"><img src="assets/images/treatment-facial-trauma-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Facial Trauma Surgery</span></a>
-          <a href="cleft-lip-and-palate-surgery.html"><img src="assets/images/treatment-cleft-lip-palate.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Cleft Lip &amp; Palate Surgery</span></a>
-          <a href="tmj-surgery.html"><img src="assets/images/treatment-tmj-jaw-joint.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>TMJ: Jaw Joint Surgery</span></a>
-          <a href="oral-and-maxillofacial-pathology.html"><img src="assets/images/treatment-pathology-head-neck.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Pathology: Head &amp; Neck</span></a>
-          <a href="orthodontics.html"><img src="assets/images/treatment-orthodontics.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Orthodontics</span></a>
-          <a href="dental-and-facial-implants.html"><img src="assets/images/treatment-dental-implants.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span>Dental &amp; Facial Implants</span></a>
+          <a href="treatments.html" class="nav-more-all"><span data-i18n>All Treatment Options</span></a>
+          <a href="maxillofacial-surgery.html"><img src="assets/images/treatment-maxillofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Maxillofacial Surgery</span></span></a>
+          <a href="craniofacial-surgery.html"><img src="assets/images/treatment-craniofacial-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Craniofacial Surgery</span></span></a>
+          <a href="orthognathic-surgery.html"><img src="assets/images/treatment-orthognathic-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Facial Deformity Correction</span></span></a>
+          <a href="facial-trauma-surgery.html"><img src="assets/images/treatment-facial-trauma-surgery.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Facial Trauma Surgery</span></span></a>
+          <a href="cleft-lip-and-palate-surgery.html"><img src="assets/images/treatment-cleft-lip-palate.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Cleft Lip &amp; Palate Surgery</span></span></a>
+          <a href="tmj-surgery.html"><img src="assets/images/treatment-tmj-jaw-joint.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>TMJ: Jaw Joint Surgery</span></span></a>
+          <a href="oral-and-maxillofacial-pathology.html"><img src="assets/images/treatment-pathology-head-neck.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Pathology: Head &amp; Neck</span></span></a>
+          <a href="orthodontics.html"><img src="assets/images/treatment-orthodontics.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Orthodontics</span></span></a>
+          <a href="dental-and-facial-implants.html"><img src="assets/images/treatment-dental-implants.jpg" alt="" loading="lazy" decoding="async" width="900" height="563"><span><span data-i18n>Dental &amp; Facial Implants</span></span></a>
         </div>
       </div>
       <div class="nav-more">
-        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-more-toggle" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n>
           More
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+          </span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="nav-more-panel">
-          <a href="facilities.html">Facilities</a>
-          <a href="case-of-the-month.html">Case of the Month</a>
+          <a href="facilities.html"><span data-i18n>Facilities</span></a>
+          <a href="case-of-the-month.html"><span data-i18n>Case of the Month</span></a>
         </div>
       </div>
-      <a href="contact.html">Contact</a>
-      <a class="btn btn-primary nav-call" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call for an appointment</a>
+      <a href="contact.html"><span data-i18n>Contact</span></a>
+      <a class="btn btn-primary nav-call" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span data-i18n> Call for an appointment</span></a>
     </nav>
 
     <div class="header-cta">
-      <a class="btn btn-primary btn-sm" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Book Appointment</a>
+      <a class="btn btn-primary btn-sm" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span data-i18n> Book Appointment</span></a>
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav"><span></span></button>
     </div>
   </div>
@@ -129,19 +133,19 @@
 
   <section class="hero lit" aria-labelledby="hero-heading">
     <div class="hero-split">
-      <span class="hero-ghost" aria-hidden="true">Shanker</span>
+      <span class="hero-ghost" aria-hidden="true"><span data-i18n>Shanker</span></span>
       <div class="hero-copy">
         <div class="hero-copy-inner">
-          <span class="eyebrow">Madurai, Tamil Nadu</span>
-          <h1 id="hero-heading" class="rise"><span>Saving faces and changing lives</span></h1>
-          <p class="lede">
+          <span class="eyebrow"><span data-i18n>Madurai, Tamil Nadu</span></span>
+          <h1 id="hero-heading" class="rise"><span><span data-i18n>Saving faces and changing lives</span></span></h1>
+          <p class="lede"><span data-i18n>
             A one-of-a-kind, modern purpose-built centre in the heart of Madurai, bringing together
             maxillofacial surgery, craniofacial surgery, orthodontics and implantology under one roof,
             with consultants trained in India, the UK and Ireland.
-          </p>
+          </span></p>
           <div class="hero-actions">
-            <a class="btn btn-primary btn-lg" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call for an appointment</a>
-            <a class="btn btn-outline btn-lg" href="treatments.html">Explore treatments</a>
+            <a class="btn btn-primary btn-lg" href="tel:+919159999362"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span data-i18n> Call for an appointment</span></a>
+            <a class="btn btn-outline btn-lg" href="treatments.html"><span data-i18n>Explore treatments</span></a>
           </div>
         </div>
       </div>
@@ -163,18 +167,18 @@
 
   <div class="wrap">
     <ul class="hero-stats stagger" aria-label="The centre at a glance">
-      <li class="stat stat-ink"><div class="stat-num">7,500</div><div class="stat-label">Sq ft purpose-built facility</div></li>
-      <li class="stat stat-brand"><div class="stat-num">20+</div><div class="stat-label">Years of consultant experience</div></li>
-      <li class="stat stat-teal"><div class="stat-num">9</div><div class="stat-label">Surgical &amp; dental specialties</div></li>
-      <li class="stat stat-brass"><div class="stat-num">NABH</div><div class="stat-label">Ready &amp; Govt. of Tamil Nadu registered</div></li>
+      <li class="stat stat-ink"><div class="stat-num">7,500</div><div class="stat-label"><span data-i18n>Sq ft purpose-built facility</span></div></li>
+      <li class="stat stat-brand"><div class="stat-num">20+</div><div class="stat-label"><span data-i18n>Years of consultant experience</span></div></li>
+      <li class="stat stat-teal"><div class="stat-num">9</div><div class="stat-label"><span data-i18n>Surgical &amp; dental specialties</span></div></li>
+      <li class="stat stat-brass"><div class="stat-num"><span data-i18n>NABH</span></div><div class="stat-label"><span data-i18n>Ready &amp; Govt. of Tamil Nadu registered</span></div></li>
     </ul>
   </div>
 
   <section class="section" aria-labelledby="welcome-heading">
     <div class="wrap">
-      <div class="section-lead reveal">
-        <p class="section-index"><span>The centre</span></p>
-        <h2 id="welcome-heading" class="rise"><span>Welcome to Shanker Dental and Craniofacial Centre</span></h2>
+      <div class="section-lead is-xwide reveal">
+        <p class="section-index"><span><span data-i18n>The centre</span></span></p>
+        <h2 id="welcome-heading" class="rise"><span><span data-i18n>Welcome to Shanker Dental and Craniofacial Centre</span></span></h2>
       </div>
 
       <!-- The same three paragraphs, broken into columns. Long stacked prose
@@ -182,32 +186,32 @@
       <ol class="notes reveal stagger">
         <li class="note">
           <span class="note-num">01</span>
-          <p>
+          <p><span data-i18n>
             Shanker Dental and Craniofacial Centre is a one of a kind, modern purpose-built centre situated in
             the heart of Madurai having a clinically clean but comfortable and relaxing environment with all the
             latest hi-tech equipment needed for treating complex facial surgical and non-surgical cases.
-          </p>
+          </span></p>
         </li>
         <li class="note">
           <span class="note-num">02</span>
-          <p>
+          <p><span data-i18n>
             We have all the necessary infrastructure under one roof including state of the art dental treatment
             suites, Dental and Maxillofacial radiology (including fully digital OPG and Cephalometry, full
             mouth X-ray facility), modern integrated operating theatres with anaesthesia workstations with
             ventilators, LED lights, multi-parameter monitors, defibrillators, infusion pumps and so on.
-          </p>
+          </span></p>
         </li>
         <li class="note">
           <span class="note-num">03</span>
-          <p>
+          <p><span data-i18n>
             Our doctors are very highly qualified having extensive hands-on experience in both India and the UK.
             We meet all international standards that would be expected by a similar surgical setup anywhere in
             the western world. All of this enables us to provide the highest quality care for our patients.
-          </p>
+          </span></p>
         </li>
       </ol>
 
-      <p class="actions-row"><a class="btn btn-outline" href="doctors.html">Meet the doctors</a></p>
+      <p class="actions-row"><a class="btn btn-outline" href="doctors.html"><span data-i18n>Meet the doctors</span></a></p>
 
       <div class="media-band reveal mt-12">
         <figure class="media-band-item unmask">
@@ -227,26 +231,26 @@
           <img src="assets/images/operation_theatre.jpg" alt="Modern integrated operating theatre with LED theatre lights and an anaesthesia workstation" loading="lazy" decoding="async" width="800" height="1067">
         </div>
         <div class="reveal">
-          <p class="section-index"><span>Standards</span></p>
-          <h2 id="standards-heading" class="rise"><span>Built to international surgical standards</span></h2>
-          <p>
+          <p class="section-index"><span><span data-i18n>Standards</span></span></p>
+          <h2 id="standards-heading" class="rise"><span><span data-i18n>Built to international surgical standards</span></span></h2>
+          <p><span data-i18n>
             We currently meet and vastly exceed all the standards required by the government of India as per the
             latest Clinical Establishment Act and are NABH ready. We are fully recognised and registered with the
             Govt of Tamilnadu, India for both outpatient and In-patient treatment.
-          </p>
-          <p>
+          </span></p>
+          <p><span data-i18n>
             Our Centre has also been involved in super-specialty training in maxillofacial surgery and orthodontics
             (post MDS graduates) and we regularly train and pass on our knowledge and skills to the next generation
             of Maxillofacial surgeons and Orthodontists. We also have a tie-up with recognised nursing institutes
             for specialised training of nursing graduates in maxillofacial surgery.
-          </p>
+          </span></p>
           <ul class="checklist checklist-cards stagger">
-            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M3 12h18"/></svg>Fully digital OPG, Cephalometry and RVG imaging on site, no need to go elsewhere for X-rays</li>
-            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12h3l2-5 4 10 2.5-6 1.5 3h5"/></svg>Integrated operating theatres with ventilators, defibrillators and multi-parameter monitoring</li>
-            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 5 6v5.5c0 4 3 7.7 7 9.5 4-1.8 7-5.5 7-9.5V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Strict sterilisation protocols with cassette-based instrument packs and disposables throughout</li>
-            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/></svg>Treatment delivered only by postgraduate-qualified consultants</li>
+            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M3 12h18"/></svg><span data-i18n>Fully digital OPG, Cephalometry and RVG imaging on site, no need to go elsewhere for X-rays</span></li>
+            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12h3l2-5 4 10 2.5-6 1.5 3h5"/></svg><span data-i18n>Integrated operating theatres with ventilators, defibrillators and multi-parameter monitoring</span></li>
+            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 5 6v5.5c0 4 3 7.7 7 9.5 4-1.8 7-5.5 7-9.5V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg><span data-i18n>Strict sterilisation protocols with cassette-based instrument packs and disposables throughout</span></li>
+            <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/></svg><span data-i18n>Treatment delivered only by postgraduate-qualified consultants</span></li>
           </ul>
-          <p class="actions-row"><a class="btn btn-outline" href="facilities.html">Tour our facilities</a></p>
+          <p class="actions-row"><a class="btn btn-outline" href="facilities.html"><span data-i18n>Tour our facilities</span></a></p>
         </div>
       </div>
     </div>
@@ -255,13 +259,13 @@
   <section class="section" aria-labelledby="treat-heading">
     <div class="wrap">
       <div class="center reveal measure-sm">
-        <p class="section-index"><span>What we treat</span></p>
-        <h2 id="treat-heading" class="rise"><span>A full range of facial surgery and dentistry</span></h2>
-        <p>
+        <p class="section-index"><span><span data-i18n>What we treat</span></span></p>
+        <h2 id="treat-heading" class="rise"><span><span data-i18n>A full range of facial surgery and dentistry</span></span></h2>
+        <p><span data-i18n>
           Maxillofacial surgery and orthodontics concern surgical and non-surgical treatment of the face, head,
           neck and jaws. We do the entire range of maxillofacial procedures at our centre and our results are
           comparable to the best centres in the world.
-        </p>
+        </span></p>
       </div>
 
       <div class="carousel reveal">
@@ -270,81 +274,81 @@
           <div class="card-media">
             <img src="assets/images/treatment-maxillofacial-surgery.jpg" alt="3D illustration of a skull with the mandible and jaw joint highlighted, representing maxillofacial surgery" loading="lazy" decoding="async" width="900" height="563">
           </div>
-          <h3>Maxillofacial Surgery</h3>
-          <p>The diagnosis and treatment of diseases affecting the mouth, jaws, face and neck, the full scope of the specialty.</p>
-          <span class="card-link">Explore Maxillofacial Surgery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3><span data-i18n>Maxillofacial Surgery</span></h3>
+          <p><span data-i18n>The diagnosis and treatment of diseases affecting the mouth, jaws, face and neck, the full scope of the specialty.</span></p>
+          <span class="card-link"><span data-i18n>Explore Maxillofacial Surgery </span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
         </a>
 
         <a class="card card-teal card-tile carousel-item" href="craniofacial-surgery.html">
           <div class="card-media">
             <img src="assets/images/treatment-craniofacial-surgery.jpg" alt="3D illustration of an infant skull with cranial suture lines highlighted, representing craniofacial surgery" loading="lazy" decoding="async" width="900" height="563">
           </div>
-          <h3>Craniofacial Surgery</h3>
-          <p>Correction of craniosynostosis and syndromic skull deformity, performed by a joint neurosurgical-maxillofacial team.</p>
-          <span class="card-link">Explore Craniofacial Surgery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3><span data-i18n>Craniofacial Surgery</span></h3>
+          <p><span data-i18n>Correction of craniosynostosis and syndromic skull deformity, performed by a joint neurosurgical-maxillofacial team.</span></p>
+          <span class="card-link"><span data-i18n>Explore Craniofacial Surgery </span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
         </a>
 
         <a class="card card-tile carousel-item" href="orthognathic-surgery.html">
           <div class="card-media">
             <img src="assets/images/treatment-orthognathic-surgery.jpg" alt="3D illustration of upper and lower jaw bones being realigned, representing corrective jaw surgery" loading="lazy" decoding="async" width="900" height="563">
           </div>
-          <h3>Facial Deformity Correction</h3>
-          <p>Orthognathic (corrective jaw) surgery for elongated, shortened or asymmetric jaws, done from inside the mouth.</p>
-          <span class="card-link">Explore Facial Deformity Correction <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3><span data-i18n>Facial Deformity Correction</span></h3>
+          <p><span data-i18n>Orthognathic (corrective jaw) surgery for elongated, shortened or asymmetric jaws, done from inside the mouth.</span></p>
+          <span class="card-link"><span data-i18n>Explore Facial Deformity Correction </span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
         </a>
 
         <a class="card card-teal card-tile carousel-item" href="facial-trauma-surgery.html">
           <div class="card-media">
             <img src="assets/images/treatment-facial-trauma-surgery.jpg" alt="3D illustration of a cheekbone fracture fixed with titanium miniplates, representing facial trauma surgery" loading="lazy" decoding="async" width="900" height="563">
           </div>
-          <h3>Facial Trauma Surgery</h3>
-          <p>Open reduction and internal fixation of facial fractures using micro and miniplate systems for anatomical results.</p>
-          <span class="card-link">Explore Facial Trauma Surgery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3><span data-i18n>Facial Trauma Surgery</span></h3>
+          <p><span data-i18n>Open reduction and internal fixation of facial fractures using micro and miniplate systems for anatomical results.</span></p>
+          <span class="card-link"><span data-i18n>Explore Facial Trauma Surgery </span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
         </a>
 
         <a class="card card-tile carousel-item" href="cleft-lip-and-palate-surgery.html">
           <div class="card-media">
             <img src="assets/images/treatment-cleft-lip-palate.jpg" alt="3D illustration of a palate arch with the cleft closure line, representing cleft lip and palate surgery" loading="lazy" decoding="async" width="900" height="563">
           </div>
-          <h3>Cleft Lip &amp; Palate Surgery</h3>
-          <p>The only centre in Madurai with full-time orthodontic and surgical specialists for complete cleft care under one roof.</p>
-          <span class="card-link">Explore Cleft Lip &amp; Palate Surgery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3><span data-i18n>Cleft Lip &amp; Palate Surgery</span></h3>
+          <p><span data-i18n>The only centre in Madurai with full-time orthodontic and surgical specialists for complete cleft care under one roof.</span></p>
+          <span class="card-link"><span data-i18n>Explore Cleft Lip &amp; Palate Surgery </span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
         </a>
 
         <a class="card card-teal card-tile carousel-item" href="tmj-surgery.html">
           <div class="card-media">
             <img src="assets/images/treatment-tmj-jaw-joint.jpg" alt="3D illustration of the temporomandibular joint in cross-section, representing TMJ jaw joint surgery" loading="lazy" decoding="async" width="900" height="563">
           </div>
-          <h3>TMJ: Jaw Joint Surgery</h3>
-          <p>Release of temporomandibular joint ankylosis, gap arthroplasty and multiplanar osteodistraction.</p>
-          <span class="card-link">Explore TMJ: Jaw Joint Surgery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3><span data-i18n>TMJ: Jaw Joint Surgery</span></h3>
+          <p><span data-i18n>Release of temporomandibular joint ankylosis, gap arthroplasty and multiplanar osteodistraction.</span></p>
+          <span class="card-link"><span data-i18n>Explore TMJ: Jaw Joint Surgery </span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
         </a>
 
         <a class="card card-tile carousel-item" href="oral-and-maxillofacial-pathology.html">
           <div class="card-media">
             <img src="assets/images/treatment-pathology-head-neck.jpg" alt="3D illustration of a mandible with a lesion site and a diagnostic microscope slide, representing oral and maxillofacial pathology" loading="lazy" decoding="async" width="900" height="563">
           </div>
-          <h3>Pathology: Head &amp; Neck</h3>
-          <p>Diagnosis and treatment of benign and malignant lesions, with wide resection and reconstruction where needed.</p>
-          <span class="card-link">Explore Pathology: Head &amp; Neck <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3><span data-i18n>Pathology: Head &amp; Neck</span></h3>
+          <p><span data-i18n>Diagnosis and treatment of benign and malignant lesions, with wide resection and reconstruction where needed.</span></p>
+          <span class="card-link"><span data-i18n>Explore Pathology: Head &amp; Neck </span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
         </a>
 
         <a class="card card-teal card-tile carousel-item" href="orthodontics.html">
           <div class="card-media">
             <img src="assets/images/treatment-orthodontics.jpg" alt="3D illustration of a clear aligner tray above a dental arch with braces, representing orthodontics" loading="lazy" decoding="async" width="900" height="563">
           </div>
-          <h3>Orthodontics</h3>
-          <p>Fixed, removable and functional appliances plus certified Invisalign clear aligner treatment for adults and children.</p>
-          <span class="card-link">Explore Orthodontics <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3><span data-i18n>Orthodontics</span></h3>
+          <p><span data-i18n>Fixed, removable and functional appliances plus certified Invisalign clear aligner treatment for adults and children.</span></p>
+          <span class="card-link"><span data-i18n>Explore Orthodontics </span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
         </a>
 
         <a class="card card-tile carousel-item" href="dental-and-facial-implants.html">
           <div class="card-media">
             <img src="assets/images/treatment-dental-implants.jpg" alt="3D illustration of a titanium dental implant post and crown above a cutaway jawbone, representing dental and facial implants" loading="lazy" decoding="async" width="900" height="563">
           </div>
-          <h3>Dental &amp; Facial Implants</h3>
-          <p>Single and full-arch implants, zygoma implants and natural or synthetic bone grafting for compromised bone.</p>
-          <span class="card-link">Explore Dental &amp; Facial Implants <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3><span data-i18n>Dental &amp; Facial Implants</span></h3>
+          <p><span data-i18n>Single and full-arch implants, zygoma implants and natural or synthetic bone grafting for compromised bone.</span></p>
+          <span class="card-link"><span data-i18n>Explore Dental &amp; Facial Implants </span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
         </a>
         </div>
         <div class="carousel-controls">
@@ -357,7 +361,7 @@
         </div>
       </div>
 
-      <p class="actions-row actions-center"><a class="btn btn-primary" href="treatments.html">View all treatments</a></p>
+      <p class="actions-row actions-center"><a class="btn btn-primary" href="treatments.html"><span data-i18n>View all treatments</span></a></p>
       </div>
     </div>
   
@@ -368,29 +372,29 @@
     <div class="wrap">
       <div class="split">
         <div class="reveal">
-          <p class="section-index"><span>Our consultants</span></p>
-          <h2 id="doctors-heading" class="rise"><span>Trained in India, the UK and Ireland</span></h2>
-          <p>
+          <p class="section-index"><span><span data-i18n>Our consultants</span></span></p>
+          <h2 id="doctors-heading" class="rise"><span><span data-i18n>Trained in India, the UK and Ireland</span></span></h2>
+          <p><span data-i18n>
             Dr Shanker Mohan trained at the Royal London Hospital, UK, and served four years in the National
             Maxillofacial Unit in Dublin, Ireland. He holds fellowships in maxillofacial surgery from the Royal
             Colleges of Surgeons of both England and Ireland.
-          </p>
-          <p>
+          </span></p>
+          <p><span data-i18n>
             Dr Aijitha Shanker is a specialist in Orthodontics and Dentofacial Orthopaedics and a certified
             Invisalign provider, with a special interest in facial deformity and cleft lip and palate.
-          </p>
-          <p class="actions-row"><a class="btn btn-primary" href="doctors.html">Read their full profiles</a></p>
+          </span></p>
+          <p class="actions-row"><a class="btn btn-primary" href="doctors.html"><span data-i18n>Read their full profiles</span></a></p>
         </div>
         <ul class="grid grid-2 reveal stagger doc-preview">
           <li>
             <img src="assets/images/staffimg1.jpg" alt="Dr Shanker Mohan, Oral and Maxillofacial Surgeon" loading="lazy" decoding="async" width="238" height="298">
-            <p class="doc-preview-name">Dr Shanker Mohan</p>
-            <p class="doc-preview-quals">MDS, AO/ASIF, FFDRCS, FDSRCS</p>
+            <p class="doc-preview-name"><span data-i18n>Dr Shanker Mohan</span></p>
+            <p class="doc-preview-quals"><span data-i18n>MDS, AO/ASIF, FFDRCS, FDSRCS</span></p>
           </li>
           <li>
             <img src="assets/images/staffimg2.jpg" alt="Dr Aijitha Shanker, Specialist in Orthodontia" loading="lazy" decoding="async" width="237" height="296">
-            <p class="doc-preview-name">Dr Aijitha Shanker</p>
-            <p class="doc-preview-quals">BDS, MDS (Orthodontia)</p>
+            <p class="doc-preview-name"><span data-i18n>Dr Aijitha Shanker</span></p>
+            <p class="doc-preview-quals"><span data-i18n>BDS, MDS (Orthodontia)</span></p>
           </li>
         </ul>
       </div>
@@ -398,15 +402,46 @@
   </section>
 
   <section class="section" aria-labelledby="cases-heading">
-    <div class="wrap">
-      <div class="center reveal measure-sm">
-        <p class="section-index"><span>Teaching</span></p>
-        <h2 id="cases-heading" class="rise"><span>Interesting Case of the Month</span></h2>
-        <p>
+    <div class="wrap case-teaser">
+      <div class="case-teaser-intro reveal">
+        <p class="section-index"><span><span data-i18n>Teaching</span></span></p>
+        <h2 id="cases-heading" class="rise"><span><span data-i18n>Interesting Case of the Month</span></span></h2>
+        <p><span data-i18n>
           Every month we document an interesting case from our theatre lists, published to educate patients
           and colleagues about facial surgery, its complications and its possible solutions.
-        </p>
-        <p class="actions-row actions-center"><a class="btn btn-primary" href="case-of-the-month.html">View the case archive</a></p>
+        </span></p>
+        <p class="actions-row"><a class="btn btn-primary" href="case-of-the-month.html"><span data-i18n>View the case archive</span></a></p>
+      </div>
+      <div class="case-teaser-list reveal">
+        <p class="case-teaser-label"><span data-i18n>Latest cases</span></p>
+<!-- cases:latest:start -->
+<ol class="case-latest" role="list">
+  <li>
+    <a class="case-latest-link" href="case-of-the-month.html#case-2025-11-bimaxillary-orthognathic-surgery">
+      <span class="case-date"><span data-i18n>November 2025</span></span>
+      <span class="case-latest-title"><span data-i18n>Bimaxillary orthognathic surgery: Le Fort I impaction, sagittal split osteotomy and genioplasty</span></span>
+      <span class="case-topic"><span data-i18n>Jaw correction</span></span>
+      <span class="case-latest-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+    </a>
+  </li>
+  <li>
+    <a class="case-latest-link" href="case-of-the-month.html#case-2025-10-parotid-sialolith-removal">
+      <span class="case-date"><span data-i18n>October 2025</span></span>
+      <span class="case-latest-title"><span data-i18n>Removal of a parotid sialolith (salivary stone)</span></span>
+      <span class="case-topic"><span data-i18n>Maxillofacial surgery</span></span>
+      <span class="case-latest-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+    </a>
+  </li>
+  <li>
+    <a class="case-latest-link" href="case-of-the-month.html#case-2025-09-surprise-finding-after-a-fall">
+      <span class="case-date"><span data-i18n>September 2025</span></span>
+      <span class="case-latest-title"><span data-i18n>A surprise finding eight months after a fall in the garden</span></span>
+      <span class="case-topic"><span data-i18n>Facial trauma</span></span>
+      <span class="case-latest-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+    </a>
+  </li>
+</ol>
+<!-- cases:latest:end -->
       </div>
     </div>
   </section>
@@ -417,86 +452,86 @@
   <section class="section bg-alt" aria-labelledby="refs-heading">
     <div class="wrap">
       <div class="section-lead is-wide reveal">
-        <p class="section-index"><span>References</span></p>
-        <h2 id="refs-heading" class="rise"><span>What his consultants say</span></h2>
+        <p class="section-index"><span><span data-i18n>References</span></span></p>
+        <h2 id="refs-heading" class="rise"><span><span data-i18n>Words from the surgeons who trained him</span></span></h2>
       </div>
 
       <div class="marquee reveal">
         <ul class="voices marquee-track">
         <li class="voice">
-          <p class="voice-text">&ldquo;He is an excellent clinician, surgeon and academic. He has an excellent pair of hands with a deft touch.&rdquo;</p>
+          <p class="voice-text"><span data-i18n>&ldquo;He is an excellent clinician, surgeon and academic. He has an excellent pair of hands with a deft touch.&rdquo;</span></p>
           <div class="voice-by">
-            <span class="voice-mark" aria-hidden="true">LS</span>
+            <span class="voice-mark" aria-hidden="true"><span data-i18n>LS</span></span>
             <span class="voice-meta">
-              <span class="voice-name">Prof Leo Stassen</span>
-              <span class="voice-role">Consultant Oral &amp; Maxillofacial Surgeon &middot; Dublin Dental School and Hospital</span>
+              <span class="voice-name"><span data-i18n>Prof Leo Stassen</span></span>
+              <span class="voice-role"><span data-i18n>Consultant Oral &amp; Maxillofacial Surgeon &middot; Dublin Dental School and Hospital</span></span>
             </span>
           </div>
         </li>
         <li class="voice">
-          <p class="voice-text">&ldquo;Shanker has been an outstanding surgeon. He is hard working and is an excellent Clinician and has mastered a full range of surgical procedures within the specialty.&rdquo;</p>
+          <p class="voice-text"><span data-i18n>&ldquo;Shanker has been an outstanding surgeon. He is hard working and is an excellent Clinician and has mastered a full range of surgical procedures within the specialty.&rdquo;</span></p>
           <div class="voice-by">
-            <span class="voice-mark" aria-hidden="true">FB</span>
+            <span class="voice-mark" aria-hidden="true"><span data-i18n>FB</span></span>
             <span class="voice-meta">
-              <span class="voice-name">Dr Frank Brady</span>
-              <span class="voice-role">Oral &amp; Maxillofacial Surgeon &middot; St James Hospital, Dublin</span>
+              <span class="voice-name"><span data-i18n>Dr Frank Brady</span></span>
+              <span class="voice-role"><span data-i18n>Oral &amp; Maxillofacial Surgeon &middot; St James Hospital, Dublin</span></span>
             </span>
           </div>
         </li>
         <li class="voice">
-          <p class="voice-text">&ldquo;In that time I would rate him as one of the best staff we have had. Shanker is always punctual, polite, and most of all reliable.&rdquo;</p>
+          <p class="voice-text"><span data-i18n>&ldquo;In that time I would rate him as one of the best staff we have had. Shanker is always punctual, polite, and most of all reliable.&rdquo;</span></p>
           <div class="voice-by">
-            <span class="voice-mark" aria-hidden="true">NA</span>
+            <span class="voice-mark" aria-hidden="true"><span data-i18n>NA</span></span>
             <span class="voice-meta">
-              <span class="voice-name">Dr Nayeem Ali</span>
-              <span class="voice-role">Oral &amp; Maxillofacial Surgeon &middot; Royal London Hospital</span>
+              <span class="voice-name"><span data-i18n>Dr Nayeem Ali</span></span>
+              <span class="voice-role"><span data-i18n>Oral &amp; Maxillofacial Surgeon &middot; Royal London Hospital</span></span>
             </span>
           </div>
         </li>
         <li class="voice" aria-hidden="true">
-          <p class="voice-text">&ldquo;He is an excellent clinician, surgeon and academic. He has an excellent pair of hands with a deft touch.&rdquo;</p>
+          <p class="voice-text"><span data-i18n>&ldquo;He is an excellent clinician, surgeon and academic. He has an excellent pair of hands with a deft touch.&rdquo;</span></p>
           <div class="voice-by">
-            <span class="voice-mark" aria-hidden="true">LS</span>
+            <span class="voice-mark" aria-hidden="true"><span data-i18n>LS</span></span>
             <span class="voice-meta">
-              <span class="voice-name">Prof Leo Stassen</span>
-              <span class="voice-role">Consultant Oral &amp; Maxillofacial Surgeon &middot; Dublin Dental School and Hospital</span>
+              <span class="voice-name"><span data-i18n>Prof Leo Stassen</span></span>
+              <span class="voice-role"><span data-i18n>Consultant Oral &amp; Maxillofacial Surgeon &middot; Dublin Dental School and Hospital</span></span>
             </span>
           </div>
         </li>
         <li class="voice" aria-hidden="true">
-          <p class="voice-text">&ldquo;Shanker has been an outstanding surgeon. He is hard working and is an excellent Clinician and has mastered a full range of surgical procedures within the specialty.&rdquo;</p>
+          <p class="voice-text"><span data-i18n>&ldquo;Shanker has been an outstanding surgeon. He is hard working and is an excellent Clinician and has mastered a full range of surgical procedures within the specialty.&rdquo;</span></p>
           <div class="voice-by">
-            <span class="voice-mark" aria-hidden="true">FB</span>
+            <span class="voice-mark" aria-hidden="true"><span data-i18n>FB</span></span>
             <span class="voice-meta">
-              <span class="voice-name">Dr Frank Brady</span>
-              <span class="voice-role">Oral &amp; Maxillofacial Surgeon &middot; St James Hospital, Dublin</span>
+              <span class="voice-name"><span data-i18n>Dr Frank Brady</span></span>
+              <span class="voice-role"><span data-i18n>Oral &amp; Maxillofacial Surgeon &middot; St James Hospital, Dublin</span></span>
             </span>
           </div>
         </li>
         <li class="voice" aria-hidden="true">
-          <p class="voice-text">&ldquo;In that time I would rate him as one of the best staff we have had. Shanker is always punctual, polite, and most of all reliable.&rdquo;</p>
+          <p class="voice-text"><span data-i18n>&ldquo;In that time I would rate him as one of the best staff we have had. Shanker is always punctual, polite, and most of all reliable.&rdquo;</span></p>
           <div class="voice-by">
-            <span class="voice-mark" aria-hidden="true">NA</span>
+            <span class="voice-mark" aria-hidden="true"><span data-i18n>NA</span></span>
             <span class="voice-meta">
-              <span class="voice-name">Dr Nayeem Ali</span>
-              <span class="voice-role">Oral &amp; Maxillofacial Surgeon &middot; Royal London Hospital</span>
+              <span class="voice-name"><span data-i18n>Dr Nayeem Ali</span></span>
+              <span class="voice-role"><span data-i18n>Oral &amp; Maxillofacial Surgeon &middot; Royal London Hospital</span></span>
             </span>
           </div>
         </li>
         </ul>
       </div>
 
-      <p class="actions-row actions-center"><a class="btn btn-outline" href="doctors.html">Read all six references</a></p>
+      <p class="actions-row actions-center"><a class="btn btn-outline" href="doctors.html"><span data-i18n>Read all six references</span></a></p>
     </div>
   </section>
 
   <section class="cta-band section-sm" aria-labelledby="cta-heading">
     <div class="wrap center">
-      <h2 id="cta-heading">Ready to talk to a specialist?</h2>
-      <p>We are located 2 minutes&rsquo; walk from the Anna Bus Stand, with adequate off-street car parking.</p>
+      <h2 id="cta-heading"><span data-i18n>Ready to talk to a specialist?</span></h2>
+      <p><span data-i18n>We are located 2 minutes&rsquo; walk from the Anna Bus Stand, with adequate off-street car parking.</span></p>
       <div class="cta-actions">
-        <a class="btn btn-ghost btn-lg" href="tel:+919159999362">Call +91 91599 99362</a>
-        <a class="btn btn-outline btn-lg" href="contact.html">Get directions</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+919159999362"><span data-i18n>Call +91 91599 99362</span></a>
+        <a class="btn btn-outline btn-lg" href="contact.html"><span data-i18n>Get directions</span></a>
       </div>
     </div>
   </section>
@@ -509,61 +544,61 @@
       <div class="footer-logo">
         <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#ffffff" d="M12 2c-1.7 0-2.6.7-4 .7S5.2 2 4 3c-1.5 1.2-2 3.6-1.4 6.7.5 2.5 1.2 4.2 1.6 6.7.4 2.3.6 5.2 1.3 6.7.5 1.1 1.9 1.2 2.4 0 .7-1.6.9-4.2 1.3-6 .3-1.3.8-2.1 1.5-2.1h.6c.7 0 1.2.8 1.5 2.1.4 1.8.6 4.4 1.3 6 .5 1.2 1.9 1.1 2.4 0 .7-1.5.9-4.4 1.3-6.7.4-2.5 1.1-4.2 1.6-6.7C21.9 6.6 21.4 4.2 20 3c-1.2-1-2.6-.3-4-.3S13.7 2 12 2Z"/></svg>
         <span class="logo-text">
-          <span class="logo-name">Shanker</span>
-          <span class="logo-sub">Dental &amp; Craniofacial Centre</span>
+          <span class="logo-name"><span data-i18n>Shanker</span></span>
+          <span class="logo-sub"><span data-i18n>Dental &amp; Craniofacial Centre</span></span>
         </span>
       </div>
-      <p>Madurai&rsquo;s purpose-built multi-specialty centre for maxillofacial surgery, craniofacial surgery, orthodontics and implantology.</p>
-      <p class="footer-motto">&ldquo;Saving faces and changing lives&rdquo;</p>
+      <p><span data-i18n>Madurai&rsquo;s purpose-built multi-specialty centre for maxillofacial surgery, craniofacial surgery, orthodontics and implantology.</span></p>
+      <p class="footer-motto"><span data-i18n>&ldquo;Saving faces and changing lives&rdquo;</span></p>
     </div>
 
     <nav class="footer-nav" aria-label="Footer">
-      <h2 class="footer-col-title">Explore</h2>
+      <h2 class="footer-col-title"><span data-i18n>Explore</span></h2>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="doctors.html">Meet the Doctors</a></li>
-        <li><a href="facilities.html">Facilities</a></li>
-        <li><a href="treatments.html">Treatment Options</a></li>
-        <li><a href="case-of-the-month.html">Case of the Month</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="index.html"><span data-i18n>Home</span></a></li>
+        <li><a href="doctors.html"><span data-i18n>Meet the Doctors</span></a></li>
+        <li><a href="facilities.html"><span data-i18n>Facilities</span></a></li>
+        <li><a href="treatments.html"><span data-i18n>Treatment Options</span></a></li>
+        <li><a href="case-of-the-month.html"><span data-i18n>Case of the Month</span></a></li>
+        <li><a href="contact.html"><span data-i18n>Contact Us</span></a></li>
       </ul>
     </nav>
 
     <nav class="footer-nav" aria-label="Treatments">
-      <h2 class="footer-col-title">Treatments</h2>
+      <h2 class="footer-col-title"><span data-i18n>Treatments</span></h2>
       <ul>
-        <li><a href="maxillofacial-surgery.html">Maxillofacial Surgery</a></li>
-        <li><a href="craniofacial-surgery.html">Craniofacial Surgery</a></li>
-        <li><a href="orthognathic-surgery.html">Orthognathic Surgery</a></li>
-        <li><a href="facial-trauma-surgery.html">Facial Trauma</a></li>
-        <li><a href="cleft-lip-and-palate-surgery.html">Cleft Lip &amp; Palate</a></li>
-        <li><a href="tmj-surgery.html">TMJ: Jaw Joint</a></li>
-        <li><a href="oral-and-maxillofacial-pathology.html">Pathology</a></li>
+        <li><a href="maxillofacial-surgery.html"><span data-i18n>Maxillofacial Surgery</span></a></li>
+        <li><a href="craniofacial-surgery.html"><span data-i18n>Craniofacial Surgery</span></a></li>
+        <li><a href="orthognathic-surgery.html"><span data-i18n>Orthognathic Surgery</span></a></li>
+        <li><a href="facial-trauma-surgery.html"><span data-i18n>Facial Trauma</span></a></li>
+        <li><a href="cleft-lip-and-palate-surgery.html"><span data-i18n>Cleft Lip &amp; Palate</span></a></li>
+        <li><a href="tmj-surgery.html"><span data-i18n>TMJ: Jaw Joint</span></a></li>
+        <li><a href="oral-and-maxillofacial-pathology.html"><span data-i18n>Pathology</span></a></li>
       </ul>
     </nav>
 
     <div>
-      <h2 class="footer-col-title">Visit us</h2>
+      <h2 class="footer-col-title"><span data-i18n>Visit us</span></h2>
       <ul class="footer-contact">
-        <li><address>Shanker Dental &amp; Craniofacial Centre<br>17/33 Rajaji Street,<br>Gandhi Nagar, Madurai 20</address></li>
+        <li><address><span data-i18n>Shanker Dental &amp; Craniofacial Centre</span><br><span data-i18n>17/33 Rajaji Street,</span><br><span data-i18n>Gandhi Nagar, Madurai 20</span></address></li>
         <li><a href="tel:+919159999362">+91 91599 99362</a></li>
         <li><a href="tel:+919788473879">+91 97884 73879</a></li>
-        <li><a href="mailto:orthomax@gmail.com">orthomax@gmail.com</a></li>
+        <li><a href="mailto:orthomax@gmail.com"><span data-i18n>orthomax@gmail.com</span></a></li>
       </ul>
-      <h2 class="footer-col-title mt-6">Clinic timings</h2>
+      <h2 class="footer-col-title mt-6"><span data-i18n>Clinic timings</span></h2>
       <ul class="footer-contact">
-        <li>Mon-Sat: 9:30am-1pm, 4pm-8pm</li>
-        <li>Sunday: 9:30am-1pm</li>
+        <li><span data-i18n>Mon-Sat: 9:30am-1pm, 4pm-8pm</span></li>
+        <li><span data-i18n>Sunday: 9:30am-1pm</span></li>
       </ul>
     </div>
   </div>
 
   <div class="wrap">
     <div class="footer-bottom">
-      <div>&copy; <span data-year>2026</span> Shanker Dental &amp; Craniofacial Centre. All rights reserved.</div>
+      <div>&copy; <span data-year>2026</span><span data-i18n> Shanker Dental &amp; Craniofacial Centre. All rights reserved.</span></div>
       <ul>
-        <li><a href="sitemap.html">Sitemap</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="sitemap.html"><span data-i18n>Sitemap</span></a></li>
+        <li><a href="contact.html"><span data-i18n>Contact</span></a></li>
       </ul>
     </div>
   </div>
@@ -575,11 +610,11 @@
 <div class="callbar">
   <a class="callbar-btn callbar-call" href="tel:+919159999362">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-    <span>Call the centre</span>
+    <span><span data-i18n>Call the centre</span></span>
   </a>
   <a class="callbar-btn callbar-map" href="contact.html">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-    <span>Directions</span>
+    <span><span data-i18n>Directions</span></span>
   </a>
 </div>
 
@@ -595,8 +630,9 @@
   <p class="lb-cap" aria-live="polite"><span class="lb-cap-text"></span><span class="lb-count"></span></p>
 </div>
 
-<script src="assets/js/main.js?v=2d4bc3fa"></script>
+<script src="assets/js/main.js?v=618a79d4"></script>
+<script src="assets/js/i18n.js?v=8a6f8624" data-dict="assets/js/i18n-data.js?v=4bca07e8"></script>
 <!-- TEMPORARY client color-preview tool — remove alongside theme-preview.css. -->
-<script src="assets/js/theme-preview.js"></script>
+<script src="assets/js/theme-preview.js?v=69a1dcc8"></script>
 </body>
 </html>
